@@ -33,6 +33,9 @@ addCommandAlias(
 // Library dependencies.
 libraryDependencies ++= {
   Seq(
+    // CSV input and output
+    "com.github.tototoshi"        %% "scala-csv"              % "1.3.6",
+
     // Logging
     "com.typesafe.scala-logging"  %% "scala-logging"          % "3.9.2",
     "com.outr"                    %% "scribe"                 % "2.7.12"
