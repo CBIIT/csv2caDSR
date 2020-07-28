@@ -14,7 +14,7 @@ addCompilerPlugin(scalafixSemanticdb)
 scalacOptions in Test ++= Seq("-Yrangepos")
 
 // Set up the main class.
-mainClass in (Compile, run) := Some("org.renci.ccdh.csv2cadsr.CSV2caDSR")
+mainClass in (Compile, run) := Some("org.renci.ccdh.csv2cadsr.csv2caDSR")
 
 // Fork when running.
 fork in run := true
