@@ -1,6 +1,10 @@
 package org.renci.ccdh.csv2cadsr.schema
 
+import java.net.URI
+
 import org.json4s._
+
+import scala.util.Try
 
 /**
   * A MappingSchema records all the information needed to map an input CSV file into the Portable Format
@@ -51,25 +55,27 @@ object MappingField {
   final val enumProportion = 0.1
 
   def createFromValues(name: String, values: Seq[String]): MappingField = {
-    val uniqueExampleValues = values.toSet
+    val uniqueValues = values.toSet
 
     // Mark this property as required if we have no blanks in the values.
     val isRequired = !(values exists { v => v.isBlank })
 
-    uniqueExampleValues match {
-      case _ if (uniqueExampleValues.isEmpty) => EmptyField(name, isRequired)
-      case _ if (uniqueExampleValues.size < values.size * enumProportion) =>
-        EnumField(name, uniqueExampleValues, isRequired)
-      case _ if (uniqueExampleValues forall { str => str forall Character.isDigit }) => {
+    uniqueValues match {
+      case _ if (uniqueValues.isEmpty) => EmptyField(name, isRequired)
+      case _ if (uniqueValues.size < values.size * enumProportion) => {
+        val uniqueValuesByCount = values.groupBy(identity).transform((_, v) => v.size).toSeq.sortBy(_._2)(Ordering[Int].reverse)
+        EnumField(name, uniqueValues, uniqueValuesByCount.map(_._1).map(EnumValue.fromString), isRequired)
+      }
+      case _ if (uniqueValues forall { str => str forall Character.isDigit }) => {
         val intValues = values flatMap (_.toIntOption)
         IntField(
           name,
-          uniqueExampleValues,
+          uniqueValues,
           isRequired,
           Range.inclusive(intValues.min, intValues.max)
         )
       }
-      case _ => StringField(name, uniqueExampleValues, isRequired)
+      case _ => StringField(name, uniqueValues, isRequired)
     }
   }
 }
@@ -95,14 +101,36 @@ case class StringField(
 case class EnumField(
   override val name: String,
   override val uniqueValues: Set[String],
+  val values: Seq[EnumValue] = Seq(),
   override val required: Boolean = false
-) extends MappingField(name, uniqueValues) {
+) extends MappingField(name, uniqueValues, required) {
   override def toString: String = {
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values: ${uniqueValues.mkString(", ")})"
   }
 
   override def asJsonSchema: JObject =
-    JObject("type" -> JString("string"), "description" -> JString(""))
+    JObject(
+      "type" -> JString("string"),
+      "description" -> JString(""),
+      "enum" -> JArray(values.map(_.value).map(JString).toList),
+      "enumValues" -> JArray(values.map(_.asMapping).toList)
+    )
+}
+case class EnumValue(val value: String, val conceptURI: Option[URI] = None) {
+  def asMapping: JObject = JObject(
+    "value" -> JString(value),
+    "description" -> JString(""),
+    "conceptURI" -> JString(conceptURI map (_.toString) getOrElse (""))
+  )
+}
+object EnumValue {
+  def fromString(value: String): EnumValue = {
+    // Does the value contain a URI?
+    val uriRegex = "(https?://\\S+)".r
+    val result = uriRegex findAllIn (value) map (m => Try { new URI(m) }) filter(_.isSuccess) map (_.get)
+    // If so, use the last URI as the conceptURI.
+    EnumValue(value, result.toSeq.lastOption)
+  }
 }
 case class IntField(
   override val name: String,
