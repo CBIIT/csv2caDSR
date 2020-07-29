@@ -36,6 +36,9 @@ libraryDependencies ++= {
     // CSV input and output
     "com.github.tototoshi"        %% "scala-csv"              % "1.3.6",
 
+    // JSON reading/writing
+    "org.json4s"                  %% "json4s-native"          % "3.6.9",
+
     // Logging
     "com.typesafe.scala-logging"  %% "scala-logging"          % "3.9.2",
     "com.outr"                    %% "scribe"                 % "2.7.12"
