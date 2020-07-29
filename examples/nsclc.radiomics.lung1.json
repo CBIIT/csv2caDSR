@@ -2,14 +2,16 @@
   "properties":{
     "PatientID":{
       "type":"string",
-      "description":""
+      "description":"Patient identifier"
     },
     "age":{
       "type":"string",
-      "description":""
+      "caDSR": "6412753",
+      "description":"Age"
     },
     "clinical.T.Stage":{
       "type":"string",
+      "caDSR": "3745011",
       "description":"",
       "enum":[
         "2",
@@ -55,6 +57,7 @@
     "Clinical.N.Stage":{
       "type":"string",
       "description":"",
+      "caDSR": "3745012",
       "enum":[
         "0",
         "2",
@@ -93,6 +96,7 @@
     "Clinical.M.Stage":{
       "type":"string",
       "description":"",
+      "caDSR": "3745013",
       "enum":[
         "0",
         "3",
@@ -119,6 +123,7 @@
     "Overall.Stage":{
       "type":"string",
       "description":"",
+      "caDSR": "3745017",
       "enum":[
         "IIIb",
         "IIIa",
@@ -157,6 +162,7 @@
     "Histology":{
       "type":"string",
       "description":"",
+      "caDSR": "5434051",
       "enum":[
         "squamous cell carcinoma",
         "large cell",
@@ -195,6 +201,7 @@
     "gender":{
       "type":"string",
       "description":"",
+      "caDSR": "62",
       "enum":[
         "male",
         "female"
@@ -214,11 +221,13 @@
     },
     "Survival.time":{
       "type":"string",
-      "description":""
+      "description":"",
+      "caDSR": "6639557"
     },
     "deadstatus.event":{
       "type":"string",
       "description":"",
+      "caDSR": "2178467",
       "enum":[
         "1",
         "0"

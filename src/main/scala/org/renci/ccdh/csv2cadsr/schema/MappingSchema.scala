@@ -96,7 +96,7 @@ case class StringField(
   override val required: Boolean = false
 ) extends MappingField(name, uniqueValues) {
   override def asJsonSchema: JObject =
-    JObject("type" -> JString("string"), "description" -> JString(""))
+    JObject("type" -> JString("string"), "description" -> JString(""), "caDSR" -> JString(""))
 }
 case class EnumField(
   override val name: String,
@@ -112,6 +112,7 @@ case class EnumField(
     JObject(
       "type" -> JString("string"),
       "description" -> JString(""),
+      "caDSR" -> JString(""),
       "enum" -> JArray(values.map(_.value).map(JString).toList),
       "enumValues" -> JArray(values.map(_.asMapping).toList)
     )
@@ -143,10 +144,18 @@ case class IntField(
   }
 
   override def asJsonSchema: JObject =
-    JObject("type" -> JString("string"), "description" -> JString(""))
+    JObject(
+      "type" -> JString("string"),
+      "description" -> JString(""),
+      "caDSR" -> JString("")
+    )
 }
 case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
   override def asJsonSchema: JObject =
-    JObject("type" -> JString("string"), "description" -> JString(""))
+    JObject(
+      "type" -> JString("string"),
+      "description" -> JString(""),
+      "caDSR" -> JString("")
+    )
 }
