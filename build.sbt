@@ -39,6 +39,9 @@ libraryDependencies ++= {
     // JSON reading/writing
     "org.json4s"                  %% "json4s-native"          % "3.6.9",
 
+    // XML reading/writing
+    "org.scala-lang.modules"      %% "scala-xml"              % "1.3.0",
+
     // Logging
     "com.typesafe.scala-logging"  %% "scala-logging"          % "3.9.2",
     "com.outr"                    %% "scribe"                 % "2.7.12"
