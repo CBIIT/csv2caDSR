@@ -2,7 +2,9 @@ package org.renci.ccdh.csv2cadsr.schema
 
 import java.net.URI
 
+import org.json4s
 import org.json4s.JsonAST.{JArray, JField, JObject, JString, JValue}
+import org.json4s.JsonDSL
 import org.json4s.native.JsonMethods._
 
 import scala.io.Source
@@ -57,32 +59,42 @@ object Filler {
   }
 
   def fillPropertyFromCaDSR(fieldName: String, value: JObject, caDSR: String): JObject = {
+    if (caDSR.isEmpty) return value
+
     scribe.info(s"Retrieving caDSR $caDSR.")
 
     val caDSRContent = Source.fromURL(s"https://fhir.hotecosystem.org/terminology/cadsr/ValueSet/$caDSR?_format=json")
     val caDSRJson = parse(caDSRContent.mkString(""))
-
-    // Unfortunately, the FHIR HOT-E API doesn't work for this. So it's time to hit the caDSR API directly.
-    // Step 1. Get the ValueDomain page and read its ID.
-    val valueDomainXML = queryCaDSRAPI(s"query=ValueDomain&DataElement[@publicId=$caDSR][@latestVersionIndicator=Yes]&roleName=valueDomain")
-    val valueDomainFields = XML.loadString(valueDomainXML) \\ "queryResponse" \ "class" \ "field"
-    println(s"valueDomainFields: ${valueDomainFields}.")
-    val valueDomainIds = valueDomainFields.filter(_.attribute("name") exists (_.text == "id")).map(_.text)
-
-    val valuesetData = if (valueDomainIds.size != 1) Seq() else {
-      // If we don't have exactly one, don't worry about it.
-      val valueDomainId = valueDomainIds.head
-
-      val valueDomainXML = queryCaDSRAPI(s"query=ValueDomainPermissibleValue&EnumeratedValueDomain[@id=$valueDomainId]&roleName=valueDomainPermissibleValueCollection")
-      val
+    val caDSRPermissibleValues = (caDSRJson \ "expansion" \ "contains").toOption match {
+      case None => JArray(List())
+      case Some(arr: JArray) => arr
+      case _ => throw new Error(s".expansion.contains in JSON request is not an array as expected: ${caDSRJson}")
     }
+    val caDSRPVCodeMap = caDSRPermissibleValues.arr.map({
+      case codeEntry: JObject => (codeEntry.values.getOrElse("code", "(none)"), codeEntry)
+    }).toMap
 
     JObject(value.obj.mapConserve({
       case ("description", JString("")) => ("description", caDSRJson \ "description")
-        /*
-      case ("enumValues", enumValues: JObject) => JObject(enumValues.children.mapConserve({
+      case ("permissibleValues", JArray(List())) => ("permissibleValues", JArray(caDSRPVCodeMap.keys.map(key => JString(key.toString)).toList))
+      case ("enumValues", enumValues: JArray) => ("enumValues", JArray(enumValues.arr.mapConserve({
+        case enumValue: JObject => {
+          val caDSRValue: String = enumValue.values.getOrElse("caDSRValue",
+            // If not caDSRValue is provided, just use the original value.
+            enumValue.values.getOrElse("value", "")
+          ).toString
+          // Is there a mapping for the caDSR value?
+          val lookup = caDSRPVCodeMap.get(caDSRValue)
+          if (lookup.isEmpty) {
+            // No lookup found.
+            enumValue
+          } else {
+            // Found a match!
+            JObject(enumValue.obj :+ ("caDSR", lookup.get))
+          }
+        }
         case other => other
-      })*/
+      })))
       case other => other
     }))
   }

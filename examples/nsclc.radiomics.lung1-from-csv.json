@@ -2,17 +2,24 @@
   "properties":{
     "PatientID":{
       "type":"string",
-      "description":"Patient identifier"
+      "description":"",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
     },
     "age":{
       "type":"string",
-      "caDSR": "6412753",
-      "description":"Age"
+      "description":"",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
     },
     "clinical.T.Stage":{
       "type":"string",
-      "caDSR": "3745011",
       "description":"",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "2",
         "4",
@@ -25,31 +32,37 @@
         {
           "value":"2",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"4",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"1",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"3",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"5",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"NA",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -57,7 +70,11 @@
     "Clinical.N.Stage":{
       "type":"string",
       "description":"",
-      "caDSR": "3745012",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "0",
         "2",
@@ -69,26 +86,31 @@
         {
           "value":"0",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"2",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"3",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"1",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"4",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -96,7 +118,11 @@
     "Clinical.M.Stage":{
       "type":"string",
       "description":"",
-      "caDSR": "3745013",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "0",
         "3",
@@ -106,16 +132,19 @@
         {
           "value":"0",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"3",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"1",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -123,7 +152,11 @@
     "Overall.Stage":{
       "type":"string",
       "description":"",
-      "caDSR": "3745017",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "IIIb",
         "IIIa",
@@ -135,26 +168,31 @@
         {
           "value":"IIIb",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"IIIa",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"I",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"II",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"NA",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -162,7 +200,11 @@
     "Histology":{
       "type":"string",
       "description":"",
-      "caDSR": "5434051",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "squamous cell carcinoma",
         "large cell",
@@ -174,26 +216,31 @@
         {
           "value":"squamous cell carcinoma",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"large cell",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"nos",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"adenocarcinoma",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"NA",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -201,7 +248,11 @@
     "gender":{
       "type":"string",
       "description":"",
-      "caDSR": "62",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "male",
         "female"
@@ -210,11 +261,13 @@
         {
           "value":"male",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"female",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]
@@ -222,12 +275,17 @@
     "Survival.time":{
       "type":"string",
       "description":"",
-      "caDSR": "6639557"
+      "caDSR":"",
+      "caDSRVersion":"1.0"
     },
     "deadstatus.event":{
       "type":"string",
       "description":"",
-      "caDSR": "2178467",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
       "enum":[
         "1",
         "0"
@@ -236,11 +294,13 @@
         {
           "value":"1",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"0",
           "description":"",
+          "caDSRValue":"",
           "conceptURI":""
         }
       ]

@@ -114,6 +114,7 @@ case class EnumField(
       "description" -> JString(""),
       "caDSR" -> JString(""),
       "caDSRVersion" -> JString("1.0"),
+      "permissibleValues" -> JArray(List()),
       "enum" -> JArray(values.map(_.value).map(JString).toList),
       "enumValues" -> JArray(values.map(_.asMapping).toList)
     )
@@ -122,6 +123,7 @@ case class EnumValue(val value: String, val conceptURI: Option[URI] = None) {
   def asMapping: JObject = JObject(
     "value" -> JString(value),
     "description" -> JString(""),
+    "caDSRValue" -> JString(""),
     "conceptURI" -> JString(conceptURI map (_.toString) getOrElse (""))
   )
 }
