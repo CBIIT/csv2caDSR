@@ -41,27 +41,27 @@
       "enumValues":[
         {
           "value":"2",
-          "description":"",
+          "description":"Lung Cancer pT2 TNM Finding v7",
           "caDSRValue":"T2",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88871"
         },
         {
           "value":"4",
-          "description":"",
+          "description":"Lung Cancer pT4 TNM Finding v7",
           "caDSRValue":"T4",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88875"
         },
         {
           "value":"1",
-          "description":"",
+          "description":"Lung Cancer pT1 TNM Finding v7",
           "caDSRValue":"T1",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88868"
         },
         {
           "value":"3",
-          "description":"",
+          "description":"Lung Cancer pT3 TNM Finding v7",
           "caDSRValue":"T3",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88874"
         },
         {
           "value":"5",
@@ -99,27 +99,27 @@
       "enumValues":[
         {
           "value":"0",
-          "description":"",
+          "description":"Lung Cancer pN0 TNM Finding v6 and v7",
           "caDSRValue":"N0",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60973"
         },
         {
           "value":"2",
-          "description":"",
+          "description":"Lung Cancer pN2 TNM Finding v6 and v7",
           "caDSRValue":"N2",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60975"
         },
         {
           "value":"3",
-          "description":"",
+          "description":"Lung Cancer pN3 TNM Finding v6 and v7",
           "caDSRValue":"N3",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60976"
         },
         {
           "value":"1",
-          "description":"",
+          "description":"Lung Cancer pN1 TNM Finding v7",
           "caDSRValue":"N1",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88877"
         },
         {
           "value":"4",
@@ -148,9 +148,9 @@
       "enumValues":[
         {
           "value":"0",
-          "description":"",
+          "description":"Lung Cancer cM0 TNM Finding v7",
           "caDSRValue":"M0",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88884"
         },
         {
           "value":"3",
@@ -160,9 +160,9 @@
         },
         {
           "value":"1",
-          "description":"",
+          "description":"Lung Cancer cM1 TNM Finding v7",
           "caDSRValue":"M1",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88885"
         }
       ]
     },
@@ -193,15 +193,15 @@
       "enumValues":[
         {
           "value":"IIIb",
-          "description":"",
+          "description":"Stage IIIB Lung Non-Small Cell Cancer AJCC v7",
           "caDSRValue":"IIIB",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C9103"
         },
         {
           "value":"IIIa",
-          "description":"",
+          "description":"Stage IIIA Lung Non-Small Cell Cancer AJCC v7",
           "caDSRValue":"IIIA",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C9102"
         },
         {
           "value":"I",
@@ -245,15 +245,15 @@
       "enumValues":[
         {
           "value":"squamous cell carcinoma",
-          "description":"",
+          "description":"Squamous Cell Carcinoma",
           "caDSRValue":"SCC",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C2929"
         },
         {
           "value":"large cell",
-          "description":"",
+          "description":"Large Cell Neuroendocrine Carcinoma",
           "caDSRValue":"LCNEC",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C6875"
         },
         {
           "value":"nos",
@@ -263,9 +263,9 @@
         },
         {
           "value":"adenocarcinoma",
-          "description":"",
+          "description":"Adenocarcinoma",
           "caDSRValue":"ADC",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C2852"
         },
         {
           "value":"NA",
@@ -292,15 +292,15 @@
       "enumValues":[
         {
           "value":"male",
-          "description":"",
+          "description":"Male Gender",
           "caDSRValue":"MALE",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C46109"
         },
         {
           "value":"female",
-          "description":"",
+          "description":"Female Gender",
           "caDSRValue":"FEMALE",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C46110"
         }
       ]
     },
@@ -326,9 +326,9 @@
       "enumValues":[
         {
           "value":"1",
-          "description":"",
+          "description":"Dead",
           "caDSRValue":"5",
-          "conceptURI":""
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C28554"
         },
         {
           "value":"0",

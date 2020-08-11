@@ -4,7 +4,7 @@ import java.net.URI
 
 import org.json4s
 import org.json4s.JsonAST.{JArray, JField, JObject, JString, JValue}
-import org.json4s.JsonDSL
+import org.json4s.{JNothing, JsonDSL}
 import org.json4s.native.JsonMethods._
 
 import scala.io.Source
@@ -90,7 +90,32 @@ object Filler {
             enumValue
           } else {
             // Found a match!
-            JObject(enumValue.obj :+ ("caDSR", lookup.get))
+            val coding = (lookup.get.findField(_._1 == "coding").map(_._2))
+            scribe.info(s"Coding: $coding")
+            coding match {
+              case Some(arr: JArray) => JObject(enumValue.obj.mapConserve({
+                  case ("description", JString("")) => ("description", arr(0) \ "display")
+                  case ("conceptURI", JString("")) => {
+                    val system = (arr(0) \ "system").values.toString
+                    val code = (arr(0) \ "code").values.toString
+
+                    if (system == "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#")
+                      ("conceptURI", JString("https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=" + code))
+                    else
+                      ("conceptURI", JString(system + code))
+                  }
+                  case other => other
+                })
+                // :+ ("caDSR", lookup.get)
+                )
+
+              case _ => JObject(enumValue.obj.mapConserve({
+                case ("description", JString("")) => ("description", lookup.get \ "display")
+                case other => other
+              })
+                // :+ ("caDSR", lookup.get)
+              )
+            }
           }
         }
         case other => other
