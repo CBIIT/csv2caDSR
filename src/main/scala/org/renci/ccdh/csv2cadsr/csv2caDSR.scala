@@ -1,10 +1,14 @@
 package org.renci.ccdh.csv2cadsr
 
-import org.json4s.{DefaultFormats, StringInput}
+import com.github.tototoshi.csv.{CSVReader, CSVWriter}
+import org.json4s.{DefaultFormats, JArray, JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods._
+import org.renci.ccdh.csv2cadsr.schema.MappingField
+
+import scala.collection.immutable.HashMap
 
 object csv2caDSR extends App {
   val csvFilename: String = args(0)
@@ -31,5 +35,44 @@ object csv2caDSR extends App {
     // We have a JSON schema file and a CSV file. Generate the JSON!
     val csvSource: Source = Source.fromFile(csvFilename)("UTF-8")
     val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
+
+    val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
+    val properties: Map[String, JValue] = jsonRoot match {
+      case obj: JObject => obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+      case _ => throw new RuntimeException("JSON source is not a JSON object")
+    }
+
+    val reader = CSVReader.open(csvSource)
+    val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
+
+    // For now, we write to STDOUT.
+    val writer = CSVWriter.open(System.out)
+    writer.writeRow(headerRow)
+
+    // Write out caDSR information.
+    writer.writeRow(headerRow map { rowName =>
+      val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+      val caDSR = property.getOrElse("caDSR", "")
+      val caDSRVersion = property.getOrElse("caDSRVersion", "")
+      if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
+      else caDSR
+    })
+
+    dataWithHeaders.foreach(row => {
+      val rowValues: Seq[String] = headerRow map { rowName =>
+        val rowValue = row.getOrElse(rowName, "")
+
+        val rowProp = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, _]]
+        val enumValues = rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
+        val mapping: Map[String, String] = enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
+        val caDSRValue = mapping.getOrElse("caDSRValue", "")
+
+        if(caDSRValue.nonEmpty) s"$rowValue=$caDSRValue"
+        else rowValue
+      }
+      writer.writeRow(rowValues)
+    })
+
+    writer.close()
   }
 }

@@ -3,6 +3,7 @@ package org.renci.ccdh.csv2cadsr.schema
 import java.net.URI
 
 import org.json4s
+// TODO: If we import the non-JsonAST terms here, do we get HashMaps instead of JObjects and so on?
 import org.json4s.JsonAST.{JArray, JField, JObject, JString, JValue}
 import org.json4s.{JNothing, JsonDSL}
 import org.json4s.native.JsonMethods._
