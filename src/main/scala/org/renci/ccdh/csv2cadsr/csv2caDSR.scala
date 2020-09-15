@@ -47,28 +47,28 @@ object csv2caDSR extends App {
 
     // For now, we write to STDOUT.
     val writer = CSVWriter.open(System.out)
-    writer.writeRow(headerRow)
-
-    // Write out caDSR information.
-    writer.writeRow(headerRow map { rowName =>
-      val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
-      val caDSR = property.getOrElse("caDSR", "")
-      val caDSRVersion = property.getOrElse("caDSRVersion", "")
-      if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
-      else caDSR
+    writer.writeRow(headerRow flatMap { rowName =>
+      val caDSR = {
+        val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+        val caDSR = property.getOrElse("caDSR", "")
+        val caDSRVersion = property.getOrElse("caDSRVersion", "")
+        if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
+        else caDSR
+      }
+      Seq(rowName, s"${rowName}_caDSR_cde_${caDSR}_value", s"${rowName}_ncit_uri")
     })
 
     dataWithHeaders.foreach(row => {
-      val rowValues: Seq[String] = headerRow map { rowName =>
+      val rowValues: Seq[String] = headerRow flatMap { rowName =>
         val rowValue = row.getOrElse(rowName, "")
 
         val rowProp = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, _]]
         val enumValues = rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
         val mapping: Map[String, String] = enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
         val caDSRValue = mapping.getOrElse("caDSRValue", "")
+        val conceptURI = mapping.getOrElse("conceptURI", "")
 
-        if(caDSRValue.nonEmpty) s"$rowValue=$caDSRValue"
-        else rowValue
+        Seq(rowValue, caDSRValue, conceptURI)
       }
       writer.writeRow(rowValues)
     })
