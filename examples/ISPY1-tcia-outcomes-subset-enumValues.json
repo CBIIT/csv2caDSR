@@ -1,0 +1,201 @@
+{
+  "properties":{
+    "SUBJECTID":{
+      "type":"string",
+      "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "DataExtractDt":{
+      "type":"string",
+      "description":"Date clinical data was downloaded from the CALGB database",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
+      "enum":[
+        "09 03 2009"
+      ],
+      "enumValues":[
+        {
+          "value":"09 03 2009",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "sstat":{
+      "type":"string",
+      "description":"A description of the patient's survival status at the last follow-up.",
+      "caDSR":"4770275",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "Dead",
+        "Lost to Follow-up(LTF)",
+        "Alive"
+      ],
+      "enum":[
+        "7",
+        "8",
+        "9"
+      ],
+      "enumValues":[
+        {
+          "value":"7",
+          "description":"Alive",
+          "caDSRValue":"Alive",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C37987"
+        },
+        {
+          "value":"8",
+          "description":"Dead",
+          "caDSRValue":"Dead",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C28554"
+        },
+        {
+          "value":"9",
+          "description":"Follow-Up",
+          "caDSRValue":"Lost to Follow-up(LTF)",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C16033"
+        }
+      ]
+    },
+    "survDtD2 (tx)":{
+      "type":"string",
+      "description":"Survival date (time from study entry to death or last follow-up; time unit is days",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "RFS":{
+      "type":"string",
+      "description":"Recurrence-free survival time \u2013 time from neoadjuvant chemotherapy start date until earliest: local or distant progression or death (time unit is days)",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "rfs_ind":{
+      "type":"string",
+      "description":"Recurrence-free survival indicator",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
+      "enum":[
+        "0",
+        "1"
+      ],
+      "enumValues":[
+        {
+          "value":"0",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"1",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "PCR":{
+      "type":"string",
+      "description":"the yes/no indicator whether there was disappearance of all signs of a tumor at the original site of origin based on microscopic structural and functional changes in the tumor cells as a result from treatment.",
+      "caDSR":"2721588",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "No",
+        "Yes"
+      ],
+      "enum":[
+        "0",
+        "1",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"0",
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+        },
+        {
+          "value":"1",
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "RCBClass":{
+      "type":"string",
+      "description":"The RCB class that uses pre-defined cut-points representing progressively greater extents of residual cancer and indicating a greater risk of recurrence.",
+      "caDSR":"6762784",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "Data not available",
+        "RCB-0",
+        "RCB-I",
+        "RCB-III",
+        "Unknown",
+        "RCB-II"
+      ],
+      "enum":[
+        "2",
+        "0",
+        "3",
+        "",
+        "1"
+      ],
+      "enumValues":[
+        {
+          "value":"2",
+          "description":"Residual Cancer Burden Class 2",
+          "caDSRValue":"RCB-II",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160727"
+        },
+        {
+          "value":"0",
+          "description":"Residual Cancer Burden Class 0",
+          "caDSRValue":"RCB-0",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160725"
+        },
+        {
+          "value":"3",
+          "description":"Residual Cancer Burden Class 3",
+          "caDSRValue":"RCB-III",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160728"
+        },
+        {
+          "value":"",
+          "description":"Source Data Not Available",
+          "caDSRValue":"Data not available",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C67329"
+        },
+        {
+          "value":"1",
+          "description":"Residual Cancer Burden Class 1",
+          "caDSRValue":"RCB-I",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160726"
+        }
+      ]
+    }
+  },
+  "required":[
+    "SUBJECTID",
+    "DataExtractDt",
+    "sstat",
+    "survDtD2 (tx)",
+    "RFS",
+    "rfs_ind"
+  ]
+}
