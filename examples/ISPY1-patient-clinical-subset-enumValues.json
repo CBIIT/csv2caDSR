@@ -2,7 +2,7 @@
   "properties":{
     "SUBJECTID":{
       "type":"string",
-      "description":"I-SPY ID de-identifies a patient’s CALGB and ACRIN ID",
+      "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
@@ -41,11 +41,16 @@
     },
     "race_id":{
       "type":"string",
-      "description":"",
+      "description":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
       "caDSR":"6093480",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "3",
+        "5",
+        "0",
+        "1",
+        "4",
+        "2"
       ],
       "enum":[
         "1",
@@ -59,21 +64,21 @@
       "enumValues":[
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"White",
+          "caDSRValue":"5",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41261"
         },
         {
           "value":"3",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Black or African American",
+          "caDSRValue":"3",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C16352"
         },
         {
           "value":"4",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Asian",
+          "caDSRValue":"2",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41260"
         },
         {
           "value":"50",
@@ -83,31 +88,32 @@
         },
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Unknown",
+          "caDSRValue":"0",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
         },
         {
           "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Unknown",
+          "caDSRValue":"0",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
         },
         {
           "value":"5",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Native Hawaiian or Other Pacific Islander",
+          "caDSRValue":"4",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41219"
         }
       ]
     },
     "ERpos":{
       "type":"string",
-      "description":"",
+      "description":"The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells.",
       "caDSR":"3895179",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "No",
+        "Yes"
       ],
       "enum":[
         "1",
@@ -117,15 +123,15 @@
       "enumValues":[
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
         },
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
         },
         {
           "value":"",
@@ -137,11 +143,12 @@
     },
     "PgRpos":{
       "type":"string",
-      "description":"",
+      "description":"The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells.",
       "caDSR":"3895181",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "No",
+        "Yes"
       ],
       "enum":[
         "0",
@@ -151,15 +158,15 @@
       "enumValues":[
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
         },
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
         },
         {
           "value":"",
@@ -171,11 +178,18 @@
     },
     "HR Pos":{
       "type":"string",
-      "description":"",
+      "description":"the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor.",
       "caDSR":"64750",
       "caDSRVersion":"3.0",
       "permissibleValues":[
-        
+        "ER and/or PgR positive",
+        "ER or PgR positive",
+        "Other",
+        "ER and PgR negative",
+        "Negative",
+        "Positive",
+        "ER and PgR positive",
+        "Indeterminate"
       ],
       "enum":[
         "1",
@@ -185,31 +199,33 @@
       "enumValues":[
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
+          "description":"ER and/or PgR positive",
+          "caDSRValue":"ER and/or PgR positive",
           "conceptURI":""
         },
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Negative Finding",
+          "caDSRValue":"Negative",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C38757"
         },
         {
           "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Indeterminate",
+          "caDSRValue":"Indeterminate",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C48658"
         }
       ]
     },
     "Her2MostPos":{
       "type":"string",
-      "description":"",
+      "description":"Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means.",
       "caDSR":"2542108",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "No",
+        "Yes",
+        "Not Done"
       ],
       "enum":[
         "0",
@@ -219,21 +235,21 @@
       "enumValues":[
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
         },
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
         },
         {
           "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Not Done",
+          "caDSRValue":"Not Done",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49484"
         }
       ]
     },
@@ -321,11 +337,12 @@
     },
     "BilateralCa":{
       "type":"string",
-      "description":"",
+      "description":"the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit.",
       "caDSR":"3027502",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "No",
+        "Yes"
       ],
       "enum":[
         "0",
@@ -335,15 +352,15 @@
       "enumValues":[
         {
           "value":"0",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
         },
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
         },
         {
           "value":"",
@@ -355,11 +372,21 @@
     },
     "Laterality":{
       "type":"string",
-      "description":"",
+      "description":"for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed.",
       "caDSR":"827",
       "caDSRVersion":"1.0",
       "permissibleValues":[
-        
+        "Bilateral",
+        "Other",
+        "Not specified",
+        "Both",
+        "Right",
+        "Unilateral, side not specified",
+        "Unilateral",
+        "Not a Paired site",
+        "Left",
+        "Midline",
+        "Unknown"
       ],
       "enum":[
         "2",
@@ -369,15 +396,15 @@
       "enumValues":[
         {
           "value":"2",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Right",
+          "caDSRValue":"Right",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C25228"
         },
         {
           "value":"1",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
+          "description":"Left",
+          "caDSRValue":"Left",
+          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C25229"
         },
         {
           "value":"",
