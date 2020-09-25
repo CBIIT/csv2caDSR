@@ -64,6 +64,7 @@ object Filler {
 
     scribe.info(s"Retrieving caDSR $caDSR.")
 
+    // Use the caDSR-on-FHIR service (https://github.com/HOT-Ecosystem/cadsr-on-fhir/).
     val caDSRContent = Source.fromURL(s"https://fhir.hotecosystem.org/terminology/cadsr/ValueSet/$caDSR?_format=json")
     val caDSRJson = parse(caDSRContent.mkString(""))
     val caDSRPermissibleValues = (caDSRJson \ "expansion" \ "contains").toOption match {
