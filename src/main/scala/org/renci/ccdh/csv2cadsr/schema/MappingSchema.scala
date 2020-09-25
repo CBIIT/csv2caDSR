@@ -63,17 +63,21 @@ object MappingField {
     uniqueValues match {
       case _ if (uniqueValues.isEmpty) => EmptyField(name, isRequired)
       case _ if (uniqueValues.size < values.size * enumProportion) => {
-        val uniqueValuesByCount = values.groupBy(identity).transform((_, v) => v.size).toSeq.sortBy(_._2)(Ordering[Int].reverse)
-        EnumField(name, uniqueValues, uniqueValuesByCount.map(_._1).map(EnumValue.fromString), isRequired)
+        val uniqueValuesByCount = values
+          .groupBy(identity)
+          .transform((_, v) => v.size)
+          .toSeq
+          .sortBy(_._2)(Ordering[Int].reverse)
+        EnumField(
+          name,
+          uniqueValues,
+          uniqueValuesByCount.map(_._1).map(EnumValue.fromString),
+          isRequired
+        )
       }
       case _ if (uniqueValues forall { str => str forall Character.isDigit }) => {
         val intValues = values flatMap (_.toIntOption)
-        IntField(
-          name,
-          uniqueValues,
-          isRequired,
-          Range.inclusive(intValues.min, intValues.max)
-        )
+        IntField(name, uniqueValues, isRequired, Range.inclusive(intValues.min, intValues.max))
       }
       case _ => StringField(name, uniqueValues, isRequired)
     }
@@ -96,7 +100,12 @@ case class StringField(
   override val required: Boolean = false
 ) extends MappingField(name, uniqueValues) {
   override def asJsonSchema: JObject =
-    JObject("type" -> JString("string"), "description" -> JString(""), "caDSR" -> JString(""), "caDSRVersion" -> JString("1.0"))
+    JObject(
+      "type" -> JString("string"),
+      "description" -> JString(""),
+      "caDSR" -> JString(""),
+      "caDSRVersion" -> JString("1.0")
+    )
 }
 case class EnumField(
   override val name: String,
@@ -120,18 +129,20 @@ case class EnumField(
     )
 }
 case class EnumValue(val value: String, val conceptURI: Option[URI] = None) {
-  def asMapping: JObject = JObject(
-    "value" -> JString(value),
-    "description" -> JString(""),
-    "caDSRValue" -> JString(""),
-    "conceptURI" -> JString(conceptURI map (_.toString) getOrElse (""))
-  )
+  def asMapping: JObject =
+    JObject(
+      "value" -> JString(value),
+      "description" -> JString(""),
+      "caDSRValue" -> JString(""),
+      "conceptURI" -> JString(conceptURI map (_.toString) getOrElse (""))
+    )
 }
 object EnumValue {
   def fromString(value: String): EnumValue = {
     // Does the value contain a URI?
     val uriRegex = "(https?://\\S+)".r
-    val result = uriRegex findAllIn (value) map (m => Try { new URI(m) }) filter(_.isSuccess) map (_.get)
+    val result =
+      uriRegex findAllIn (value) map (m => Try { new URI(m) }) filter (_.isSuccess) map (_.get)
     // If so, use the last URI as the conceptURI.
     EnumValue(value, result.toSeq.lastOption)
   }

@@ -1,12 +1,11 @@
 package org.renci.ccdh.csv2cadsr
 
 import com.github.tototoshi.csv.{CSVReader, CSVWriter}
-import org.json4s.{DefaultFormats, JArray, JObject, JValue, StringInput}
+import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods._
-import org.renci.ccdh.csv2cadsr.schema.MappingField
 
 import scala.collection.immutable.HashMap
 
@@ -25,7 +24,7 @@ object csv2caDSR extends App {
       throwable => scribe.error(s"Could not generate JSON Schema: ${throwable}"),
       result => println(writePretty(result.asJsonSchema))
     )
-  } else if(csvFilename == "fill") {
+  } else if (csvFilename == "fill") {
     // This is a hack to fill in the JSON Schema with information from the caDSR system.
     val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
 
@@ -38,7 +37,8 @@ object csv2caDSR extends App {
 
     val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
     val properties: Map[String, JValue] = jsonRoot match {
-      case obj: JObject => obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+      case obj: JObject =>
+        obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
       case _ => throw new RuntimeException("JSON source is not a JSON object")
     }
 
@@ -63,8 +63,10 @@ object csv2caDSR extends App {
         val rowValue = row.getOrElse(rowName, "")
 
         val rowProp = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, _]]
-        val enumValues = rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
-        val mapping: Map[String, String] = enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
+        val enumValues =
+          rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
+        val mapping: Map[String, String] =
+          enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
         val caDSRValue = mapping.getOrElse("caDSRValue", "")
         val conceptURI = mapping.getOrElse("conceptURI", "")
 
