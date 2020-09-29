@@ -18,7 +18,10 @@ import scala.collection.immutable.HashMap
 case class CommandLineOptions(
   @ValueDescription("An optional file to write output to")
   @ExtraName("o")
-  outputFilename: Option[String]
+  outputFilename: Option[String],
+
+  @ValueDescription("Write output in PFB")
+  toPfb: Option[Boolean]
 )
 
 object csv2caDSR extends CaseApp[CommandLineOptions] {
@@ -29,6 +32,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       case Some(filename: String) => new BufferedWriter(new FileWriter(filename))
       case _ => new BufferedWriter(new OutputStreamWriter(System.out))
     }
+    val toPFB: Boolean = options.toPfb.getOrElse(false)
 
     implicit val formats = DefaultFormats
 
@@ -60,39 +64,12 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       }
 
       val reader = CSVReader.open(csvSource)
-      val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
-      // For now, we write to STDOUT.
-      val writer = CSVWriter.open(bufferedWriter)
-      writer.writeRow(headerRow flatMap { rowName =>
-        val caDSR = {
-          val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
-          val caDSR = property.getOrElse("caDSR", "")
-          val caDSRVersion = property.getOrElse("caDSRVersion", "")
-          if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
-          else caDSR
-        }
-        Seq(rowName, s"${rowName}_caDSR_cde_${caDSR}_value", s"${rowName}_ncit_uri")
-      })
-
-      dataWithHeaders.foreach(row => {
-        val rowValues: Seq[String] = headerRow flatMap { rowName =>
-          val rowValue = row.getOrElse(rowName, "")
-
-          val rowProp = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, _]]
-          val enumValues =
-            rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
-          val mapping: Map[String, String] =
-            enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
-          val caDSRValue = mapping.getOrElse("caDSRValue", "")
-          val conceptURI = mapping.getOrElse("conceptURI", "")
-
-          Seq(rowValue, caDSRValue, conceptURI)
-        }
-        writer.writeRow(rowValues)
-      })
-
-      writer.close()
+      output.ToCSV.write(
+        reader,
+        properties,
+        bufferedWriter
+      )
     }
   }
 }
