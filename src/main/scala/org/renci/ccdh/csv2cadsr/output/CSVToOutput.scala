@@ -9,5 +9,5 @@ import org.json4s.JValue
   * The overall trait for all outputers.
   */
 trait CSVToOutput {
-  def write(reader: CSVReader, properties: Map[String, JValue], writer: Writer)
+  def write(reader: CSVReader, properties: Map[String, JValue], writer: Writer): Unit
 }
