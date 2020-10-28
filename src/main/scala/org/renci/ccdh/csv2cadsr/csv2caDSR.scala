@@ -3,7 +3,7 @@ package org.renci.ccdh.csv2cadsr
 import java.io.{BufferedWriter, File, FileWriter}
 
 import com.github.tototoshi.csv.CSVReader
-import org.json4s.{JObject, JValue, StringInput}
+import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
