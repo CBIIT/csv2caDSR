@@ -1,7 +1,7 @@
 {
   "properties":{
     "SUBJECTID":{
-      "type":"string",
+      "type":"integer",
       "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
       "caDSR":"",
       "caDSRVersion":"1.0"
@@ -34,7 +34,7 @@
       ]
     },
     "age":{
-      "type":"string",
+      "type":"number",
       "description":"Patient Age",
       "caDSR":"",
       "caDSRVersion":"1.0"
@@ -415,25 +415,25 @@
       ]
     },
     "MRI LD Baseline":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD 1-3dAC":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD InterReg":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD PreSurg":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery",
       "caDSR":"",
       "caDSRVersion":"1.0"

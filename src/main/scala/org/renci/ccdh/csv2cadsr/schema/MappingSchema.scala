@@ -128,14 +128,14 @@ object MappingField {
           isRequired
         )
       }
-
-      // Is it an integer field?
-      case _ if (uniqueValues forall { str => str forall Character.isDigit }) => {
+      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' }}) => {
         val intValues = values flatMap (_.toIntOption)
         IntField(name, uniqueValues, isRequired, Range.inclusive(intValues.min, intValues.max))
       }
-
-      // If we can't figure this out, assume that it is a string field.
+      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }}) => {
+        val numValues = values flatMap (v => Try(BigDecimal(v)).toOption)
+        NumberField(name, uniqueValues, isRequired, numValues.min, numValues.max)
+      }
       case _ => StringField(name, uniqueValues, isRequired)
     }
   }
@@ -213,15 +213,35 @@ case class IntField(
   override def toString: String = {
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values in ${range})"
   }
-
-  override def asJsonObject: JObject =
-    ("type" -> "string") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0")
+  override def asJsonSchema: JObject =
+    JObject(
+      "type" -> JString("integer"),
+      "description" -> JString(""),
+      "caDSR" -> JString(""),
+      "caDSRVersion" -> JString("1.0")
+    )
 }
 
-/** An empty field is one that consists solely of blanks. */
+case class NumberField(
+  override val name: String,
+  override val uniqueValues: Set[String],
+  override val required: Boolean,
+  min: BigDecimal,
+  max: BigDecimal
+) extends MappingField(name, uniqueValues) {
+  override def toString: String = {
+    s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values between ${min} and ${max})"
+  }
+
+  override def asJsonSchema: JObject =
+    JObject(
+      "type" -> JString("number"),
+      "description" -> JString(""),
+      "caDSR" -> JString(""),
+      "caDSRVersion" -> JString("1.0")
+    )
+}
+
 case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
   override def asJsonObject: JObject =
