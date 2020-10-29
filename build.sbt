@@ -41,6 +41,7 @@ libraryDependencies ++= {
 
     // Avro (PFB) input and output
     "com.sksamuel.avro4s"         %% "avro4s-core"            % "4.0.0",
+    "org.apache.avro"             % "avro"                    % "1.10.0",
 
     // JSON reading/writing
     "org.json4s"                  %% "json4s-native"          % "3.6.9",
