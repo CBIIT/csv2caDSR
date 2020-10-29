@@ -12,9 +12,9 @@ import caseapp._
 
 import scala.collection.immutable.HashMap
 
-@AppName("MyApp")
+@AppName("csv2caDSR")
 @AppVersion("0.1.0")
-@ProgName("my-app-cli")
+@ProgName("csv2cadsr")
 case class CommandLineOptions(
   @ValueDescription("An optional file to write output to")
   @ExtraName("o")
@@ -65,11 +65,20 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
       val reader = CSVReader.open(csvSource)
 
-      output.ToCSV.write(
-        reader,
-        properties,
-        bufferedWriter
-      )
+      if (toPFB) {
+        output.ToPFB.write(
+          reader,
+          properties,
+          bufferedWriter
+        )
+      } else {
+        // Default to CSV.
+        output.ToCSV.write(
+          reader,
+          properties,
+          bufferedWriter
+        )
+      }
     }
   }
 }

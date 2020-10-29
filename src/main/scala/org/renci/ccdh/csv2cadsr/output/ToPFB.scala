@@ -5,6 +5,8 @@ import java.io.Writer
 import com.github.tototoshi.csv.{CSVReader, CSVWriter}
 import org.json4s.JValue
 
+import org.apache.avro._
+
 import scala.collection.immutable.HashMap
 
 /**
@@ -14,6 +16,28 @@ object ToPFB extends CSVToOutput {
   override def write(reader: CSVReader, properties: Map[String, JValue], writer: Writer): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
+    // Step 1. Create a schema for the output.
+    val schemaBuilder = SchemaBuilder
+      .record("export") // TODO: name this after the input filename, I guess?
+    var fieldsBuilder = schemaBuilder.fields()
+
+    headerRow foreach { rowName =>
+      val caDSR = {
+        val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+        val caDSR = property.getOrElse("caDSR", "")
+        val caDSRVersion = property.getOrElse("caDSRVersion", "")
+        if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
+        else caDSR
+      }
+
+      fieldsBuilder = fieldsBuilder
+        .name(rowName.replaceAll("\\W","_"))
+        .`type`("string")
+        .noDefault()
+    }
+
+    val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(fieldsBuilder.endRecord()))
+    scribe.info(s"Created schema: ${schema.toString(true) }")
 
     // For now, we write to STDOUT.
     val csvWriter = CSVWriter.open(writer)
