@@ -22,17 +22,23 @@ object ToPFB extends CSVToOutput {
     var fieldsBuilder = schemaBuilder.fields()
 
     headerRow foreach { rowName =>
+      val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+
       val caDSR = {
-        val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
         val caDSR = property.getOrElse("caDSR", "")
         val caDSRVersion = property.getOrElse("caDSRVersion", "")
         if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
         else caDSR
       }
+      val fieldType = property.getOrElse("type", "string") match {
+        case "integer" => "long"  // We could also use "int" here if we want 32 bit ints.
+        case "number" => "string" // We'll store it as a string and let it be reparsed (hopefully into BigDecimal) at the other end.
+        case str => str
+      }
 
       fieldsBuilder = fieldsBuilder
         .name(rowName.replaceAll("\\W","_"))
-        .`type`("string")
+        .`type`(fieldType)
         .noDefault()
     }
 
