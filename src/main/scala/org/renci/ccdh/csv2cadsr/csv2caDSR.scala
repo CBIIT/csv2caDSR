@@ -45,12 +45,14 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         throwable => scribe.error(s"Could not generate JSON Schema: ${throwable}"),
         result => bufferedWriter.write(writePretty(result.asJsonSchema))
       )
+      scribe.info("Wrote out JSON schema.")
     } else if (csvFilename == "fill") {
       // This is a hack to fill in the JSON Schema with information from the caDSR system.
       val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
 
       val filledScheme = schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
       bufferedWriter.write(writePretty(filledScheme))
+      scribe.info("Wrote out filled JSON schema.")
     } else {
       // We have a JSON schema file and a CSV file. Generate the JSON!
       val csvSource: Source = Source.fromFile(csvFilename)("UTF-8")
@@ -71,6 +73,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           properties,
           bufferedWriter
         )
+        scribe.info("Wrote output as PFB file.")
       } else {
         // Default to CSV.
         output.ToCSV.write(
@@ -78,7 +81,10 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           properties,
           bufferedWriter
         )
+        scribe.info("Wrote output as CSV file.")
       }
     }
+
+    bufferedWriter.close()
   }
 }
