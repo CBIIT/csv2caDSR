@@ -1,6 +1,6 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, File, FileWriter}
+import java.io.{BufferedWriter, File, FileWriter, OutputStreamWriter}
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
@@ -23,7 +23,9 @@ case class CommandLineOptions(
   @HelpMessage("The JSON mapping file to write to.")
   toJson: Option[String],
   @HelpMessage("The CSV file to write harmonized data to.")
-  toCsv: Option[String]
+  toCsv: Option[String],
+  @HelpMessage("The PFB file to write harmonized data to.")
+  toPfb: Option[String]
 )
 
 /**
@@ -100,18 +102,29 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     // Look through the command line options to see how we should export our data.
     options match {
-      case CommandLineOptions(_, _, Some(jsonOutputFile), _) => {
+      case CommandLineOptions(_, _, Some(jsonOutputFile), _, _) => {
         // TODO: implement our own JSON-LD export for this data.
         ???
       }
 
-      case CommandLineOptions(_, _, _, Some(csvOutputFile)) => {
+      case CommandLineOptions(_, _, _, Some(csvOutputFile), _) => {
         // Generate the CSV!
         val reader = CSVReader.open(csvSource)
         val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
         output.ToCSV.write(reader, properties, bufferedWriter)
         bufferedWriter.close()
         scribe.info(s"Wrote out CSV harmonized output file to ${csvOutputFile}")
+      }
+
+      case CommandLineOptions(_, _, _, _, Some(pfbOutputFilename)) => {
+        val pfbOutputFile = new File(pfbOutputFilename)
+        val reader = CSVReader.open(csvSource)
+        output.ToPFB.writePFB(
+          reader,
+          properties,
+          pfbOutputFile
+        )
+        scribe.info(s"Wrote output as PFB file to ${pfbOutputFile}.")
       }
 
       case _ =>
