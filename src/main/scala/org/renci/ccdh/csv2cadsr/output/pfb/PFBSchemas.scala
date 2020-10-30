@@ -1,5 +1,7 @@
 package org.renci.ccdh.csv2cadsr.output.pfb
 
+import java.util.Collections
+
 import org.apache.avro.{Schema, SchemaBuilder}
 
 /**
@@ -91,7 +93,7 @@ object PFBSchemas {
             .requiredString("dst_id")
             .requiredString("dst_name")
         .endRecord()
-        .arrayDefault(java.util.List.of())
+        .arrayDefault(Collections.EMPTY_LIST)
 
     fieldsBuilder.endRecord()
   }

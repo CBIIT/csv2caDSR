@@ -1,19 +1,24 @@
 package org.renci.ccdh.csv2cadsr.output
 
-import java.io.Writer
+import java.io.{File, Writer}
+import java.nio.charset.Charset
+import java.util.Collections
 
 import com.github.tototoshi.csv.{CSVReader, CSVWriter}
 import org.json4s.JValue
-
 import org.apache.avro._
+import org.apache.avro.file.DataFileWriter
+import org.apache.avro.generic.{GenericData, GenericDatumWriter, GenericRecord}
 
 import scala.collection.immutable.HashMap
+import scala.collection.mutable
+import scala.tools.nsc.interpreter.shell.WriterOutputStream
 
 /**
   * Converts a CSV file to a PFB file with annotations.
   */
 object ToPFB extends CSVToOutput {
-  override def write(reader: CSVReader, properties: Map[String, JValue], writer: Writer): Unit = {
+  override def write(reader: CSVReader, properties: Map[String, JValue], outputWriter: Writer): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
     // Step 1. Create a schema for the output.
@@ -21,6 +26,8 @@ object ToPFB extends CSVToOutput {
       .record("export") // TODO: name this after the input filename, I guess?
     var fieldsBuilder = schemaBuilder.fields()
 
+    // TODO: this should be colName, not rowName.
+    val fieldTypes = mutable.Map[String, String]()
     headerRow foreach { rowName =>
       val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
 
@@ -35,17 +42,55 @@ object ToPFB extends CSVToOutput {
         case "number" => "string" // We'll store it as a string and let it be reparsed (hopefully into BigDecimal) at the other end.
         case str => str
       }
+      fieldTypes.put(rowName, fieldType)
 
       fieldsBuilder = fieldsBuilder
         .name(rowName.replaceAll("\\W","_"))
-        .`type`(fieldType)
+        .`type`(Schema.createUnion(
+          Schema.create(Schema.Type.NULL),
+          Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
+        ))
         .noDefault()
     }
 
-    val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(fieldsBuilder.endRecord()))
+    val exportSchema = fieldsBuilder.endRecord()
+    val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(exportSchema))
     scribe.info(s"Created schema: ${schema.toString(true) }")
 
+    // TODO: write out a Metadata entity that describes this object.
+    val writer = new GenericDatumWriter[GenericRecord](schema)
+    val dataFileWriter = new DataFileWriter[GenericRecord](writer)
+    dataFileWriter.create(schema, new File("output.avro"))
+
+    dataWithHeaders.zipWithIndex.foreach({ case (row, index) =>
+      val export = new GenericData.Record(exportSchema)
+      row.keys.map({ colName =>
+        val value = row.getOrElse(colName, "")
+        val fieldType = fieldTypes.getOrElse(colName, "string")
+        val convertedValue = fieldType match {
+          case "long" => if (value == "") null else value.toLong
+          case _ => value
+        }
+
+        export.put(
+          colName.replaceAll("\\W","_"),
+          convertedValue
+        )
+      })
+
+      val datum = new GenericData.Record(schema)
+      datum.put("id", "row" + index)
+      datum.put("name", "export")
+      datum.put("object", export)
+      datum.put("relations", Collections.EMPTY_LIST)
+
+      dataFileWriter.append(datum)
+    })
+
+    dataFileWriter.close()
+
     // For now, we write to STDOUT.
+    /*
     val csvWriter = CSVWriter.open(writer)
     csvWriter.writeRow(headerRow flatMap { rowName =>
       val caDSR = {
@@ -76,5 +121,6 @@ object ToPFB extends CSVToOutput {
     })
 
     csvWriter.close()
+     */
   }
 }
