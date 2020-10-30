@@ -17,8 +17,8 @@ import scala.tools.nsc.interpreter.shell.WriterOutputStream
 /**
   * Converts a CSV file to a PFB file with annotations.
   */
-object ToPFB extends CSVToOutput {
-  override def write(reader: CSVReader, properties: Map[String, JValue], outputWriter: Writer): Unit = {
+object ToPFB {
+  def writePFB(reader: CSVReader, properties: Map[String, JValue], pfbFilename: File): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
     // Step 1. Create a schema for the output.
@@ -60,7 +60,9 @@ object ToPFB extends CSVToOutput {
     // TODO: write out a Metadata entity that describes this object.
     val writer = new GenericDatumWriter[GenericRecord](schema)
     val dataFileWriter = new DataFileWriter[GenericRecord](writer)
-    dataFileWriter.create(schema, new File("output.avro"))
+    dataFileWriter.create(schema, pfbFilename)
+    // TODO: It'd be nice to write this out to outputWriter like all the other CSVToOutputs,
+    // but putting an OutputStreamWriter() around that messes up the output for some reason.
 
     dataWithHeaders.zipWithIndex.foreach({ case (row, index) =>
       val export = new GenericData.Record(exportSchema)

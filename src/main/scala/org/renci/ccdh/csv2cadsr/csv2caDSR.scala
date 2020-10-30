@@ -1,6 +1,6 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, FileWriter, OutputStreamWriter}
+import java.io.{BufferedWriter, File, FileWriter, OutputStreamWriter}
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
@@ -20,8 +20,8 @@ case class CommandLineOptions(
   @ExtraName("o")
   outputFilename: Option[String],
 
-  @ValueDescription("Write output in PFB")
-  toPfb: Option[Boolean]
+  @ValueDescription("Write to the specified PFB file")
+  toPfb: Option[String]
 )
 
 object csv2caDSR extends CaseApp[CommandLineOptions] {
@@ -32,7 +32,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       case Some(filename: String) => new BufferedWriter(new FileWriter(filename))
       case _ => new BufferedWriter(new OutputStreamWriter(System.out))
     }
-    val toPFB: Boolean = options.toPfb.getOrElse(false)
+    val pfbFilename: Option[File] = options.toPfb.map(new File(_))
 
     implicit val formats = DefaultFormats
 
@@ -67,13 +67,13 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
       val reader = CSVReader.open(csvSource)
 
-      if (toPFB) {
-        output.ToPFB.write(
+      if (pfbFilename.nonEmpty) {
+        output.ToPFB.writePFB(
           reader,
           properties,
-          bufferedWriter
+          pfbFilename.get
         )
-        scribe.info("Wrote output as PFB file.")
+        scribe.info(s"Wrote output as PFB file to ${pfbFilename}.")
       } else {
         // Default to CSV.
         output.ToCSV.write(
