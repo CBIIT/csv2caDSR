@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "name": "export",
+      "ontology_reference": "",
+      "values": {},
+      "links": [],
+      "properties": [
+        {
+          "name": "SUBJECTID",
+          "ontology_reference": "I-SPY ID de-identifies a patient’s CALGB and ACRIN ID",
+          "values": {}
+        },
+        {
+          "name": "DataExtractDt",
+          "ontology_reference": "Date clinical data was downloaded from the CALGB database",
+          "values": {}
+        },
+        {
+          "name": "age",
+          "ontology_reference": "Patient Age",
+          "values": {}
+        },
+        {
+          "name": "race_id",
+          "ontology_reference": "A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "6093480",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0"
+          }
+        },
+        {
+          "name": "ERpos",
+          "ontology_reference": "The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "3895179",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0"
+          }
+        },
+        {
+          "name": "PgRpos",
+          "ontology_reference": "The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "3895181",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0"
+          }
+        },
+        {
+          "name": "HR Pos",
+          "ontology_reference": "the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "64750",
+            "cde_version": "3.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0"
+          }
+        },
+        {
+          "name": "Her2MostPos",
+          "ontology_reference": "Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "2542108",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0"
+          }
+        },
+        {
+          "name": "HR_HER2_CATEGORY",
+          "ontology_reference": "3-level HR/Her2 category pre-treatment",
+          "values": {}
+        },
+        {
+          "name": "HR_HER2_STATUS",
+          "ontology_reference": "3-level HR/Her2 status pre-treatment",
+          "values": {}
+        },
+        {
+          "name": "BilateralCa",
+          "ontology_reference": "the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "3027502",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0"
+          }
+        },
+        {
+          "name": "Laterality",
+          "ontology_reference": "for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed.",
+          "values": {
+            "source": "caDSR",
+            "cde_id": "827",
+            "cde_version": "1.0",
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0"
+          }
+        },
+        {
+          "name": "MRI LD Baseline",
+          "ontology_reference": "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline",
+          "values": {}
+        },
+        {
+          "name": "MRI LD 1-3dAC",
+          "ontology_reference": "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC",
+          "values": {}
+        },
+        {
+          "name": "MRI LD InterReg",
+          "ontology_reference": "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen",
+          "values": {}
+        },
+        {
+          "name": "MRI LD PreSurg",
+          "ontology_reference": "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery",
+          "values": {}
+        }
+      ]
+    }
+  ],
+  "misc": {}
+}

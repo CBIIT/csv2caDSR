@@ -1,0 +1,120 @@
+[
+  {
+    "type": "record",
+    "name": "export",
+    "fields": [
+      {
+        "name": "SUBJECTID",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "DataExtractDt",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "age",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "race_id",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "ERpos",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "PgRpos",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "HR_Pos",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "Her2MostPos",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "HR_HER2_CATEGORY",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "HR_HER2_STATUS",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "BilateralCa",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "Laterality",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_LD_Baseline",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_LD_1_3dAC",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_LD_InterReg",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_LD_PreSurg",
+        "type": [
+          "null",
+          "string"
+        ]
+      }
+    ]
+  }
+]

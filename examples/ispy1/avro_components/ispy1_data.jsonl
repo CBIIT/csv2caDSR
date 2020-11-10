@@ -1,0 +1,5106 @@
+{
+  "id": "row0",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1001",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.73",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "88",
+    "MRI_LD_1_3dAC": "78",
+    "MRI_LD_InterReg": "30",
+    "MRI_LD_PreSurg": "14"
+  },
+  "relations": []
+}
+{
+  "id": "row1",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1002",
+    "DataExtractDt": "09 03 2009",
+    "age": "37.79",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "29",
+    "MRI_LD_1_3dAC": "26",
+    "MRI_LD_InterReg": "66",
+    "MRI_LD_PreSurg": "16"
+  },
+  "relations": []
+}
+{
+  "id": "row2",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1003",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.83",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "50",
+    "MRI_LD_1_3dAC": "64",
+    "MRI_LD_InterReg": "54",
+    "MRI_LD_PreSurg": "46"
+  },
+  "relations": []
+}
+{
+  "id": "row3",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1004",
+    "DataExtractDt": "09 03 2009",
+    "age": "48.28",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "91",
+    "MRI_LD_1_3dAC": "90",
+    "MRI_LD_InterReg": "99",
+    "MRI_LD_PreSurg": "43"
+  },
+  "relations": []
+}
+{
+  "id": "row4",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1005",
+    "DataExtractDt": "09 03 2009",
+    "age": "45.80",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "98",
+    "MRI_LD_1_3dAC": "109",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "42"
+  },
+  "relations": []
+}
+{
+  "id": "row5",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1007",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.38",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "100",
+    "MRI_LD_1_3dAC": "100",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "54"
+  },
+  "relations": []
+}
+{
+  "id": "row6",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1008",
+    "DataExtractDt": "09 03 2009",
+    "age": "64.51",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "1",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "45",
+    "MRI_LD_1_3dAC": "49",
+    "MRI_LD_InterReg": "47",
+    "MRI_LD_PreSurg": "32"
+  },
+  "relations": []
+}
+{
+  "id": "row7",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1009",
+    "DataExtractDt": "09 03 2009",
+    "age": "40.66",
+    "race_id": "4",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "75",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "57",
+    "MRI_LD_PreSurg": "7"
+  },
+  "relations": []
+}
+{
+  "id": "row8",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1010",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.53",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "52",
+    "MRI_LD_InterReg": "20",
+    "MRI_LD_PreSurg": "3"
+  },
+  "relations": []
+}
+{
+  "id": "row9",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1011",
+    "DataExtractDt": "09 03 2009",
+    "age": "40.82",
+    "race_id": "4",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "68",
+    "MRI_LD_1_3dAC": "68",
+    "MRI_LD_InterReg": "56",
+    "MRI_LD_PreSurg": "47"
+  },
+  "relations": []
+}
+{
+  "id": "row10",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1012",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.78",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "78",
+    "MRI_LD_1_3dAC": "84",
+    "MRI_LD_InterReg": "56",
+    "MRI_LD_PreSurg": "57"
+  },
+  "relations": []
+}
+{
+  "id": "row11",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1013",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.36",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "71",
+    "MRI_LD_1_3dAC": "70",
+    "MRI_LD_InterReg": "8",
+    "MRI_LD_PreSurg": "5"
+  },
+  "relations": []
+}
+{
+  "id": "row12",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1015",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.16",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "79",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "11",
+    "MRI_LD_PreSurg": "3"
+  },
+  "relations": []
+}
+{
+  "id": "row13",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1016",
+    "DataExtractDt": "09 03 2009",
+    "age": "35.52",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "73",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "57",
+    "MRI_LD_PreSurg": "36"
+  },
+  "relations": []
+}
+{
+  "id": "row14",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1017",
+    "DataExtractDt": "09 03 2009",
+    "age": "68.31",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "54",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "27",
+    "MRI_LD_PreSurg": "16"
+  },
+  "relations": []
+}
+{
+  "id": "row15",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1018",
+    "DataExtractDt": "09 03 2009",
+    "age": "57.44",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "50",
+    "MRI_LD_1_3dAC": "37",
+    "MRI_LD_InterReg": "33",
+    "MRI_LD_PreSurg": "26"
+  },
+  "relations": []
+}
+{
+  "id": "row16",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1019",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.24",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "115",
+    "MRI_LD_1_3dAC": "68",
+    "MRI_LD_InterReg": "33",
+    "MRI_LD_PreSurg": "67"
+  },
+  "relations": []
+}
+{
+  "id": "row17",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1021",
+    "DataExtractDt": "09 03 2009",
+    "age": "48.43",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "63",
+    "MRI_LD_1_3dAC": "55",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row18",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1022",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.41",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "98",
+    "MRI_LD_1_3dAC": "91",
+    "MRI_LD_InterReg": "76",
+    "MRI_LD_PreSurg": "75"
+  },
+  "relations": []
+}
+{
+  "id": "row19",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1024",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.56",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "76",
+    "MRI_LD_1_3dAC": "76",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row20",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1025",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.35",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "47",
+    "MRI_LD_1_3dAC": "45",
+    "MRI_LD_InterReg": "42",
+    "MRI_LD_PreSurg": "42"
+  },
+  "relations": []
+}
+{
+  "id": "row21",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1026",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.41",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "32",
+    "MRI_LD_1_3dAC": "25",
+    "MRI_LD_InterReg": "14",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row22",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1027",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.22",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "40",
+    "MRI_LD_1_3dAC": "37",
+    "MRI_LD_InterReg": "65",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row23",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1028",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.95",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "110",
+    "MRI_LD_InterReg": "110",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row24",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1029",
+    "DataExtractDt": "09 03 2009",
+    "age": "63.63",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "46",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "41",
+    "MRI_LD_PreSurg": "39"
+  },
+  "relations": []
+}
+{
+  "id": "row25",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1030",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.46",
+    "race_id": "4",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "49",
+    "MRI_LD_1_3dAC": "47",
+    "MRI_LD_InterReg": "42",
+    "MRI_LD_PreSurg": "41"
+  },
+  "relations": []
+}
+{
+  "id": "row26",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1031",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.16",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "43",
+    "MRI_LD_1_3dAC": "38",
+    "MRI_LD_InterReg": "36",
+    "MRI_LD_PreSurg": "34"
+  },
+  "relations": []
+}
+{
+  "id": "row27",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1032",
+    "DataExtractDt": "09 03 2009",
+    "age": "37.58",
+    "race_id": "4",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "47",
+    "MRI_LD_PreSurg": "52"
+  },
+  "relations": []
+}
+{
+  "id": "row28",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1033",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.05",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "130",
+    "MRI_LD_1_3dAC": "64",
+    "MRI_LD_InterReg": "64",
+    "MRI_LD_PreSurg": "69"
+  },
+  "relations": []
+}
+{
+  "id": "row29",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1034",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.57",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "88",
+    "MRI_LD_1_3dAC": "82",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row30",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1035",
+    "DataExtractDt": "09 03 2009",
+    "age": "40.82",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "100",
+    "MRI_LD_1_3dAC": "90",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "41"
+  },
+  "relations": []
+}
+{
+  "id": "row31",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1036",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.27",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "101",
+    "MRI_LD_1_3dAC": "100",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "83"
+  },
+  "relations": []
+}
+{
+  "id": "row32",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1037",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.14",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "92",
+    "MRI_LD_1_3dAC": "84",
+    "MRI_LD_InterReg": "82",
+    "MRI_LD_PreSurg": "82"
+  },
+  "relations": []
+}
+{
+  "id": "row33",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1038",
+    "DataExtractDt": "09 03 2009",
+    "age": "37.81",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "36",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "26",
+    "MRI_LD_PreSurg": "22"
+  },
+  "relations": []
+}
+{
+  "id": "row34",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1039",
+    "DataExtractDt": "09 03 2009",
+    "age": "30.99",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "20",
+    "MRI_LD_1_3dAC": "20",
+    "MRI_LD_InterReg": "17",
+    "MRI_LD_PreSurg": "12"
+  },
+  "relations": []
+}
+{
+  "id": "row35",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1040",
+    "DataExtractDt": "09 03 2009",
+    "age": "56.46",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "69",
+    "MRI_LD_1_3dAC": "64",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "50"
+  },
+  "relations": []
+}
+{
+  "id": "row36",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1041",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.64",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "90",
+    "MRI_LD_1_3dAC": "86",
+    "MRI_LD_InterReg": "86",
+    "MRI_LD_PreSurg": "53"
+  },
+  "relations": []
+}
+{
+  "id": "row37",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1042",
+    "DataExtractDt": "09 03 2009",
+    "age": "58.07",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "93",
+    "MRI_LD_1_3dAC": "19",
+    "MRI_LD_InterReg": "76",
+    "MRI_LD_PreSurg": "40"
+  },
+  "relations": []
+}
+{
+  "id": "row38",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1043",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.88",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "138",
+    "MRI_LD_1_3dAC": "146",
+    "MRI_LD_InterReg": "141",
+    "MRI_LD_PreSurg": "39"
+  },
+  "relations": []
+}
+{
+  "id": "row39",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1044",
+    "DataExtractDt": "09 03 2009",
+    "age": "58.84",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "154",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "129"
+  },
+  "relations": []
+}
+{
+  "id": "row40",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1045",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.58",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "120",
+    "MRI_LD_1_3dAC": "42",
+    "MRI_LD_InterReg": "96",
+    "MRI_LD_PreSurg": "30"
+  },
+  "relations": []
+}
+{
+  "id": "row41",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1046",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.79",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "44",
+    "MRI_LD_1_3dAC": "27",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "27"
+  },
+  "relations": []
+}
+{
+  "id": "row42",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1047",
+    "DataExtractDt": "09 03 2009",
+    "age": "26.69",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "1",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "73",
+    "MRI_LD_1_3dAC": "80",
+    "MRI_LD_InterReg": "70",
+    "MRI_LD_PreSurg": "25"
+  },
+  "relations": []
+}
+{
+  "id": "row43",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1048",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.32",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "120",
+    "MRI_LD_1_3dAC": "91",
+    "MRI_LD_InterReg": "85",
+    "MRI_LD_PreSurg": "45"
+  },
+  "relations": []
+}
+{
+  "id": "row44",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1049",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.43",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "127",
+    "MRI_LD_1_3dAC": "111",
+    "MRI_LD_InterReg": "90",
+    "MRI_LD_PreSurg": "81"
+  },
+  "relations": []
+}
+{
+  "id": "row45",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1050",
+    "DataExtractDt": "09 03 2009",
+    "age": "63.17",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "41",
+    "MRI_LD_1_3dAC": "34",
+    "MRI_LD_InterReg": "22",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row46",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1051",
+    "DataExtractDt": "09 03 2009",
+    "age": "48.80",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "102",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "87",
+    "MRI_LD_PreSurg": "79"
+  },
+  "relations": []
+}
+{
+  "id": "row47",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1053",
+    "DataExtractDt": "09 03 2009",
+    "age": "62.40",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "27",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "30"
+  },
+  "relations": []
+}
+{
+  "id": "row48",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1054",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.76",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "97",
+    "MRI_LD_1_3dAC": "106",
+    "MRI_LD_InterReg": "103",
+    "MRI_LD_PreSurg": "84"
+  },
+  "relations": []
+}
+{
+  "id": "row49",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1055",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.82",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "50",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "50",
+    "MRI_LD_PreSurg": "37"
+  },
+  "relations": []
+}
+{
+  "id": "row50",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1056",
+    "DataExtractDt": "09 03 2009",
+    "age": "35.37",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "108",
+    "MRI_LD_1_3dAC": "108",
+    "MRI_LD_InterReg": "105",
+    "MRI_LD_PreSurg": "92"
+  },
+  "relations": []
+}
+{
+  "id": "row51",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1057",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.24",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "105",
+    "MRI_LD_1_3dAC": "101",
+    "MRI_LD_InterReg": "87",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row52",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1058",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.72",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "38",
+    "MRI_LD_1_3dAC": "23",
+    "MRI_LD_InterReg": "6",
+    "MRI_LD_PreSurg": "15"
+  },
+  "relations": []
+}
+{
+  "id": "row53",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1059",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.81",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "20",
+    "MRI_LD_1_3dAC": "13",
+    "MRI_LD_InterReg": "17",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row54",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1060",
+    "DataExtractDt": "09 03 2009",
+    "age": "67.18",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "72",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "45",
+    "MRI_LD_PreSurg": "35"
+  },
+  "relations": []
+}
+{
+  "id": "row55",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1061",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.19",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "57",
+    "MRI_LD_InterReg": "18",
+    "MRI_LD_PreSurg": "20"
+  },
+  "relations": []
+}
+{
+  "id": "row56",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1062",
+    "DataExtractDt": "09 03 2009",
+    "age": "34.61",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "77",
+    "MRI_LD_1_3dAC": "85",
+    "MRI_LD_InterReg": "100",
+    "MRI_LD_PreSurg": "98"
+  },
+  "relations": []
+}
+{
+  "id": "row57",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1063",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.17",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "100",
+    "MRI_LD_1_3dAC": "86",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "82"
+  },
+  "relations": []
+}
+{
+  "id": "row58",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1064",
+    "DataExtractDt": "09 03 2009",
+    "age": "60.11",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "67",
+    "MRI_LD_InterReg": "47",
+    "MRI_LD_PreSurg": "30"
+  },
+  "relations": []
+}
+{
+  "id": "row59",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1065",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.22",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "41",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "40",
+    "MRI_LD_PreSurg": "25"
+  },
+  "relations": []
+}
+{
+  "id": "row60",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1066",
+    "DataExtractDt": "09 03 2009",
+    "age": "57.42",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "33",
+    "MRI_LD_1_3dAC": "29",
+    "MRI_LD_InterReg": "30",
+    "MRI_LD_PreSurg": "30"
+  },
+  "relations": []
+}
+{
+  "id": "row61",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1067",
+    "DataExtractDt": "09 03 2009",
+    "age": "58.43",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "77",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row62",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1068",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.22",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "51",
+    "MRI_LD_1_3dAC": "54",
+    "MRI_LD_InterReg": "54",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row63",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1069",
+    "DataExtractDt": "09 03 2009",
+    "age": "57.18",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "31",
+    "MRI_LD_1_3dAC": "26",
+    "MRI_LD_InterReg": "22",
+    "MRI_LD_PreSurg": "24"
+  },
+  "relations": []
+}
+{
+  "id": "row64",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1070",
+    "DataExtractDt": "09 03 2009",
+    "age": "36.78",
+    "race_id": "0",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "56",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "21",
+    "MRI_LD_PreSurg": "19"
+  },
+  "relations": []
+}
+{
+  "id": "row65",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1071",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.53",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "126",
+    "MRI_LD_1_3dAC": "130",
+    "MRI_LD_InterReg": "139",
+    "MRI_LD_PreSurg": "19"
+  },
+  "relations": []
+}
+{
+  "id": "row66",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1072",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.86",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "64",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "53"
+  },
+  "relations": []
+}
+{
+  "id": "row67",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1073",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.24",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "75",
+    "MRI_LD_1_3dAC": "72",
+    "MRI_LD_InterReg": "72",
+    "MRI_LD_PreSurg": "68"
+  },
+  "relations": []
+}
+{
+  "id": "row68",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1074",
+    "DataExtractDt": "09 03 2009",
+    "age": "36.51",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "153",
+    "MRI_LD_1_3dAC": "139",
+    "MRI_LD_InterReg": "114",
+    "MRI_LD_PreSurg": "5"
+  },
+  "relations": []
+}
+{
+  "id": "row69",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1075",
+    "DataExtractDt": "09 03 2009",
+    "age": "33.47",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "54",
+    "MRI_LD_1_3dAC": "27",
+    "MRI_LD_InterReg": "6",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row70",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1077",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.65",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "51",
+    "MRI_LD_1_3dAC": "39",
+    "MRI_LD_InterReg": "16",
+    "MRI_LD_PreSurg": "15"
+  },
+  "relations": []
+}
+{
+  "id": "row71",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1078",
+    "DataExtractDt": "09 03 2009",
+    "age": "31.33",
+    "race_id": "5",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "86",
+    "MRI_LD_1_3dAC": "88",
+    "MRI_LD_InterReg": "88",
+    "MRI_LD_PreSurg": "86"
+  },
+  "relations": []
+}
+{
+  "id": "row72",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1081",
+    "DataExtractDt": "09 03 2009",
+    "age": "64.09",
+    "race_id": "50",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "56",
+    "MRI_LD_1_3dAC": "47",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "38"
+  },
+  "relations": []
+}
+{
+  "id": "row73",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1082",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.58",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "87",
+    "MRI_LD_1_3dAC": "87",
+    "MRI_LD_InterReg": "50",
+    "MRI_LD_PreSurg": "45"
+  },
+  "relations": []
+}
+{
+  "id": "row74",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1083",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.89",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "90",
+    "MRI_LD_1_3dAC": "88",
+    "MRI_LD_InterReg": "62",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row75",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1084",
+    "DataExtractDt": "09 03 2009",
+    "age": "34.53",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "111",
+    "MRI_LD_1_3dAC": "120",
+    "MRI_LD_InterReg": "31",
+    "MRI_LD_PreSurg": "24"
+  },
+  "relations": []
+}
+{
+  "id": "row76",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1085",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.93",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "90",
+    "MRI_LD_1_3dAC": "63",
+    "MRI_LD_InterReg": "25",
+    "MRI_LD_PreSurg": "29"
+  },
+  "relations": []
+}
+{
+  "id": "row77",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1086",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.51",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "69",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "37",
+    "MRI_LD_PreSurg": "25"
+  },
+  "relations": []
+}
+{
+  "id": "row78",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1087",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.01",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "58",
+    "MRI_LD_1_3dAC": "42",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row79",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1088",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.05",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "77",
+    "MRI_LD_1_3dAC": "87",
+    "MRI_LD_InterReg": "43",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row80",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1089",
+    "DataExtractDt": "09 03 2009",
+    "age": "60.95",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "90",
+    "MRI_LD_1_3dAC": "89",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "60"
+  },
+  "relations": []
+}
+{
+  "id": "row81",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1090",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.54",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "64",
+    "MRI_LD_1_3dAC": "62",
+    "MRI_LD_InterReg": "48",
+    "MRI_LD_PreSurg": "52"
+  },
+  "relations": []
+}
+{
+  "id": "row82",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1091",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.64",
+    "race_id": "4",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "62",
+    "MRI_LD_InterReg": "54",
+    "MRI_LD_PreSurg": "53"
+  },
+  "relations": []
+}
+{
+  "id": "row83",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1092",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.13",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "82",
+    "MRI_LD_1_3dAC": "88",
+    "MRI_LD_InterReg": "43",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row84",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1093",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.46",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row85",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1094",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.95",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "91",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "61",
+    "MRI_LD_PreSurg": "55"
+  },
+  "relations": []
+}
+{
+  "id": "row86",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1095",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.57",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "76",
+    "MRI_LD_1_3dAC": "67",
+    "MRI_LD_InterReg": "56",
+    "MRI_LD_PreSurg": "54"
+  },
+  "relations": []
+}
+{
+  "id": "row87",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1096",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.99",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "44",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "27",
+    "MRI_LD_PreSurg": "1"
+  },
+  "relations": []
+}
+{
+  "id": "row88",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1097",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.50",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "34",
+    "MRI_LD_InterReg": "11",
+    "MRI_LD_PreSurg": "8"
+  },
+  "relations": []
+}
+{
+  "id": "row89",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1098",
+    "DataExtractDt": "09 03 2009",
+    "age": "62.29",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "52",
+    "MRI_LD_InterReg": "32",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row90",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1099",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.35",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "69",
+    "MRI_LD_1_3dAC": "52",
+    "MRI_LD_InterReg": "31",
+    "MRI_LD_PreSurg": "6"
+  },
+  "relations": []
+}
+{
+  "id": "row91",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1100",
+    "DataExtractDt": "09 03 2009",
+    "age": "63.32",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "36",
+    "MRI_LD_1_3dAC": "31",
+    "MRI_LD_InterReg": "20",
+    "MRI_LD_PreSurg": "15"
+  },
+  "relations": []
+}
+{
+  "id": "row92",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1101",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.84",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "89",
+    "MRI_LD_1_3dAC": "38",
+    "MRI_LD_InterReg": "91",
+    "MRI_LD_PreSurg": "80"
+  },
+  "relations": []
+}
+{
+  "id": "row93",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1102",
+    "DataExtractDt": "09 03 2009",
+    "age": "57.46",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "113",
+    "MRI_LD_1_3dAC": "126",
+    "MRI_LD_InterReg": "121",
+    "MRI_LD_PreSurg": "110"
+  },
+  "relations": []
+}
+{
+  "id": "row94",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1103",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.15",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "100",
+    "MRI_LD_1_3dAC": "100",
+    "MRI_LD_InterReg": "26",
+    "MRI_LD_PreSurg": "17"
+  },
+  "relations": []
+}
+{
+  "id": "row95",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1104",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.18",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "52",
+    "MRI_LD_1_3dAC": "48",
+    "MRI_LD_InterReg": "24",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row96",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1106",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.41",
+    "race_id": "0",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "56",
+    "MRI_LD_InterReg": "56",
+    "MRI_LD_PreSurg": "41"
+  },
+  "relations": []
+}
+{
+  "id": "row97",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1107",
+    "DataExtractDt": "09 03 2009",
+    "age": "58.37",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "24",
+    "MRI_LD_1_3dAC": "22",
+    "MRI_LD_InterReg": "20",
+    "MRI_LD_PreSurg": "20"
+  },
+  "relations": []
+}
+{
+  "id": "row98",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1109",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.53",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "28",
+    "MRI_LD_1_3dAC": "23",
+    "MRI_LD_InterReg": "16",
+    "MRI_LD_PreSurg": "20"
+  },
+  "relations": []
+}
+{
+  "id": "row99",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1110",
+    "DataExtractDt": "09 03 2009",
+    "age": "56.94",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "36",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "21",
+    "MRI_LD_PreSurg": "13"
+  },
+  "relations": []
+}
+{
+  "id": "row100",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1111",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.59",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "78",
+    "MRI_LD_1_3dAC": "79",
+    "MRI_LD_InterReg": "77",
+    "MRI_LD_PreSurg": "78"
+  },
+  "relations": []
+}
+{
+  "id": "row101",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1112",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.06",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "71",
+    "MRI_LD_1_3dAC": "78",
+    "MRI_LD_InterReg": "58",
+    "MRI_LD_PreSurg": "5"
+  },
+  "relations": []
+}
+{
+  "id": "row102",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1113",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.49",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "25",
+    "MRI_LD_1_3dAC": "25",
+    "MRI_LD_InterReg": "24",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row103",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1114",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.82",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "45",
+    "MRI_LD_PreSurg": "45"
+  },
+  "relations": []
+}
+{
+  "id": "row104",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1115",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.84",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "184",
+    "MRI_LD_1_3dAC": "145",
+    "MRI_LD_InterReg": "95",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row105",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1116",
+    "DataExtractDt": "09 03 2009",
+    "age": "34.57",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "26",
+    "MRI_LD_1_3dAC": "30",
+    "MRI_LD_InterReg": "7",
+    "MRI_LD_PreSurg": "42"
+  },
+  "relations": []
+}
+{
+  "id": "row106",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1117",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.01",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "68",
+    "MRI_LD_1_3dAC": "65",
+    "MRI_LD_InterReg": "38",
+    "MRI_LD_PreSurg": "20"
+  },
+  "relations": []
+}
+{
+  "id": "row107",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1118",
+    "DataExtractDt": "09 03 2009",
+    "age": "39.23",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "36",
+    "MRI_LD_1_3dAC": "45",
+    "MRI_LD_InterReg": "50",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row108",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1120",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.09",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "74",
+    "MRI_LD_1_3dAC": "48",
+    "MRI_LD_InterReg": "39",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row109",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1121",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.51",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "31",
+    "MRI_LD_1_3dAC": "23",
+    "MRI_LD_InterReg": "17",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row110",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1122",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.70",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "65",
+    "MRI_LD_1_3dAC": "53",
+    "MRI_LD_InterReg": "56",
+    "MRI_LD_PreSurg": "25"
+  },
+  "relations": []
+}
+{
+  "id": "row111",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1123",
+    "DataExtractDt": "09 03 2009",
+    "age": "61.86",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "85",
+    "MRI_LD_1_3dAC": "61",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "48"
+  },
+  "relations": []
+}
+{
+  "id": "row112",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1124",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.60",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "100",
+    "MRI_LD_1_3dAC": "95",
+    "MRI_LD_InterReg": "95",
+    "MRI_LD_PreSurg": "82"
+  },
+  "relations": []
+}
+{
+  "id": "row113",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1125",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.85",
+    "race_id": "50",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "85",
+    "MRI_LD_1_3dAC": "78",
+    "MRI_LD_InterReg": "80",
+    "MRI_LD_PreSurg": "55"
+  },
+  "relations": []
+}
+{
+  "id": "row114",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1126",
+    "DataExtractDt": "09 03 2009",
+    "age": "62.95",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "105",
+    "MRI_LD_1_3dAC": "92",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "70"
+  },
+  "relations": []
+}
+{
+  "id": "row115",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1127",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.61",
+    "race_id": "4",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "53",
+    "MRI_LD_1_3dAC": "62",
+    "MRI_LD_InterReg": "52",
+    "MRI_LD_PreSurg": "36"
+  },
+  "relations": []
+}
+{
+  "id": "row116",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1128",
+    "DataExtractDt": "09 03 2009",
+    "age": "33.18",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "23",
+    "MRI_LD_1_3dAC": "22",
+    "MRI_LD_InterReg": "15",
+    "MRI_LD_PreSurg": "12"
+  },
+  "relations": []
+}
+{
+  "id": "row117",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1129",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.45",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "80",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "50",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row118",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1130",
+    "DataExtractDt": "09 03 2009",
+    "age": "39.08",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "22",
+    "MRI_LD_1_3dAC": "9",
+    "MRI_LD_InterReg": "9",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row119",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1132",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.42",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "65",
+    "MRI_LD_1_3dAC": "64",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "52"
+  },
+  "relations": []
+}
+{
+  "id": "row120",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1134",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.06",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "38",
+    "MRI_LD_1_3dAC": "41",
+    "MRI_LD_InterReg": "21",
+    "MRI_LD_PreSurg": "15"
+  },
+  "relations": []
+}
+{
+  "id": "row121",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1135",
+    "DataExtractDt": "09 03 2009",
+    "age": "58.89",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "28",
+    "MRI_LD_1_3dAC": "28",
+    "MRI_LD_InterReg": "21",
+    "MRI_LD_PreSurg": "11"
+  },
+  "relations": []
+}
+{
+  "id": "row122",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1136",
+    "DataExtractDt": "09 03 2009",
+    "age": "60.03",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "82",
+    "MRI_LD_1_3dAC": "70",
+    "MRI_LD_InterReg": "28",
+    "MRI_LD_PreSurg": "44"
+  },
+  "relations": []
+}
+{
+  "id": "row123",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1137",
+    "DataExtractDt": "09 03 2009",
+    "age": "29.38",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "92",
+    "MRI_LD_1_3dAC": "90",
+    "MRI_LD_InterReg": "34",
+    "MRI_LD_PreSurg": "25"
+  },
+  "relations": []
+}
+{
+  "id": "row124",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1138",
+    "DataExtractDt": "09 03 2009",
+    "age": "35.13",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "63",
+    "MRI_LD_1_3dAC": "41",
+    "MRI_LD_InterReg": "45",
+    "MRI_LD_PreSurg": "39"
+  },
+  "relations": []
+}
+{
+  "id": "row125",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1139",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.26",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "113",
+    "MRI_LD_1_3dAC": "113",
+    "MRI_LD_InterReg": "6",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row126",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1140",
+    "DataExtractDt": "09 03 2009",
+    "age": "35.12",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "118",
+    "MRI_LD_1_3dAC": "37",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row127",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1141",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.15",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "90",
+    "MRI_LD_1_3dAC": "81",
+    "MRI_LD_InterReg": "67",
+    "MRI_LD_PreSurg": "47"
+  },
+  "relations": []
+}
+{
+  "id": "row128",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1142",
+    "DataExtractDt": "09 03 2009",
+    "age": "28.76",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "84",
+    "MRI_LD_1_3dAC": "79",
+    "MRI_LD_InterReg": "120",
+    "MRI_LD_PreSurg": "101"
+  },
+  "relations": []
+}
+{
+  "id": "row129",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1143",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.35",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "92",
+    "MRI_LD_1_3dAC": "89",
+    "MRI_LD_InterReg": "77",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row130",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1144",
+    "DataExtractDt": "09 03 2009",
+    "age": "56.28",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "47",
+    "MRI_LD_1_3dAC": "46",
+    "MRI_LD_InterReg": "26",
+    "MRI_LD_PreSurg": "18"
+  },
+  "relations": []
+}
+{
+  "id": "row131",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1145",
+    "DataExtractDt": "09 03 2009",
+    "age": "39.37",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "40",
+    "MRI_LD_1_3dAC": "17",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row132",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1146",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.15",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "72",
+    "MRI_LD_1_3dAC": "59",
+    "MRI_LD_InterReg": "48",
+    "MRI_LD_PreSurg": "30"
+  },
+  "relations": []
+}
+{
+  "id": "row133",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1147",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.30",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "63",
+    "MRI_LD_1_3dAC": "42",
+    "MRI_LD_InterReg": "22",
+    "MRI_LD_PreSurg": "9"
+  },
+  "relations": []
+}
+{
+  "id": "row134",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1148",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.81",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "47",
+    "MRI_LD_1_3dAC": "39",
+    "MRI_LD_InterReg": "35",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row135",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1149",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.18",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "95",
+    "MRI_LD_1_3dAC": "45",
+    "MRI_LD_InterReg": "58",
+    "MRI_LD_PreSurg": "22"
+  },
+  "relations": []
+}
+{
+  "id": "row136",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1150",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.49",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "76",
+    "MRI_LD_1_3dAC": "74",
+    "MRI_LD_InterReg": "63",
+    "MRI_LD_PreSurg": "61"
+  },
+  "relations": []
+}
+{
+  "id": "row137",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1151",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.15",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "1",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "165",
+    "MRI_LD_1_3dAC": "156",
+    "MRI_LD_InterReg": "113",
+    "MRI_LD_PreSurg": "37"
+  },
+  "relations": []
+}
+{
+  "id": "row138",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1152",
+    "DataExtractDt": "09 03 2009",
+    "age": "51.29",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "57",
+    "MRI_LD_PreSurg": "34"
+  },
+  "relations": []
+}
+{
+  "id": "row139",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1154",
+    "DataExtractDt": "09 03 2009",
+    "age": "65.45",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "42",
+    "MRI_LD_1_3dAC": "34",
+    "MRI_LD_InterReg": "28",
+    "MRI_LD_PreSurg": "19"
+  },
+  "relations": []
+}
+{
+  "id": "row140",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1155",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.65",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "87",
+    "MRI_LD_1_3dAC": "71",
+    "MRI_LD_InterReg": "79",
+    "MRI_LD_PreSurg": "61"
+  },
+  "relations": []
+}
+{
+  "id": "row141",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1156",
+    "DataExtractDt": "09 03 2009",
+    "age": "65.39",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "54",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row142",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1157",
+    "DataExtractDt": "09 03 2009",
+    "age": "41.39",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "61",
+    "MRI_LD_1_3dAC": "63",
+    "MRI_LD_InterReg": "33",
+    "MRI_LD_PreSurg": "33"
+  },
+  "relations": []
+}
+{
+  "id": "row143",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1158",
+    "DataExtractDt": "09 03 2009",
+    "age": "61.79",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "28",
+    "MRI_LD_1_3dAC": "19",
+    "MRI_LD_InterReg": "11",
+    "MRI_LD_PreSurg": "4"
+  },
+  "relations": []
+}
+{
+  "id": "row144",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1159",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.95",
+    "race_id": "3",
+    "ERpos": "",
+    "PgRpos": "",
+    "HR_Pos": "",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "65",
+    "MRI_LD_1_3dAC": "54",
+    "MRI_LD_InterReg": "54",
+    "MRI_LD_PreSurg": "54"
+  },
+  "relations": []
+}
+{
+  "id": "row145",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1160",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.65",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "77",
+    "MRI_LD_1_3dAC": "72",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "38"
+  },
+  "relations": []
+}
+{
+  "id": "row146",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1161",
+    "DataExtractDt": "09 03 2009",
+    "age": "56.83",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "81",
+    "MRI_LD_1_3dAC": "63",
+    "MRI_LD_InterReg": "18",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row147",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1162",
+    "DataExtractDt": "09 03 2009",
+    "age": "56.44",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "101",
+    "MRI_LD_1_3dAC": "86",
+    "MRI_LD_InterReg": "69",
+    "MRI_LD_PreSurg": "15"
+  },
+  "relations": []
+}
+{
+  "id": "row148",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1163",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.85",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "33",
+    "MRI_LD_1_3dAC": "41",
+    "MRI_LD_InterReg": "11",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row149",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1164",
+    "DataExtractDt": "09 03 2009",
+    "age": "60.11",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "35",
+    "MRI_LD_1_3dAC": "31",
+    "MRI_LD_InterReg": "31",
+    "MRI_LD_PreSurg": "10"
+  },
+  "relations": []
+}
+{
+  "id": "row150",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1165",
+    "DataExtractDt": "09 03 2009",
+    "age": "39.66",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "88",
+    "MRI_LD_1_3dAC": "75",
+    "MRI_LD_InterReg": "70",
+    "MRI_LD_PreSurg": "7"
+  },
+  "relations": []
+}
+{
+  "id": "row151",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1166",
+    "DataExtractDt": "09 03 2009",
+    "age": "54.43",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "58",
+    "MRI_LD_1_3dAC": "62",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row152",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1167",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.63",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "102",
+    "MRI_LD_1_3dAC": "96",
+    "MRI_LD_InterReg": "17",
+    "MRI_LD_PreSurg": "7"
+  },
+  "relations": []
+}
+{
+  "id": "row153",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1168",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.59",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "36",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "24",
+    "MRI_LD_PreSurg": "39"
+  },
+  "relations": []
+}
+{
+  "id": "row154",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1169",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.15",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "82",
+    "MRI_LD_1_3dAC": "82",
+    "MRI_LD_InterReg": "70",
+    "MRI_LD_PreSurg": "42"
+  },
+  "relations": []
+}
+{
+  "id": "row155",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1170",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.35",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "50",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "83",
+    "MRI_LD_PreSurg": "75"
+  },
+  "relations": []
+}
+{
+  "id": "row156",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1171",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.98",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "48",
+    "MRI_LD_1_3dAC": "34",
+    "MRI_LD_InterReg": "31",
+    "MRI_LD_PreSurg": "16"
+  },
+  "relations": []
+}
+{
+  "id": "row157",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1172",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.59",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "41",
+    "MRI_LD_1_3dAC": "40",
+    "MRI_LD_InterReg": "22",
+    "MRI_LD_PreSurg": "10"
+  },
+  "relations": []
+}
+{
+  "id": "row158",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1173",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.96",
+    "race_id": "3",
+    "ERpos": "",
+    "PgRpos": "",
+    "HR_Pos": "",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "21",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row159",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1174",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.10",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "83",
+    "MRI_LD_1_3dAC": "83",
+    "MRI_LD_InterReg": "75",
+    "MRI_LD_PreSurg": "75"
+  },
+  "relations": []
+}
+{
+  "id": "row160",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1175",
+    "DataExtractDt": "09 03 2009",
+    "age": "64.33",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "68",
+    "MRI_LD_1_3dAC": "65",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "56"
+  },
+  "relations": []
+}
+{
+  "id": "row161",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1176",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.58",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "43",
+    "MRI_LD_1_3dAC": "38",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row162",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1177",
+    "DataExtractDt": "09 03 2009",
+    "age": "40.79",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "57",
+    "MRI_LD_1_3dAC": "11",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row163",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1179",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.61",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "61",
+    "MRI_LD_1_3dAC": "59",
+    "MRI_LD_InterReg": "55",
+    "MRI_LD_PreSurg": "23"
+  },
+  "relations": []
+}
+{
+  "id": "row164",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1180",
+    "DataExtractDt": "09 03 2009",
+    "age": "31.45",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "47",
+    "MRI_LD_1_3dAC": "16",
+    "MRI_LD_InterReg": "40",
+    "MRI_LD_PreSurg": "4"
+  },
+  "relations": []
+}
+{
+  "id": "row165",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1181",
+    "DataExtractDt": "09 03 2009",
+    "age": "34.71",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "114",
+    "MRI_LD_1_3dAC": "118",
+    "MRI_LD_InterReg": "77",
+    "MRI_LD_PreSurg": "76"
+  },
+  "relations": []
+}
+{
+  "id": "row166",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1182",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.24",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "48",
+    "MRI_LD_1_3dAC": "37",
+    "MRI_LD_InterReg": "4",
+    "MRI_LD_PreSurg": "21"
+  },
+  "relations": []
+}
+{
+  "id": "row167",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1183",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.78",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "96",
+    "MRI_LD_1_3dAC": "96",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": "56"
+  },
+  "relations": []
+}
+{
+  "id": "row168",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1184",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.10",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "40",
+    "MRI_LD_1_3dAC": "28",
+    "MRI_LD_InterReg": "13",
+    "MRI_LD_PreSurg": "5"
+  },
+  "relations": []
+}
+{
+  "id": "row169",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1185",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.79",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "71",
+    "MRI_LD_1_3dAC": "51",
+    "MRI_LD_InterReg": "19",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row170",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1187",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.06",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "70",
+    "MRI_LD_1_3dAC": "59",
+    "MRI_LD_InterReg": "68",
+    "MRI_LD_PreSurg": "40"
+  },
+  "relations": []
+}
+{
+  "id": "row171",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1188",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.26",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "20",
+    "MRI_LD_1_3dAC": "18",
+    "MRI_LD_InterReg": "12",
+    "MRI_LD_PreSurg": "10"
+  },
+  "relations": []
+}
+{
+  "id": "row172",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1189",
+    "DataExtractDt": "09 03 2009",
+    "age": "68.82",
+    "race_id": "4",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "33",
+    "MRI_LD_1_3dAC": "26",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row173",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1191",
+    "DataExtractDt": "09 03 2009",
+    "age": "45.88",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "37",
+    "MRI_LD_1_3dAC": "36",
+    "MRI_LD_InterReg": "26",
+    "MRI_LD_PreSurg": "9"
+  },
+  "relations": []
+}
+{
+  "id": "row174",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1192",
+    "DataExtractDt": "09 03 2009",
+    "age": "31.26",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "25",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "0",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row175",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1193",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.60",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "37",
+    "MRI_LD_1_3dAC": "38",
+    "MRI_LD_InterReg": "28",
+    "MRI_LD_PreSurg": "29"
+  },
+  "relations": []
+}
+{
+  "id": "row176",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1194",
+    "DataExtractDt": "09 03 2009",
+    "age": "33.83",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "59",
+    "MRI_LD_1_3dAC": "59",
+    "MRI_LD_InterReg": "55",
+    "MRI_LD_PreSurg": "28"
+  },
+  "relations": []
+}
+{
+  "id": "row177",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1196",
+    "DataExtractDt": "09 03 2009",
+    "age": "35.44",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "64",
+    "MRI_LD_1_3dAC": "47",
+    "MRI_LD_InterReg": "37",
+    "MRI_LD_PreSurg": "31"
+  },
+  "relations": []
+}
+{
+  "id": "row178",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1197",
+    "DataExtractDt": "09 03 2009",
+    "age": "44.73",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "158",
+    "MRI_LD_1_3dAC": "145",
+    "MRI_LD_InterReg": "123",
+    "MRI_LD_PreSurg": "126"
+  },
+  "relations": []
+}
+{
+  "id": "row179",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1198",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.54",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "44",
+    "MRI_LD_1_3dAC": "45",
+    "MRI_LD_InterReg": "45",
+    "MRI_LD_PreSurg": "37"
+  },
+  "relations": []
+}
+{
+  "id": "row180",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1199",
+    "DataExtractDt": "09 03 2009",
+    "age": "37.68",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "78",
+    "MRI_LD_1_3dAC": "70",
+    "MRI_LD_InterReg": "65",
+    "MRI_LD_PreSurg": "65"
+  },
+  "relations": []
+}
+{
+  "id": "row181",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1200",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.79",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "53",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "62",
+    "MRI_LD_PreSurg": "17"
+  },
+  "relations": []
+}
+{
+  "id": "row182",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1201",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.12",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "78",
+    "MRI_LD_1_3dAC": "73",
+    "MRI_LD_InterReg": "53",
+    "MRI_LD_PreSurg": "60"
+  },
+  "relations": []
+}
+{
+  "id": "row183",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1202",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.45",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "80",
+    "MRI_LD_1_3dAC": "75",
+    "MRI_LD_InterReg": "35",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row184",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1203",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.34",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "105",
+    "MRI_LD_1_3dAC": "99",
+    "MRI_LD_InterReg": "82",
+    "MRI_LD_PreSurg": "87"
+  },
+  "relations": []
+}
+{
+  "id": "row185",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1204",
+    "DataExtractDt": "09 03 2009",
+    "age": "39.27",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "45",
+    "MRI_LD_1_3dAC": "32",
+    "MRI_LD_InterReg": "24",
+    "MRI_LD_PreSurg": "18"
+  },
+  "relations": []
+}
+{
+  "id": "row186",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1205",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.56",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "75",
+    "MRI_LD_1_3dAC": "70",
+    "MRI_LD_InterReg": "47",
+    "MRI_LD_PreSurg": "35"
+  },
+  "relations": []
+}
+{
+  "id": "row187",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1206",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.03",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "78",
+    "MRI_LD_1_3dAC": "78",
+    "MRI_LD_InterReg": "35",
+    "MRI_LD_PreSurg": "26"
+  },
+  "relations": []
+}
+{
+  "id": "row188",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1207",
+    "DataExtractDt": "09 03 2009",
+    "age": "36.27",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "32",
+    "MRI_LD_1_3dAC": "22",
+    "MRI_LD_InterReg": "26",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row189",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1208",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.07",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "166",
+    "MRI_LD_1_3dAC": "119",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row190",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1209",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.44",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "28",
+    "MRI_LD_1_3dAC": "24",
+    "MRI_LD_InterReg": "24",
+    "MRI_LD_PreSurg": "11"
+  },
+  "relations": []
+}
+{
+  "id": "row191",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1210",
+    "DataExtractDt": "09 03 2009",
+    "age": "40.58",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "83",
+    "MRI_LD_1_3dAC": "66",
+    "MRI_LD_InterReg": "37",
+    "MRI_LD_PreSurg": "10"
+  },
+  "relations": []
+}
+{
+  "id": "row192",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1211",
+    "DataExtractDt": "09 03 2009",
+    "age": "48.11",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "57",
+    "MRI_LD_1_3dAC": "54",
+    "MRI_LD_InterReg": "45",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row193",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1212",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.13",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "87",
+    "MRI_LD_1_3dAC": "85",
+    "MRI_LD_InterReg": "60",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row194",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1213",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.05",
+    "race_id": "4",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "37",
+    "MRI_LD_1_3dAC": "34",
+    "MRI_LD_InterReg": "31",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row195",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1214",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.02",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "84",
+    "MRI_LD_1_3dAC": "47",
+    "MRI_LD_InterReg": "42",
+    "MRI_LD_PreSurg": "38"
+  },
+  "relations": []
+}
+{
+  "id": "row196",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1215",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.20",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "1",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row197",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1216",
+    "DataExtractDt": "09 03 2009",
+    "age": "34.43",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "55",
+    "MRI_LD_1_3dAC": "45",
+    "MRI_LD_InterReg": "44",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row198",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1217",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.09",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "25",
+    "MRI_LD_1_3dAC": "24",
+    "MRI_LD_InterReg": "16",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row199",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1218",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.82",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "113",
+    "MRI_LD_1_3dAC": "94",
+    "MRI_LD_InterReg": "44",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row200",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1219",
+    "DataExtractDt": "09 03 2009",
+    "age": "45.98",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "53",
+    "MRI_LD_1_3dAC": "49",
+    "MRI_LD_InterReg": "40",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row201",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1220",
+    "DataExtractDt": "09 03 2009",
+    "age": "43.12",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "79",
+    "MRI_LD_1_3dAC": "72",
+    "MRI_LD_InterReg": "17",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row202",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1221",
+    "DataExtractDt": "09 03 2009",
+    "age": "52.54",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "117",
+    "MRI_LD_1_3dAC": "100",
+    "MRI_LD_InterReg": "114",
+    "MRI_LD_PreSurg": "114"
+  },
+  "relations": []
+}
+{
+  "id": "row203",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1222",
+    "DataExtractDt": "09 03 2009",
+    "age": "55.52",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "56",
+    "MRI_LD_1_3dAC": "61",
+    "MRI_LD_InterReg": "67",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row204",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1223",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.82",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "27",
+    "MRI_LD_1_3dAC": "20",
+    "MRI_LD_InterReg": "15",
+    "MRI_LD_PreSurg": "14"
+  },
+  "relations": []
+}
+{
+  "id": "row205",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1224",
+    "DataExtractDt": "09 03 2009",
+    "age": "61.13",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "24",
+    "MRI_LD_1_3dAC": "26",
+    "MRI_LD_InterReg": "19",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row206",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1225",
+    "DataExtractDt": "09 03 2009",
+    "age": "47.84",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "89",
+    "MRI_LD_1_3dAC": "86",
+    "MRI_LD_InterReg": "22",
+    "MRI_LD_PreSurg": "12"
+  },
+  "relations": []
+}
+{
+  "id": "row207",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1226",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.08",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "49",
+    "MRI_LD_1_3dAC": "43",
+    "MRI_LD_InterReg": "41",
+    "MRI_LD_PreSurg": "28"
+  },
+  "relations": []
+}
+{
+  "id": "row208",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1227",
+    "DataExtractDt": "09 03 2009",
+    "age": "42.46",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "49",
+    "MRI_LD_1_3dAC": "57",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row209",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1228",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.25",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "120",
+    "MRI_LD_1_3dAC": "117",
+    "MRI_LD_InterReg": "6",
+    "MRI_LD_PreSurg": "5"
+  },
+  "relations": []
+}
+{
+  "id": "row210",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1229",
+    "DataExtractDt": "09 03 2009",
+    "age": "50.79",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "3",
+    "HR_HER2_STATUS": "TripleNeg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "56",
+    "MRI_LD_1_3dAC": "43",
+    "MRI_LD_InterReg": "21",
+    "MRI_LD_PreSurg": "4"
+  },
+  "relations": []
+}
+{
+  "id": "row211",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1230",
+    "DataExtractDt": "09 03 2009",
+    "age": "53.45",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "61",
+    "MRI_LD_InterReg": "72",
+    "MRI_LD_PreSurg": "60"
+  },
+  "relations": []
+}
+{
+  "id": "row212",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1231",
+    "DataExtractDt": "09 03 2009",
+    "age": "45.50",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "81",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "64",
+    "MRI_LD_PreSurg": "56"
+  },
+  "relations": []
+}
+{
+  "id": "row213",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1232",
+    "DataExtractDt": "09 03 2009",
+    "age": "49.97",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "89",
+    "MRI_LD_1_3dAC": "76",
+    "MRI_LD_InterReg": "48",
+    "MRI_LD_PreSurg": "24"
+  },
+  "relations": []
+}
+{
+  "id": "row214",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1233",
+    "DataExtractDt": "09 03 2009",
+    "age": "27.85",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "0",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "26",
+    "MRI_LD_1_3dAC": "18",
+    "MRI_LD_InterReg": "11",
+    "MRI_LD_PreSurg": "3"
+  },
+  "relations": []
+}
+{
+  "id": "row215",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1234",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.10",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "19",
+    "MRI_LD_1_3dAC": "16",
+    "MRI_LD_InterReg": "12",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row216",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1235",
+    "DataExtractDt": "09 03 2009",
+    "age": "64.06",
+    "race_id": "1",
+    "ERpos": "0",
+    "PgRpos": "0",
+    "HR_Pos": "0",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "52",
+    "MRI_LD_1_3dAC": "50",
+    "MRI_LD_InterReg": "28",
+    "MRI_LD_PreSurg": "0"
+  },
+  "relations": []
+}
+{
+  "id": "row217",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1236",
+    "DataExtractDt": "09 03 2009",
+    "age": "38.61",
+    "race_id": "3",
+    "ERpos": "0",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "51",
+    "MRI_LD_1_3dAC": "52",
+    "MRI_LD_InterReg": "35",
+    "MRI_LD_PreSurg": "23"
+  },
+  "relations": []
+}
+{
+  "id": "row218",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1237",
+    "DataExtractDt": "09 03 2009",
+    "age": "46.46",
+    "race_id": "1",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "60",
+    "MRI_LD_1_3dAC": "60",
+    "MRI_LD_InterReg": "37",
+    "MRI_LD_PreSurg": "36"
+  },
+  "relations": []
+}
+{
+  "id": "row219",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1238",
+    "DataExtractDt": "09 03 2009",
+    "age": "59.05",
+    "race_id": "3",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "1",
+    "HR_HER2_CATEGORY": "2",
+    "HR_HER2_STATUS": "HER2pos",
+    "BilateralCa": "0",
+    "Laterality": "2",
+    "MRI_LD_Baseline": "48",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
+{
+  "id": "row220",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "1239",
+    "DataExtractDt": "09 03 2009",
+    "age": "48.57",
+    "race_id": "4",
+    "ERpos": "1",
+    "PgRpos": "1",
+    "HR_Pos": "1",
+    "Her2MostPos": "0",
+    "HR_HER2_CATEGORY": "1",
+    "HR_HER2_STATUS": "HRposHER2neg",
+    "BilateralCa": "0",
+    "Laterality": "1",
+    "MRI_LD_Baseline": "74",
+    "MRI_LD_1_3dAC": "63",
+    "MRI_LD_InterReg": "12",
+    "MRI_LD_PreSurg": "10"
+  },
+  "relations": []
+}
+{
+  "id": "row221",
+  "name": "export",
+  "object": {
+    "SUBJECTID": "",
+    "DataExtractDt": "",
+    "age": "",
+    "race_id": "",
+    "ERpos": "",
+    "PgRpos": "",
+    "HR_Pos": "",
+    "Her2MostPos": "",
+    "HR_HER2_CATEGORY": "",
+    "HR_HER2_STATUS": "",
+    "BilateralCa": "",
+    "Laterality": "",
+    "MRI_LD_Baseline": "",
+    "MRI_LD_1_3dAC": "",
+    "MRI_LD_InterReg": "",
+    "MRI_LD_PreSurg": ""
+  },
+  "relations": []
+}
