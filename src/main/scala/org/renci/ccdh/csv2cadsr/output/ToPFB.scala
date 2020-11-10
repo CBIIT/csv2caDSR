@@ -29,6 +29,7 @@ object ToPFB {
     // TODO: this should be colName, not rowName.
     val fieldInfo = mutable.Map[String, JObject]()
     val fieldTypes = mutable.Map[String, String]()
+    val harmonizationMappings = mutable.Map[String, Map[String, String]]()
     headerRow foreach { rowName =>
       properties.get(rowName) foreach { case property: JObject =>
         val fieldType: String = property.values.get("type").flatMap({
@@ -44,17 +45,16 @@ object ToPFB {
         fieldInfo.put(rowName, property)
 
         if (property.values.contains("enum")) {
-          val enumValuesOld: Seq[String] = (property \ "enum").toOption match {
+          val enumValues: Seq[String] = (property \ "enum").toOption match {
             // Enumerated values in Avro must match the regex /^[A-Za-z_][A-Za-z0-9_]*/ -- just like Avro names.
             case Some(JString(str)) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Seq(str)
-            case Some(arr: JArray) => arr.arr.flatMap({
+            case Some(JArray(arr)) => arr.flatMap({
               case JString(str) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Some(str)
               case _ => None
             })
             // If this isn't a string or an array of strings, we can't convert it to enumValues.
             case _ => Seq()
           }
-          val enumValues = Seq()
           if (enumValues.isEmpty) {
             // We have failed to build an enum -- let's just fallback to using a string.
             fieldsBuilder = fieldsBuilder
@@ -158,6 +158,9 @@ object ToPFB {
           case _ => value
         }
 
+        // If this is an enum field, we need to translate from the verbatim to the harmonized value.
+
+
         export.put(
           colName.replaceAll("\\W","_"),
           convertedValue
@@ -174,39 +177,5 @@ object ToPFB {
     })
 
     dataFileWriter.close()
-
-    // For now, we write to STDOUT.
-    /*
-    val csvWriter = CSVWriter.open(writer)
-    csvWriter.writeRow(headerRow flatMap { rowName =>
-      val caDSR = {
-        val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
-        val caDSR = property.getOrElse("caDSR", "")
-        val caDSRVersion = property.getOrElse("caDSRVersion", "")
-        if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
-        else caDSR
-      }
-      Seq(rowName, s"${rowName}_caDSR_cde_${caDSR}_value", s"${rowName}_ncit_uri")
-    })
-
-    dataWithHeaders.foreach(row => {
-      val rowValues: Seq[String] = headerRow flatMap { rowName =>
-        val rowValue = row.getOrElse(rowName, "")
-
-        val rowProp = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, _]]
-        val enumValues =
-          rowProp.getOrElse("enumValues", List()).asInstanceOf[List[Map[String, String]]]
-        val mapping: Map[String, String] =
-          enumValues.find(_.getOrElse("value", "") == rowValue).getOrElse(HashMap())
-        val caDSRValue = mapping.getOrElse("caDSRValue", "")
-        val conceptURI = mapping.getOrElse("conceptURI", "")
-
-        Seq(rowValue, caDSRValue, conceptURI)
-      }
-      csvWriter.writeRow(rowValues)
-    })
-
-    csvWriter.close()
-     */
   }
 }
