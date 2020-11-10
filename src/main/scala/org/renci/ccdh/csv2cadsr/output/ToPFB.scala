@@ -1,18 +1,18 @@
 package org.renci.ccdh.csv2cadsr.output
 
-import java.io.{File, Writer}
-import java.nio.charset.Charset
+import java.io.File
 import java.util.Collections
 
-import com.github.tototoshi.csv.{CSVReader, CSVWriter}
-import org.json4s.JValue
+import com.github.tototoshi.csv.CSVReader
 import org.apache.avro._
 import org.apache.avro.file.DataFileWriter
 import org.apache.avro.generic.{GenericData, GenericDatumWriter, GenericRecord}
+import org.json4s.{JArray, JString}
+import org.json4s.JsonAST.{JObject, JValue}
+import org.renci.ccdh.csv2cadsr.output.pfb.PFBSchemas
 
-import scala.collection.immutable.HashMap
 import scala.collection.mutable
-import scala.tools.nsc.interpreter.shell.WriterOutputStream
+import scala.jdk.javaapi.CollectionConverters
 
 /**
   * Converts a CSV file to a PFB file with annotations.
@@ -27,42 +27,126 @@ object ToPFB {
     var fieldsBuilder = schemaBuilder.fields()
 
     // TODO: this should be colName, not rowName.
+    val fieldInfo = mutable.Map[String, JObject]()
     val fieldTypes = mutable.Map[String, String]()
     headerRow foreach { rowName =>
-      val property = properties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+      properties.get(rowName) foreach { case property: JObject =>
+        val fieldType: String = property.values.get("type").flatMap({
+          case str: JString => Some(str.s)
+          case _ => None
+        }) match {
+          case Some("integer") => "long"  // We could also use "int" here if we want 32 bit ints.
+          case Some("number") => "string" // We'll store it as a string and let it be reparsed (hopefully into BigDecimal) at the other end.
+          case Some(str) => str
+          case None => "string"
+        }
+        fieldTypes.put(rowName, fieldType)
+        fieldInfo.put(rowName, property)
 
-      val caDSR = {
-        val caDSR = property.getOrElse("caDSR", "")
-        val caDSRVersion = property.getOrElse("caDSRVersion", "")
-        if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
-        else caDSR
+        if (property.values.contains("enum")) {
+          val enumValuesOld: Seq[String] = (property \ "enum").toOption match {
+            // Enumerated values in Avro must match the regex /^[A-Za-z_][A-Za-z0-9_]*/ -- just like Avro names.
+            case Some(JString(str)) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Seq(str)
+            case Some(arr: JArray) => arr.arr.flatMap({
+              case JString(str) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Some(str)
+              case _ => None
+            })
+            // If this isn't a string or an array of strings, we can't convert it to enumValues.
+            case _ => Seq()
+          }
+          val enumValues = Seq()
+          if (enumValues.isEmpty) {
+            // We have failed to build an enum -- let's just fallback to using a string.
+            fieldsBuilder = fieldsBuilder
+              .name(rowName.replaceAll("\\W","_"))
+              .`type`(Schema.createUnion(
+                Schema.create(Schema.Type.NULL),
+                Schema.create(Schema.Type.STRING)
+              ))
+              .noDefault()
+          } else {
+            fieldsBuilder = fieldsBuilder
+              .name(rowName.replaceAll("\\W", "_"))
+              .`type`(Schema.createUnion(
+                Schema.create(Schema.Type.NULL),
+                Schema.createEnum(
+                  rowName.replaceAll("\\W", "_") + "_t",
+                  s"Enumeration of field '${rowName}'",
+                  "",
+                  CollectionConverters.asJava(enumValues)
+                )
+              ))
+              .noDefault()
+          }
+        } else {
+          fieldsBuilder = fieldsBuilder
+            .name(rowName.replaceAll("\\W","_"))
+            .`type`(Schema.createUnion(
+              Schema.create(Schema.Type.NULL),
+              Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
+            ))
+            .noDefault()
+        }
+      case value: JValue => new RuntimeException(s"Expected JObject but obtained $value")
       }
-      val fieldType = property.getOrElse("type", "string") match {
-        case "integer" => "long"  // We could also use "int" here if we want 32 bit ints.
-        case "number" => "string" // We'll store it as a string and let it be reparsed (hopefully into BigDecimal) at the other end.
-        case str => str
-      }
-      fieldTypes.put(rowName, fieldType)
-
-      fieldsBuilder = fieldsBuilder
-        .name(rowName.replaceAll("\\W","_"))
-        .`type`(Schema.createUnion(
-          Schema.create(Schema.Type.NULL),
-          Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
-        ))
-        .noDefault()
     }
 
     val exportSchema = fieldsBuilder.endRecord()
     val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(exportSchema))
     scribe.info(s"Created schema: ${schema.toString(true) }")
 
-    // TODO: write out a Metadata entity that describes this object.
     val writer = new GenericDatumWriter[GenericRecord](schema)
     val dataFileWriter = new DataFileWriter[GenericRecord](writer)
     dataFileWriter.create(schema, pfbFilename)
     // TODO: It'd be nice to write this out to outputWriter like all the other CSVToOutputs,
     // but putting an OutputStreamWriter() around that messes up the output for some reason.
+
+    // We need to create a Metadata entry for describing these fields.
+    val metadataNode = new GenericData.Record(PFBSchemas.nodeSchema)
+    metadataNode.put("name", "export")
+    metadataNode.put("ontology_reference", "")
+    metadataNode.put("values", Collections.EMPTY_MAP)
+    metadataNode.put("links", Collections.EMPTY_LIST)
+    metadataNode.put("properties", CollectionConverters.asJava(headerRow.flatMap({ rowName =>
+      properties.get(rowName) map {
+        case property: JObject =>
+          val cdeIdOpt = property.values.get("caDSR")
+          val cdeIdVersion = property.values.get("caDSRVersion")
+          val description = property.values.get("description")
+
+          val prop = new GenericData.Record(PFBSchemas.propertySchema)
+          prop.put("name", rowName)
+          prop.put("ontology_reference", description.getOrElse(""))
+
+          cdeIdOpt match {
+            case None | Some("") => // Nothing we can do.
+              prop.put("values", Collections.EMPTY_MAP)
+            case Some(cdeId) =>
+              prop.put("values", CollectionConverters.asJava(Map(
+                  "source" -> "caDSR",
+                  "cde_id" -> cdeId,
+                  "cde_version" -> cdeIdVersion.getOrElse(""),
+                  "term_url" -> s"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=${cdeId}&version=${cdeIdVersion.getOrElse("1.0")}"
+                )
+              ))
+          }
+
+          prop
+        case value: JValue => throw new RuntimeException(s"Unable to interpret property '$value': not a JObject")
+      }
+    })))
+
+    val objectMeta = new GenericData.Record(PFBSchemas.metadataSchema)
+    objectMeta.put("nodes", java.util.List.of(metadataNode))
+    objectMeta.put("misc", Collections.EMPTY_MAP)
+
+    val metadata = new GenericData.Record(schema)
+    metadata.put("id", null)
+    metadata.put("name", "Metadata")
+    metadata.put("object", objectMeta)
+    metadata.put("relations", Collections.EMPTY_LIST)
+
+    dataFileWriter.append(metadata)
 
     dataWithHeaders.zipWithIndex.foreach({ case (row, index) =>
       val export = new GenericData.Record(exportSchema)

@@ -59,11 +59,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
 
       val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
-      val properties: Map[String, JValue] = jsonRoot match {
-        case obj: JObject =>
-          obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
-        case _ => throw new RuntimeException("JSON source is not a JSON object")
-      }
+      val properties: Map[String, JValue] = (jsonRoot \ "properties").asInstanceOf[JObject].obj.toMap
 
       val reader = CSVReader.open(csvSource)
 
