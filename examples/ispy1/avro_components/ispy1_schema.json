@@ -25,7 +25,7 @@
         ]
       },
       {
-        "name": "race_id",
+        "name": "race_5f_id",
         "type": [
           "null",
           "string"
@@ -35,39 +35,73 @@
         "name": "ERpos",
         "type": [
           "null",
-          "string"
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'ERpos'",
+            "name": "ERpos_t",
+            "symbols": [
+              "Yes",
+              "No"
+            ]
+          }
         ]
       },
       {
         "name": "PgRpos",
         "type": [
           "null",
-          "string"
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'PgRpos'",
+            "name": "PgRpos_t",
+            "symbols": [
+              "No",
+              "Yes"
+            ]
+          }
         ]
       },
       {
-        "name": "HR_Pos",
+        "name": "HR_20_Pos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'HR Pos'",
+            "name": "HR_20_Pos_t",
+            "symbols": [
+              "ER and/or PgR positive",
+              "Negative",
+              "Indeterminate"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Her_32_MostPos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'Her2MostPos'",
+            "name": "Her_32_MostPos_t",
+            "symbols": [
+              "No",
+              "Yes",
+              "Not Done"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HR_5f_HER_32__5f_CATEGORY",
         "type": [
           "null",
           "string"
         ]
       },
       {
-        "name": "Her2MostPos",
-        "type": [
-          "null",
-          "string"
-        ]
-      },
-      {
-        "name": "HR_HER2_CATEGORY",
-        "type": [
-          "null",
-          "string"
-        ]
-      },
-      {
-        "name": "HR_HER2_STATUS",
+        "name": "HR_5f_HER_32__5f_STATUS",
         "type": [
           "null",
           "string"
@@ -77,39 +111,55 @@
         "name": "BilateralCa",
         "type": [
           "null",
-          "string"
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'BilateralCa'",
+            "name": "BilateralCa_t",
+            "symbols": [
+              "No",
+              "Yes"
+            ]
+          }
         ]
       },
       {
         "name": "Laterality",
         "type": [
           "null",
-          "string"
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'Laterality'",
+            "name": "Laterality_t",
+            "symbols": [
+              "Right",
+              "Left"
+            ]
+          }
         ]
       },
       {
-        "name": "MRI_LD_Baseline",
+        "name": "MRI_20_LD_20_Baseline",
         "type": [
           "null",
           "string"
         ]
       },
       {
-        "name": "MRI_LD_1_3dAC",
+        "name": "MRI_20_LD_20__31__2d__33_dAC",
         "type": [
           "null",
           "string"
         ]
       },
       {
-        "name": "MRI_LD_InterReg",
+        "name": "MRI_20_LD_20_InterReg",
         "type": [
           "null",
           "string"
         ]
       },
       {
-        "name": "MRI_LD_PreSurg",
+        "name": "MRI_20_LD_20_PreSurg",
         "type": [
           "null",
           "string"
