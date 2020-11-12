@@ -7,8 +7,8 @@ import com.github.tototoshi.csv.CSVReader
 import org.apache.avro._
 import org.apache.avro.file.DataFileWriter
 import org.apache.avro.generic.{GenericData, GenericDatumWriter, GenericRecord}
-import org.json4s.{JArray, JString}
 import org.json4s.JsonAST.{JObject, JValue}
+import org.json4s.{JArray, JString}
 import org.renci.ccdh.csv2cadsr.output.pfb.PFBSchemas
 
 import scala.collection.mutable
@@ -18,6 +18,28 @@ import scala.jdk.javaapi.CollectionConverters
   * Converts a CSV file to a PFB file with annotations.
   */
 object ToPFB {
+  /**
+    * Field names (and therefore enum values as well) in Avro is made of name components ([A-Za-z_][A-Za-z0-9_]*)
+    * separated by '.'s (see https://avro.apache.org/docs/1.8.1/spec.html#names). The Avro format uses a workaround
+    * for this (https://github.com/uc-cdis/pypfb/blob/0eed3b4b19eb7b6bdcf3f57334f840e2ad8388cd/doc/README.md#enum):
+    * characters can be encoded as `_1234_`, which is translated to \u1234 (i.e. U+1234) in the Basic Multilingual Plane.
+    * As a optimization, `_12_` is translated to U+0012 and `_123_` to U+0123.
+    *
+    * Avro names can't start with a digit, so for simplicity's sake, we'll translate digits into Unicode as well.
+    * Since paired `_`s will be misinterpreted, we must translate all characters outside of [A-Za-z\.] into this format.
+    *
+    * TODO: Confirm that this handles multi-code point characters correctly.
+    * TODO: Memoize this.
+    *
+    * @param fieldName The field name or enum value to be translated.
+    * @return An encoded format that is strictly only contains characters [A-Za-z\.]*
+    */
+  def mapFieldNameToPFB(fieldName: String): String = fieldName.map({
+    case '.' => "."
+    case ch if Character.isLetter(ch) => ch.toString
+    case ch => s"_${Integer.toHexString(ch)}_"
+  }).mkString
+
   def writePFB(reader: CSVReader, properties: Map[String, JValue], pfbFilename: File): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
@@ -29,7 +51,7 @@ object ToPFB {
     // TODO: this should be colName, not rowName.
     val fieldInfo = mutable.Map[String, JObject]()
     val fieldTypes = mutable.Map[String, String]()
-    val harmonizationMappings = mutable.Map[String, Map[String, String]]()
+    val harmonizationMappings = mutable.Map[String, JValue]()
     headerRow foreach { rowName =>
       properties.get(rowName) foreach { case property: JObject =>
         val fieldType: String = property.values.get("type").flatMap({
@@ -44,43 +66,48 @@ object ToPFB {
         fieldTypes.put(rowName, fieldType)
         fieldInfo.put(rowName, property)
 
-        if (property.values.contains("enum")) {
-          val enumValues: Seq[String] = (property \ "enum").toOption match {
-            // Enumerated values in Avro must match the regex /^[A-Za-z_][A-Za-z0-9_]*/ -- just like Avro names.
-            case Some(JString(str)) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Seq(str)
-            case Some(JArray(arr)) => arr.flatMap({
-              case JString(str) if str.matches("/^[A-Za-z_][A-Za-z0-9_]*/") => Some(str)
-              case _ => None
-            })
-            // If this isn't a string or an array of strings, we can't convert it to enumValues.
-            case _ => Seq()
+        // Look for permissible values on this property.
+        if (property.values.contains("permissibleValues")) {
+          // scribe.info(s"property \\ permissibleValues: ${(property \ "permissibleValues").toOption}")
+          val enumValues = (property \ "enumValues")
+          val permissibleValues: Seq[String] = enumValues match {
+            case JArray(arr) => arr.map({
+              case obj: JObject => obj.values.getOrElse("caDSRValue", "").asInstanceOf[String]
+              case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$rowName': $unk")
+            }).filter(_.nonEmpty).map(mapFieldNameToPFB)
+            case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$rowName': $unk")
           }
-          if (enumValues.isEmpty) {
+          scribe.info(s"enumValues '$enumValues' gives us permissibleValues: $permissibleValues")
+
+          if (permissibleValues.isEmpty) {
             // We have failed to build an enum -- let's just fallback to using a string.
             fieldsBuilder = fieldsBuilder
-              .name(rowName.replaceAll("\\W","_"))
+              .name(mapFieldNameToPFB(rowName))
               .`type`(Schema.createUnion(
                 Schema.create(Schema.Type.NULL),
                 Schema.create(Schema.Type.STRING)
               ))
               .noDefault()
           } else {
+            // We have permissible values we can work with!
+            harmonizationMappings.put(rowName, property \ "enumValues")
+
             fieldsBuilder = fieldsBuilder
-              .name(rowName.replaceAll("\\W", "_"))
+              .name(mapFieldNameToPFB(rowName))
               .`type`(Schema.createUnion(
                 Schema.create(Schema.Type.NULL),
                 Schema.createEnum(
-                  rowName.replaceAll("\\W", "_") + "_t",
+                  mapFieldNameToPFB(rowName) + "_t",
                   s"Enumeration of field '${rowName}'",
                   "",
-                  CollectionConverters.asJava(enumValues)
+                  CollectionConverters.asJava(permissibleValues)
                 )
               ))
               .noDefault()
           }
         } else {
           fieldsBuilder = fieldsBuilder
-            .name(rowName.replaceAll("\\W","_"))
+            .name(mapFieldNameToPFB(rowName))
             .`type`(Schema.createUnion(
               Schema.create(Schema.Type.NULL),
               Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
@@ -93,7 +120,7 @@ object ToPFB {
 
     val exportSchema = fieldsBuilder.endRecord()
     val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(exportSchema))
-    scribe.info(s"Created schema: ${schema.toString(true) }")
+    // scribe.info(s"Created schema: ${schema.toString(true) }")
 
     val writer = new GenericDatumWriter[GenericRecord](schema)
     val dataFileWriter = new DataFileWriter[GenericRecord](writer)
@@ -153,17 +180,64 @@ object ToPFB {
       row.keys.map({ colName =>
         val value = row.getOrElse(colName, "")
         val fieldType = fieldTypes.getOrElse(colName, "string")
-        val convertedValue = fieldType match {
-          case "long" => if (value == "") null else value.toLong
-          case _ => value
-        }
 
         // If this is an enum field, we need to translate from the verbatim to the harmonized value.
+        val mappedValue: Any = if (value == "") null else if(!harmonizationMappings.contains(colName)) {
+          fieldType match {
+            case "long" => value.toLong
+            case _ => value
+          }
+        } else {
+          val mappedValues: Seq[String] = harmonizationMappings.get(colName) match {
+            case Some(JArray(list)) => list flatMap {
+                case JObject(mappingValues) => {
+                  // Is this mapping relevant?
+                  val mapping = mappingValues.toMap
+                  val inputValue = mapping.get("value")
+                  if (inputValue.getOrElse("").equals(JString(value))) {
+                    mapping.get("caDSRValue") match {
+                      case Some(JString("")) => {
+                        throw new RuntimeException(s"Could not map verbatim value '$inputValue' in $colName: no mapping in input JSON file")
+                      }
+                      case Some(JString(str)) => {
+                        scribe.info(s"Mapping verbatim value '$inputValue' in $colName to: $str")
+                        Some(mapFieldNameToPFB(str))
+                      }
+                      case unk => throw new RuntimeException(s"Unexpected value in caDSRValue field of harmonization mappings of ${colName}: ${unk}")
+                    }
+                  } else {
+                    // Irrelevant mapping, ignore.
+                    None
+                  }
+                }
+                case unk => throw new RuntimeException(s"Unexpected value in harmonization mappings of ${colName}: ${unk}")
+              }
+            case unk => throw new RuntimeException(s"Unexpected value in harmonization mappings of ${colName}: ${unk}")
+          }
 
+          if (mappedValues.isEmpty) null
+          else if(mappedValues.length > 1) throw new RuntimeException(s"Too many mapped values obtained for ${colName}: ${mappedValues.mkString("|")}")
+          else {
+            // We only have one mapped value! Return as an Enum symbol.
+            // scribe.info(s"Looking up information on colName $colName (= ${mapFieldNameToPFB(colName)})")
+            val fieldTypes = exportSchema.getField(mapFieldNameToPFB(colName)).schema().getTypes
+            val enumTypes = CollectionConverters.asScala(fieldTypes).filter(_.getName != "null")
+
+            scribe.info(s"Enum values for ${colName}: ${enumTypes.map(_.getEnumSymbols)}")
+
+            if (enumTypes.length != 1) {
+              throw new RuntimeException(s"Found multiple enumTypes, expected only one: ${enumTypes}")
+            } else {
+              GenericData.get().createEnum(mappedValues.head, enumTypes.head)
+            }
+          }
+        }
+
+        scribe.info(s"Output(${mapFieldNameToPFB(colName)}, ${if (mappedValue == null) "<null>" else mappedValue})")
 
         export.put(
-          colName.replaceAll("\\W","_"),
-          convertedValue
+          mapFieldNameToPFB(colName),
+          mappedValue
         )
       })
 

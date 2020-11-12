@@ -41,17 +41,9 @@
     },
     "race_id":{
       "type":"string",
-      "description":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
-      "caDSR":"6093480",
+      "description":"Major living subspecies of man differentiated by genetic and physical characteristics. There are four racial groups: Australoid, Caucasoid, Mongoloid, and Negroid.",
+      "caDSR":"2486830",
       "caDSRVersion":"1.0",
-      "permissibleValues":[
-        "3",
-        "5",
-        "0",
-        "1",
-        "4",
-        "2"
-      ],
       "enum":[
         "1",
         "3",
@@ -65,43 +57,43 @@
         {
           "value":"1",
           "description":"White",
-          "caDSRValue":"5",
+          "caDSRValue":"White",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41261"
         },
         {
           "value":"3",
           "description":"Black or African American",
-          "caDSRValue":"3",
+          "caDSRValue":"Black or African American",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C16352"
         },
         {
           "value":"4",
           "description":"Asian",
-          "caDSRValue":"2",
+          "caDSRValue":"Asian",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41260"
         },
         {
           "value":"50",
-          "description":"",
-          "caDSRValue":"",
+          "description":"Mixed",
+          "caDSRValue":"Mixed",
           "conceptURI":""
         },
         {
           "value":"0",
           "description":"Unknown",
-          "caDSRValue":"0",
+          "caDSRValue":"Unknown",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
         },
         {
           "value":"",
           "description":"Unknown",
-          "caDSRValue":"0",
+          "caDSRValue":"Unknown",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
         },
         {
           "value":"5",
           "description":"Native Hawaiian or Other Pacific Islander",
-          "caDSRValue":"4",
+          "caDSRValue":"Native Hawaiian or Other Pacific Islander",
           "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41219"
         }
       ]
