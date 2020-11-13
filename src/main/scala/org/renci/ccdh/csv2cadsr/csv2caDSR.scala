@@ -21,7 +21,10 @@ case class CommandLineOptions(
   outputFilename: Option[String],
 
   @ValueDescription("Write to the specified PFB file")
-  toPfb: Option[String]
+  toPfb: Option[String],
+
+  @ValueDescription("Write to the specified CEDAR files")
+  toCedar: Option[String]
 )
 
 object csv2caDSR extends CaseApp[CommandLineOptions] {
@@ -32,7 +35,8 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       case Some(filename: String) => new BufferedWriter(new FileWriter(filename))
       case _ => new BufferedWriter(new OutputStreamWriter(System.out))
     }
-    val pfbFilename: Option[File] = options.toPfb.map(new File(_))
+    val pfbFile: Option[File] = options.toPfb.map(new File(_))
+    val cedarFile: Option[File] = options.toCedar.map(new File(_))
 
     implicit val formats = DefaultFormats
 
@@ -63,13 +67,21 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
       val reader = CSVReader.open(csvSource)
 
-      if (pfbFilename.nonEmpty) {
+      if (pfbFile.nonEmpty) {
         output.ToPFB.writePFB(
           reader,
           properties,
-          pfbFilename.get
+          pfbFile.get
         )
-        scribe.info(s"Wrote output as PFB file to ${pfbFilename}.")
+        scribe.info(s"Wrote output as PFB file to ${pfbFile}.")
+      } else if(cedarFile.nonEmpty) {
+        output.ToCEDAR.writeCEDAR(
+          new File(csvFilename),
+          reader,
+          properties,
+          cedarFile.get
+        )
+        scribe.info(s"Wrote output as CEDAR file with prefix ${pfbFile}.")
       } else {
         // Default to CSV.
         output.ToCSV.write(
