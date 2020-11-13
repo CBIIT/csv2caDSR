@@ -8,6 +8,7 @@ import com.github.tototoshi.csv.CSVReader
 import org.json4s.JsonAST.JValue
 import org.json4s.JsonDSL.WithBigDecimal._
 import org.json4s.native.JsonMethods.{pretty, render}
+import org.json4s.{JField, JObject}
 
 /**
   * Converts a harmonized CSV file to CEDAR instance data.
@@ -31,8 +32,8 @@ object ToCEDAR {
     val pavCreatedOn = DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
 
     // Step 1. Create a CEDAR Template for the harmonization information.
-    // TODO none of this quite makes sense, which I suspect is bugs in the way CEDAR's UI
-    // works.
+    // TODO none of this quite makes sense, which I suspect is bugs in the way CEDAR generates these files.
+    // Once we have a working file, we should simplify this file as much as possible to see what is minimally required.
     val baseCEDARTemplate =
       ("@context" ->
         // Prefixes.
@@ -47,53 +48,147 @@ object ToCEDAR {
       ("type" -> "object") ~
       ("additionalProperties" -> "false")
 
-    val cedarTemplate = baseCEDARTemplate ~
-      ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
-      ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
-      ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~
-      ("description" -> s"csv2caDSR CEDAR Template Export from ${inputFile}") ~
-      ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputFile}") ~
-      ("pav:createdOn" -> pavCreatedOn) ~
-      ("pav:createdBy" -> pavCreatedBy) ~
-      ("pav:lastUpdatedOn" -> pavCreatedOn) ~
-      ("bibo:status" -> "bibo:draft") ~
-      ("pav:version" -> "0.0.1") ~
-      ("schema:schemaVersion" -> "1.6.0")
-
-    scribe.info(s"Created CEDAR Template: ${pretty(render(cedarTemplate))}.")
-
-
-    // Step 2. Create a CEDAR Instance for each row in the input data.
-    val baseCEDARInstance =
-      ("@context" ->
-        // Prefixes
-        ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
-        ("pav" -> "http://purl.org/pav/") ~
-        ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
-        ("schema" -> "http://schema.org/") ~
-        ("oslc" -> "http://open-services.net/ns/core#") ~
-        ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
-
-        // CEDAR Template metadata
-        ("skos:notation" -> ("@type" -> "xsd:string")) ~
-        ("pav:derivedFrom" -> ("@type" -> "@id")) ~
-        ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
-        ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
-        ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
-        ("schema:isBasedOn" -> ("@type" -> "@id")) ~
-        ("schema:description" -> ("@type" -> "xsd:string")) ~
-
-        // Commonly used fields.
-        ("id" -> "http://purl.org/dc/terms/identifier") ~
-        ("rdfs:label" -> ("@type" -> "xsd:string"))
+    val cedarTemplateBaseProperties =
+      ("schema:isBasedOn" ->
+        ("type" -> "string") ~
+        ("format" -> "uri")
+      ) ~
+      ("schema:name" ->
+        ("type" -> "string") ~
+        ("minLength" -> 1)
+      ) ~
+      ("pav:createdBy" ->
+        ("type" -> List("string", "null")) ~
+        ("format" -> "uri")
       )
 
-    val cedarInstance = baseCEDARInstance ~
-      ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
-      ("pav:createdBy" -> pavCreatedBy) ~
-      ("pav:createdOn" -> pavCreatedOn) ~
-      ("pav:lastUpdatedOn" -> pavCreatedOn) ~
-      ("oslc:modifiedBy" -> pavCreatedBy)
+    val cedarTemplatePropertiesForCols = headerRow flatMap { colName => {
+        properties.get(colName) match {
+          case Some(prop: JObject) => {
+            // Convert property from our format to that used by CEDAR templates.
+            Some(JField(colName, prop))
+          }
+          case Some(unk) => throw new RuntimeException(s"Unknown object in property information: $unk.")
+          case None => throw new RuntimeException(s"Property $colName not present in JSON mapping file.")
+        }
+      }
+    }
+
+    val cedarTemplateProperties = cedarTemplateBaseProperties ++ cedarTemplatePropertiesForCols
+
+            /*
+              val fieldType: String = property.values.get("type").flatMap({
+                case str: JString => Some(str.s)
+                case _ => None
+              }) match {
+                case Some("integer") => "long" // We could also use "int" here if we want 32 bit ints.
+                case Some("number") => "string" // We'll store it as a string and let it be reparsed (hopefully into BigDecimal) at the other end.
+                case Some(str) => str
+                case None => "string"
+              }
+
+              // Look for permissible values on this property.
+              if (property.values.contains("permissibleValues")) {
+                // scribe.info(s"property \\ permissibleValues: ${(property \ "permissibleValues").toOption}")
+                val enumValues = (property \ "enumValues")
+                val permissibleValues: Seq[String] = enumValues match {
+                  case JArray(arr) => arr.map({
+                    case obj: JObject => obj.values.getOrElse("caDSRValue", "").asInstanceOf[String]
+                    case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$rowName': $unk")
+                  }).filter(_.nonEmpty).map(mapFieldNameToPFB)
+                  case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$rowName': $unk")
+                }
+                scribe.info(s"enumValues '$enumValues' gives us permissibleValues: $permissibleValues")
+
+                if (permissibleValues.isEmpty) {
+                  // We have failed to build an enum -- let's just fallback to using a string.
+                  fieldsBuilder = fieldsBuilder
+                    .name(mapFieldNameToPFB(rowName))
+                    .`type`(Schema.createUnion(
+                      Schema.create(Schema.Type.NULL),
+                      Schema.create(Schema.Type.STRING)
+                    ))
+                    .noDefault()
+                } else {
+                  // We have permissible values we can work with!
+                  harmonizationMappings.put(rowName, property \ "enumValues")
+
+                  fieldsBuilder = fieldsBuilder
+                    .name(mapFieldNameToPFB(rowName))
+                    .`type`(Schema.createUnion(
+                      Schema.create(Schema.Type.NULL),
+                      Schema.createEnum(
+                        mapFieldNameToPFB(rowName) + "_t",
+                        s"Enumeration of field '${rowName}'",
+                        "",
+                        CollectionConverters.asJava(permissibleValues)
+                      )
+                    ))
+                    .noDefault()
+                }
+              } else {
+                fieldsBuilder = fieldsBuilder
+                  .name(mapFieldNameToPFB(rowName))
+                  .`type`(Schema.createUnion(
+                    Schema.create(Schema.Type.NULL),
+                    Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
+                  ))
+                  .noDefault()
+              }
+            case value: JValue => new RuntimeException(s"Expected JObject but obtained $value")
+          }
+        }*/
+
+            val cedarTemplate = baseCEDARTemplate ~
+              ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
+              ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
+              ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~ // This appears to be ignored.
+              ("description" -> s"csv2caDSR CEDAR Template Export from ${inputFile}") ~
+              ("schema:name" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~
+              ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputFile}") ~
+              ("pav:createdOn" -> pavCreatedOn) ~
+              ("pav:createdBy" -> pavCreatedBy) ~
+              ("pav:lastUpdatedOn" -> pavCreatedOn) ~
+              ("bibo:status" -> "bibo:draft") ~
+              ("pav:version" -> "0.0.1") ~
+              ("schema:schemaVersion" -> "1.6.0") ++
+              cedarTemplateProperties
+
+            scribe.info(s"Created CEDAR Template: ${pretty(render(cedarTemplate))}.")
+
+
+            // Step 2. Create a CEDAR Instance for each row in the input data.
+            val baseCEDARInstance =
+              ("@context" ->
+                // Prefixes
+                ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
+                  ("pav" -> "http://purl.org/pav/") ~
+                  ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
+                  ("schema" -> "http://schema.org/") ~
+                  ("oslc" -> "http://open-services.net/ns/core#") ~
+                  ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
+
+                  // CEDAR Template metadata
+                  ("skos:notation" -> ("@type" -> "xsd:string")) ~
+                  ("pav:derivedFrom" -> ("@type" -> "@id")) ~
+                  ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
+                  ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
+                  ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
+                  ("schema:isBasedOn" -> ("@type" -> "@id")) ~
+                  ("schema:description" -> ("@type" -> "xsd:string")) ~
+
+                  // Commonly used fields.
+                  ("id" -> "http://purl.org/dc/terms/identifier") ~
+                  ("rdfs:label" -> ("@type" -> "xsd:string"))
+                )
+
+            val cedarInstance = baseCEDARInstance ~
+              ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
+              ("pav:createdBy" -> pavCreatedBy) ~
+              ("pav:createdOn" -> pavCreatedOn) ~
+              ("pav:lastUpdatedOn" -> pavCreatedOn) ~
+              ("oslc:modifiedBy" -> pavCreatedBy)
+        }
 
     // TODO: add identifiers for the fields we are adding to the system here.
 
@@ -308,5 +403,4 @@ object ToCEDAR {
     dataFileWriter.close()
 
      */
-  }
 }
