@@ -1,14 +1,14 @@
 package org.renci.ccdh.csv2cadsr.output
 
-import java.io.{File, FileWriter}
+import java.io.{File, FileReader, FileWriter}
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.JsonAST.JValue
 import org.json4s.JsonDSL.WithBigDecimal._
-import org.json4s.native.JsonMethods.{pretty, render}
-import org.json4s.{JArray, JField, JObject}
+import org.json4s.native.JsonMethods._
+import org.json4s.{JArray, JField, JObject, JString}
 
 /**
   * Converts a harmonized CSV file to CEDAR instance data.
@@ -29,6 +29,14 @@ object ToCEDAR {
   def writeCEDAR(inputFile: File, reader: CSVReader, properties: Map[String, JValue], cedarBasename: File): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
+    // Load CEDAR apiKey for POST requests.
+    val propertiesFile = new File(System.getProperty("user.home"),".cedar.properties")
+    val utilProperties = new java.util.Properties()
+    utilProperties.load(new FileReader(propertiesFile))
+    val apiKey = utilProperties.getOrDefault("apiKey", "").asInstanceOf[String]
+    if (apiKey.isEmpty) throw new RuntimeException(s"No apiKey present in config file $propertiesFile.")
+
+    // Create templates.
     val pavCreatedOn = DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
 
     // Step 1. Create a CEDAR Template for the harmonization information.
@@ -41,12 +49,18 @@ object ToCEDAR {
         ("schema" -> "http://schema.org/") ~
         ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
         ("bibo" -> "http://purl.org/ontology/bibo/") ~
+        ("pav" -> "http://purl.org/pav/") ~
 
         // Standard properties.
-        ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime"))
+        ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
+        ("pav:createdBy" -> ("@type" -> "@id")) ~
+        ("schema:name" -> ("@type" -> "xsd:string")) ~
+        ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
+        ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
+        ("schema:description" -> ("@type" -> "xsd:string"))
       ) ~
       ("type" -> "object") ~
-      ("additionalProperties" -> "false")
+      ("additionalProperties" -> false)
 
     val cedarTemplateBaseProperties =
       ("schema:isBasedOn" ->
@@ -60,8 +74,41 @@ object ToCEDAR {
       ("pav:createdBy" ->
         ("type" -> List("string", "null")) ~
         ("format" -> "uri")
-      )
+      ) ~
+      ("pav:createdOn" -> (
+        ("type" -> List("string", "null")) ~
+        ("format" -> "date-time")
+      )) ~
+      ("pav:lastUpdatedOn" -> (
+        ("type" -> List("string", "null")) ~
+        ("format" -> "date-time")
+      )) ~
+      ("oslc:modifiedBy" -> (
+        ("type" -> List("string", "null")) ~
+        ("format" -> "uri")
+      )) ~
+      ("pav:derivedFrom" -> (
+        ("type" -> "string") ~
+        ("format" -> "uri")
+      )) ~
+      ("@id" -> (
+        ("type" -> List("string", "null")) ~
+        ("format" -> "uri")
+      )) ~
+      ("schema:description" -> ("type" -> "string")) ~
+      ("@type" -> ("oneOf" -> JArray(List(
+        ("type" -> "string") ~
+        ("format" -> "uri"),
+        ("minItems" -> 1) ~
+        ("type" -> "array") ~
+        ("uniqueItems" -> true) ~
+        ("items" -> (
+          ("type" -> "string") ~
+          ("format" -> "uri")
+        )
+      )))))
 
+    var propertyDescriptions = JObject()
     val cedarTemplatePropertiesForCols = headerRow flatMap { colName => {
         properties.get(colName) match {
           case Some(prop: JObject) => {
@@ -129,13 +176,215 @@ object ToCEDAR {
               ("pav:lastUpdatedOn" -> pavCreatedOn)
             }
 
+            propertyDescriptions = propertyDescriptions ~ (colName -> (prop \ "description"))
+
             Some(JField(colName, property))
           }
           case Some(unk) => throw new RuntimeException(s"Unknown object in property information: $unk.")
           case None => throw new RuntimeException(s"Property $colName not present in JSON mapping file.")
+          case unk => throw new RuntimeException(s"Property $colName has unexpected object: $unk.")
         }
       }
     }
+
+    /** TODO: Add the @context information. */
+    /*
+    "@context": {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "xsd",
+        "pav",
+        "schema",
+        "oslc",
+        "schema:isBasedOn",
+        "schema:name",
+        "schema:description",
+        "pav:createdOn",
+        "pav:createdBy",
+        "pav:lastUpdatedOn",
+        "oslc:modifiedBy"
+      ],
+      "properties": {
+        "schema:isBasedOn": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "@id"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "schema:name": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:string"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "container_type": {
+          "enum": [
+            "https://schema.metadatacenter.org/properties/23fc869f-f3f4-49ed-9784-92729103e72b"
+          ]
+        },
+        "schema": {
+          "enum": [
+            "http://schema.org/"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "pav": {
+          "enum": [
+            "http://purl.org/pav/"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "xsd": {
+          "enum": [
+            "http://www.w3.org/2001/XMLSchema#"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "oslc": {
+          "enum": [
+            "http://open-services.net/ns/core#"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "rdfs": {
+          "enum": [
+            "http://www.w3.org/2000/01/rdf-schema#"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "oslc:modifiedBy": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "@id"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "rdfs:label": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:string"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "pav:derivedFrom": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "@id"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "skos": {
+          "enum": [
+            "http://www.w3.org/2004/02/skos/core#"
+          ],
+          "type": "string",
+          "format": "uri"
+        },
+        "schema:description": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:string"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "pav:lastUpdatedOn": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:dateTime"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "additive": {
+          "enum": [
+            "https://schema.metadatacenter.org/properties/f3d85a08-7b3a-4fc5-b35a-1f0eaf7fe7e9"
+          ]
+        },
+        "pav:createdOn": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:dateTime"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "skos:notation": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "xsd:string"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "parent_container": {
+          "enum": [
+            "https://schema.metadatacenter.org/properties/e989f08f-cd92-4fb2-936a-fff02061fd57"
+          ]
+        },
+        "id": {
+          "enum": [
+            "http://purl.org/dc/terms/identifier"
+          ]
+        },
+        "container_number": {
+          "enum": [
+            "https://schema.metadatacenter.org/properties/19b684e1-fccb-48c0-ab0f-274cf3a8fe20"
+          ]
+        },
+        "pav:createdBy": {
+          "type": "object",
+          "properties": {
+            "@type": {
+              "enum": [
+                "@id"
+              ],
+              "type": "string"
+            }
+          }
+        }
+      }
+     */
 
     val cedarTemplateProperties = cedarTemplateBaseProperties ~ cedarTemplatePropertiesForCols
     // scribe.info(s"cedarTemplateBaseProperties = ${pretty(render(cedarTemplateBaseProperties))}")
@@ -206,6 +455,18 @@ object ToCEDAR {
           }
         }*/
 
+    val required = (Seq(
+      "@context",
+      "@id",
+      "schema:isBasedOn",
+      "schema:name",
+      "schema:description",
+      "pav:createdOn",
+      "pav:createdBy",
+      "pav:lastUpdatedOn",
+      "oslc:modifiedBy"
+    ) ++ headerRow) map (JString(_))
+
           val cedarTemplate = baseCEDARTemplate ~
             ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
             ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
@@ -219,12 +480,38 @@ object ToCEDAR {
             ("bibo:status" -> "bibo:draft") ~
             ("pav:version" -> "0.0.1") ~
             ("schema:schemaVersion" -> "1.6.0") ~
-            cedarTemplateProperties
+            ("required" -> required) ~
+            ("_ui" -> (
+              ("order" -> headerRow) ~
+                ("pages" -> JArray(List())) ~
+                ("propertyLabels" -> JObject(headerRow.map(rowName => (rowName, JString(rowName))))) ~
+                ("propertyDescriptions" -> propertyDescriptions)
+            )) ~
+            ("properties" -> cedarTemplateProperties)
 
           // Write out "$cedarBasename.template.json".
-          val templateWriter = new FileWriter(new File(cedarBasename.getAbsolutePath + ".template.json"))
+          val templateFilename = new File(cedarBasename.getAbsolutePath + ".template.json")
+          val templateWriter = new FileWriter(templateFilename)
           templateWriter.append(pretty(render(cedarTemplate)))
           templateWriter.close()
+
+          // POST this to CEDAR.
+          // Uses API as https://resource.metadatacenter.org/api/#!/Templates/post_templates
+          val response = requests.post("https://resource.metadatacenter.org/templates",
+            data = pretty(render(cedarTemplate)),
+            // "folder_id" ->
+            headers = Map(
+              "Authorization" -> s"apiKey $apiKey"
+            ),
+            check = false // Don't throw exceptions on HTTP error -- let us handle it.
+          )
+          if (response.statusCode == 200) {
+            scribe.info("Template successfully uploaded!")
+          } else {
+            scribe.error(s"Could not upload template: ${response.statusCode} ${response.statusMessage}")
+            scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
+            return
+          }
 
           // Step 2. Create a CEDAR Instance for each row in the input data.
           val baseCEDARInstance =
