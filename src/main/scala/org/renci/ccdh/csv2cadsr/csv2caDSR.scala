@@ -81,7 +81,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           properties,
           cedarFile.get
         )
-        scribe.info(s"Wrote output as CEDAR file with prefix ${pfbFile}.")
+        scribe.info(s"Wrote output as CEDAR file with prefix ${cedarFile}.")
       } else {
         // Default to CSV.
         output.ToCSV.write(
