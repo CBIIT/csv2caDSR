@@ -106,7 +106,150 @@ object ToCEDAR {
           ("type" -> "string") ~
           ("format" -> "uri")
         )
-      )))))
+      ))))) ~
+        ("@context" ->
+          ("additionalProperties" -> false) ~
+          ("type" -> "object") ~
+          ("required" -> List(
+            "xsd",
+            "pav",
+            "schema",
+            "oslc",
+            "schema:isBasedOn",
+            "schema:name",
+            "schema:description",
+            "pav:createdOn",
+            "pav:createdBy",
+            "pav:lastUpdatedOn",
+            "oslc:modifiedBy"
+          )) ~
+          ("properties" ->
+            ("schema:isBasedOn" -> (
+              ("type" -> "object") ~
+              ("properties" -> (
+                "@type" -> (
+                  ("enum" -> List("@id")) ~
+                  ("type" -> "string")
+                )
+              ))
+            )) ~
+            ("schema:name" -> (
+              ("type" -> "object") ~
+              ("properties" -> (
+                "@type" -> (
+                  ("enum" -> List("xsd:string")) ~
+                  ("type" -> "string")
+                )
+              ))
+            )) ~
+            ("schema" ->
+              ("enum" -> List("http://schema.org/")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("pav" ->
+              ("enum" -> List("http://purl.org/pav/")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("xsd" ->
+              ("enum" -> List("http://www.w3.org/2001/XMLSchema#")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("oslc" ->
+              ("enum" -> List("http://open-services.net/ns/core#")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("rdfs" ->
+              ("enum" -> List("http://www.w3.org/2000/01/rdf-schema#")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("oslc:modifiedBy" ->
+              ("type" -> "object") ~
+              ("properties" ->
+                ("@type" -> (
+                  ("enum" -> List("@id")) ~
+                  ("type" -> "string")
+                ))
+              )
+            ) ~
+            ("rdfs:label" ->
+              ("type" -> "object") ~
+              ("properties" ->
+                ("@type" ->
+                  ("enum" -> List("xsd:string")) ~
+                  ("type" -> "string")
+                )
+              )
+            ) ~
+            ("pav:derivedFrom" ->
+              ("type" -> "object") ~
+              ("properties" -> (
+                ("@type" -> (
+                  ("enum" -> List("@id")) ~
+                  ("type" -> "string")
+                ))
+              ))
+            ) ~
+            ("skos" ->
+              ("enum" -> List("http://www.w3.org/2004/02/skos/core#")) ~
+              ("type" -> "string") ~
+              ("format" -> "uri")
+            ) ~
+            ("schema:description" -> (
+              ("type" -> "object") ~
+              ("properties" -> (
+                ("@type" ->
+                  ("enum" -> List("xsd:string")) ~
+                    ("type" -> "string")
+                  )
+                )
+              )
+            ) ~
+            ("pav:lastUpdatedOn" ->
+              ("type" -> "object") ~
+              ("properties" ->
+                ("@type" -> (
+                  ("enum" -> List("xsd:dateTime")) ~
+                  ("type" -> "string")
+                ))
+              )
+            ) ~
+            ("pav:createdOn" ->
+              ("type" -> "object") ~
+              ("properties" -> ("@type" -> (
+                ("enum" -> List("xsd:dateTime")) ~
+                ("type" -> "string")
+              )))
+            ) ~
+            ("skos:notation" -> (
+              ("type" -> "object") ~
+              ("properties" -> (
+                ("@type" ->
+                  ("enum" -> List("xsd:string")) ~
+                    ("type" -> "string")
+                  )
+                )
+              )
+            )) ~
+            ("id" ->
+              ("enum" -> List("http://purl.org/dc/terms/identifier"))
+            ) ~
+            ("pav:createdBy" -> (
+              ("type" -> "object") ~
+              ("properties" -> (
+                ("@type" -> (
+                  ("enum" -> List("@id")) ~
+                  ("type" -> "string")
+                ))
+              ))
+            ))
+          )
+        )
+      )
 
     var propertyDescriptions = JObject()
     val cedarTemplatePropertiesForCols = headerRow flatMap { colName => {
@@ -186,205 +329,6 @@ object ToCEDAR {
         }
       }
     }
-
-    /** TODO: Add the @context information. */
-    /*
-    "@context": {
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "xsd",
-        "pav",
-        "schema",
-        "oslc",
-        "schema:isBasedOn",
-        "schema:name",
-        "schema:description",
-        "pav:createdOn",
-        "pav:createdBy",
-        "pav:lastUpdatedOn",
-        "oslc:modifiedBy"
-      ],
-      "properties": {
-        "schema:isBasedOn": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "@id"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "schema:name": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:string"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "container_type": {
-          "enum": [
-            "https://schema.metadatacenter.org/properties/23fc869f-f3f4-49ed-9784-92729103e72b"
-          ]
-        },
-        "schema": {
-          "enum": [
-            "http://schema.org/"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "pav": {
-          "enum": [
-            "http://purl.org/pav/"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "xsd": {
-          "enum": [
-            "http://www.w3.org/2001/XMLSchema#"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "oslc": {
-          "enum": [
-            "http://open-services.net/ns/core#"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "rdfs": {
-          "enum": [
-            "http://www.w3.org/2000/01/rdf-schema#"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "oslc:modifiedBy": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "@id"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "rdfs:label": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:string"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "pav:derivedFrom": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "@id"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "skos": {
-          "enum": [
-            "http://www.w3.org/2004/02/skos/core#"
-          ],
-          "type": "string",
-          "format": "uri"
-        },
-        "schema:description": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:string"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "pav:lastUpdatedOn": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:dateTime"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "additive": {
-          "enum": [
-            "https://schema.metadatacenter.org/properties/f3d85a08-7b3a-4fc5-b35a-1f0eaf7fe7e9"
-          ]
-        },
-        "pav:createdOn": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:dateTime"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "skos:notation": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "xsd:string"
-              ],
-              "type": "string"
-            }
-          }
-        },
-        "parent_container": {
-          "enum": [
-            "https://schema.metadatacenter.org/properties/e989f08f-cd92-4fb2-936a-fff02061fd57"
-          ]
-        },
-        "id": {
-          "enum": [
-            "http://purl.org/dc/terms/identifier"
-          ]
-        },
-        "container_number": {
-          "enum": [
-            "https://schema.metadatacenter.org/properties/19b684e1-fccb-48c0-ab0f-274cf3a8fe20"
-          ]
-        },
-        "pav:createdBy": {
-          "type": "object",
-          "properties": {
-            "@type": {
-              "enum": [
-                "@id"
-              ],
-              "type": "string"
-            }
-          }
-        }
-      }
-     */
 
     val cedarTemplateProperties = cedarTemplateBaseProperties ~ cedarTemplatePropertiesForCols
     // scribe.info(s"cedarTemplateBaseProperties = ${pretty(render(cedarTemplateBaseProperties))}")
