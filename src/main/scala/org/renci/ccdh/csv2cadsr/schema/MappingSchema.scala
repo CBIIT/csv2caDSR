@@ -75,11 +75,15 @@ object MappingField {
           isRequired
         )
       }
-      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' }}) => {
+      case _ if (uniqueValues forall { str =>
+            str forall { ch: Char => Character.isDigit(ch) || ch == '-' }
+          }) => {
         val intValues = values flatMap (_.toIntOption)
         IntField(name, uniqueValues, isRequired, Range.inclusive(intValues.min, intValues.max))
       }
-      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }}) => {
+      case _ if (uniqueValues forall { str =>
+            str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }
+          }) => {
         val numValues = values flatMap (v => Try(BigDecimal(v)).toOption)
         NumberField(name, uniqueValues, isRequired, numValues.min, numValues.max)
       }

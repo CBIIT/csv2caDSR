@@ -10,8 +10,6 @@ import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods._
 import caseapp._
 
-import scala.collection.immutable.HashMap
-
 @AppName("csv2caDSR")
 @AppVersion("0.1.0")
 @ProgName("csv2cadsr")
@@ -19,10 +17,8 @@ case class CommandLineOptions(
   @ValueDescription("An optional file to write output to")
   @ExtraName("o")
   outputFilename: Option[String],
-
   @ValueDescription("Write to the specified PFB file")
   toPfb: Option[String],
-
   @ValueDescription("Write to the specified CEDAR files")
   toCedar: Option[String]
 )
@@ -33,7 +29,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     val jsonFilename: Option[String] = args.remaining.tail.headOption
     val bufferedWriter = options.outputFilename match {
       case Some(filename: String) => new BufferedWriter(new FileWriter(filename))
-      case _ => new BufferedWriter(new OutputStreamWriter(System.out))
+      case _                      => new BufferedWriter(new OutputStreamWriter(System.out))
     }
     val pfbFile: Option[File] = options.toPfb.map(new File(_))
     val cedarFile: Option[File] = options.toCedar.map(new File(_))
@@ -54,7 +50,8 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       // This is a hack to fill in the JSON Schema with information from the caDSR system.
       val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
 
-      val filledScheme = schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
+      val filledScheme =
+        schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
       bufferedWriter.write(writePretty(filledScheme))
       scribe.info("Wrote out filled JSON schema.")
     } else {
@@ -63,32 +60,20 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
 
       val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
-      val properties: Map[String, JValue] = (jsonRoot \ "properties").asInstanceOf[JObject].obj.toMap
+      val properties: Map[String, JValue] =
+        (jsonRoot \ "properties").asInstanceOf[JObject].obj.toMap
 
       val reader = CSVReader.open(csvSource)
 
       if (pfbFile.nonEmpty) {
-        output.ToPFB.writePFB(
-          reader,
-          properties,
-          pfbFile.get
-        )
+        output.ToPFB.writePFB(reader, properties, pfbFile.get)
         scribe.info(s"Wrote output as PFB file to ${pfbFile}.")
-      } else if(cedarFile.nonEmpty) {
-        output.ToCEDAR.writeCEDAR(
-          new File(csvFilename),
-          reader,
-          properties,
-          cedarFile.get
-        )
+      } else if (cedarFile.nonEmpty) {
+        output.ToCEDAR.writeCEDAR(new File(csvFilename), reader, properties, cedarFile.get)
         scribe.info(s"Wrote output as CEDAR file with prefix ${cedarFile}.")
       } else {
         // Default to CSV.
-        output.ToCSV.write(
-          reader,
-          properties,
-          bufferedWriter
-        )
+        output.ToCSV.write(reader, properties, bufferedWriter)
         scribe.info("Wrote output as CSV file.")
       }
     }
