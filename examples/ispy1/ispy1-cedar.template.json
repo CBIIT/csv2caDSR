@@ -28,13 +28,13 @@
   "additionalProperties":false,
   "$schema":"http://json-schema.org/draft-04/schema#",
   "@type":"https://schema.metadatacenter.org/core/Template",
-  "title":"csv2caDSR CEDAR Template Export (2020-11-14T03:18:24.402Z)",
+  "title":"csv2caDSR CEDAR Template Export (2020-11-17T19:12:42.389Z)",
   "description":"csv2caDSR CEDAR Template Export from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-14T03:18:24.402Z)",
+  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-17T19:12:42.389Z)",
   "schema:description":"CEDAR Template Export based on harmonized data from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "pav:createdOn":"2020-11-14T03:18:24.402Z",
+  "pav:createdOn":"2020-11-17T19:12:42.389Z",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z",
+  "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z",
   "bibo:status":"bibo:draft",
   "pav:version":"0.0.1",
   "schema:schemaVersion":"1.6.0",
@@ -129,6 +129,136 @@
         }
       }]
     },
+    "@context":{
+      "additionalProperties":false,
+      "type":"object",
+      "required":["xsd","pav","schema","oslc","schema:isBasedOn","schema:name","schema:description","pav:createdOn","pav:createdBy","pav:lastUpdatedOn","oslc:modifiedBy"],
+      "properties":{
+        "schema:isBasedOn":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["@id"],
+              "type":"string"
+            }
+          }
+        },
+        "schema:name":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["xsd:string"],
+              "type":"string"
+            }
+          }
+        },
+        "schema":{
+          "enum":["http://schema.org/"],
+          "type":"string",
+          "format":"uri"
+        },
+        "pav":{
+          "enum":["http://purl.org/pav/"],
+          "type":"string",
+          "format":"uri"
+        },
+        "xsd":{
+          "enum":["http://www.w3.org/2001/XMLSchema#"],
+          "type":"string",
+          "format":"uri"
+        },
+        "oslc":{
+          "enum":["http://open-services.net/ns/core#"],
+          "type":"string",
+          "format":"uri"
+        },
+        "rdfs":{
+          "enum":["http://www.w3.org/2000/01/rdf-schema#"],
+          "type":"string",
+          "format":"uri"
+        },
+        "oslc:modifiedBy":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["@id"],
+              "type":"string"
+            }
+          }
+        },
+        "rdfs:label":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["xsd:string"],
+              "type":"string"
+            }
+          }
+        },
+        "pav:derivedFrom":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["@id"],
+              "type":"string"
+            }
+          }
+        },
+        "skos":{
+          "enum":["http://www.w3.org/2004/02/skos/core#"],
+          "type":"string",
+          "format":"uri"
+        },
+        "schema:description":{
+          "type":"object",
+          "properties":{
+            "@type":{
+              "enum":["xsd:string"],
+              "type":"string"
+            }
+          },
+          "pav:lastUpdatedOn":{
+            "type":"object",
+            "properties":{
+              "@type":{
+                "enum":["xsd:dateTime"],
+                "type":"string"
+              }
+            }
+          },
+          "pav:createdOn":{
+            "type":"object",
+            "properties":{
+              "@type":{
+                "enum":["xsd:dateTime"],
+                "type":"string"
+              }
+            }
+          },
+          "skos:notation":{
+            "type":"object",
+            "properties":{
+              "@type":{
+                "enum":["xsd:string"],
+                "type":"string"
+              }
+            }
+          },
+          "id":{
+            "enum":["http://purl.org/dc/terms/identifier"]
+          },
+          "pav:createdBy":{
+            "type":"object",
+            "properties":{
+              "@type":{
+                "enum":["@id"],
+                "type":"string"
+              }
+            }
+          }
+        }
+      }
+    },
     "SUBJECTID":{
       "$schema":"http://json-schema.org/draft-04/schema#",
       "@context":{
@@ -202,9 +332,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "DataExtractDt":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -279,9 +409,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "age":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -356,9 +486,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "race_id":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -433,9 +563,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "ERpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -510,9 +640,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "PgRpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -587,9 +717,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "HR Pos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -664,9 +794,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "Her2MostPos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -741,9 +871,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "HR_HER2_CATEGORY":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -818,9 +948,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "HR_HER2_STATUS":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -895,9 +1025,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "BilateralCa":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -972,9 +1102,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "Laterality":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1049,9 +1179,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "MRI LD Baseline":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1126,9 +1256,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "MRI LD 1-3dAC":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1203,9 +1333,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "MRI LD InterReg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1280,9 +1410,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     },
     "MRI LD PreSurg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1357,9 +1487,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-14T03:18:24.402Z",
+      "pav:createdOn":"2020-11-17T19:12:42.389Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-14T03:18:24.402Z"
+      "pav:lastUpdatedOn":"2020-11-17T19:12:42.389Z"
     }
   }
 }
