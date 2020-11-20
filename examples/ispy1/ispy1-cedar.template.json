@@ -28,13 +28,13 @@
   "additionalProperties":false,
   "$schema":"http://json-schema.org/draft-04/schema#",
   "@type":"https://schema.metadatacenter.org/core/Template",
-  "title":"csv2caDSR CEDAR Template Export (2020-11-17T22:28:23.984Z)",
+  "title":"csv2caDSR CEDAR Template Export (2020-11-20T20:57:24.873Z)",
   "description":"csv2caDSR CEDAR Template Export from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-17T22:28:23.984Z)",
+  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-20T20:57:24.873Z)",
   "schema:description":"CEDAR Template Export based on harmonized data from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "pav:createdOn":"2020-11-17T22:28:23.984Z",
+  "pav:createdOn":"2020-11-20T20:57:24.873Z",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z",
+  "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z",
   "bibo:status":"bibo:draft",
   "pav:version":"0.0.1",
   "schema:schemaVersion":"1.6.0",
@@ -324,9 +324,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "DataExtractDt":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -392,9 +392,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "age":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -460,9 +460,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "race_id":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -528,9 +528,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "ERpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -596,9 +596,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "PgRpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -664,9 +664,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "HR Pos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -732,9 +732,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "Her2MostPos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -800,9 +800,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "HR_HER2_CATEGORY":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -868,9 +868,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "HR_HER2_STATUS":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -936,9 +936,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "BilateralCa":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1004,9 +1004,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "Laterality":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1072,9 +1072,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "MRI LD Baseline":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1141,9 +1141,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "MRI LD 1-3dAC":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1210,9 +1210,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "MRI LD InterReg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1279,9 +1279,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     },
     "MRI LD PreSurg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1348,9 +1348,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-17T22:28:23.984Z",
+      "pav:createdOn":"2020-11-20T20:57:24.873Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-17T22:28:23.984Z"
+      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
     }
   }
 }

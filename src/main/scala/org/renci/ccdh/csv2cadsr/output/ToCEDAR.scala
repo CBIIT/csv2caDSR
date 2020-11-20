@@ -26,6 +26,7 @@ object ToCEDAR {
   // These constants should be made configurable in the future.
   val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
+  val createInFolder = "https://repo.metadatacenter.org/folders/57b517b7-85ba-4f02-91f9-5d22a23fd6dd"
 
   def writeCEDAR(
     inputFile: File,
@@ -446,7 +447,9 @@ object ToCEDAR {
     val response = requests.post(
       "https://resource.metadatacenter.org/templates",
       data = pretty(render(cedarTemplate)),
-      // "folder_id" ->
+      params = if(createInFolder == null) Map() else Map(
+        "folder_id" -> createInFolder
+      ),
       headers = Map("Authorization" -> s"apiKey $apiKey"),
       check = false // Don't throw exceptions on HTTP error -- let us handle it.
     )
