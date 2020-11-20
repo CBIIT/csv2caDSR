@@ -28,6 +28,20 @@ object ToCEDAR {
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
   val createInFolder = "https://repo.metadatacenter.org/folders/57b517b7-85ba-4f02-91f9-5d22a23fd6dd"
 
+  case class CEDARClassConstraint(
+    uri: String,
+    cadsrLabel: String,
+    _type: String,
+    datasetLabel: String,
+    source: String
+  ) {
+    def toJSON = ("uri" -> uri) ~
+      ("prefLabel" -> cadsrLabel) ~
+      ("type" -> _type) ~
+      ("label" -> cadsrLabel) ~
+      ("source" -> source)
+  }
+
   def writeCEDAR(
     inputFile: File,
     reader: CSVReader,
@@ -248,12 +262,40 @@ object ToCEDAR {
               case _ => None
             }
 
-            val valueConstraints = if (numberType.nonEmpty)
+            val requiredValue = false // TODO: check to see if this property label is in the 'required' list.
+
+            val valueConstraints = if (prop.values.contains("enumValues")) {
+              val enumValues: Seq[CEDARClassConstraint] = (prop \ "enumValues") match {
+                case JArray(arr) => arr.map({
+                  case obj: JObject => CEDARClassConstraint(
+                    (obj \ "conceptURI") match { case JString(str) => str },
+                    (obj \ "caDSRValue") match { case JString(str) => str },
+                    "OntologyClass",
+                    (obj \ "value") match { case JString(str) => str },
+                    "NCIT"
+                  )
+                  case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$colName': $unk")
+                }).filter(ccc => ccc.cadsrLabel != "" && ccc.datasetLabel != "") // Remove unlabeled entries.
+                case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$colName': $unk")
+              }
+
+              ("_ui" ->
+                ("inputType" -> "textfield") // I wonder if we can change this to radio button or checkbox?
+              ) ~
+              ("_valueConstraints" ->
+                ("requiredValue" -> requiredValue) ~
+                ("ontologies" -> JArray(List())) ~
+                ("valueSets" -> JArray(List())) ~
+                ("classes" -> JArray(enumValues.map(_.toJSON).toList)) ~
+                ("branches" -> JArray(List())) ~
+                ("multipleChoice" -> false)
+              )
+            } else if (numberType.nonEmpty)
               ("_ui" ->
                 ("inputType" -> "numeric")
               ) ~
               ("_valueConstraints" ->
-                ("requiredValue" -> false) ~
+                ("requiredValue" -> requiredValue) ~
                 ("numberType" -> numberType.get)
               )
             else
@@ -261,7 +303,7 @@ object ToCEDAR {
                 ("inputType" -> "textfield")
               ) ~
               ("_valueConstraints" ->
-                ("requiredValue" -> false)
+                ("requiredValue" -> requiredValue)
               )
 
             // Convert property from our format to that used by CEDAR templates.
@@ -453,13 +495,14 @@ object ToCEDAR {
       headers = Map("Authorization" -> s"apiKey $apiKey"),
       check = false // Don't throw exceptions on HTTP error -- let us handle it.
     )
-    if (response.statusCode == 200) {
-      scribe.info("Template successfully uploaded!")
-    } else {
+    if (response.statusCode != 201) {
       scribe.error(s"Could not upload template: ${response.statusCode} ${response.statusMessage}")
       scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
       return
     }
+
+    val templateId = (parse(response.text()) \ "@id") match { case JString(str) => str }
+    scribe.info(s"Template successfully uploaded as $templateId.")
 
     // Step 2. Create a CEDAR Instance for each row in the input data.
     val baseCEDARInstance =
