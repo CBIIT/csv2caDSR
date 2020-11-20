@@ -58,19 +58,19 @@
           "value":"1",
           "description":"White",
           "caDSRValue":"White",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41261"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261"
         },
         {
           "value":"3",
           "description":"Black or African American",
           "caDSRValue":"Black or African American",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C16352"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352"
         },
         {
           "value":"4",
           "description":"Asian",
           "caDSRValue":"Asian",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41260"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260"
         },
         {
           "value":"50",
@@ -82,19 +82,19 @@
           "value":"0",
           "description":"Unknown",
           "caDSRValue":"Unknown",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
         },
         {
           "value":"",
           "description":"Unknown",
           "caDSRValue":"Unknown",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C17998"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
         },
         {
           "value":"5",
           "description":"Native Hawaiian or Other Pacific Islander",
           "caDSRValue":"Native Hawaiian or Other Pacific Islander",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C41219"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219"
         }
       ]
     },
@@ -117,13 +117,13 @@
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
         },
         {
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
         },
         {
           "value":"",
@@ -152,13 +152,13 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
         },
         {
           "value":"",
@@ -199,13 +199,13 @@
           "value":"0",
           "description":"Negative Finding",
           "caDSRValue":"Negative",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C38757"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757"
         },
         {
           "value":"",
           "description":"Indeterminate",
           "caDSRValue":"Indeterminate",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C48658"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658"
         }
       ]
     },
@@ -229,19 +229,19 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
         },
         {
           "value":"",
           "description":"Not Done",
           "caDSRValue":"Not Done",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49484"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484"
         }
       ]
     },
@@ -346,13 +346,13 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
         },
         {
           "value":"",
@@ -390,13 +390,13 @@
           "value":"2",
           "description":"Right",
           "caDSRValue":"Right",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C25228"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228"
         },
         {
           "value":"1",
           "description":"Left",
           "caDSRValue":"Left",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C25229"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229"
         },
         {
           "value":"",

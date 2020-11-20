@@ -28,13 +28,13 @@
   "additionalProperties":false,
   "$schema":"http://json-schema.org/draft-04/schema#",
   "@type":"https://schema.metadatacenter.org/core/Template",
-  "title":"csv2caDSR CEDAR Template Export (2020-11-20T20:57:24.873Z)",
+  "title":"csv2caDSR CEDAR Template Export (2020-11-20T21:37:33.857Z)",
   "description":"csv2caDSR CEDAR Template Export from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-20T20:57:24.873Z)",
+  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-20T21:37:33.857Z)",
   "schema:description":"CEDAR Template Export based on harmonized data from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "pav:createdOn":"2020-11-20T20:57:24.873Z",
+  "pav:createdOn":"2020-11-20T21:37:33.857Z",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z",
+  "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z",
   "bibo:status":"bibo:draft",
   "pav:version":"0.0.1",
   "schema:schemaVersion":"1.6.0",
@@ -324,9 +324,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "DataExtractDt":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -389,12 +389,17 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "age":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -460,9 +465,9 @@
         "requiredValue":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "race_id":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -525,12 +530,53 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
+          "prefLabel":"White",
+          "type":"OntologyClass",
+          "label":"White",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352",
+          "prefLabel":"Black or African American",
+          "type":"OntologyClass",
+          "label":"Black or African American",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260",
+          "prefLabel":"Asian",
+          "type":"OntologyClass",
+          "label":"Asian",
+          "source":"NCIT"
+        },{
+          "uri":"",
+          "prefLabel":"Mixed",
+          "type":"OntologyClass",
+          "label":"Mixed",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998",
+          "prefLabel":"Unknown",
+          "type":"OntologyClass",
+          "label":"Unknown",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219",
+          "prefLabel":"Native Hawaiian or Other Pacific Islander",
+          "type":"OntologyClass",
+          "label":"Native Hawaiian or Other Pacific Islander",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "ERpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -593,12 +639,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
+          "prefLabel":"Yes",
+          "type":"OntologyClass",
+          "label":"Yes",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+          "prefLabel":"No",
+          "type":"OntologyClass",
+          "label":"No",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "PgRpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -661,12 +724,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+          "prefLabel":"No",
+          "type":"OntologyClass",
+          "label":"No",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
+          "prefLabel":"Yes",
+          "type":"OntologyClass",
+          "label":"Yes",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "HR Pos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -729,12 +809,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"",
+          "prefLabel":"ER and/or PgR positive",
+          "type":"OntologyClass",
+          "label":"ER and/or PgR positive",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757",
+          "prefLabel":"Negative",
+          "type":"OntologyClass",
+          "label":"Negative",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "Her2MostPos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -797,12 +894,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+          "prefLabel":"No",
+          "type":"OntologyClass",
+          "label":"No",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
+          "prefLabel":"Yes",
+          "type":"OntologyClass",
+          "label":"Yes",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "HR_HER2_CATEGORY":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -865,12 +979,17 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "HR_HER2_STATUS":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -933,12 +1052,17 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "BilateralCa":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1001,12 +1125,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+          "prefLabel":"No",
+          "type":"OntologyClass",
+          "label":"No",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
+          "prefLabel":"Yes",
+          "type":"OntologyClass",
+          "label":"Yes",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "Laterality":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1069,12 +1210,29 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":false,
+        "ontologies":[],
+        "valueSets":[],
+        "classes":[{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228",
+          "prefLabel":"Right",
+          "type":"OntologyClass",
+          "label":"Right",
+          "source":"NCIT"
+        },{
+          "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229",
+          "prefLabel":"Left",
+          "type":"OntologyClass",
+          "label":"Left",
+          "source":"NCIT"
+        }],
+        "branches":[],
+        "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "MRI LD Baseline":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1141,9 +1299,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "MRI LD 1-3dAC":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1210,9 +1368,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "MRI LD InterReg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1279,9 +1437,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     },
     "MRI LD PreSurg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1348,9 +1506,9 @@
         "numberType":"xsd:long"
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-20T20:57:24.873Z",
+      "pav:createdOn":"2020-11-20T21:37:33.857Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-20T20:57:24.873Z"
+      "pav:lastUpdatedOn":"2020-11-20T21:37:33.857Z"
     }
   }
 }
