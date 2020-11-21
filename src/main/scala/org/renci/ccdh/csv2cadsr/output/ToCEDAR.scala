@@ -27,7 +27,8 @@ object ToCEDAR {
   // These constants should be made configurable in the future.
   val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
-  val createInFolder = "https://repo.metadatacenter.org/folders/57b517b7-85ba-4f02-91f9-5d22a23fd6dd"
+  val createInFolder =
+    "https://repo.metadatacenter.org/folders/57b517b7-85ba-4f02-91f9-5d22a23fd6dd"
 
   case class CEDARClassConstraint(
     uri: String,
@@ -36,11 +37,12 @@ object ToCEDAR {
     datasetLabel: String,
     source: String
   ) {
-    def toJSON = ("uri" -> uri) ~
-      ("prefLabel" -> cadsrLabel) ~
-      ("type" -> _type) ~
-      ("label" -> cadsrLabel) ~
-      ("source" -> source)
+    def toJSON =
+      ("uri" -> uri) ~
+        ("prefLabel" -> cadsrLabel) ~
+        ("type" -> _type) ~
+        ("label" -> cadsrLabel) ~
+        ("source" -> source)
   }
 
   def writeCEDAR(
@@ -246,57 +248,66 @@ object ToCEDAR {
           case Some(prop: JObject) => {
             // Convert property type.
             val numberType = (prop \ "type") match {
-              case JString("integer") => Some("xsd:long") // We can also use xsd:int if we want short ints.
+              case JString("integer") =>
+                Some("xsd:long") // We can also use xsd:int if we want short ints.
               case JString("number") => None
-              case _ => None
+              case _                 => None
             }
 
-            val requiredValue = false // TODO: check to see if this property label is in the 'required' list.
+            val requiredValue =
+              false // TODO: check to see if this property label is in the 'required' list.
 
             val valueConstraints = if (prop.values.contains("enumValues")) {
               val enumValues: Seq[CEDARClassConstraint] = (prop \ "enumValues") match {
-                case JArray(arr) => arr.map({
-                  case obj: JObject => CEDARClassConstraint(
-                    (obj \ "conceptURI") match { case JString(str) => str },
-                    (obj \ "caDSRValue") match { case JString(str) => str },
-                    "OntologyClass",
-                    (obj \ "value") match { case JString(str) => str },
-                    "NCIT"
+                case JArray(arr) =>
+                  arr
+                    .map({
+                      case obj: JObject =>
+                        CEDARClassConstraint(
+                          (obj \ "conceptURI") match { case JString(str) => str },
+                          (obj \ "caDSRValue") match { case JString(str) => str },
+                          "OntologyClass",
+                          (obj \ "value") match { case JString(str) => str },
+                          "NCIT"
+                        )
+                      case unk =>
+                        throw new RuntimeException(
+                          s"Cannot read value in array in enumValues in property '$colName': $unk"
+                        )
+                    })
+                    .filter(
+                      ccc => ccc.cadsrLabel != "" && ccc.datasetLabel != ""
+                    ) // Remove unlabeled entries.
+                case unk =>
+                  throw new RuntimeException(
+                    s"Cannot read value in enumValues in property '$colName': $unk"
                   )
-                  case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$colName': $unk")
-                }).filter(ccc => ccc.cadsrLabel != "" && ccc.datasetLabel != "") // Remove unlabeled entries.
-                case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$colName': $unk")
               }
 
               ("_ui" ->
                 ("inputType" -> "textfield") // I wonder if we can change this to radio button or checkbox?
               ) ~
-              ("_valueConstraints" ->
-                ("requiredValue" -> requiredValue) ~
-                ("ontologies" -> JArray(List())) ~
-                ("valueSets" -> JArray(List())) ~
-                ("classes" -> JArray(enumValues.map(_.toJSON).toList)) ~
-                ("branches" -> JArray(List())) ~
-                ("multipleChoice" -> false)
-              )
+                ("_valueConstraints" ->
+                  ("requiredValue" -> requiredValue) ~
+                    ("ontologies" -> JArray(List())) ~
+                    ("valueSets" -> JArray(List())) ~
+                    ("classes" -> JArray(enumValues.map(_.toJSON).toList)) ~
+                    ("branches" -> JArray(List())) ~
+                    ("multipleChoice" -> false))
               // ~ ("required" -> JArray(List("@id", "rdfs:label")))
             } else if (numberType.nonEmpty)
               ("_ui" ->
-                ("inputType" -> "numeric")
-              ) ~
-              ("_valueConstraints" ->
-                ("requiredValue" -> requiredValue) ~
-                ("numberType" -> numberType.get)
-              ) ~
-              ("required" -> JArray(List("@value", "@type")))
+                ("inputType" -> "numeric")) ~
+                ("_valueConstraints" ->
+                  ("requiredValue" -> requiredValue) ~
+                    ("numberType" -> numberType.get)) ~
+                ("required" -> JArray(List("@value", "@type")))
             else
               ("_ui" ->
-                ("inputType" -> "textfield")
-              ) ~
-              ("_valueConstraints" ->
-                ("requiredValue" -> requiredValue)
-              ) ~
-              ("required" -> JArray(List("@value")))
+                ("inputType" -> "textfield")) ~
+                ("_valueConstraints" ->
+                  ("requiredValue" -> requiredValue)) ~
+                ("required" -> JArray(List("@value")))
 
             // Convert property from our format to that used by CEDAR templates.
             val property = {
@@ -324,14 +335,14 @@ object ToCEDAR {
                 ("properties" -> (
                   ("@value" ->
                     ("type" -> List("string", "null"))) ~
-                  ("rdfs:label" ->
-                    ("type" -> List("string", "null"))) ~
-                  ("@type" ->
-                    ("type" -> "string") ~
-                      ("format" -> "uri")) ~
-                  ("@id" ->
-                    ("type" -> "string") ~
-                      ("format" -> "uri"))
+                    ("rdfs:label" ->
+                      ("type" -> List("string", "null"))) ~
+                    ("@type" ->
+                      ("type" -> "string") ~
+                        ("format" -> "uri")) ~
+                    ("@id" ->
+                      ("type" -> "string") ~
+                        ("format" -> "uri"))
                 )) ~
                 // Field information.
                 ("@id" -> (baseURI + colName.replaceAll("\\W", "_"))) ~
@@ -431,9 +442,7 @@ object ToCEDAR {
       val response = requests.post(
         "https://resource.metadatacenter.org/templates",
         data = pretty(render(cedarTemplate)),
-        params = if (createInFolder == null) Map() else Map(
-          "folder_id" -> createInFolder
-        ),
+        params = if (createInFolder == null) Map() else Map("folder_id" -> createInFolder),
         headers = Map("Authorization" -> s"apiKey $apiKey"),
         check = false // Don't throw exceptions on HTTP error -- let us handle it.
       )
@@ -476,110 +485,120 @@ object ToCEDAR {
     dataWithHeaders
       .slice(1, 3) // TODO: remove this.
       .zipWithIndex
-      .foreach({ case (row, index) =>
-        val values: Seq[JField] = headerRow.map(colName => (colName, row.get(colName))).map({
-          case (colName, Some(value)) => {
-            val prop = properties.get(colName).getOrElse(JObject(List()))
+      .foreach({
+        case (row, index) =>
+          val values: Seq[JField] = headerRow
+            .map(colName => (colName, row.get(colName)))
+            .map({
+              case (colName, Some(value)) => {
+                val prop = properties.get(colName).getOrElse(JObject(List()))
 
-            val mappings: Seq[JObject] = (prop \ "enumValues") match {
-              case JArray(enumValues) => {
-                enumValues flatMap { enumValue =>
-                  val mappingValue = (enumValue \ "value") match {
-                    case JString(v) => v
+                val mappings: Seq[JObject] = (prop \ "enumValues") match {
+                  case JArray(enumValues) => {
+                    enumValues flatMap { enumValue =>
+                      val mappingValue = (enumValue \ "value") match {
+                        case JString(v) => v
+                      }
+                      // scribe.info(s"Comparing '$value' with '$mappingValue'")
+                      if (value == mappingValue) {
+                        // Gotta map!
+                        val uri = (enumValue \ "conceptURI") match {
+                          case JString(v) => v
+                          case JNothing   => ""
+                        }
+                        val caDSRValue = (enumValue \ "caDSRValue") match {
+                          case JString(v) => v
+                          case JNothing   => ""
+                        }
+                        if (uri.isEmpty) None
+                        else
+                          Some(
+                            ("@id" -> uri) ~
+                              ("rdfs:label" -> caDSRValue)
+                            // TODO: include verbatim values here?
+                          )
+                      } else {
+                        None
+                      }
+                    }
                   }
-                  // scribe.info(s"Comparing '$value' with '$mappingValue'")
-                  if (value == mappingValue) {
-                    // Gotta map!
-                    val uri = (enumValue \ "conceptURI") match {
-                      case JString(v) => v
-                      case JNothing => ""
-                    }
-                    val caDSRValue = (enumValue \ "caDSRValue") match {
-                      case JString(v) => v
-                      case JNothing => ""
-                    }
-                    if (uri.isEmpty) None else
-                    Some(
-                      ("@id" -> uri) ~
-                      ("rdfs:label" -> caDSRValue)
-                      // TODO: include verbatim values here?
+                  case JNothing => Seq()
+                  case unk =>
+                    throw new RuntimeException(
+                      s"enumValues in property $colName is an unexpected value: $unk."
                     )
+                }
+
+                JField(
+                  colName,
+                  if (mappings.nonEmpty) {
+                    // We found mappings!
+                    if (mappings.length > 1)
+                      throw new RuntimeException(s"Too many mappings found for $colName: $mappings")
+                    mappings.head
                   } else {
-                    None
+                    // No enum values? Check if it's a numerical type.
+                    val numberType = (prop \ "type") match {
+                      case JString("integer") =>
+                        Some("xsd:long") // We can also use xsd:int if we want short ints.
+                      case JString("number") => None
+                      case _                 => None
+                    }
+
+                    if (numberType.nonEmpty) {
+                      ("@value" -> value) ~
+                        ("@type" -> numberType.get)
+                    } else {
+                      ("@value" -> value) ~
+                        ("@type" -> "xsd:string")
+                    }
                   }
-                }
+                )
               }
-              case JNothing => Seq()
-              case unk => throw new RuntimeException(s"enumValues in property $colName is an unexpected value: $unk.")
-            }
+              case (colName, None) => JField(colName, "")
+            })
 
-            JField(
-              colName,
-              if (mappings.nonEmpty) {
-                // We found mappings!
-                if (mappings.length > 1) throw new RuntimeException(s"Too many mappings found for $colName: $mappings")
-                mappings.head
-              } else {
-                // No enum values? Check if it's a numerical type.
-                val numberType = (prop \ "type") match {
-                  case JString("integer") => Some("xsd:long") // We can also use xsd:int if we want short ints.
-                  case JString("number") => None
-                  case _ => None
-                }
+          val cedarInstance: json4s.JObject = baseCEDARInstance ~
+            ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
+            ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
+            ("schema:isBasedOn" -> templateId.getOrElse("")) ~
+            ("pav:createdBy" -> pavCreatedBy) ~
+            ("pav:createdOn" -> pavCreatedOn) ~
+            ("pav:lastUpdatedOn" -> pavCreatedOn) ~
+            ("oslc:modifiedBy" -> pavCreatedBy) merge
+            JObject(values.toList)
 
-                if (numberType.nonEmpty) {
-                  ("@value" -> value) ~
-                  ("@type" -> numberType.get)
-                } else {
-                  ("@value" -> value) ~
-                  ("@type" -> "xsd:string")
-                }
-              }
-            )
-          }
-          case (colName, None) => JField(colName, "")
-        })
+          // Write out "$cedarBasename.instance.$index.json".
+          val templateFilename = new File(cedarBasename.getAbsolutePath + s".instance.$index.json")
+          val templateWriter = new FileWriter(templateFilename)
+          templateWriter.append(pretty(render(cedarInstance)))
+          templateWriter.close()
 
-        val cedarInstance: json4s.JObject = baseCEDARInstance ~
-          ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
-          ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
-          ("schema:isBasedOn" -> templateId.getOrElse("")) ~
-          ("pav:createdBy" -> pavCreatedBy) ~
-          ("pav:createdOn" -> pavCreatedOn) ~
-          ("pav:lastUpdatedOn" -> pavCreatedOn) ~
-          ("oslc:modifiedBy" -> pavCreatedBy) merge
-          JObject(values.toList)
-
-        // Write out "$cedarBasename.instance.$index.json".
-        val templateFilename = new File(cedarBasename.getAbsolutePath + s".instance.$index.json")
-        val templateWriter = new FileWriter(templateFilename)
-        templateWriter.append(pretty(render(cedarInstance)))
-        templateWriter.close()
-
-        // Publish instance to CEDAR Workbench.
-        if (!uploadToCedar) {
-          scribe.info("--upload-cedar is false, so not uploading instances to CEDAR workbench.")
-          None
-        } else {
-          val response = requests.post(
-            "https://resource.metadatacenter.org/template-instances",
-            data = pretty(render(cedarInstance)),
-            params = if (createInFolder == null) Map() else Map(
-              "folder_id" -> createInFolder
-            ),
-            headers = Map("Authorization" -> s"apiKey $apiKey"),
-            check = false // Don't throw exceptions on HTTP error -- let us handle it.
-          )
-          if (response.statusCode != 201) {
-            scribe.error(s"Could not upload instance based on $templateId: ${response.statusCode} ${response.statusMessage}")
-            scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
+          // Publish instance to CEDAR Workbench.
+          if (!uploadToCedar) {
+            scribe.info("--upload-cedar is false, so not uploading instances to CEDAR workbench.")
+            None
           } else {
+            val response = requests.post(
+              "https://resource.metadatacenter.org/template-instances",
+              data = pretty(render(cedarInstance)),
+              params = if (createInFolder == null) Map() else Map("folder_id" -> createInFolder),
+              headers = Map("Authorization" -> s"apiKey $apiKey"),
+              check = false // Don't throw exceptions on HTTP error -- let us handle it.
+            )
+            if (response.statusCode != 201) {
+              scribe.error(
+                s"Could not upload instance based on $templateId: ${response.statusCode} ${response.statusMessage}"
+              )
+              scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
+            } else {
 
-            val generatedInstanceId = (parse(response.text()) \ "@id") match { case JString(str) => str }
-            scribe.info(s"Template instance successfully uploaded as $generatedInstanceId.")
+              val generatedInstanceId =
+                (parse(response.text()) \ "@id") match { case JString(str) => str }
+              scribe.info(s"Template instance successfully uploaded as $generatedInstanceId.")
+            }
           }
-        }
-    })
+      })
   }
 
   /*
