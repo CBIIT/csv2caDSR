@@ -20,7 +20,9 @@ case class CommandLineOptions(
   @ValueDescription("Write to the specified PFB file")
   toPfb: Option[String],
   @ValueDescription("Write to the specified CEDAR files")
-  toCedar: Option[String]
+  toCedar: Option[String],
+  @ValueDescription("Upload CEDAR files to the CEDAR Workbench")
+  uploadCedar: Boolean = true
 )
 
 object csv2caDSR extends CaseApp[CommandLineOptions] {
@@ -69,7 +71,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         output.ToPFB.writePFB(reader, properties, pfbFile.get)
         scribe.info(s"Wrote output as PFB file to ${pfbFile}.")
       } else if (cedarFile.nonEmpty) {
-        output.ToCEDAR.writeCEDAR(new File(csvFilename), reader, properties, cedarFile.get)
+        output.ToCEDAR.writeCEDAR(new File(csvFilename), reader, properties, cedarFile.get, options.uploadCedar)
         scribe.info(s"Wrote output as CEDAR file with prefix ${cedarFile}.")
       } else {
         // Default to CSV.
