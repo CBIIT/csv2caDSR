@@ -477,7 +477,6 @@ object ToCEDAR {
           ("rdfs:label" -> ("@type" -> "xsd:string")))
 
     dataWithHeaders
-      .slice(1, 3) // TODO: remove this.
       .zipWithIndex
       .foreach({ case (row, index) =>
         val values: Seq[JField] = headerRow.map(colName => (colName, row.get(colName))).map({
