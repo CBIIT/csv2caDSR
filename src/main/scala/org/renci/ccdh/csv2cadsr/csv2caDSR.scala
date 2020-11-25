@@ -64,6 +64,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       throwable => scribe.error(s"Could not generate JSON Schema: ${throwable}"),
       result => bufferedWriter.write(writePretty(result.asJsonSchema))
     )
+    bufferedWriter.close()
   }
 
   /**
@@ -79,6 +80,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     val filledScheme = schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
     bufferedWriter.write(writePretty(filledScheme))
+    bufferedWriter.close()
   }
 
   /**
@@ -113,6 +115,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           properties,
           bufferedWriter
         )
+        bufferedWriter.close()
       } else if(jsonOutputFile.nonEmpty) {
         // TODO: export data as JSON-LD.
 
