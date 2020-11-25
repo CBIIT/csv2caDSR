@@ -1,6 +1,6 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, FileWriter, OutputStreamWriter, File}
+import java.io.{BufferedWriter, FileWriter, File}
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
@@ -85,14 +85,14 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     * Look through the command line options and figure out what the user wants to do.
     */
   def run(options: CommandLineOptions, args: RemainingArgs): Unit = {
-    val csvFilename: Option[File] = options.csv.map(new File(_))
-    val jsonFilename: Option[File] = options.json.map(new File(_))
+    val csvFile: Option[File] = options.csv.map(new File(_))
+    val jsonFile: Option[File] = options.json.map(new File(_))
     val jsonOutputFile: Option[File] = options.toJson.map(new File(_))
     val csvOutputFile: Option[File] = options.toCsv.map(new File(_))
 
-    if (jsonFilename.nonEmpty && csvFilename.nonEmpty) {
+    if (jsonFile.nonEmpty && csvFile.nonEmpty) {
       // Export in some way. We will need to load the JSON file.
-      val jsonSource: Source = Source.fromFile(jsonFilename.get)("UTF-8")
+      val jsonSource: Source = Source.fromFile(jsonFile.get)("UTF-8")
       val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
       val properties: Map[String, JValue] = jsonRoot match {
         case obj: JObject =>
@@ -103,7 +103,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       // Determine which type of output the user wants.
       if (csvOutputFile.nonEmpty) {
         // We have a JSON schema file and a CSV file.
-        val csvSource: Source = Source.fromFile(csvFilename.get)("UTF-8")
+        val csvSource: Source = Source.fromFile(csvFile.get)("UTF-8")
 
         // Generate the CSV!
         val reader = CSVReader.open(csvSource)
@@ -120,16 +120,16 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         throw new RuntimeException("No output format provided. Use --help to see a list of output formats (--to-*).")
       }
 
-    } else if (jsonFilename.nonEmpty && csvFilename.isEmpty) {
+    } else if (jsonFile.nonEmpty && csvFile.isEmpty) {
       // Fill in the JSON filename.
-      if (jsonOutputFile.isEmpty) throw new RuntimeException(s"Could not fill JSON file ${jsonFilename}: no output JSON file specified (use --to-json filename.json)")
+      if (jsonOutputFile.isEmpty) throw new RuntimeException(s"Could not fill JSON file ${jsonFile}: no output JSON file specified (use --to-json filename.json)")
 
-      generateJSONFile(csvFilename.get, jsonOutputFile.get)
-    } else if (jsonFilename.isEmpty && csvFilename.nonEmpty) {
+      fillJSONFile(jsonFile.get, jsonOutputFile.get)
+    } else if (jsonFile.isEmpty && csvFile.nonEmpty) {
       // Write out a JSON file that describes the CSV file.
-      if (jsonOutputFile.isEmpty) throw new RuntimeException(s"Could not write JSON file from CSV input ${csvFilename}: no output JSON file specified (use --to-json filename.json)")
+      if (jsonOutputFile.isEmpty) throw new RuntimeException(s"Could not write JSON file from CSV input ${csvFile}: no output JSON file specified (use --to-json filename.json)")
 
-      // TODO
+      generateJSONFile(csvFile.get, jsonOutputFile.get)
     } else {
       // No inputs provided.
       throw new RuntimeException("Cannot run: need a CSV input file (--csv input.csv) and/or a JSON input file (--json input.json)")
