@@ -1,13 +1,13 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, FileWriter, File}
+import java.io.{BufferedWriter, File, FileWriter}
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
-import org.json4s.native.JsonMethods._
+import org.json4s.native.JsonMethods.{parse, _}
 import caseapp._
 
 import scala.collection.immutable.HashMap
@@ -78,7 +78,8 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     val jsonSource: Source = Source.fromFile(jsonInputFile)("UTF-8")
     val bufferedWriter = new BufferedWriter(new FileWriter(jsonOutputFile))
 
-    val filledScheme = schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
+    val jsonMappings = parse(StringInput(jsonSource.getLines().mkString("\n")))
+    val filledScheme = schema.JSONMappingFiller.fillProperties(jsonMappings \ "properties")
     bufferedWriter.write(writePretty(filledScheme))
     bufferedWriter.close()
   }
