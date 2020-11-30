@@ -16,16 +16,16 @@ import scala.collection.immutable.HashMap
 @AppVersion("0.1.0")
 @ProgName("csv2caDSR")
 case class CommandLineOptions(
-  @HelpMessage("The CSV data file to read.")
+  @HelpMessage("The CSV data file to read from.")
   csv: Option[String],
 
-  @HelpMessage("The JSON file to read.")
+  @HelpMessage("The JSON mapping file to read from.")
   json: Option[String],
 
-  @HelpMessage("The JSON file to write.")
+  @HelpMessage("The JSON mapping file to write to.")
   toJson: Option[String],
 
-  @HelpMessage("Write output in CSV to the provided file")
+  @HelpMessage("The CSV file to write harmonized data to.")
   toCsv: Option[String]
 )
 
@@ -48,7 +48,8 @@ case class CommandLineOptions(
   *    filename.csv and to write it out as a CSV file to output.csv.
   */
 object csv2caDSR extends CaseApp[CommandLineOptions] {
-  implicit val formats = DefaultFormats
+  // Set up a default format for JSON import/export.
+  implicit val formats = org.json4s.DefaultFormats
 
   /**
     * Given an input CSV file, produce an output JSON file that describes the columns in that file.
@@ -73,13 +74,51 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     * @param jsonOutputFile The JSON file to write to.
     */
   def fillJSONFile(jsonInputFile: File, jsonOutputFile: File): Unit = {
-    // This is a hack to fill in the JSON Schema with information from the caDSR system.
+    // Fill in the JSON mappings with information from the caDSR system.
     val jsonSource: Source = Source.fromFile(jsonInputFile)("UTF-8")
     val bufferedWriter = new BufferedWriter(new FileWriter(jsonOutputFile))
 
     val filledScheme = schema.Filler.fill(parse(StringInput(jsonSource.getLines().mkString("\n"))))
     bufferedWriter.write(writePretty(filledScheme))
     bufferedWriter.close()
+  }
+
+  /** Export the harmonized data, based on the command line options selected. */
+  def exportHarmonizedData(csvFile: File, jsonFile: File, options: CommandLineOptions) = {
+    // Load the JSON mappings file.
+    val jsonSource: Source = Source.fromFile(jsonFile)("UTF-8")
+    val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
+
+    val properties: Map[String, JValue] = jsonRoot match {
+      case obj: JObject =>
+        obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+      case _ => throw new RuntimeException("JSON source is not a JSON object")
+    }
+
+    // Load the CSV data file.
+    val csvSource: Source = Source.fromFile(csvFile)("UTF-8")
+
+    // Look through the command line options to see how we should export our data.
+    options match {
+      case CommandLineOptions(_, _, Some(jsonOutputFile), _) => {
+        // TODO: implement our own JSON-LD export for this data.
+        ???
+      }
+
+      case CommandLineOptions(_, _, _, Some(csvOutputFile)) => {
+        // Generate the CSV!
+        val reader = CSVReader.open(csvSource)
+        val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
+        output.ToCSV.write(
+          reader,
+          properties,
+          bufferedWriter
+        )
+        bufferedWriter.close()
+      }
+
+      case _ => throw new RuntimeException("No output format provided. Use --help to see a list of output formats (--to-*).")
+    }
   }
 
   /**
@@ -89,38 +128,10 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     val csvFile: Option[File] = options.csv.map(new File(_))
     val jsonFile: Option[File] = options.json.map(new File(_))
     val jsonOutputFile: Option[File] = options.toJson.map(new File(_))
-    val csvOutputFile: Option[File] = options.toCsv.map(new File(_))
 
     if (jsonFile.nonEmpty && csvFile.nonEmpty) {
-      // Export in some way. We will need to load the JSON file.
-      val jsonSource: Source = Source.fromFile(jsonFile.get)("UTF-8")
-      val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
-      val properties: Map[String, JValue] = jsonRoot match {
-        case obj: JObject =>
-          obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
-        case _ => throw new RuntimeException("JSON source is not a JSON object")
-      }
-
-      // Determine which type of output the user wants.
-      if (csvOutputFile.nonEmpty) {
-        // We have a JSON schema file and a CSV file.
-        val csvSource: Source = Source.fromFile(csvFile.get)("UTF-8")
-
-        // Generate the CSV!
-        val reader = CSVReader.open(csvSource)
-        val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile.get))
-        output.ToCSV.write(
-          reader,
-          properties,
-          bufferedWriter
-        )
-        bufferedWriter.close()
-      } else if(jsonOutputFile.nonEmpty) {
-        // TODO: export data as JSON-LD.
-
-      } else {
-        throw new RuntimeException("No output format provided. Use --help to see a list of output formats (--to-*).")
-      }
+      // Export the harmonized data.
+      exportHarmonizedData(csvFile.get, jsonFile.get, options)
 
     } else if (jsonFile.nonEmpty && csvFile.isEmpty) {
       // Fill in the JSON filename.

@@ -24,7 +24,7 @@ import org.json4s.JsonDSL.WithBigDecimal._
   */
 case class MappingSchema(fields: Seq[MappingField]) {
   def asJsonSchema: JObject = {
-    val fieldEntries = fields map { field => (field.name, field.asJsonSchema) }
+    val fieldEntries = fields map { field => (field.name, field.asJsonObject) }
 
     JObject(
       // List of all the properties.
@@ -73,11 +73,14 @@ abstract class MappingField(
   /** Whether this field appears to be required. */
   val required: Boolean = false
 ) {
+
+  /** Provides a default toString method for mapping fields. */
   override def toString: String = {
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values)"
   }
 
-  abstract def asJsonSchema: JObject
+  /** Return a JSON object describing this mapping field. */
+  def asJsonObject: JObject
 }
 
 /**
@@ -139,7 +142,7 @@ case class StringField(
   override val uniqueValues: Set[String],
   override val required: Boolean = false
 ) extends MappingField(name, uniqueValues) {
-  override def asJsonSchema: JObject =
+  override def asJsonObject: JObject =
     ("type" -> "string") ~
     ("description" -> "") ~
     ("caDSR" -> "") ~
@@ -159,7 +162,7 @@ case class EnumField(
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values: ${uniqueValues.mkString(", ")})"
   }
 
-  override def asJsonSchema: JObject =
+  override def asJsonObject: JObject =
     ("type" -> "string") ~
     ("description" -> "") ~
     ("caDSR" -> "") ~
@@ -199,7 +202,7 @@ case class IntField(
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values in ${range})"
   }
 
-  override def asJsonSchema: JObject =
+  override def asJsonObject: JObject =
     JObject(
       "type" -> JString("string"),
       "description" -> JString(""),
@@ -209,7 +212,7 @@ case class IntField(
 }
 case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
-  override def asJsonSchema: JObject =
+  override def asJsonObject: JObject =
     JObject(
       "type" -> JString("string"),
       "description" -> JString(""),
