@@ -21,6 +21,9 @@ import org.json4s.JsonDSL.WithBigDecimal._
   *  - Semantic mapping: what does this field mean? Can it be represented by a caDSR value?
   *  - JSON Schema typing information: is it a string, number, enum? What are the enumerated values?
   *  - Value mapping: how can the enumerated values be mapped to concepts?
+  *
+  * Note that all the caDSR-related fields are left blank here. The intention is that we generate a JSON mapping file
+  * with blank descriptions/caDSR CDE ID and so on, and the user will fill them in before mapping data.
   */
 case class MappingSchema(fields: Seq[MappingField]) {
   def asJsonSchema: JObject = {
@@ -39,6 +42,7 @@ case class MappingSchema(fields: Seq[MappingField]) {
   * Some static methods for MappingSchema.
   */
 object MappingSchema {
+  /** An empty mapping schema. */
   val empty = MappingSchema(Seq())
 
   /**
@@ -55,6 +59,7 @@ object MappingSchema {
 
     // Headers are in the first row.
     val fields = headerRow map { fieldName =>
+      // Use the values in this column to try to guess its mapping field type.
       MappingField.createFromValues(fieldName, dataWithHeaders.flatMap(_.get(fieldName)))
     }
 
@@ -63,7 +68,8 @@ object MappingSchema {
 }
 
 /**
-  * A MappingField contains information on each field in a mapping.
+  * A MappingField contains information on each field in a mapping. It is the parent class
+  * of all mapping fields.
   */
 abstract class MappingField(
   /** The name of this field */
@@ -109,7 +115,8 @@ object MappingField {
 
       // Is it an enum field?
       case _ if (uniqueValues.size < values.size * enumProportion) => {
-        val uniqueValuesByCount = values
+        // Create an ordered list of the possible values, with the most frequently repeated value appearing first.
+        val uniqueValuesByCount: Seq[(String, Int)] = values
           .groupBy(identity)
           .transform((_, v) => v.size)
           .toSeq
@@ -155,7 +162,8 @@ case class StringField(
 case class EnumField(
   override val name: String,
   override val uniqueValues: Set[String],
-  val enumValues: Seq[EnumValue] = Seq(),
+  /** The EnumValues in this EnumField. */
+  enumValues: Seq[EnumValue] = Seq(),
   override val required: Boolean = false
 ) extends MappingField(name, uniqueValues, required) {
   override def toString: String = {
@@ -167,24 +175,25 @@ case class EnumField(
     ("description" -> "") ~
     ("caDSR" -> "") ~
     ("caDSRVersion" -> "1.0") ~
-    ("permissibleValues" -> JArray(List())) ~
-    ("enum" -> JArray(enumValues.map(_.value).map(JString).toList)) ~
-    ("enumValues" -> JArray(enumValues.map(_.asMapping).toList))
+    ("permissibleValues" -> List()) ~
+    ("enum" -> enumValues.map(_.value).map(JString).toList) ~
+    ("enumValues" -> enumValues.map(_.asMapping).toList)
 }
 
-/** An EnumValue represents one  */
-case class EnumValue(val value: String, val conceptURI: Option[URI] = None) {
+/** An EnumValue represents one possible value for an EnumField. */
+case class EnumValue(value: String, conceptURI: Option[URI] = None) {
   def asMapping: JObject =
-    JObject(
-      "value" -> JString(value),
-      "description" -> JString(""),
-      "caDSRValue" -> JString(""),
-      "conceptURI" -> JString(conceptURI map (_.toString) getOrElse (""))
-    )
+    ("value" -> value) ~
+    ("description" -> "") ~
+    ("caDSRValue" -> "") ~
+    ("conceptURI" -> (conceptURI map (_.toString) getOrElse ("")))
 }
+
+/** Some static methods for EnumValues. */
 object EnumValue {
+  /** Convert a string value to an EnumValue. */
   def fromString(value: String): EnumValue = {
-    // Does the value contain a URI?
+    // Does the value contain an HTTP or HTTPS URL?
     val uriRegex = "(https?://\\S+)".r
     val result =
       uriRegex findAllIn (value) map (m => Try { new URI(m) }) filter (_.isSuccess) map (_.get)
@@ -192,10 +201,13 @@ object EnumValue {
     EnumValue(value, result.toSeq.lastOption)
   }
 }
+
+/** An IntField models a field that can only contain integer values. */
 case class IntField(
   override val name: String,
   override val uniqueValues: Set[String],
   override val required: Boolean,
+  /** The smallest and largest integers in this field. */
   range: Range
 ) extends MappingField(name, uniqueValues) {
   override def toString: String = {
@@ -203,20 +215,18 @@ case class IntField(
   }
 
   override def asJsonObject: JObject =
-    JObject(
-      "type" -> JString("string"),
-      "description" -> JString(""),
-      "caDSR" -> JString(""),
-      "caDSRVersion" -> JString("1.0")
-    )
+    ("type" -> "string") ~
+    ("description" -> "") ~
+    ("caDSR" -> "") ~
+    ("caDSRVersion" -> "1.0")
 }
+
+/** An empty field is one that consists solely of blanks. */
 case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
   override def asJsonObject: JObject =
-    JObject(
-      "type" -> JString("string"),
-      "description" -> JString(""),
-      "caDSR" -> JString(""),
-      "caDSRVersion" -> JString("1.0")
-    )
+    ("type" -> "string") ~
+    ("description" -> "") ~
+    ("caDSR" -> "") ~
+    ("caDSRVersion" -> "1.0")
 }
