@@ -175,7 +175,7 @@ case class EnumField(
     ("description" -> "") ~
     ("caDSR" -> "") ~
     ("caDSRVersion" -> "1.0") ~
-    ("permissibleValues" -> List()) ~
+    ("permissibleValues" -> JArray(List())) ~
     ("enum" -> enumValues.map(_.value).map(JString).toList) ~
     ("enumValues" -> enumValues.map(_.asMapping).toList)
 }
