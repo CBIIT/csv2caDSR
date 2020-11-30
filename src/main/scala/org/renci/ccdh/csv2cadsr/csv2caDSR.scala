@@ -62,6 +62,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       result => bufferedWriter.write(writePretty(result.asJsonSchema))
     )
     bufferedWriter.close()
+    scribe.info(s"Wrote out an empty JSON mapping file to ${jsonOutputFile}")
   }
 
   /**
@@ -79,6 +80,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     val filledScheme = schema.JSONMappingFiller.fillProperties(jsonMappings \ "properties")
     bufferedWriter.write(writePretty(filledScheme))
     bufferedWriter.close()
+    scribe.info(s"Wrote out filled-in JSON mapping file to ${jsonOutputFile}")
   }
 
   /** Export the harmonized data, based on the command line options selected. */
@@ -109,6 +111,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
         output.ToCSV.write(reader, properties, bufferedWriter)
         bufferedWriter.close()
+        scribe.info(s"Wrote out CSV harmonized output file to ${csvOutputFile}")
       }
 
       case _ =>
