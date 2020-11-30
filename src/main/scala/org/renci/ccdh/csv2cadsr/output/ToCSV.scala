@@ -11,6 +11,7 @@ import scala.collection.immutable.HashMap
   * Export harmonized data as a CSV file with annotations.
   */
 object ToCSV {
+
   /**
     * Write out the CSV data as a harmonized CSV file.
     *
@@ -18,7 +19,11 @@ object ToCSV {
     * @param mappedProperties The mapped properties from the JSON mapping file.
     * @param writer A writer to write out the CSV file to.
     */
-  def write(reader: CSVReader, mappedProperties: Map[String, JValue], writer: BufferedWriter): Unit = {
+  def write(
+    reader: CSVReader,
+    mappedProperties: Map[String, JValue],
+    writer: BufferedWriter
+  ): Unit = {
     // Read the input data.
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
@@ -26,7 +31,8 @@ object ToCSV {
     val csvWriter = CSVWriter.open(writer)
     csvWriter.writeRow(headerRow flatMap { rowName =>
       val caDSR = {
-        val property = mappedProperties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
+        val property =
+          mappedProperties.getOrElse(rowName, HashMap()).asInstanceOf[Map[String, String]]
         val caDSR = property.getOrElse("caDSR", "")
         val caDSRVersion = property.getOrElse("caDSRVersion", "")
         if (caDSR.nonEmpty && caDSRVersion.nonEmpty) s"${caDSR}v$caDSRVersion"
