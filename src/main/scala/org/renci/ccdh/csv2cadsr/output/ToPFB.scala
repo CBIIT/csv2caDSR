@@ -45,15 +45,15 @@ object ToPFB {
 
     // Step 1. Create a schema for the output.
     val schemaBuilder = SchemaBuilder
-      .record("export") // TODO: name this after the input filename, I guess?
+      .record("export") // TODO: name this after the output filename, I guess?
     var fieldsBuilder = schemaBuilder.fields()
 
-    // TODO: this should be colName, not rowName.
     val fieldInfo = mutable.Map[String, JObject]()
     val fieldTypes = mutable.Map[String, String]()
     val harmonizationMappings = mutable.Map[String, JValue]()
-    headerRow foreach { rowName =>
-      properties.get(rowName) foreach { case property: JObject =>
+    headerRow foreach { colName =>
+      val props: Option[JValue] = properties.get(colName)
+      props foreach { case property: JObject =>
         val fieldType: String = property.values.get("type").flatMap({
           case str: JString => Some(str.s)
           case _ => None
@@ -63,8 +63,8 @@ object ToPFB {
           case Some(str) => str
           case None => "string"
         }
-        fieldTypes.put(rowName, fieldType)
-        fieldInfo.put(rowName, property)
+        fieldTypes.put(colName, fieldType)
+        fieldInfo.put(colName, property)
 
         // Look for permissible values on this property.
         if (property.values.contains("permissibleValues")) {
@@ -73,16 +73,16 @@ object ToPFB {
           val permissibleValues: Seq[String] = enumValues match {
             case JArray(arr) => arr.map({
               case obj: JObject => obj.values.getOrElse("caDSRValue", "").asInstanceOf[String]
-              case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$rowName': $unk")
+              case unk => throw new RuntimeException(s"Cannot read value in array in enumValues in property '$colName': $unk")
             }).filter(_.nonEmpty).map(mapFieldNameToPFB)
-            case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$rowName': $unk")
+            case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$colName': $unk")
           }
           scribe.info(s"enumValues '$enumValues' gives us permissibleValues: $permissibleValues")
 
           if (permissibleValues.isEmpty) {
             // We have failed to build an enum -- let's just fallback to using a string.
             fieldsBuilder = fieldsBuilder
-              .name(mapFieldNameToPFB(rowName))
+              .name(mapFieldNameToPFB(colName))
               .`type`(Schema.createUnion(
                 Schema.create(Schema.Type.NULL),
                 Schema.create(Schema.Type.STRING)
@@ -90,15 +90,15 @@ object ToPFB {
               .noDefault()
           } else {
             // We have permissible values we can work with!
-            harmonizationMappings.put(rowName, property \ "enumValues")
+            harmonizationMappings.put(colName, property \ "enumValues")
 
             fieldsBuilder = fieldsBuilder
-              .name(mapFieldNameToPFB(rowName))
+              .name(mapFieldNameToPFB(colName))
               .`type`(Schema.createUnion(
                 Schema.create(Schema.Type.NULL),
                 Schema.createEnum(
-                  mapFieldNameToPFB(rowName) + "_t",
-                  s"Enumeration of field '${rowName}'",
+                  mapFieldNameToPFB(colName) + "_t",
+                  s"Enumeration of field '${colName}'",
                   "",
                   CollectionConverters.asJava(permissibleValues)
                 )
@@ -107,14 +107,14 @@ object ToPFB {
           }
         } else {
           fieldsBuilder = fieldsBuilder
-            .name(mapFieldNameToPFB(rowName))
+            .name(mapFieldNameToPFB(colName))
             .`type`(Schema.createUnion(
               Schema.create(Schema.Type.NULL),
               Schema.create(Schema.Type.valueOf(fieldType.toUpperCase))
             ))
             .noDefault()
         }
-      case value: JValue => new RuntimeException(s"Expected JObject but obtained $value")
+      case value => new RuntimeException(s"Expected JObject but obtained $value for property $colName")
       }
     }
 

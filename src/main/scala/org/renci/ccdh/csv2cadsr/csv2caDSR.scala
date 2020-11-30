@@ -9,6 +9,7 @@ import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods.parse
 import caseapp._
+import org.json4s
 
 import scala.collection.immutable.HashMap
 
@@ -89,11 +90,10 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
   def exportHarmonizedData(csvFile: File, jsonFile: File, options: CommandLineOptions) = {
     // Load the JSON mappings file.
     val jsonSource: Source = Source.fromFile(jsonFile)("UTF-8")
-    val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
+    val jsonRoot: JValue = parse(StringInput(jsonSource.getLines().mkString("\n")))
 
-    val properties: Map[String, JValue] = jsonRoot match {
-      case obj: JObject =>
-        obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+    val properties: Map[String, json4s.JValue] = (jsonRoot \ "properties") match {
+      case obj: JObject => obj.obj.toMap
       case _ => throw new RuntimeException("JSON source is not a JSON object")
     }
 
@@ -117,6 +117,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       }
 
       case CommandLineOptions(_, _, _, _, Some(pfbOutputFilename)) => {
+        // Generate the PFB!
         val pfbOutputFile = new File(pfbOutputFilename)
         val reader = CSVReader.open(csvSource)
         output.ToPFB.writePFB(
