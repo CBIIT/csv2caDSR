@@ -57,9 +57,8 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     * @param jsonOutputFile The JSON file to write to.
     */
   def generateJSONFile(csvInputFile: File, jsonOutputFile: File): Unit = {
-    val csvSource = Source.fromFile(csvInputFile)("UTF-8")
     val bufferedWriter = new BufferedWriter(new FileWriter(jsonOutputFile))
-    val result = schema.MappingGenerator.generateFromCsv(csvSource)
+    val result = schema.MappingSchema.generateFromCsv(csvInputFile)
     result.fold(
       throwable => scribe.error(s"Could not generate JSON Schema: ${throwable}"),
       result => bufferedWriter.write(writePretty(result.asJsonSchema))
