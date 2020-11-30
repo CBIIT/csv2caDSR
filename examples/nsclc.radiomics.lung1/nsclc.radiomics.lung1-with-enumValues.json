@@ -43,25 +43,25 @@
           "value":"2",
           "description":"Lung Cancer pT2 TNM Finding v7",
           "caDSRValue":"T2",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88871"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88871"
         },
         {
           "value":"4",
           "description":"Lung Cancer pT4 TNM Finding v7",
           "caDSRValue":"T4",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88875"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88875"
         },
         {
           "value":"1",
           "description":"Lung Cancer pT1 TNM Finding v7",
           "caDSRValue":"T1",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88868"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88868"
         },
         {
           "value":"3",
           "description":"Lung Cancer pT3 TNM Finding v7",
           "caDSRValue":"T3",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88874"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88874"
         },
         {
           "value":"5",
@@ -101,25 +101,25 @@
           "value":"0",
           "description":"Lung Cancer pN0 TNM Finding v6 and v7",
           "caDSRValue":"N0",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60973"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C60973"
         },
         {
           "value":"2",
           "description":"Lung Cancer pN2 TNM Finding v6 and v7",
           "caDSRValue":"N2",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60975"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C60975"
         },
         {
           "value":"3",
           "description":"Lung Cancer pN3 TNM Finding v6 and v7",
           "caDSRValue":"N3",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C60976"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C60976"
         },
         {
           "value":"1",
           "description":"Lung Cancer pN1 TNM Finding v7",
           "caDSRValue":"N1",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88877"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88877"
         },
         {
           "value":"4",
@@ -150,7 +150,7 @@
           "value":"0",
           "description":"Lung Cancer cM0 TNM Finding v7",
           "caDSRValue":"M0",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88884"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88884"
         },
         {
           "value":"3",
@@ -162,7 +162,7 @@
           "value":"1",
           "description":"Lung Cancer cM1 TNM Finding v7",
           "caDSRValue":"M1",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C88885"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C88885"
         }
       ]
     },
@@ -195,13 +195,13 @@
           "value":"IIIb",
           "description":"Stage IIIB Lung Non-Small Cell Cancer AJCC v7",
           "caDSRValue":"IIIB",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C9103"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C9103"
         },
         {
           "value":"IIIa",
           "description":"Stage IIIA Lung Non-Small Cell Cancer AJCC v7",
           "caDSRValue":"IIIA",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C9102"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C9102"
         },
         {
           "value":"I",
@@ -247,13 +247,13 @@
           "value":"squamous cell carcinoma",
           "description":"Squamous Cell Carcinoma",
           "caDSRValue":"SCC",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C2929"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C2929"
         },
         {
           "value":"large cell",
           "description":"Large Cell Neuroendocrine Carcinoma",
           "caDSRValue":"LCNEC",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C6875"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C6875"
         },
         {
           "value":"nos",
@@ -265,7 +265,7 @@
           "value":"adenocarcinoma",
           "description":"Adenocarcinoma",
           "caDSRValue":"ADC",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C2852"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C2852"
         },
         {
           "value":"NA",
@@ -294,13 +294,13 @@
           "value":"male",
           "description":"Male Gender",
           "caDSRValue":"MALE",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C46109"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C46109"
         },
         {
           "value":"female",
           "description":"Female Gender",
           "caDSRValue":"FEMALE",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C46110"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C46110"
         }
       ]
     },
@@ -328,7 +328,7 @@
           "value":"1",
           "description":"Dead",
           "caDSRValue":"5",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C28554"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28554"
         },
         {
           "value":"0",
