@@ -15,18 +15,11 @@
         
       ],
       "enum":[
-        "09 03 2009",
-        ""
+        "09 03 2009"
       ],
       "enumValues":[
         {
           "value":"09 03 2009",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
-        },
-        {
-          "value":"",
           "description":"",
           "caDSRValue":"",
           "conceptURI":""
@@ -58,7 +51,6 @@
         "4",
         "50",
         "0",
-        "",
         "5"
       ],
       "enumValues":[
@@ -88,12 +80,6 @@
         },
         {
           "value":"0",
-          "description":"Unknown",
-          "caDSRValue":"0",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
-        },
-        {
-          "value":"",
           "description":"Unknown",
           "caDSRValue":"0",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
@@ -346,8 +332,7 @@
       ],
       "enum":[
         "0",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -361,12 +346,6 @@
           "description":"Yes",
           "caDSRValue":"Yes",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
@@ -390,8 +369,7 @@
       ],
       "enum":[
         "2",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -405,12 +383,6 @@
           "description":"Left",
           "caDSRValue":"Left",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229"
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
@@ -440,6 +412,11 @@
     }
   },
   "required":[
-    
+    "SUBJECTID",
+    "DataExtractDt",
+    "age",
+    "race_id",
+    "BilateralCa",
+    "Laterality"
   ]
 }
