@@ -23,12 +23,12 @@
         },
         {
           "name": "race_id",
-          "ontology_reference": "Major living subspecies of man differentiated by genetic and physical characteristics. There are four racial groups: Australoid, Caucasoid, Mongoloid, and Negroid.",
+          "ontology_reference": "A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
           "values": {
             "source": "caDSR",
-            "cde_id": "2486830",
+            "cde_id": "6093480",
             "cde_version": "1.0",
-            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2486830&version=1.0"
+            "term_url": "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0"
           }
         },
         {

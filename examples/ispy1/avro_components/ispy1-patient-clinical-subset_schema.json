@@ -28,7 +28,19 @@
         "name": "race_5f_id",
         "type": [
           "null",
-          "string"
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'race_id'",
+            "name": "race_5f_id_t",
+            "symbols": [
+              "5",
+              "3",
+              "2",
+              "Mixed",
+              "0",
+              "4"
+            ]
+          }
         ]
       },
       {

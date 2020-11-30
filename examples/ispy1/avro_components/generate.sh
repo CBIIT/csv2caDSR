@@ -9,13 +9,13 @@
 #
 
 # Extract all the data rows from the PFB file.
-pfb show -i ../ispy1.avro | jq . > ispy1_data.jsonl
+pfb show -i ../ispy1-patient-clinical-subset.avro | jq . > ispy1-patient-clinical-subset_data.jsonl
 
 # Extract the schema from the PFB file.
-pfb show -i ../ispy1.avro schema | jq . > ispy1_schema.json
+pfb show -i ../ispy1-patient-clinical-subset.avro schema | jq . > ispy1-patient-clinical-subset_schema.json
 
 # Extract the schema from the PFB file.
-pfb show -i ../ispy1.avro metadata | jq . > ispy1_metadata.json
+pfb show -i ../ispy1-patient-clinical-subset.avro metadata | jq . > ispy1-patient-clinical-subset_metadata.json
 
 # Extract all the node names in the PFB file.
-pfb show -i ../ispy1.avro nodes > ispy1_nodes.txt
+pfb show -i ../ispy1-patient-clinical-subset.avro nodes > ispy1-patient-clinical-subset_nodes.txt
