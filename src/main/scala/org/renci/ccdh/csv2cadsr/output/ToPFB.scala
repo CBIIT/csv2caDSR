@@ -48,12 +48,13 @@ object ToPFB {
       .record("export") // TODO: name this after the output filename, I guess?
     var fieldsBuilder = schemaBuilder.fields()
 
-    val fieldInfo = mutable.Map[String, JObject]()
+    // Go through the properties, identify permissible values and add them to the schema.
     val fieldTypes = mutable.Map[String, String]()
     val harmonizationMappings = mutable.Map[String, JValue]()
     headerRow foreach { colName =>
       val props: Option[JValue] = properties.get(colName)
       props foreach { case property: JObject =>
+        // Figure out the field type for this column.
         val fieldType: String = property.values.get("type").flatMap({
           case str: JString => Some(str.s)
           case _ => None
@@ -64,7 +65,6 @@ object ToPFB {
           case None => "string"
         }
         fieldTypes.put(colName, fieldType)
-        fieldInfo.put(colName, property)
 
         // Look for permissible values on this property.
         if (property.values.contains("permissibleValues")) {
@@ -77,7 +77,7 @@ object ToPFB {
             }).filter(_.nonEmpty).map(mapFieldNameToPFB)
             case unk => throw new RuntimeException(s"Cannot read value in enumValues in property '$colName': $unk")
           }
-          scribe.info(s"enumValues '$enumValues' gives us permissibleValues: $permissibleValues")
+          scribe.debug(s"enumValues '$enumValues' gives us permissibleValues: $permissibleValues")
 
           if (permissibleValues.isEmpty) {
             // We have failed to build an enum -- let's just fallback to using a string.
@@ -106,6 +106,7 @@ object ToPFB {
               .noDefault()
           }
         } else {
+          // If there are no permissible values, we just need to return a nullable field of the specified type.
           fieldsBuilder = fieldsBuilder
             .name(mapFieldNameToPFB(colName))
             .`type`(Schema.createUnion(
@@ -118,15 +119,16 @@ object ToPFB {
       }
     }
 
+    // Build an overall "export schema" by adding our schema to that needed by PFB.
     val exportSchema = fieldsBuilder.endRecord()
     val schema = pfb.PFBSchemas.generatePFBForSchemas(Seq(exportSchema))
     // scribe.info(s"Created schema: ${schema.toString(true) }")
 
+    // Step 2. Create the metadata object. This records information on how to interpret each column in each data file.
     val writer = new GenericDatumWriter[GenericRecord](schema)
     val dataFileWriter = new DataFileWriter[GenericRecord](writer)
-    dataFileWriter.create(schema, pfbFilename)
-    // TODO: It'd be nice to write this out to outputWriter like all the other CSVToOutputs,
-    // but putting an OutputStreamWriter() around that messes up the output for some reason.
+    dataFileWriter.create(schema, pfbFilename)  // I ran into some problems when writing this to an existing BufferedWriter,
+                                                // so just creating a new file seems to be the way to go here.
 
     // We need to create a Metadata entry for describing these fields.
     val metadataNode = new GenericData.Record(PFBSchemas.nodeSchema)
@@ -145,6 +147,7 @@ object ToPFB {
           prop.put("name", rowName)
           prop.put("ontology_reference", description.getOrElse(""))
 
+          // Record caDSR information when present.
           cdeIdOpt match {
             case None | Some("") => // Nothing we can do.
               prop.put("values", Collections.EMPTY_MAP)
@@ -175,6 +178,7 @@ object ToPFB {
 
     dataFileWriter.append(metadata)
 
+    // Step 3. Write data into Avro file.
     dataWithHeaders.zipWithIndex.foreach({ case (row, index) =>
       val export = new GenericData.Record(exportSchema)
       row.keys.map({ colName =>
@@ -191,7 +195,8 @@ object ToPFB {
           val mappedValues: Seq[String] = harmonizationMappings.get(colName) match {
             case Some(JArray(list)) => list flatMap {
                 case JObject(mappingValues) => {
-                  // Is this mapping relevant?
+                  // Does this mapping apply to this particular value?
+                  // (Note that if multiple mappings are provided for the same value, we throw an exception later in this process.
                   val mapping = mappingValues.toMap
                   val inputValue = mapping.get("value")
                   if (inputValue.getOrElse("").equals(JString(value))) {
@@ -233,7 +238,7 @@ object ToPFB {
           }
         }
 
-        scribe.info(s"Output(${mapFieldNameToPFB(colName)}, ${if (mappedValue == null) "<null>" else mappedValue})")
+        scribe.debug(s"Output(${mapFieldNameToPFB(colName)}, ${if (mappedValue == null) "<null>" else mappedValue})")
 
         export.put(
           mapFieldNameToPFB(colName),
@@ -241,6 +246,7 @@ object ToPFB {
         )
       })
 
+      // Write this datum to the Avro file.
       val datum = new GenericData.Record(schema)
       datum.put("id", "row" + index)
       datum.put("name", "export")
