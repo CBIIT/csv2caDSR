@@ -213,19 +213,22 @@ case class IntField(
   override def toString: String = {
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values in ${range})"
   }
-  override def asJsonSchema: JObject =
-    JObject(
-      "type" -> JString("integer"),
-      "description" -> JString(""),
-      "caDSR" -> JString(""),
-      "caDSRVersion" -> JString("1.0")
-    )
+  override def asJsonObject: JObject =
+    ("type" -> "integer") ~
+    ("description" -> "") ~
+    ("caDSR" -> "") ~
+    ("caDSRVersion" -> "1.0")
 }
 
+/** A NumberField models a field that can only contain numeric values. We model those in BigDecimal for
+  * precision, but in practice we'll probably treat these as strings and rely on downstream tools to
+  * interpret them correctly.
+  */
 case class NumberField(
   override val name: String,
   override val uniqueValues: Set[String],
   override val required: Boolean,
+  /** The smallest and largest values in this field. */
   min: BigDecimal,
   max: BigDecimal
 ) extends MappingField(name, uniqueValues) {
@@ -233,15 +236,14 @@ case class NumberField(
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values between ${min} and ${max})"
   }
 
-  override def asJsonSchema: JObject =
-    JObject(
-      "type" -> JString("number"),
-      "description" -> JString(""),
-      "caDSR" -> JString(""),
-      "caDSRVersion" -> JString("1.0")
-    )
+  override def asJsonObject: JObject =
+    ("type" -> "number") ~
+    ("description" -> "") ~
+    ("caDSR" -> "") ~
+    ("caDSRVersion" -> "1.0")
 }
 
+/** An empty field is one that consists solely of blanks. */
 case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
   override def asJsonObject: JObject =
