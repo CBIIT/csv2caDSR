@@ -46,19 +46,19 @@
           "value":"7",
           "description":"Alive",
           "caDSRValue":"Alive",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C37987"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C37987"
         },
         {
           "value":"8",
           "description":"Dead",
           "caDSRValue":"Dead",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C28554"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28554"
         },
         {
           "value":"9",
           "description":"Follow-Up",
           "caDSRValue":"Lost to Follow-up(LTF)",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C16033"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16033"
         }
       ]
     },
@@ -120,13 +120,13 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49487"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C49488"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
         },
         {
           "value":"",
@@ -161,31 +161,31 @@
           "value":"2",
           "description":"Residual Cancer Burden Class 2",
           "caDSRValue":"RCB-II",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160727"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C160727"
         },
         {
           "value":"0",
           "description":"Residual Cancer Burden Class 0",
           "caDSRValue":"RCB-0",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160725"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C160725"
         },
         {
           "value":"3",
           "description":"Residual Cancer Burden Class 3",
           "caDSRValue":"RCB-III",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160728"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C160728"
         },
         {
           "value":"",
           "description":"Source Data Not Available",
           "caDSRValue":"Data not available",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C67329"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C67329"
         },
         {
           "value":"1",
           "description":"Residual Cancer Burden Class 1",
           "caDSRValue":"RCB-I",
-          "conceptURI":"https://ncit.nci.nih.gov/ncitbrowser/pages/concept_details.jsf?dictionary=NCI+Thesaurus&code=C160726"
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C160726"
         }
       ]
     }
