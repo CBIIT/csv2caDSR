@@ -38,12 +38,12 @@
       "@type":"xsd:string"
     }
   },
-  "schema:name":"csv2caDSR CEDAR Instance Export (2020-11-23T22:33:57.804Z)",
-  "schema:description":"csv2caDSR CEDAR Instance Export (2020-11-23T22:33:57.804Z)",
-  "schema:isBasedOn":"https://repo.metadatacenter.org/templates/1b44a42e-31f2-4429-8825-999544fd7e28",
+  "schema:name":"csv2caDSR CEDAR Instance Export (2020-12-01T03:51:17.951Z)",
+  "schema:description":"csv2caDSR CEDAR Instance Export (2020-12-01T03:51:17.951Z)",
+  "schema:isBasedOn":"",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:createdOn":"2020-11-23T22:33:57.804Z",
-  "pav:lastUpdatedOn":"2020-11-23T22:33:57.804Z",
+  "pav:createdOn":"2020-12-01T03:51:17.951Z",
+  "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z",
   "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
   "SUBJECTID":{
     "@value":"1231",
@@ -59,7 +59,7 @@
   },
   "race_id":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
-    "rdfs:label":"White"
+    "rdfs:label":"5"
   },
   "ERpos":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",

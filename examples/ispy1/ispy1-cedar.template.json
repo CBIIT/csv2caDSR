@@ -28,13 +28,13 @@
   "additionalProperties":false,
   "$schema":"http://json-schema.org/draft-04/schema#",
   "@type":"https://schema.metadatacenter.org/core/Template",
-  "title":"csv2caDSR CEDAR Template Export (2020-11-21T02:02:25.143Z)",
+  "title":"csv2caDSR CEDAR Template Export (2020-12-01T03:51:17.951Z)",
   "description":"csv2caDSR CEDAR Template Export from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "schema:name":"csv2caDSR CEDAR Template Export (2020-11-21T02:02:25.143Z)",
+  "schema:name":"csv2caDSR CEDAR Template Export (2020-12-01T03:51:17.951Z)",
   "schema:description":"CEDAR Template Export based on harmonized data from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "pav:createdOn":"2020-11-21T02:02:25.143Z",
+  "pav:createdOn":"2020-12-01T03:51:17.951Z",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z",
+  "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z",
   "bibo:status":"bibo:draft",
   "pav:version":"0.0.1",
   "schema:schemaVersion":"1.6.0",
@@ -64,7 +64,7 @@
       "SUBJECTID":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
       "DataExtractDt":"Date clinical data was downloaded from the CALGB database",
       "age":"Patient Age",
-      "race_id":"Major living subspecies of man differentiated by genetic and physical characteristics. There are four racial groups: Australoid, Caucasoid, Mongoloid, and Negroid.",
+      "race_id":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
       "ERpos":"The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells.",
       "PgRpos":"The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells.",
       "HR Pos":"the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor.",
@@ -328,9 +328,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "DataExtractDt":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -404,9 +404,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "age":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -476,9 +476,9 @@
       },
       "required":["@value"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "race_id":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -536,7 +536,7 @@
       },
       "@id":"http://ggvaidya.com/csv2caDSR/export#race_id",
       "schema:name":"race_id",
-      "schema:description":"Major living subspecies of man differentiated by genetic and physical characteristics. There are four racial groups: Australoid, Caucasoid, Mongoloid, and Negroid.",
+      "schema:description":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
       "skos:prefLabel":"race_id",
       "title":"race_id field schema",
       "description":"race_id field schema generated by csv2caDSR",
@@ -549,21 +549,21 @@
         "valueSets":[],
         "classes":[{
           "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
-          "prefLabel":"White",
+          "prefLabel":"5",
           "type":"OntologyClass",
-          "label":"White",
+          "label":"5",
           "source":"NCIT"
         },{
           "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352",
-          "prefLabel":"Black or African American",
+          "prefLabel":"3",
           "type":"OntologyClass",
-          "label":"Black or African American",
+          "label":"3",
           "source":"NCIT"
         },{
           "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260",
-          "prefLabel":"Asian",
+          "prefLabel":"2",
           "type":"OntologyClass",
-          "label":"Asian",
+          "label":"2",
           "source":"NCIT"
         },{
           "uri":"",
@@ -573,24 +573,24 @@
           "source":"NCIT"
         },{
           "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998",
-          "prefLabel":"Unknown",
+          "prefLabel":"0",
           "type":"OntologyClass",
-          "label":"Unknown",
+          "label":"0",
           "source":"NCIT"
         },{
           "uri":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219",
-          "prefLabel":"Native Hawaiian or Other Pacific Islander",
+          "prefLabel":"4",
           "type":"OntologyClass",
-          "label":"Native Hawaiian or Other Pacific Islander",
+          "label":"4",
           "source":"NCIT"
         }],
         "branches":[],
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "ERpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -676,9 +676,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "PgRpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -764,9 +764,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "HR Pos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -852,9 +852,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "Her2MostPos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -940,9 +940,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "HR_HER2_CATEGORY":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1016,9 +1016,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "HR_HER2_STATUS":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1092,9 +1092,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "BilateralCa":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1180,9 +1180,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "Laterality":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1268,9 +1268,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "MRI LD Baseline":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1341,9 +1341,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "MRI LD 1-3dAC":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1414,9 +1414,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "MRI LD InterReg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1487,9 +1487,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     },
     "MRI LD PreSurg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1560,9 +1560,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-11-21T02:02:25.143Z",
+      "pav:createdOn":"2020-12-01T03:51:17.951Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-11-21T02:02:25.143Z"
+      "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z"
     }
   }
 }

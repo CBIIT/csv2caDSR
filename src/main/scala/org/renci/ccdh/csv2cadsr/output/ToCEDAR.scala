@@ -27,7 +27,7 @@ object ToCEDAR {
   // These constants should be made configurable in the future.
   val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
-  val createInFolder = "https://repo.metadatacenter.org/folders/57b517b7-85ba-4f02-91f9-5d22a23fd6dd"
+  val createInFolder = "https://repo.metadatacenter.org/folders/e30aacf7-9b2b-4391-8cb0-cc8090420788"
 
   case class CEDARClassConstraint(
     uri: String,
@@ -48,7 +48,8 @@ object ToCEDAR {
     reader: CSVReader,
     properties: Map[String, JValue],
     cedarBasename: File,
-    uploadToCedar: Boolean
+    uploadToCedar: Boolean,
+    cedarUploadFolderURL: Option[String] = None
   ): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
@@ -67,25 +68,6 @@ object ToCEDAR {
     // Step 1. Create a CEDAR Template for the harmonization information.
     // TODO none of this quite makes sense, which I suspect is bugs in the way CEDAR generates these files.
     // Once we have a working file, we should simplify this file as much as possible to see what is minimally required.
-    val baseCEDARTemplate =
-      ("@context" ->
-        // Prefixes.
-        ("oslc" -> "http://open-services.net/ns/core#") ~
-          ("schema" -> "http://schema.org/") ~
-          ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
-          ("bibo" -> "http://purl.org/ontology/bibo/") ~
-          ("pav" -> "http://purl.org/pav/") ~
-
-          // Standard properties.
-          ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
-          ("pav:createdBy" -> ("@type" -> "@id")) ~
-          ("schema:name" -> ("@type" -> "xsd:string")) ~
-          ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
-          ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
-          ("schema:description" -> ("@type" -> "xsd:string"))) ~
-        ("type" -> "object") ~
-        ("additionalProperties" -> false)
-
     val cedarTemplateBaseProperties =
       ("schema:isBasedOn" ->
         ("type" -> "string") ~
@@ -378,7 +360,7 @@ object ToCEDAR {
     val cedarTemplateProperties = cedarTemplateBaseProperties ~ cedarTemplatePropertiesForCols
 
     /* Step 1.3. Create the full CEDAR template */
-    val baseCEDARTemplate =
+    val baseCEDARTemplate: JObject =
       ("@context" ->
         // Prefixes.
         ("oslc" -> "http://open-services.net/ns/core#") ~
@@ -397,7 +379,7 @@ object ToCEDAR {
         ("type" -> "object") ~
         ("additionalProperties" -> false)
 
-    val cedarTemplate = baseCEDARTemplate ~
+    val cedarTemplate: JObject = baseCEDARTemplate ~
       ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
       ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
       ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~ // This appears to be ignored.
@@ -410,7 +392,17 @@ object ToCEDAR {
       ("bibo:status" -> "bibo:draft") ~
       ("pav:version" -> "0.0.1") ~
       ("schema:schemaVersion" -> "1.6.0") ~
-      ("required" -> required) ~
+      ("required" -> ((Seq(
+        "@context",
+        "@id",
+        "schema:isBasedOn",
+        "schema:name",
+        "schema:description",
+        "pav:createdOn",
+        "pav:createdBy",
+        "pav:lastUpdatedOn",
+        "oslc:modifiedBy"
+      ) ++ headerRow) map (JString(_)))) ~
       ("_ui" -> (
         ("order" -> headerRow) ~
           ("pages" -> JArray(List())) ~
@@ -434,8 +426,8 @@ object ToCEDAR {
       val response = requests.post(
         "https://resource.metadatacenter.org/templates",
         data = pretty(render(cedarTemplate)),
-        params = if (createInFolder == null) Map() else Map(
-          "folder_id" -> createInFolder
+        params = if (cedarUploadFolderURL.isEmpty) Map() else Map(
+          "folder_id" -> cedarUploadFolderURL.head
         ),
         headers = Map("Authorization" -> s"apiKey $apiKey"),
         check = false // Don't throw exceptions on HTTP error -- let us handle it.
