@@ -27,9 +27,13 @@ case class CommandLineOptions(
   toPfb: Option[String],
   @HelpMessage("The filename prefix used to write harmonized data as CEDAR instance data")
   toCedar: Option[String],
-  @HelpMessage("Should we attempt to upload the harmonized data to CEDAR? (requires a ~/.cedar.properties file with an apiKey property)")
+  @HelpMessage(
+    "Should we attempt to upload the harmonized data to CEDAR? (requires a ~/.cedar.properties file with an apiKey property)"
+  )
   uploadToCedar: Boolean = false,
-  @HelpMessage("If uploaded to the CEDAR workbench, specify the folder that it should be uploaded to")
+  @HelpMessage(
+    "If uploaded to the CEDAR workbench, specify the folder that it should be uploaded to"
+  )
   cedarUploadFolderUrl: Option[String] = None
 )
 
@@ -135,7 +139,14 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         val csvReader = CSVReader.open(csvSource)
         val uploadToCedar = opt.uploadToCedar
         val cedarFolderURL = opt.cedarUploadFolderUrl
-        output.ToCEDAR.writeCEDAR(csvFile, csvReader, properties, cedarPrefix, uploadToCedar, cedarFolderURL)
+        output.ToCEDAR.writeCEDAR(
+          csvFile,
+          csvReader,
+          properties,
+          cedarPrefix,
+          uploadToCedar,
+          cedarFolderURL
+        )
         scribe.info(s"Wrote output as CEDAR file to prefix ${cedarPrefix}.")
       }
 
