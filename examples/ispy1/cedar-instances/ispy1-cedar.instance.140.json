@@ -38,12 +38,12 @@
       "@type":"xsd:string"
     }
   },
-  "schema:name":"csv2caDSR CEDAR Instance Export (2020-12-01T03:51:17.951Z)",
-  "schema:description":"csv2caDSR CEDAR Instance Export (2020-12-01T03:51:17.951Z)",
-  "schema:isBasedOn":"",
+  "schema:name":"csv2caDSR CEDAR Instance Export (2020-12-01T04:04:05.951Z)",
+  "schema:description":"csv2caDSR CEDAR Instance Export (2020-12-01T04:04:05.951Z)",
+  "schema:isBasedOn":"https://repo.metadatacenter.org/templates/de84dadd-3a4a-498a-82fe-2c1e4baba6df",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:createdOn":"2020-12-01T03:51:17.951Z",
-  "pav:lastUpdatedOn":"2020-12-01T03:51:17.951Z",
+  "pav:createdOn":"2020-12-01T04:04:05.951Z",
+  "pav:lastUpdatedOn":"2020-12-01T04:04:05.951Z",
   "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
   "SUBJECTID":{
     "@value":"1155",

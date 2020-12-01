@@ -27,7 +27,6 @@ object ToCEDAR {
   // These constants should be made configurable in the future.
   val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
-  val createInFolder = "https://repo.metadatacenter.org/folders/e30aacf7-9b2b-4391-8cb0-cc8090420788"
 
   case class CEDARClassConstraint(
     uri: String,
@@ -558,8 +557,8 @@ object ToCEDAR {
           val response = requests.post(
             "https://resource.metadatacenter.org/template-instances",
             data = pretty(render(cedarInstance)),
-            params = if (createInFolder == null) Map() else Map(
-              "folder_id" -> createInFolder
+            params = if (cedarUploadFolderURL.isEmpty) Map() else Map(
+              "folder_id" -> cedarUploadFolderURL.head
             ),
             headers = Map("Authorization" -> s"apiKey $apiKey"),
             check = false // Don't throw exceptions on HTTP error -- let us handle it.
