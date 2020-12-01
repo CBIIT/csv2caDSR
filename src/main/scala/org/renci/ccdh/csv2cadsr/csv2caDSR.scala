@@ -1,17 +1,15 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, File, FileWriter, OutputStreamWriter}
+import java.io.{BufferedWriter, File, FileWriter}
 
 import com.github.tototoshi.csv.CSVReader
-import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
+import org.json4s.{JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods.parse
 import caseapp._
 import org.json4s
-
-import scala.collection.immutable.HashMap
 
 @AppName("csv2caDSR")
 @AppVersion("0.1.0")
@@ -94,7 +92,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     val properties: Map[String, json4s.JValue] = (jsonRoot \ "properties") match {
       case obj: JObject => obj.obj.toMap
-      case _ => throw new RuntimeException("JSON source is not a JSON object")
+      case _            => throw new RuntimeException("JSON source is not a JSON object")
     }
 
     // Load the CSV data file.
@@ -120,11 +118,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         // Generate the PFB!
         val pfbOutputFile = new File(pfbOutputFilename)
         val reader = CSVReader.open(csvSource)
-        output.ToPFB.writePFB(
-          reader,
-          properties,
-          pfbOutputFile
-        )
+        output.ToPFB.writePFB(reader, properties, pfbOutputFile)
         scribe.info(s"Wrote output as PFB file to ${pfbOutputFile}.")
       }
 

@@ -27,18 +27,25 @@ object ToCEDAR {
   val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
   val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
 
-  def writeCEDAR(inputFile: File, reader: CSVReader, properties: Map[String, JValue], cedarBasename: File): Unit = {
+  def writeCEDAR(
+    inputFile: File,
+    reader: CSVReader,
+    properties: Map[String, JValue],
+    cedarBasename: File
+  ): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
     // Load CEDAR apiKey for POST requests.
-    val propertiesFile = new File(System.getProperty("user.home"),".cedar.properties")
+    val propertiesFile = new File(System.getProperty("user.home"), ".cedar.properties")
     val utilProperties = new java.util.Properties()
     utilProperties.load(new FileReader(propertiesFile))
     val apiKey = utilProperties.getOrDefault("apiKey", "").asInstanceOf[String]
-    if (apiKey.isEmpty) throw new RuntimeException(s"No apiKey present in config file $propertiesFile.")
+    if (apiKey.isEmpty)
+      throw new RuntimeException(s"No apiKey present in config file $propertiesFile.")
 
     // Create templates.
-    val pavCreatedOn = DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
+    val pavCreatedOn =
+      DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
 
     // Step 1. Create a CEDAR Template for the harmonization information.
     // TODO none of this quite makes sense, which I suspect is bugs in the way CEDAR generates these files.
@@ -47,251 +54,224 @@ object ToCEDAR {
       ("@context" ->
         // Prefixes.
         ("oslc" -> "http://open-services.net/ns/core#") ~
-        ("schema" -> "http://schema.org/") ~
-        ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
-        ("bibo" -> "http://purl.org/ontology/bibo/") ~
-        ("pav" -> "http://purl.org/pav/") ~
+          ("schema" -> "http://schema.org/") ~
+          ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
+          ("bibo" -> "http://purl.org/ontology/bibo/") ~
+          ("pav" -> "http://purl.org/pav/") ~
 
-        // Standard properties.
-        ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
-        ("pav:createdBy" -> ("@type" -> "@id")) ~
-        ("schema:name" -> ("@type" -> "xsd:string")) ~
-        ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
-        ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
-        ("schema:description" -> ("@type" -> "xsd:string"))
-      ) ~
-      ("type" -> "object") ~
-      ("additionalProperties" -> false)
+          // Standard properties.
+          ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
+          ("pav:createdBy" -> ("@type" -> "@id")) ~
+          ("schema:name" -> ("@type" -> "xsd:string")) ~
+          ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
+          ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
+          ("schema:description" -> ("@type" -> "xsd:string"))) ~
+        ("type" -> "object") ~
+        ("additionalProperties" -> false)
 
     val cedarTemplateBaseProperties =
       ("schema:isBasedOn" ->
         ("type" -> "string") ~
-        ("format" -> "uri")
-      ) ~
-      ("schema:name" ->
-        ("type" -> "string") ~
-        ("minLength" -> 1)
-      ) ~
-      ("pav:createdBy" ->
-        ("type" -> List("string", "null")) ~
-        ("format" -> "uri")
-      ) ~
-      ("pav:createdOn" -> (
-        ("type" -> List("string", "null")) ~
-        ("format" -> "date-time")
-      )) ~
-      ("pav:lastUpdatedOn" -> (
-        ("type" -> List("string", "null")) ~
-        ("format" -> "date-time")
-      )) ~
-      ("oslc:modifiedBy" -> (
-        ("type" -> List("string", "null")) ~
-        ("format" -> "uri")
-      )) ~
-      ("pav:derivedFrom" -> (
-        ("type" -> "string") ~
-        ("format" -> "uri")
-      )) ~
-      ("@id" -> (
-        ("type" -> List("string", "null")) ~
-        ("format" -> "uri")
-      )) ~
-      ("schema:description" -> ("type" -> "string")) ~
-      ("@type" ->
-        ("oneOf" -> JArray(List(
-        ("type" -> "string") ~
-        ("format" -> "uri"),
-        ("minItems" -> 1) ~
-        ("type" -> "array") ~
-        ("uniqueItems" -> true) ~
-        ("items" -> (
+          ("format" -> "uri")) ~
+        ("schema:name" ->
           ("type" -> "string") ~
-          ("format" -> "uri")
-        )
-      ))))) ~
+            ("minLength" -> 1)) ~
+        ("pav:createdBy" ->
+          ("type" -> List("string", "null")) ~
+            ("format" -> "uri")) ~
+        ("pav:createdOn" -> (
+          ("type" -> List("string", "null")) ~
+            ("format" -> "date-time")
+        )) ~
+        ("pav:lastUpdatedOn" -> (
+          ("type" -> List("string", "null")) ~
+            ("format" -> "date-time")
+        )) ~
+        ("oslc:modifiedBy" -> (
+          ("type" -> List("string", "null")) ~
+            ("format" -> "uri")
+        )) ~
+        ("pav:derivedFrom" -> (
+          ("type" -> "string") ~
+            ("format" -> "uri")
+        )) ~
+        ("@id" -> (
+          ("type" -> List("string", "null")) ~
+            ("format" -> "uri")
+        )) ~
+        ("schema:description" -> ("type" -> "string")) ~
+        ("@type" ->
+          ("oneOf" -> JArray(
+            List(
+              ("type" -> "string") ~
+                ("format" -> "uri"),
+              ("minItems" -> 1) ~
+                ("type" -> "array") ~
+                ("uniqueItems" -> true) ~
+                ("items" -> (
+                  ("type" -> "string") ~
+                    ("format" -> "uri")
+                ))
+            )
+          ))) ~
         ("@context" ->
           ("additionalProperties" -> false) ~
-          ("type" -> "object") ~
-          ("required" -> List(
-            "xsd",
-            "pav",
-            "schema",
-            "oslc",
-            "schema:isBasedOn",
-            "schema:name",
-            "schema:description",
-            "pav:createdOn",
-            "pav:createdBy",
-            "pav:lastUpdatedOn",
-            "oslc:modifiedBy"
-          )) ~
-          ("properties" ->
-            ("schema:isBasedOn" -> (
-              ("type" -> "object") ~
-              ("properties" -> (
-                "@type" -> (
-                  ("enum" -> List("@id")) ~
-                  ("type" -> "string")
-                )
-              ))
+            ("type" -> "object") ~
+            ("required" -> List(
+              "xsd",
+              "pav",
+              "schema",
+              "oslc",
+              "schema:isBasedOn",
+              "schema:name",
+              "schema:description",
+              "pav:createdOn",
+              "pav:createdBy",
+              "pav:lastUpdatedOn",
+              "oslc:modifiedBy"
             )) ~
-            ("schema:name" -> (
-              ("type" -> "object") ~
-              ("properties" -> (
-                "@type" -> (
-                  ("enum" -> List("xsd:string")) ~
-                  ("type" -> "string")
-                )
-              ))
-            )) ~
-            ("schema" ->
-              ("enum" -> List("http://schema.org/")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("pav" ->
-              ("enum" -> List("http://purl.org/pav/")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("xsd" ->
-              ("enum" -> List("http://www.w3.org/2001/XMLSchema#")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("oslc" ->
-              ("enum" -> List("http://open-services.net/ns/core#")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("rdfs" ->
-              ("enum" -> List("http://www.w3.org/2000/01/rdf-schema#")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("oslc:modifiedBy" ->
-              ("type" -> "object") ~
-              ("properties" ->
-                ("@type" -> (
-                  ("enum" -> List("@id")) ~
-                  ("type" -> "string")
-                ))
-              )
-            ) ~
-            ("rdfs:label" ->
-              ("type" -> "object") ~
-              ("properties" ->
-                ("@type" ->
-                  ("enum" -> List("xsd:string")) ~
-                  ("type" -> "string")
-                )
-              )
-            ) ~
-            ("pav:derivedFrom" ->
-              ("type" -> "object") ~
-              ("properties" -> (
-                ("@type" -> (
-                  ("enum" -> List("@id")) ~
-                  ("type" -> "string")
-                ))
-              ))
-            ) ~
-            ("skos" ->
-              ("enum" -> List("http://www.w3.org/2004/02/skos/core#")) ~
-              ("type" -> "string") ~
-              ("format" -> "uri")
-            ) ~
-            ("schema:description" -> (
-              ("type" -> "object") ~
-              ("properties" -> (
-                ("@type" ->
-                  ("enum" -> List("xsd:string")) ~
-                    ("type" -> "string")
-                  )
-                )
-              )
-            )) ~
-            ("pav:lastUpdatedOn" ->
-              ("type" -> "object") ~
-              ("properties" ->
-                ("@type" -> (
-                  ("enum" -> List("xsd:dateTime")) ~
-                  ("type" -> "string")
-                ))
-              )
-            ) ~
-            ("pav:createdOn" ->
-              ("type" -> "object") ~
-              ("properties" -> ("@type" -> (
-                ("enum" -> List("xsd:dateTime")) ~
-                ("type" -> "string")
-              )))
-            ) ~
-            ("skos:notation" -> (
-              ("type" -> "object") ~
-              ("properties" -> (
-                ("@type" ->
-                  ("enum" -> List("xsd:string")) ~
-                    ("type" -> "string")
-                  )
-                )
-              )
-            )) ~
-            ("id" ->
-              ("enum" -> List("http://purl.org/dc/terms/identifier"))
-            ) ~
-            ("pav:createdBy" -> (
-              ("type" -> "object") ~
-              ("properties" -> (
-                ("@type" -> (
-                  ("enum" -> List("@id")) ~
-                  ("type" -> "string")
-                ))
-              ))
-            ))
-          )
-        )
+            ("properties" ->
+              ("schema:isBasedOn" -> (
+                ("type" -> "object") ~
+                  ("properties" -> (
+                    "@type" -> (
+                      ("enum" -> List("@id")) ~
+                        ("type" -> "string")
+                    )
+                  ))
+              )) ~
+                ("schema:name" -> (
+                  ("type" -> "object") ~
+                    ("properties" -> (
+                      "@type" -> (
+                        ("enum" -> List("xsd:string")) ~
+                          ("type" -> "string")
+                      )
+                    ))
+                )) ~
+                ("schema" ->
+                  ("enum" -> List("http://schema.org/")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("pav" ->
+                  ("enum" -> List("http://purl.org/pav/")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("xsd" ->
+                  ("enum" -> List("http://www.w3.org/2001/XMLSchema#")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("oslc" ->
+                  ("enum" -> List("http://open-services.net/ns/core#")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("rdfs" ->
+                  ("enum" -> List("http://www.w3.org/2000/01/rdf-schema#")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("oslc:modifiedBy" ->
+                  ("type" -> "object") ~
+                    ("properties" ->
+                      ("@type" -> (
+                        ("enum" -> List("@id")) ~
+                          ("type" -> "string")
+                      )))) ~
+                ("rdfs:label" ->
+                  ("type" -> "object") ~
+                    ("properties" ->
+                      ("@type" ->
+                        ("enum" -> List("xsd:string")) ~
+                          ("type" -> "string")))) ~
+                ("pav:derivedFrom" ->
+                  ("type" -> "object") ~
+                    ("properties" -> (
+                      ("@type" -> (
+                        ("enum" -> List("@id")) ~
+                          ("type" -> "string")
+                      ))
+                    ))) ~
+                ("skos" ->
+                  ("enum" -> List("http://www.w3.org/2004/02/skos/core#")) ~
+                    ("type" -> "string") ~
+                    ("format" -> "uri")) ~
+                ("schema:description" -> (
+                  ("type" -> "object") ~
+                    ("properties" -> (
+                      ("@type" ->
+                        ("enum" -> List("xsd:string")) ~
+                          ("type" -> "string"))
+                    ))
+                )) ~
+                ("pav:lastUpdatedOn" ->
+                  ("type" -> "object") ~
+                    ("properties" ->
+                      ("@type" -> (
+                        ("enum" -> List("xsd:dateTime")) ~
+                          ("type" -> "string")
+                      )))) ~
+                ("pav:createdOn" ->
+                  ("type" -> "object") ~
+                    ("properties" -> ("@type" -> (
+                      ("enum" -> List("xsd:dateTime")) ~
+                        ("type" -> "string")
+                    )))) ~
+                ("skos:notation" -> (
+                  ("type" -> "object") ~
+                    ("properties" -> (
+                      ("@type" ->
+                        ("enum" -> List("xsd:string")) ~
+                          ("type" -> "string"))
+                    ))
+                )) ~
+                ("id" ->
+                  ("enum" -> List("http://purl.org/dc/terms/identifier"))) ~
+                ("pav:createdBy" -> (
+                  ("type" -> "object") ~
+                    ("properties" -> (
+                      ("@type" -> (
+                        ("enum" -> List("@id")) ~
+                          ("type" -> "string")
+                      ))
+                    ))
+                ))))
 
     var propertyDescriptions = JObject()
-    val cedarTemplatePropertiesForCols = headerRow flatMap { colName => {
+    val cedarTemplatePropertiesForCols = headerRow flatMap { colName =>
+      {
         properties.get(colName) match {
           case Some(prop: JObject) => {
             // Convert property from our format to that used by CEDAR templates.
             val property = {
               ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
-              ("@context" ->
-                ("schema" -> "http://schema.org/") ~
-                ("pav" -> "http://purl.org/pav/") ~
-                ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
-                ("bibo" -> "http://purl.org/ontology/bibo/") ~
-                ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
-                ("oslc" -> "http://open-services.net/ns/core#") ~
+                ("@context" ->
+                  ("schema" -> "http://schema.org/") ~
+                    ("pav" -> "http://purl.org/pav/") ~
+                    ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
+                    ("bibo" -> "http://purl.org/ontology/bibo/") ~
+                    ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
+                    ("oslc" -> "http://open-services.net/ns/core#") ~
 
-                ("schema:name" ->  ("@type" -> "xsd:string")) ~
-                ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
-                ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
-                ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
-                ("skos:prefLabel" -> ("@type" -> "xsd:string")) ~
-                ("skos:altLabel" -> ("@type" -> "xsd:string")) ~
-                ("schema:description" -> ("@type" -> "xsd:string")) ~
-                ("pav:createdBy" -> ("@type" -> "@id"))
-              ) ~
-              ("@type" -> "https://schema.metadatacenter.org/core/TemplateField") ~
-              ("schema:schemaVersion" -> "1.6.0") ~
-              ("additionalProperties" -> false) ~
-              ("type" -> "object") ~
-              ("properties" -> (
-                ("@value" ->
-                  ("type" -> List("string", "null"))
-                ) ~
-                ("rdfs:label" ->
-                  ("type" -> List("string", "null"))
-                ) ~
-                ("@type" ->
-                  ("type" -> "string") ~
-                  ("format" -> "uri")
-                )
-                /* This is the definition of an array
+                    ("schema:name" -> ("@type" -> "xsd:string")) ~
+                    ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
+                    ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
+                    ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
+                    ("skos:prefLabel" -> ("@type" -> "xsd:string")) ~
+                    ("skos:altLabel" -> ("@type" -> "xsd:string")) ~
+                    ("schema:description" -> ("@type" -> "xsd:string")) ~
+                    ("pav:createdBy" -> ("@type" -> "@id"))) ~
+                ("@type" -> "https://schema.metadatacenter.org/core/TemplateField") ~
+                ("schema:schemaVersion" -> "1.6.0") ~
+                ("additionalProperties" -> false) ~
+                ("type" -> "object") ~
+                ("properties" -> (
+                  ("@value" ->
+                    ("type" -> List("string", "null"))) ~
+                    ("rdfs:label" ->
+                      ("type" -> List("string", "null"))) ~
+                    ("@type" ->
+                      ("type" -> "string") ~
+                        ("format" -> "uri"))
+                  /* This is the definition of an array
                   "oneOf" -> JArray(List(
                     ("type" -> "string") ~
                     ("format" -> "uri"),
@@ -306,34 +286,36 @@ object ToCEDAR {
                 ("rdfs:label" ->
                   ("type" -> List("string", "null"))
                 )
-                */
-              )) ~
-              // Field information.
-              ("@id" -> (baseURI + colName.replaceAll("\\W", "_"))) ~
-              ("_ui" -> ("inputType" -> "textfield")) ~
-              ("schema:name" -> colName) ~
-              ("schema:description" -> prop \ "description") ~
-              ("required" -> JArray(List("@value", "@type"))) ~
-              ("skos:prefLabel" -> colName) ~
-              ("title" -> s"$colName field schema") ~
-              ("description" -> s"$colName field schema generated by csv2caDSR") ~
-              // Value information.
-              ("_valueConstraints" -> (
-                "requiredValue" -> false
-              )) ~
-              // Field metadata.
-              ("pav:createdBy" -> pavCreatedBy) ~
-              ("pav:createdOn" -> pavCreatedOn) ~
-              ("oslc:modifiedBy" -> pavCreatedBy) ~
-              ("pav:lastUpdatedOn" -> pavCreatedOn)
+                   */
+                )) ~
+                // Field information.
+                ("@id" -> (baseURI + colName.replaceAll("\\W", "_"))) ~
+                ("_ui" -> ("inputType" -> "textfield")) ~
+                ("schema:name" -> colName) ~
+                ("schema:description" -> prop \ "description") ~
+                ("required" -> JArray(List("@value", "@type"))) ~
+                ("skos:prefLabel" -> colName) ~
+                ("title" -> s"$colName field schema") ~
+                ("description" -> s"$colName field schema generated by csv2caDSR") ~
+                // Value information.
+                ("_valueConstraints" -> (
+                  "requiredValue" -> false
+                )) ~
+                // Field metadata.
+                ("pav:createdBy" -> pavCreatedBy) ~
+                ("pav:createdOn" -> pavCreatedOn) ~
+                ("oslc:modifiedBy" -> pavCreatedBy) ~
+                ("pav:lastUpdatedOn" -> pavCreatedOn)
             }
 
             propertyDescriptions = propertyDescriptions ~ (colName -> (prop \ "description"))
 
             Some(JField(colName, property))
           }
-          case Some(unk) => throw new RuntimeException(s"Unknown object in property information: $unk.")
-          case None => throw new RuntimeException(s"Property $colName not present in JSON mapping file.")
+          case Some(unk) =>
+            throw new RuntimeException(s"Unknown object in property information: $unk.")
+          case None =>
+            throw new RuntimeException(s"Property $colName not present in JSON mapping file.")
           case unk => throw new RuntimeException(s"Property $colName has unexpected object: $unk.")
         }
       }
@@ -344,8 +326,7 @@ object ToCEDAR {
     // scribe.info(s"cedarTemplatePropertiesForCols = ${pretty(render(cedarTemplatePropertiesForCols))}")
     // scribe.info(s"cedarTemplateProperties ${pretty(render(cedarTemplateProperties))}")
 
-
-            /*
+    /*
               val fieldType: String = property.values.get("type").flatMap({
                 case str: JString => Some(str.s)
                 case _ => None
@@ -420,88 +401,86 @@ object ToCEDAR {
       "oslc:modifiedBy"
     ) ++ headerRow) map (JString(_))
 
-          val cedarTemplate = baseCEDARTemplate ~
-            ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
-            ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
-            ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~ // This appears to be ignored.
-            ("description" -> s"csv2caDSR CEDAR Template Export from ${inputFile}") ~
-            ("schema:name" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~
-            ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputFile}") ~
-            ("pav:createdOn" -> pavCreatedOn) ~
-            ("pav:createdBy" -> pavCreatedBy) ~
-            ("pav:lastUpdatedOn" -> pavCreatedOn) ~
-            ("bibo:status" -> "bibo:draft") ~
-            ("pav:version" -> "0.0.1") ~
-            ("schema:schemaVersion" -> "1.6.0") ~
-            ("required" -> required) ~
-            ("_ui" -> (
-              ("order" -> headerRow) ~
-                ("pages" -> JArray(List())) ~
-                ("propertyLabels" -> JObject(headerRow.map(rowName => (rowName, JString(rowName))))) ~
-                ("propertyDescriptions" -> propertyDescriptions)
-            )) ~
-            ("properties" -> cedarTemplateProperties)
+    val cedarTemplate = baseCEDARTemplate ~
+      ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
+      ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
+      ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~ // This appears to be ignored.
+      ("description" -> s"csv2caDSR CEDAR Template Export from ${inputFile}") ~
+      ("schema:name" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~
+      ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputFile}") ~
+      ("pav:createdOn" -> pavCreatedOn) ~
+      ("pav:createdBy" -> pavCreatedBy) ~
+      ("pav:lastUpdatedOn" -> pavCreatedOn) ~
+      ("bibo:status" -> "bibo:draft") ~
+      ("pav:version" -> "0.0.1") ~
+      ("schema:schemaVersion" -> "1.6.0") ~
+      ("required" -> required) ~
+      ("_ui" -> (
+        ("order" -> headerRow) ~
+          ("pages" -> JArray(List())) ~
+          ("propertyLabels" -> JObject(headerRow.map(rowName => (rowName, JString(rowName))))) ~
+          ("propertyDescriptions" -> propertyDescriptions)
+      )) ~
+      ("properties" -> cedarTemplateProperties)
 
-          // Write out "$cedarBasename.template.json".
-          val templateFilename = new File(cedarBasename.getAbsolutePath + ".template.json")
-          val templateWriter = new FileWriter(templateFilename)
-          templateWriter.append(pretty(render(cedarTemplate)))
-          templateWriter.close()
+    // Write out "$cedarBasename.template.json".
+    val templateFilename = new File(cedarBasename.getAbsolutePath + ".template.json")
+    val templateWriter = new FileWriter(templateFilename)
+    templateWriter.append(pretty(render(cedarTemplate)))
+    templateWriter.close()
 
-          // POST this to CEDAR.
-          // Uses API as https://resource.metadatacenter.org/api/#!/Templates/post_templates
-          val response = requests.post("https://resource.metadatacenter.org/templates",
-            data = pretty(render(cedarTemplate)),
-            // "folder_id" ->
-            headers = Map(
-              "Authorization" -> s"apiKey $apiKey"
-            ),
-            check = false // Don't throw exceptions on HTTP error -- let us handle it.
-          )
-          if (response.statusCode == 200) {
-            scribe.info("Template successfully uploaded!")
-          } else {
-            scribe.error(s"Could not upload template: ${response.statusCode} ${response.statusMessage}")
-            scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
-            return
-          }
+    // POST this to CEDAR.
+    // Uses API as https://resource.metadatacenter.org/api/#!/Templates/post_templates
+    val response = requests.post(
+      "https://resource.metadatacenter.org/templates",
+      data = pretty(render(cedarTemplate)),
+      // "folder_id" ->
+      headers = Map("Authorization" -> s"apiKey $apiKey"),
+      check = false // Don't throw exceptions on HTTP error -- let us handle it.
+    )
+    if (response.statusCode == 200) {
+      scribe.info("Template successfully uploaded!")
+    } else {
+      scribe.error(s"Could not upload template: ${response.statusCode} ${response.statusMessage}")
+      scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
+      return
+    }
 
-          // Step 2. Create a CEDAR Instance for each row in the input data.
-          val baseCEDARInstance =
-            ("@context" ->
-              // Prefixes
-              ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
-                ("pav" -> "http://purl.org/pav/") ~
-                ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
-                ("schema" -> "http://schema.org/") ~
-                ("oslc" -> "http://open-services.net/ns/core#") ~
-                ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
+    // Step 2. Create a CEDAR Instance for each row in the input data.
+    val baseCEDARInstance =
+      ("@context" ->
+        // Prefixes
+        ("skos" -> "http://www.w3.org/2004/02/skos/core#") ~
+          ("pav" -> "http://purl.org/pav/") ~
+          ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
+          ("schema" -> "http://schema.org/") ~
+          ("oslc" -> "http://open-services.net/ns/core#") ~
+          ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
 
-                // CEDAR Template metadata
-                ("skos:notation" -> ("@type" -> "xsd:string")) ~
-                ("pav:derivedFrom" -> ("@type" -> "@id")) ~
-                ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
-                ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
-                ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
-                ("schema:isBasedOn" -> ("@type" -> "@id")) ~
-                ("schema:description" -> ("@type" -> "xsd:string")) ~
+          // CEDAR Template metadata
+          ("skos:notation" -> ("@type" -> "xsd:string")) ~
+          ("pav:derivedFrom" -> ("@type" -> "@id")) ~
+          ("pav:createdOn" -> ("@type" -> "xsd:dateTime")) ~
+          ("pav:lastUpdatedOn" -> ("@type" -> "xsd:dateTime")) ~
+          ("oslc:modifiedBy" -> ("@type" -> "@id")) ~
+          ("schema:isBasedOn" -> ("@type" -> "@id")) ~
+          ("schema:description" -> ("@type" -> "xsd:string")) ~
 
-                // Commonly used fields.
-                ("id" -> "http://purl.org/dc/terms/identifier") ~
-                ("rdfs:label" -> ("@type" -> "xsd:string"))
-              )
+          // Commonly used fields.
+          ("id" -> "http://purl.org/dc/terms/identifier") ~
+          ("rdfs:label" -> ("@type" -> "xsd:string")))
 
-          val cedarInstance = baseCEDARInstance ~
-            ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
-            ("pav:createdBy" -> pavCreatedBy) ~
-            ("pav:createdOn" -> pavCreatedOn) ~
-            ("pav:lastUpdatedOn" -> pavCreatedOn) ~
-            ("oslc:modifiedBy" -> pavCreatedBy)
-      }
+    val cedarInstance = baseCEDARInstance ~
+      ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
+      ("pav:createdBy" -> pavCreatedBy) ~
+      ("pav:createdOn" -> pavCreatedOn) ~
+      ("pav:lastUpdatedOn" -> pavCreatedOn) ~
+      ("oslc:modifiedBy" -> pavCreatedBy)
+  }
 
-    // TODO: add identifiers for the fields we are adding to the system here.
+  // TODO: add identifiers for the fields we are adding to the system here.
 
-    /*
+  /*
 
     val schemaBuilder = SchemaBuilder
       .record("export") // TODO: name this after the input filename, I guess?
@@ -711,6 +690,6 @@ object ToCEDAR {
 
     dataFileWriter.close()
 
-     */
+   */
 
 }
