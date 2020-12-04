@@ -1,19 +1,156 @@
 package org.renci.ccdh.csv2cadsr
 
-import org.json4s.{DefaultFormats}
+import java.io.{BufferedWriter, File, FileWriter}
+
+import com.github.tototoshi.csv.CSVReader
+import org.json4s.{JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
+import org.json4s.native.JsonMethods.parse
+import caseapp._
 
-object csv2caDSR extends App {
-  val csvFilename: String = args(0)
-  val csvSource: Source = Source.fromFile(csvFilename)("UTF-8")
+import scala.collection.immutable.HashMap
 
-  implicit val formats = DefaultFormats
+@AppName("csv2caDSR")
+@AppVersion("0.1.0")
+@ProgName("csv2caDSR")
+case class CommandLineOptions(
+  @HelpMessage("The CSV data file to read from.")
+  csv: Option[String],
+  @HelpMessage("The JSON mapping file to read from.")
+  json: Option[String],
+  @HelpMessage("The JSON mapping file to write to.")
+  toJson: Option[String],
+  @HelpMessage("The CSV file to write harmonized data to.")
+  toCsv: Option[String]
+)
 
-  val result = schema.MappingGenerator.generateFromCsv(csvSource)
-  result.fold(
-    throwable => scribe.error(s"Could not generate CSV: ${throwable}"),
-    result => println(writePretty(result.asJsonSchema))
-  )
+/**
+  * csv2caDSR is a tool for harmonizing CSV data against the
+  * Cancer Data Standards Registry and Repository (caDSR).
+  * Its behavior depends on the combination of input and output
+  * files provided:
+  *  - If called with `--csv filename.csv --to-json output.json`,
+  *    write out the column information of this file as a JSON file.
+  *  - If called with `--json filename.json --to-json filename.json`,
+  *    fill out information from the caDSR. Two possible kinds of
+  *    information can be filled out here:
+  *     - 1. Field-level information, such as a description, list of
+  *          permissible values, and so on.
+  *     - 2. Value-level information, such as its description, concept
+  *          identifier, and so on.
+  *  - If called with `--csv filename.csv --json filename.json --to-csv output.csv`,
+  *    we use the mapping information in filename.json to harmonize the input dataset
+  *    filename.csv and to write it out as a CSV file to output.csv.
+  */
+object csv2caDSR extends CaseApp[CommandLineOptions] {
+  // Set up a default format for JSON import/export.
+  implicit val formats = org.json4s.DefaultFormats
+
+  /**
+    * Given an input CSV file, produce an output JSON file that describes the columns in that file.
+    *
+    * @param csvInputFile The CSV input file.
+    * @param jsonOutputFile The JSON file to write to.
+    */
+  def generateJSONFile(csvInputFile: File, jsonOutputFile: File): Unit = {
+    val bufferedWriter = new BufferedWriter(new FileWriter(jsonOutputFile))
+    val result = schema.MappingSchema.generateFromCsv(csvInputFile)
+    result.fold(
+      throwable => scribe.error(s"Could not generate JSON Schema: ${throwable}"),
+      result => bufferedWriter.write(writePretty(result.asJsonSchema))
+    )
+    bufferedWriter.close()
+  }
+
+  /**
+    * Given an input JSON file, produce an output JSON file that fills in some of the fields in the JSON file.
+    *
+    * @param jsonInputFile The JSON input file.
+    * @param jsonOutputFile The JSON file to write to.
+    */
+  def fillJSONFile(jsonInputFile: File, jsonOutputFile: File): Unit = {
+    // Fill in the JSON mappings with information from the caDSR system.
+    val jsonSource: Source = Source.fromFile(jsonInputFile)("UTF-8")
+    val bufferedWriter = new BufferedWriter(new FileWriter(jsonOutputFile))
+
+    val jsonMappings = parse(StringInput(jsonSource.getLines().mkString("\n")))
+    val filledScheme = schema.JSONMappingFiller.fillProperties(jsonMappings \ "properties")
+    bufferedWriter.write(writePretty(filledScheme))
+    bufferedWriter.close()
+  }
+
+  /** Export the harmonized data, based on the command line options selected. */
+  def exportHarmonizedData(csvFile: File, jsonFile: File, options: CommandLineOptions) = {
+    // Load the JSON mappings file.
+    val jsonSource: Source = Source.fromFile(jsonFile)("UTF-8")
+    val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
+
+    val properties: Map[String, JValue] = jsonRoot match {
+      case obj: JObject =>
+        obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+      case _ => throw new RuntimeException("JSON source is not a JSON object")
+    }
+
+    // Load the CSV data file.
+    val csvSource: Source = Source.fromFile(csvFile)("UTF-8")
+
+    // Look through the command line options to see how we should export our data.
+    options match {
+      case CommandLineOptions(_, _, Some(jsonOutputFile), _) => {
+        // TODO: implement our own JSON-LD export for this data.
+        ???
+      }
+
+      case CommandLineOptions(_, _, _, Some(csvOutputFile)) => {
+        // Generate the CSV!
+        val reader = CSVReader.open(csvSource)
+        val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
+        output.ToCSV.write(reader, properties, bufferedWriter)
+        bufferedWriter.close()
+      }
+
+      case _ =>
+        throw new RuntimeException(
+          "No output format provided. Use --help to see a list of output formats (--to-*)."
+        )
+    }
+  }
+
+  /**
+    * Look through the command line options and figure out what the user wants to do.
+    */
+  def run(options: CommandLineOptions, args: RemainingArgs): Unit = {
+    val csvFile: Option[File] = options.csv.map(new File(_))
+    val jsonFile: Option[File] = options.json.map(new File(_))
+    val jsonOutputFile: Option[File] = options.toJson.map(new File(_))
+
+    if (jsonFile.nonEmpty && csvFile.nonEmpty) {
+      // Export the harmonized data.
+      exportHarmonizedData(csvFile.get, jsonFile.get, options)
+
+    } else if (jsonFile.nonEmpty && csvFile.isEmpty) {
+      // Fill in the JSON filename.
+      if (jsonOutputFile.isEmpty)
+        throw new RuntimeException(
+          s"Could not fill JSON file ${jsonFile}: no output JSON file specified (use --to-json filename.json)"
+        )
+
+      fillJSONFile(jsonFile.get, jsonOutputFile.get)
+    } else if (jsonFile.isEmpty && csvFile.nonEmpty) {
+      // Write out a JSON file that describes the CSV file.
+      if (jsonOutputFile.isEmpty)
+        throw new RuntimeException(
+          s"Could not write JSON file from CSV input ${csvFile}: no output JSON file specified (use --to-json filename.json)"
+        )
+
+      generateJSONFile(csvFile.get, jsonOutputFile.get)
+    } else {
+      // No inputs provided.
+      throw new RuntimeException(
+        "Cannot run: need a CSV input file (--csv input.csv) and/or a JSON input file (--json input.json)"
+      )
+    }
+  }
 }
