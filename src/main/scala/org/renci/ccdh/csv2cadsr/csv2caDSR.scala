@@ -1,14 +1,15 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, File, FileWriter}
+import java.io.{BufferedWriter, File, FileWriter, OutputStreamWriter}
 
 import com.github.tototoshi.csv.CSVReader
-import org.json4s.{JObject, JValue, StringInput}
+import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods.parse
 import caseapp._
+import org.json4s
 
 import scala.collection.immutable.HashMap
 
@@ -23,7 +24,9 @@ case class CommandLineOptions(
   @HelpMessage("The JSON mapping file to write to.")
   toJson: Option[String],
   @HelpMessage("The CSV file to write harmonized data to.")
-  toCsv: Option[String]
+  toCsv: Option[String],
+  @HelpMessage("The PFB file to write harmonized data to.")
+  toPfb: Option[String]
 )
 
 /**
@@ -62,6 +65,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       result => bufferedWriter.write(writePretty(result.asJsonSchema))
     )
     bufferedWriter.close()
+    scribe.info(s"Wrote out an empty JSON mapping file to ${jsonOutputFile}")
   }
 
   /**
@@ -79,17 +83,17 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
     val filledScheme = schema.JSONMappingFiller.fillProperties(jsonMappings \ "properties")
     bufferedWriter.write(writePretty(filledScheme))
     bufferedWriter.close()
+    scribe.info(s"Wrote out filled-in JSON mapping file to ${jsonOutputFile}")
   }
 
   /** Export the harmonized data, based on the command line options selected. */
   def exportHarmonizedData(csvFile: File, jsonFile: File, options: CommandLineOptions) = {
     // Load the JSON mappings file.
     val jsonSource: Source = Source.fromFile(jsonFile)("UTF-8")
-    val jsonRoot = parse(StringInput(jsonSource.getLines().mkString("\n")))
+    val jsonRoot: JValue = parse(StringInput(jsonSource.getLines().mkString("\n")))
 
-    val properties: Map[String, JValue] = jsonRoot match {
-      case obj: JObject =>
-        obj.values.getOrElse("properties", HashMap()).asInstanceOf[HashMap[String, JValue]]
+    val properties: Map[String, json4s.JValue] = (jsonRoot \ "properties") match {
+      case obj: JObject => obj.obj.toMap
       case _ => throw new RuntimeException("JSON source is not a JSON object")
     }
 
@@ -98,17 +102,30 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     // Look through the command line options to see how we should export our data.
     options match {
-      case CommandLineOptions(_, _, Some(jsonOutputFile), _) => {
+      case CommandLineOptions(_, _, Some(jsonOutputFile), _, _) => {
         // TODO: implement our own JSON-LD export for this data.
         ???
       }
 
-      case CommandLineOptions(_, _, _, Some(csvOutputFile)) => {
+      case CommandLineOptions(_, _, _, Some(csvOutputFile), _) => {
         // Generate the CSV!
         val reader = CSVReader.open(csvSource)
         val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
         output.ToCSV.write(reader, properties, bufferedWriter)
         bufferedWriter.close()
+        scribe.info(s"Wrote out CSV harmonized output file to ${csvOutputFile}")
+      }
+
+      case CommandLineOptions(_, _, _, _, Some(pfbOutputFilename)) => {
+        // Generate the PFB!
+        val pfbOutputFile = new File(pfbOutputFilename)
+        val reader = CSVReader.open(csvSource)
+        output.ToPFB.writePFB(
+          reader,
+          properties,
+          pfbOutputFile
+        )
+        scribe.info(s"Wrote output as PFB file to ${pfbOutputFile}.")
       }
 
       case _ =>

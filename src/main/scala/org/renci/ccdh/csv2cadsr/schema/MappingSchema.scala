@@ -128,14 +128,14 @@ object MappingField {
           isRequired
         )
       }
-
-      // Is it an integer field?
-      case _ if (uniqueValues forall { str => str forall Character.isDigit }) => {
+      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' }}) => {
         val intValues = values flatMap (_.toIntOption)
         IntField(name, uniqueValues, isRequired, Range.inclusive(intValues.min, intValues.max))
       }
-
-      // If we can't figure this out, assume that it is a string field.
+      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }}) => {
+        val numValues = values flatMap (v => Try(BigDecimal(v)).toOption)
+        NumberField(name, uniqueValues, isRequired, numValues.min, numValues.max)
+      }
       case _ => StringField(name, uniqueValues, isRequired)
     }
   }
@@ -213,9 +213,31 @@ case class IntField(
   override def toString: String = {
     s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values in ${range})"
   }
+  override def asJsonObject: JObject =
+    ("type" -> "integer") ~
+    ("description" -> "") ~
+    ("caDSR" -> "") ~
+    ("caDSRVersion" -> "1.0")
+}
+
+/** A NumberField models a field that can only contain numeric values. We model those in BigDecimal for
+  * precision, but in practice we'll probably treat these as strings and rely on downstream tools to
+  * interpret them correctly.
+  */
+case class NumberField(
+  override val name: String,
+  override val uniqueValues: Set[String],
+  override val required: Boolean,
+  /** The smallest and largest values in this field. */
+  min: BigDecimal,
+  max: BigDecimal
+) extends MappingField(name, uniqueValues) {
+  override def toString: String = {
+    s"${getClass.getSimpleName}(${name} with ${uniqueValues.size} unique values between ${min} and ${max})"
+  }
 
   override def asJsonObject: JObject =
-    ("type" -> "string") ~
+    ("type" -> "number") ~
     ("description" -> "") ~
     ("caDSR" -> "") ~
     ("caDSRVersion" -> "1.0")

@@ -1,0 +1,182 @@
+[
+  {
+    "type": "record",
+    "name": "export",
+    "fields": [
+      {
+        "name": "SUBJECTID",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "DataExtractDt",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "age",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "race_5f_id",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'race_id'",
+            "name": "race_5f_id_t",
+            "symbols": [
+              "5",
+              "3",
+              "2",
+              "Mixed",
+              "0",
+              "4"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ERpos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'ERpos'",
+            "name": "ERpos_t",
+            "symbols": [
+              "Yes",
+              "No"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "PgRpos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'PgRpos'",
+            "name": "PgRpos_t",
+            "symbols": [
+              "No",
+              "Yes"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HR_20_Pos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'HR Pos'",
+            "name": "HR_20_Pos_t",
+            "symbols": [
+              "ER and/or PgR positive",
+              "Negative",
+              "Indeterminate"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Her_32_MostPos",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'Her2MostPos'",
+            "name": "Her_32_MostPos_t",
+            "symbols": [
+              "No",
+              "Yes",
+              "Not Done"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "HR_5f_HER_32__5f_CATEGORY",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "HR_5f_HER_32__5f_STATUS",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "BilateralCa",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'BilateralCa'",
+            "name": "BilateralCa_t",
+            "symbols": [
+              "No",
+              "Yes"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Laterality",
+        "type": [
+          "null",
+          {
+            "type": "enum",
+            "doc": "Enumeration of field 'Laterality'",
+            "name": "Laterality_t",
+            "symbols": [
+              "Right",
+              "Left"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MRI_20_LD_20_Baseline",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_20_LD_20__31__2d__33_dAC",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_20_LD_20_InterReg",
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      {
+        "name": "MRI_20_LD_20_PreSurg",
+        "type": [
+          "null",
+          "string"
+        ]
+      }
+    ]
+  }
+]

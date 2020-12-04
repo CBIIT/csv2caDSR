@@ -1,22 +1,21 @@
 {
   "properties":{
     "SUBJECTID":{
-      "type":"string",
-      "description":"I-SPY ID de-identifies a patient’s CALGB and ACRIN ID",
+      "type":"integer",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "DataExtractDt":{
       "type":"string",
-      "description":"Date clinical data was downloaded from the CALGB database",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
       ],
       "enum":[
-        "09 03 2009",
-        ""
+        "09 03 2009"
       ],
       "enumValues":[
         {
@@ -24,25 +23,19 @@
           "description":"",
           "caDSRValue":"",
           "conceptURI":""
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
     "age":{
-      "type":"string",
-      "description":"Patient Age",
+      "type":"number",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "race_id":{
       "type":"string",
       "description":"",
-      "caDSR":"6093480",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
@@ -53,7 +46,6 @@
         "4",
         "50",
         "0",
-        "",
         "5"
       ],
       "enumValues":[
@@ -88,12 +80,6 @@
           "conceptURI":""
         },
         {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
-        },
-        {
           "value":"5",
           "description":"",
           "caDSRValue":"",
@@ -104,7 +90,7 @@
     "ERpos":{
       "type":"string",
       "description":"",
-      "caDSR":"3895179",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
@@ -138,7 +124,7 @@
     "PgRpos":{
       "type":"string",
       "description":"",
-      "caDSR":"3895181",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
@@ -172,8 +158,8 @@
     "HR Pos":{
       "type":"string",
       "description":"",
-      "caDSR":"64750",
-      "caDSRVersion":"3.0",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
       "permissibleValues":[
         
       ],
@@ -206,7 +192,7 @@
     "Her2MostPos":{
       "type":"string",
       "description":"",
-      "caDSR":"2542108",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
@@ -239,7 +225,7 @@
     },
     "HR_HER2_CATEGORY":{
       "type":"string",
-      "description":"3-level HR/Her2 category pre-treatment",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
@@ -254,19 +240,19 @@
       "enumValues":[
         {
           "value":"1",
-          "description":"HR Positive, Her2 Negative",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"2",
-          "description":"Her2 Positive",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"3",
-          "description":"Triple Negative",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
@@ -280,7 +266,7 @@
     },
     "HR_HER2_STATUS":{
       "type":"string",
-      "description":"3-level HR/Her2 status pre-treatment",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
@@ -295,19 +281,19 @@
       "enumValues":[
         {
           "value":"HRposHER2neg",
-          "description":"HR Positive, Her2 Negative",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"HER2pos",
-          "description":"Her2 Positive",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
         {
           "value":"TripleNeg",
-          "description":"Triple Negative",
+          "description":"",
           "caDSRValue":"",
           "conceptURI":""
         },
@@ -322,15 +308,14 @@
     "BilateralCa":{
       "type":"string",
       "description":"",
-      "caDSR":"3027502",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
       ],
       "enum":[
         "0",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -344,27 +329,20 @@
           "description":"",
           "caDSRValue":"",
           "conceptURI":""
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
     "Laterality":{
       "type":"string",
       "description":"",
-      "caDSR":"827",
+      "caDSR":"",
       "caDSRVersion":"1.0",
       "permissibleValues":[
         
       ],
       "enum":[
         "2",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -378,41 +356,40 @@
           "description":"",
           "caDSRValue":"",
           "conceptURI":""
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
     "MRI LD Baseline":{
-      "type":"string",
-      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline",
+      "type":"integer",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD 1-3dAC":{
-      "type":"string",
-      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC",
+      "type":"integer",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD InterReg":{
-      "type":"string",
-      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen",
+      "type":"integer",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD PreSurg":{
-      "type":"string",
-      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery",
+      "type":"integer",
+      "description":"",
       "caDSR":"",
       "caDSRVersion":"1.0"
     }
   },
   "required":[
-    
+    "SUBJECTID",
+    "DataExtractDt",
+    "age",
+    "race_id",
+    "BilateralCa",
+    "Laterality"
   ]
 }

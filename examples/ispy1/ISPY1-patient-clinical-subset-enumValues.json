@@ -1,7 +1,7 @@
 {
   "properties":{
     "SUBJECTID":{
-      "type":"string",
+      "type":"integer",
       "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
       "caDSR":"",
       "caDSRVersion":"1.0"
@@ -15,8 +15,7 @@
         
       ],
       "enum":[
-        "09 03 2009",
-        ""
+        "09 03 2009"
       ],
       "enumValues":[
         {
@@ -24,17 +23,11 @@
           "description":"",
           "caDSRValue":"",
           "conceptURI":""
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
     "age":{
-      "type":"string",
+      "type":"number",
       "description":"Patient Age",
       "caDSR":"",
       "caDSRVersion":"1.0"
@@ -58,7 +51,6 @@
         "4",
         "50",
         "0",
-        "",
         "5"
       ],
       "enumValues":[
@@ -82,18 +74,12 @@
         },
         {
           "value":"50",
-          "description":"",
-          "caDSRValue":"",
+          "description":"Mixed",
+          "caDSRValue":"Mixed",
           "conceptURI":""
         },
         {
           "value":"0",
-          "description":"Unknown",
-          "caDSRValue":"0",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
-        },
-        {
-          "value":"",
           "description":"Unknown",
           "caDSRValue":"0",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
@@ -346,8 +332,7 @@
       ],
       "enum":[
         "0",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -361,12 +346,6 @@
           "description":"Yes",
           "caDSRValue":"Yes",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
@@ -390,8 +369,7 @@
       ],
       "enum":[
         "2",
-        "1",
-        ""
+        "1"
       ],
       "enumValues":[
         {
@@ -405,41 +383,40 @@
           "description":"Left",
           "caDSRValue":"Left",
           "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229"
-        },
-        {
-          "value":"",
-          "description":"",
-          "caDSRValue":"",
-          "conceptURI":""
         }
       ]
     },
     "MRI LD Baseline":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD 1-3dAC":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD InterReg":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen",
       "caDSR":"",
       "caDSRVersion":"1.0"
     },
     "MRI LD PreSurg":{
-      "type":"string",
+      "type":"integer",
       "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery",
       "caDSR":"",
       "caDSRVersion":"1.0"
     }
   },
   "required":[
-    
+    "SUBJECTID",
+    "DataExtractDt",
+    "age",
+    "race_id",
+    "BilateralCa",
+    "Laterality"
   ]
 }
