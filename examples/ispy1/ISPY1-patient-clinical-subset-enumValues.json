@@ -1,0 +1,445 @@
+{
+  "properties":{
+    "SUBJECTID":{
+      "type":"string",
+      "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "DataExtractDt":{
+      "type":"string",
+      "description":"Date clinical data was downloaded from the CALGB database",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
+      "enum":[
+        "09 03 2009",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"09 03 2009",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "age":{
+      "type":"string",
+      "description":"Patient Age",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "race_id":{
+      "type":"string",
+      "description":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
+      "caDSR":"6093480",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "3",
+        "5",
+        "0",
+        "1",
+        "4",
+        "2"
+      ],
+      "enum":[
+        "1",
+        "3",
+        "4",
+        "50",
+        "0",
+        "",
+        "5"
+      ],
+      "enumValues":[
+        {
+          "value":"1",
+          "description":"White",
+          "caDSRValue":"5",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261"
+        },
+        {
+          "value":"3",
+          "description":"Black or African American",
+          "caDSRValue":"3",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352"
+        },
+        {
+          "value":"4",
+          "description":"Asian",
+          "caDSRValue":"2",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260"
+        },
+        {
+          "value":"50",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"0",
+          "description":"Unknown",
+          "caDSRValue":"0",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
+        },
+        {
+          "value":"",
+          "description":"Unknown",
+          "caDSRValue":"0",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
+        },
+        {
+          "value":"5",
+          "description":"Native Hawaiian or Other Pacific Islander",
+          "caDSRValue":"4",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219"
+        }
+      ]
+    },
+    "ERpos":{
+      "type":"string",
+      "description":"The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells.",
+      "caDSR":"3895179",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "No",
+        "Yes"
+      ],
+      "enum":[
+        "1",
+        "0",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"1",
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+        },
+        {
+          "value":"0",
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "PgRpos":{
+      "type":"string",
+      "description":"The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells.",
+      "caDSR":"3895181",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "No",
+        "Yes"
+      ],
+      "enum":[
+        "0",
+        "1",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"0",
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+        },
+        {
+          "value":"1",
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "HR Pos":{
+      "type":"string",
+      "description":"the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor.",
+      "caDSR":"64750",
+      "caDSRVersion":"3.0",
+      "permissibleValues":[
+        "ER and/or PgR positive",
+        "ER or PgR positive",
+        "Other",
+        "ER and PgR negative",
+        "Negative",
+        "Positive",
+        "ER and PgR positive",
+        "Indeterminate"
+      ],
+      "enum":[
+        "1",
+        "0",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"1",
+          "description":"ER and/or PgR positive",
+          "caDSRValue":"ER and/or PgR positive",
+          "conceptURI":""
+        },
+        {
+          "value":"0",
+          "description":"Negative Finding",
+          "caDSRValue":"Negative",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757"
+        },
+        {
+          "value":"",
+          "description":"Indeterminate",
+          "caDSRValue":"Indeterminate",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658"
+        }
+      ]
+    },
+    "Her2MostPos":{
+      "type":"string",
+      "description":"Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means.",
+      "caDSR":"2542108",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "No",
+        "Yes",
+        "Not Done"
+      ],
+      "enum":[
+        "0",
+        "1",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"0",
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+        },
+        {
+          "value":"1",
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+        },
+        {
+          "value":"",
+          "description":"Not Done",
+          "caDSRValue":"Not Done",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484"
+        }
+      ]
+    },
+    "HR_HER2_CATEGORY":{
+      "type":"string",
+      "description":"3-level HR/Her2 category pre-treatment",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
+      "enum":[
+        "1",
+        "2",
+        "3",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"1",
+          "description":"HR Positive, Her2 Negative",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"2",
+          "description":"Her2 Positive",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"3",
+          "description":"Triple Negative",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "HR_HER2_STATUS":{
+      "type":"string",
+      "description":"3-level HR/Her2 status pre-treatment",
+      "caDSR":"",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        
+      ],
+      "enum":[
+        "HRposHER2neg",
+        "HER2pos",
+        "TripleNeg",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"HRposHER2neg",
+          "description":"HR Positive, Her2 Negative",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"HER2pos",
+          "description":"Her2 Positive",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"TripleNeg",
+          "description":"Triple Negative",
+          "caDSRValue":"",
+          "conceptURI":""
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "BilateralCa":{
+      "type":"string",
+      "description":"the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit.",
+      "caDSR":"3027502",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "No",
+        "Yes"
+      ],
+      "enum":[
+        "0",
+        "1",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"0",
+          "description":"No",
+          "caDSRValue":"No",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+        },
+        {
+          "value":"1",
+          "description":"Yes",
+          "caDSRValue":"Yes",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "Laterality":{
+      "type":"string",
+      "description":"for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed.",
+      "caDSR":"827",
+      "caDSRVersion":"1.0",
+      "permissibleValues":[
+        "Bilateral",
+        "Other",
+        "Not specified",
+        "Both",
+        "Right",
+        "Unilateral, side not specified",
+        "Unilateral",
+        "Not a Paired site",
+        "Left",
+        "Midline",
+        "Unknown"
+      ],
+      "enum":[
+        "2",
+        "1",
+        ""
+      ],
+      "enumValues":[
+        {
+          "value":"2",
+          "description":"Right",
+          "caDSRValue":"Right",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228"
+        },
+        {
+          "value":"1",
+          "description":"Left",
+          "caDSRValue":"Left",
+          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229"
+        },
+        {
+          "value":"",
+          "description":"",
+          "caDSRValue":"",
+          "conceptURI":""
+        }
+      ]
+    },
+    "MRI LD Baseline":{
+      "type":"string",
+      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "MRI LD 1-3dAC":{
+      "type":"string",
+      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "MRI LD InterReg":{
+      "type":"string",
+      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    },
+    "MRI LD PreSurg":{
+      "type":"string",
+      "description":"LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery",
+      "caDSR":"",
+      "caDSRVersion":"1.0"
+    }
+  },
+  "required":[
+    
+  ]
+}
