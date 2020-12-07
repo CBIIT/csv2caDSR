@@ -26,7 +26,7 @@ example:ExportSchema a sh:NodeShape ;
 
     sh:nodeKind sh:Literal ;
     xsd:dataType rdf:string ;
-    sh:or (
+    sh:in (
       "09 03 2009"
     )
 
@@ -107,9 +107,11 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0> ;
 
     sh:nodeKind sh:IRI ;
-    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
-      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484> ) ]
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484>
+    )
 
   ] ;
 
@@ -120,7 +122,7 @@ example:ExportSchema a sh:NodeShape ;
 
     sh:nodeKind sh:Literal ;
     xsd:dataType rdf:string ;
-    sh:or (
+    sh:in (
       "1"
       "2"
       "3"
@@ -136,7 +138,7 @@ example:ExportSchema a sh:NodeShape ;
 
     sh:nodeKind sh:Literal ;
     xsd:dataType rdf:string ;
-    sh:or (
+    sh:in (
       "HRposHER2neg"
       "HER2pos"
       "TripleNeg"
@@ -151,8 +153,10 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0> ;
 
     sh:nodeKind sh:IRI ;
-    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
-      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488> ) ]
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+    )
 
   ] ;
 
@@ -162,8 +166,10 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0> ;
 
     sh:nodeKind sh:IRI ;
-    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228>
-      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229> ) ]
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229>
+    )
 
   ] ;
 
@@ -213,108 +219,126 @@ example:ExportSchema a sh:NodeShape ;
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "White" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352>
   rdfs:label "3" ;
+  example:verbatimValue "3" ;
   dc:description "Black or African American" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260>
   rdfs:label "4" ;
+  example:verbatimValue "4" ;
   dc:description "Asian" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "Unknown" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219>
   rdfs:label "5" ;
+  example:verbatimValue "5" ;
   dc:description "Native Hawaiian or Other Pacific Islander" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "Yes" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "No" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "No" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "Yes" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "Negative Finding" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658>
   rdfs:label "" ;
+  example:verbatimValue "" ;
   dc:description "Indeterminate" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "No" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "Yes" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484>
   rdfs:label "" ;
+  example:verbatimValue "" ;
   dc:description "Not Done" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
   rdfs:label "0" ;
+  example:verbatimValue "0" ;
   dc:description "No" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "Yes" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228>
   rdfs:label "2" ;
+  example:verbatimValue "2" ;
   dc:description "Right" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
 .
 
 <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229>
   rdfs:label "1" ;
+  example:verbatimValue "1" ;
   dc:description "Left" ;
   example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
 .

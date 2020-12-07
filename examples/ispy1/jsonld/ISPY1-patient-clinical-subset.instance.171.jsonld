@@ -70,23 +70,33 @@
   },
   "race_id":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352",
-    "rdfs:label":"3"
+    "rdfs:label":"3",
+    "dc:description":"Black or African American",
+    "example:verbatimValue":"3"
   },
   "ERpos":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No"
+    "rdfs:label":"No",
+    "dc:description":"No",
+    "example:verbatimValue":"0"
   },
   "PgRpos":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No"
+    "rdfs:label":"No",
+    "dc:description":"No",
+    "example:verbatimValue":"0"
   },
   "HR Pos":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757",
-    "rdfs:label":"Negative"
+    "rdfs:label":"Negative",
+    "dc:description":"Negative Finding",
+    "example:verbatimValue":"0"
   },
   "Her2MostPos":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No"
+    "rdfs:label":"No",
+    "dc:description":"No",
+    "example:verbatimValue":"0"
   },
   "HR_HER2_CATEGORY":{
     "@value":"3",
@@ -98,11 +108,15 @@
   },
   "BilateralCa":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No"
+    "rdfs:label":"No",
+    "dc:description":"No",
+    "example:verbatimValue":"0"
   },
   "Laterality":{
     "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229",
-    "rdfs:label":"Left"
+    "rdfs:label":"Left",
+    "dc:description":"Left",
+    "example:verbatimValue":"1"
   },
   "MRI LD Baseline":{
     "@value":"20",

@@ -149,13 +149,15 @@ object ToJSONLD {
                 } else if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.isEmpty) {
                   s"""
                      |    sh:nodeKind sh:IRI ;
-                     |    sh:in ( ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")} ) ]
+                     |    sh:in (
+                     |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
+                     |    )
                      |""".stripMargin
                 } else if (conceptsWithIDs.isEmpty && conceptsWithoutIDs.nonEmpty) {
                   s"""
                      |    sh:nodeKind sh:Literal ;
                      |    xsd:dataType rdf:string ;
-                     |    sh:or (
+                     |    sh:in (
                      |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"')).mkString("\n      ")}
                      |    )
                      |""".stripMargin
@@ -210,6 +212,7 @@ object ToJSONLD {
           s"""
             |<${enumMapping.conceptURI.get}>
             |  rdfs:label "${enumMapping.value}" ;
+            |  example:verbatimValue "${enumMapping.value}" ;
             |  dc:description "${enumMapping.description.getOrElse("")}" ;
             |  example:fromProperty <${getURIForColumn(enumMapping.colName, enumMapping.colObject)}>
             |.
@@ -275,7 +278,9 @@ object ToJSONLD {
                         else
                           Some(
                             ("@id" -> uri) ~
-                              ("rdfs:label" -> caDSRValue)
+                              ("rdfs:label" -> caDSRValue) ~
+                              ("dc:description" -> extractJString(enumValue.asInstanceOf[JObject], "description").getOrElse("")) ~
+                              ("example:verbatimValue" -> mappingValue)
                             // TODO: include verbatim values here?
                           )
                       } else {
