@@ -22,7 +22,7 @@ case class CommandLineOptions(
   json: Option[String],
   @HelpMessage("The JSON mapping file to write to.")
   toJson: Option[String],
-  @HelpMessage("The CSV file to write harmonized data to.")
+  @HelpMessage("The JSON file to write mapping information to.")
   toCsv: Option[String],
   @HelpMessage("The PFB file to write harmonized data to.")
   toPfb: Option[String],
@@ -35,7 +35,11 @@ case class CommandLineOptions(
   @HelpMessage(
     "If uploaded to the CEDAR workbench, specify the folder that it should be uploaded to"
   )
-  cedarUploadFolderUrl: Option[String] = None
+  cedarUploadFolderUrl: Option[String] = None,
+  @HelpMessage("The filename prefix used to write harmonized data as JSON-LD files")
+  toJsonld: Option[String],
+  @HelpMessage("When exporting data files as JSON-LD files, should we export a JSON schema as well?")
+  generateJSONSchema: Boolean = false
 )
 
 /**
@@ -163,6 +167,20 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           cedarFolderURL
         )
         scribe.info(s"Wrote output as CEDAR file to prefix ${cedarPrefix}.")
+      }
+
+      case opt if opt.toJsonld.nonEmpty => {
+        // Generate JSON-LD files.
+        val jsonldPrefix = opt.toJsonld.getOrElse("jsonld-export")
+        val csvReader = CSVReader.open(csvSource)
+        val generateJSONSchema = opt.generateJSONSchema
+        output.ToJSONLD.writeJSONLD(
+          csvReader,
+          properties,
+          jsonldPrefix,
+          generateJSONSchema
+        )
+        scribe.info(s"Wrote output as JSON-LD files to prefix ${jsonldPrefix}.")
       }
 
       case _ =>
