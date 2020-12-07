@@ -1,9 +1,12 @@
 {
+  "@id":"file:/Users/gaurav/Development/csv2caDSR/examples/ispy1/ISPY1-patient-clinical-subset.csv#row216",
+  "@type":"example:ExportSchema",
   "@context":{
     "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
     "rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "ncit":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
     "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
+    "example":"http://example.org/csv2cadsr#",
     "SUBJECTID":{
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=1.0"
     },
@@ -14,7 +17,7 @@
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=2.0"
     },
     "race_id":{
-      "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17049"
+      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0"
     },
     "ERpos":{
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0"
@@ -29,10 +32,10 @@
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0"
     },
     "HR_HER2_CATEGORY":{
-      "@id":"http://example.org/csv2caDSR#HR_HER2_CATEGORY"
+      "@id":"example:HR_HER2_CATEGORY"
     },
     "HR_HER2_STATUS":{
-      "@id":"http://example.org/csv2caDSR#HR_HER2_STATUS"
+      "@id":"example:HR_HER2_STATUS"
     },
     "BilateralCa":{
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0"
@@ -41,16 +44,16 @@
       "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0"
     },
     "MRI LD Baseline":{
-      "@id":"http://example.org/csv2caDSR#MRI_LD_Baseline"
+      "@id":"example:MRI_LD_Baseline"
     },
     "MRI LD 1-3dAC":{
-      "@id":"http://example.org/csv2caDSR#MRI_LD_1-3dAC"
+      "@id":"example:MRI_LD_1-3dAC"
     },
     "MRI LD InterReg":{
-      "@id":"http://example.org/csv2caDSR#MRI_LD_InterReg"
+      "@id":"example:MRI_LD_InterReg"
     },
     "MRI LD PreSurg":{
-      "@id":"http://example.org/csv2caDSR#MRI_LD_PreSurg"
+      "@id":"example:MRI_LD_PreSurg"
     }
   },
   "SUBJECTID":{

@@ -1,6 +1,6 @@
 package org.renci.ccdh.csv2cadsr.output
 
-import java.io.{File, FileWriter}
+import java.io.{BufferedWriter, File, FileWriter}
 
 import com.github.tototoshi.csv.CSVReader
 import org.json4s.JsonAST.JValue
@@ -14,10 +14,35 @@ import scala.collection.mutable
   * Converts a harmonized CSV file to JSON-LD instance data, whether with or without a JSON Schema.
   */
 object ToJSONLD {
+  case class EnumMapping(
+    /** The column name that this mapping is part of. */
+    colName: String,
+    /** The column object that this mapping is part of. */
+    colObject: JObject,
+    /** The verbatim value of this enum mapping in the data file. */
+    value: String,
+    /** The description of this enum mapping from the JSON mapping file. */
+    description: Option[String],
+    /** The value of this enum mapping in the CDE entry. */
+    caDSRValue: Option[String],
+    /** The concept URI of this enum mapping as per the CDE entry. */
+    conceptURI: Option[String]
+  )
+
+  /**
+    * Extract a property represented by a string from a JSON object and return it as a string.
+    */
+  def extractJString(jobj: JObject, propName: String): Option[String] = {
+    (jobj \ propName) match {
+      case JString(str) if str.isEmpty => None
+      case JString(str) => Some(str)
+      case unk => throw new RuntimeException(s"Expected property '$propName' in JSON object $jobj to be a string, but found: $unk.")
+    }
+  }
 
   /** Convert a column name into a URI for use as an identifier.
     */
-  def convertColNameToURI(colName: String, props: JObject): String = {
+  def getURIForColumn(colName: String, props: JObject): String = {
     (props \ "@id") match {
       // Do we have an '@id'?
       case JString(id) => id
@@ -35,7 +60,7 @@ object ToJSONLD {
           case _ => {
             // If we can't figure this out, let's build a dummy URI from the colName.
             // As per https://stackoverflow.com/a/40415059/27310
-            "http://example.org/csv2caDSR#" + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
+            "example:" + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
           }
         }
       }
@@ -43,10 +68,12 @@ object ToJSONLD {
   }
 
   def writeJSONLD(
+    inputFile: File,
     reader: CSVReader,
     properties: Map[String, JValue],
     outputPrefix: String,
-    includeJSONSchema: Boolean
+    generateSHACL: Boolean,
+    generateJSONSchema: Boolean
   ): Unit = {
     // Transform data files into JSON-LD files.
     // This pretty much just means that:
@@ -59,7 +86,8 @@ object ToJSONLD {
       ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
       ("rdf" -> "http://www.w3.org/1999/02/22-rdf-syntax-ns#") ~
       ("ncit" -> "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") ~
-      ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#")
+      ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#") ~
+      ("example" -> "http://example.org/csv2cadsr#")
 
     val propertyTypesMap = mutable.Map[String, String]()
     val contextProperties = JObject(headerRow map { colName =>
@@ -70,7 +98,7 @@ object ToJSONLD {
             case _ =>
           }
 
-          convertColNameToURI(colName, prop)
+          getURIForColumn(colName, prop)
         }
         case Some(unk) =>
           throw new RuntimeException(s"Unknown object in property information: $unk.")
@@ -84,7 +112,135 @@ object ToJSONLD {
 
     val context = basicContext ~ contextProperties
 
-    if (includeJSONSchema) {
+    if (generateSHACL) {
+      // We generate outputPrefix + ".shacl.ttl"
+      val shaclFilename = new File(outputPrefix + s".shacl.ttl")
+
+      // Write out descriptions for each property.
+      val allEnumMappings = mutable.ListBuffer[EnumMapping]()
+      val propertyShapes = headerRow map { colName =>
+        properties.get(colName) match {
+          case Some(prop: JObject) => {
+            val propType = (prop \ "enumValues") match {
+              case JArray(enumValues) if enumValues.nonEmpty =>
+                val enumMappings = enumValues.map({
+                  case JObject(obj) =>
+                    EnumMapping(
+                      colName,
+                      prop,
+                      extractJString(obj, "value").getOrElse(""),
+                      extractJString(obj, "description"),
+                      extractJString(obj, "caDSRValue"),
+                      extractJString(obj, "conceptURI")
+                    )
+                  case unk => throw new RuntimeException(s"Expected object as enumValue, but found $unk")
+                })
+                allEnumMappings.appendAll(enumMappings)
+                val conceptsWithIDs = enumMappings.filter(_.conceptURI.nonEmpty)
+                val conceptsWithoutIDs = enumMappings.filter(_.conceptURI.isEmpty)
+                if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.nonEmpty) {
+                  s"""
+                     |    sh:nodeKind sh:IRIOrLiteral ;
+                     |    sh:in (
+                     |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
+                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"')).mkString("\n      ")}
+                     |    )
+                     |""".stripMargin
+                } else if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.isEmpty) {
+                  s"""
+                     |    sh:nodeKind sh:IRI ;
+                     |    sh:in ( ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")} ) ]
+                     |""".stripMargin
+                } else if (conceptsWithIDs.isEmpty && conceptsWithoutIDs.nonEmpty) {
+                  s"""
+                     |    sh:nodeKind sh:Literal ;
+                     |    xsd:dataType rdf:string ;
+                     |    sh:or (
+                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"')).mkString("\n      ")}
+                     |    )
+                     |""".stripMargin
+                } else {
+                  // No idea what this type is.
+                  ""
+                }
+
+              case _ =>
+                (prop \ "type") match {
+                  case JString("integer") =>
+                    s"""
+                       |    sh:nodeKind sh:Literal ;
+                       |    xsd:dataType xsd:integer ;
+                       |""".stripMargin
+                  case JString("number") =>
+                    s"""
+                       |    sh:nodeKind sh:Literal ;
+                       |    xsd:dataType xsd:decimal ;
+                       |""".stripMargin
+                  case JString(_) =>
+                    s"""
+                       |    sh:nodeKind sh:Literal ;
+                       |    xsd:dataType rdf:string ;
+                       |""".stripMargin
+                  case unk => throw new RuntimeException(s"Expected the type described as a string but found $unk.")
+                }
+            }
+
+            s"""
+               |  sh:property [
+               |    sh:name "$colName" ;
+               |    sh:description "${extractJString(prop, "description").getOrElse("")}" ;
+               |    sh:path <${getURIForColumn(colName, prop)}> ;
+               |$propType
+               |  ] ;
+               |""".stripMargin
+          }
+          case Some(unk) =>
+            throw new RuntimeException(s"Unknown object in property information: $unk.")
+          case None =>
+            throw new RuntimeException(s"Property $colName not present in JSON mapping file.")
+          case unk => throw new RuntimeException(s"Property $colName has unexpected object: $unk.")
+        }
+      }
+
+      // Add descriptions for concepts.
+      val enumMappingsAsDescriptions = allEnumMappings
+        .distinct
+        .filter (_.conceptURI.nonEmpty)
+        .map { enumMapping =>
+          s"""
+            |<${enumMapping.conceptURI.get}>
+            |  rdfs:label "${enumMapping.value}" ;
+            |  dc:description "${enumMapping.description.getOrElse("")}" ;
+            |  example:fromProperty <${getURIForColumn(enumMapping.colName, enumMapping.colObject)}>
+            |.
+            |""".stripMargin
+        }
+
+      // Write it all out.
+      val shaclWriter = new BufferedWriter(new FileWriter(shaclFilename))
+      shaclWriter.write(
+        s"""
+           |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+           |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+           |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+           |@prefix dc: <http://purl.org/dc/elements/1.1/> .
+           |@prefix sh: <http://www.w3.org/ns/shacl#> .
+           |@prefix example: <http://example.org/csv2cadsr#> .
+           |
+           |example:ExportSchema a sh:NodeShape ;
+           |  sh:targetClass example:ExportSchema ;
+           |  ${propertyShapes.mkString("")}
+           |.
+           |
+           |# Descriptions for values in caDSR CDEs.
+           |${enumMappingsAsDescriptions.mkString("")}
+           |""".stripMargin)
+
+      shaclWriter.close()
+      scribe.info(s"Wrote out SHACL shapes to $shaclFilename")
+    }
+
+    if (generateJSONSchema) {
       // We generate outputPrefix + ".schema.json"
     }
 
@@ -165,6 +321,8 @@ object ToJSONLD {
             })
 
           val instance =
+            ("@id" -> s"${inputFile.toURI}#row$index") ~
+            ("@type" -> "example:ExportSchema") ~
             ("@context" -> context) ~
             JObject(values.toList)
 

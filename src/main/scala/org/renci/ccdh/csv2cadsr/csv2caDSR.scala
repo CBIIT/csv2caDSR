@@ -38,8 +38,10 @@ case class CommandLineOptions(
   cedarUploadFolderUrl: Option[String] = None,
   @HelpMessage("The filename prefix used to write harmonized data as JSON-LD files")
   toJsonld: Option[String],
-  @HelpMessage("When exporting data files as JSON-LD files, should we export a JSON schema as well?")
-  generateJSONSchema: Boolean = false
+  @HelpMessage("When exporting data files as JSON-LD files, should we generate a SHACL shape description as well?")
+  generateShacl: Boolean = false,
+  @HelpMessage("When exporting data files as JSON-LD files, should we generate a JSON schema as well?")
+  generateJsonSchema: Boolean = false
 )
 
 /**
@@ -173,12 +175,13 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         // Generate JSON-LD files.
         val jsonldPrefix = opt.toJsonld.getOrElse("jsonld-export")
         val csvReader = CSVReader.open(csvSource)
-        val generateJSONSchema = opt.generateJSONSchema
         output.ToJSONLD.writeJSONLD(
+          csvFile,
           csvReader,
           properties,
           jsonldPrefix,
-          generateJSONSchema
+          opt.generateShacl,
+          opt.generateJsonSchema
         )
         scribe.info(s"Wrote output as JSON-LD files to prefix ${jsonldPrefix}.")
       }

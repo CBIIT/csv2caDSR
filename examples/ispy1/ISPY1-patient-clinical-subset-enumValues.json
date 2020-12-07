@@ -33,7 +33,6 @@
       "caDSRVersion":"2.0"
     },
     "race_id":{
-      "@id": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17049",
       "type":"string",
       "description":"A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member.",
       "caDSR":"6093480",

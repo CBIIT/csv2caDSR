@@ -1,0 +1,321 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix example: <http://example.org/csv2cadsr#> .
+
+example:ExportSchema a sh:NodeShape ;
+  sh:targetClass example:ExportSchema ;
+  
+  sh:property [
+    sh:name "SUBJECTID" ;
+    sh:description "I-SPY ID de-identifies a patient’s CALGB and ACRIN ID" ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=1.0> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:integer ;
+
+  ] ;
+
+  sh:property [
+    sh:name "DataExtractDt" ;
+    sh:description "Date clinical data was downloaded from the CALGB database" ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType rdf:string ;
+    sh:or (
+      "09 03 2009"
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "age" ;
+    sh:description "Patient Age" ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=2.0> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:decimal ;
+
+  ] ;
+
+  sh:property [
+    sh:name "race_id" ;
+    sh:description "A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0> ;
+
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219>
+      "Mixed"
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "ERpos" ;
+    sh:description "The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0> ;
+
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+      ""
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "PgRpos" ;
+    sh:description "The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0> ;
+
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+      ""
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "HR Pos" ;
+    sh:description "the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0> ;
+
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:in (
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658>
+      "ER and/or PgR positive"
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "Her2MostPos" ;
+    sh:description "Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0> ;
+
+    sh:nodeKind sh:IRI ;
+    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484> ) ]
+
+  ] ;
+
+  sh:property [
+    sh:name "HR_HER2_CATEGORY" ;
+    sh:description "3-level HR/Her2 category pre-treatment" ;
+    sh:path <example:HR_HER2_CATEGORY> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType rdf:string ;
+    sh:or (
+      "1"
+      "2"
+      "3"
+      ""
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "HR_HER2_STATUS" ;
+    sh:description "3-level HR/Her2 status pre-treatment" ;
+    sh:path <example:HR_HER2_STATUS> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType rdf:string ;
+    sh:or (
+      "HRposHER2neg"
+      "HER2pos"
+      "TripleNeg"
+      ""
+    )
+
+  ] ;
+
+  sh:property [
+    sh:name "BilateralCa" ;
+    sh:description "the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0> ;
+
+    sh:nodeKind sh:IRI ;
+    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488> ) ]
+
+  ] ;
+
+  sh:property [
+    sh:name "Laterality" ;
+    sh:description "for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed." ;
+    sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0> ;
+
+    sh:nodeKind sh:IRI ;
+    sh:in ( <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228>
+      <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229> ) ]
+
+  ] ;
+
+  sh:property [
+    sh:name "MRI LD Baseline" ;
+    sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline" ;
+    sh:path <example:MRI_LD_Baseline> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:integer ;
+
+  ] ;
+
+  sh:property [
+    sh:name "MRI LD 1-3dAC" ;
+    sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC" ;
+    sh:path <example:MRI_LD_1-3dAC> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:integer ;
+
+  ] ;
+
+  sh:property [
+    sh:name "MRI LD InterReg" ;
+    sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen" ;
+    sh:path <example:MRI_LD_InterReg> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:integer ;
+
+  ] ;
+
+  sh:property [
+    sh:name "MRI LD PreSurg" ;
+    sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery" ;
+    sh:path <example:MRI_LD_PreSurg> ;
+
+    sh:nodeKind sh:Literal ;
+    xsd:dataType xsd:integer ;
+
+  ] ;
+
+.
+
+# Descriptions for values in caDSR CDEs.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261>
+  rdfs:label "1" ;
+  dc:description "White" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352>
+  rdfs:label "3" ;
+  dc:description "Black or African American" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260>
+  rdfs:label "4" ;
+  dc:description "Asian" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998>
+  rdfs:label "0" ;
+  dc:description "Unknown" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219>
+  rdfs:label "5" ;
+  dc:description "Native Hawaiian or Other Pacific Islander" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+  rdfs:label "1" ;
+  dc:description "Yes" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+  rdfs:label "0" ;
+  dc:description "No" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+  rdfs:label "0" ;
+  dc:description "No" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+  rdfs:label "1" ;
+  dc:description "Yes" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757>
+  rdfs:label "0" ;
+  dc:description "Negative Finding" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658>
+  rdfs:label "" ;
+  dc:description "Indeterminate" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+  rdfs:label "0" ;
+  dc:description "No" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+  rdfs:label "1" ;
+  dc:description "Yes" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484>
+  rdfs:label "" ;
+  dc:description "Not Done" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
+  rdfs:label "0" ;
+  dc:description "No" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
+  rdfs:label "1" ;
+  dc:description "Yes" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228>
+  rdfs:label "2" ;
+  dc:description "Right" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
+.
+
+<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229>
+  rdfs:label "1" ;
+  dc:description "Left" ;
+  example:fromProperty <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
+.
+
