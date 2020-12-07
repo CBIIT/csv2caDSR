@@ -1,0 +1,38 @@
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix ns1: <http://example.org/csv2caDSR#> .
+@prefix ns10: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
+@prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
+@prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
+@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
+@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
+@prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=> .
+@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
+@prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
+@prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ncit:C16352 rdfs:label "3" .
+
+ncit:C25229 rdfs:label "Left" .
+
+ncit:C38757 rdfs:label "Negative" .
+
+ncit:C49487 rdfs:label "No" .
+
+[] ns1:HR_HER2_CATEGORY "3"^^<xsd:string> ;
+    ns1:HR_HER2_STATUS "TripleNeg"^^<xsd:string> ;
+    ns1:MRI_LD_1-3dAC "42"^^<xsd:long> ;
+    ns1:MRI_LD_Baseline "120"^^<xsd:long> ;
+    ns1:MRI_LD_InterReg "96"^^<xsd:long> ;
+    ns1:MRI_LD_PreSurg "30"^^<xsd:long> ;
+    ncit:C17049 ncit:C16352 ;
+    ns4:2.0 "09 03 2009"^^<xsd:string> ;
+    ns5:2.0 "49.58"^^<xsd:decimal> ;
+    ns3:1.0 ncit:C49487 ;
+    ns9:1.0 ncit:C49487 ;
+    ns6:1.0 ncit:C49487 ;
+    ns8:1.0 ncit:C49487 ;
+    ns10:1.0 "1045"^^<xsd:long> ;
+    ns7:3.0 ncit:C38757 ;
+    ns2:1.0 ncit:C25229 .
+
