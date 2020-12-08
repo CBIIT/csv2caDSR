@@ -8,28 +8,28 @@
     "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
     "example":"http://example.org/csv2cadsr#",
     "SUBJECTID":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=1.0"
+      "@id":"example:SUBJECTID"
     },
     "DataExtractDt":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0"
+      "@id":"example:DataExtractDt"
     },
     "age":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=2.0"
+      "@id":"example:age"
     },
     "race_id":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0"
+      "@id":"example:race_id"
     },
     "ERpos":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0"
+      "@id":"example:ERpos"
     },
     "PgRpos":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0"
+      "@id":"example:PgRpos"
     },
     "HR Pos":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0"
+      "@id":"example:HR_Pos"
     },
     "Her2MostPos":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0"
+      "@id":"example:Her2MostPos"
     },
     "HR_HER2_CATEGORY":{
       "@id":"example:HR_HER2_CATEGORY"
@@ -38,10 +38,10 @@
       "@id":"example:HR_HER2_STATUS"
     },
     "BilateralCa":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0"
+      "@id":"example:BilateralCa"
     },
     "Laterality":{
-      "@id":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0"
+      "@id":"example:Laterality"
     },
     "MRI LD Baseline":{
       "@id":"example:MRI_LD_Baseline"

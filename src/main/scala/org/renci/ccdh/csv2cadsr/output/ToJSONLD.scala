@@ -40,31 +40,30 @@ object ToJSONLD {
     }
   }
 
-  /** Convert a column name into a URI for use as an identifier.
+  /**
+    * Get a link to the CDE.
     */
-  def getURIForColumn(colName: String, props: JObject): String = {
-    (props \ "@id") match {
-      // Do we have an '@id'?
-      case JString(id) => id
-      case _ => {
-        (props \ "caDSR") match {
-          case JString(cdeId) if cdeId.nonEmpty => {
-            // Build an URI using the cdeId
-            val cdeVersion = (props \ "caDSRVersion") match {
-              case JString(cdeVersion) if cdeVersion.nonEmpty => cdeVersion
-              case _ => "1.0" // Default to 1.0
-            }
-
-            s"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=${cdeId}&version=${cdeVersion}"
-          }
-          case _ => {
-            // If we can't figure this out, let's build a dummy URI from the colName.
-            // As per https://stackoverflow.com/a/40415059/27310
-            "example:" + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
-          }
+  def getCDEURI(props: JObject): Option[String] = {
+    (props \ "caDSR") match {
+      case JString(cdeId) if cdeId.nonEmpty => {
+        // Build an URI using the cdeId
+        val cdeVersion = (props \ "caDSRVersion") match {
+          case JString(cdeVersion) if cdeVersion.nonEmpty => cdeVersion
+          case _ => "1.0" // Default to 1.0
         }
+
+        Some(s"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=${cdeId}&version=${cdeVersion}")
+      }
+      case _ => {
+        // If we can't figure this out, let's build a dummy URI from the colName.
+        // As per https://stackoverflow.com/a/40415059/27310
+        None
       }
     }
+  }
+
+  def getURIForColumn(colName: String): String = {
+    "example:" + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
   }
 
   def writeJSONLD(
@@ -98,7 +97,7 @@ object ToJSONLD {
             case _ =>
           }
 
-          getURIForColumn(colName, prop)
+          getURIForColumn(colName)
         }
         case Some(unk) =>
           throw new RuntimeException(s"Unknown object in property information: $unk.")
@@ -191,7 +190,7 @@ object ToJSONLD {
                |  sh:property [
                |    sh:name "$colName" ;
                |    sh:description "${extractJString(prop, "description").getOrElse("")}" ;
-               |    sh:path <${getURIForColumn(colName, prop)}> ;
+               |    sh:path <${getURIForColumn(colName)}> ;
                |$propType
                |  ] ;
                |""".stripMargin
@@ -213,7 +212,7 @@ object ToJSONLD {
             |<${enumMapping.conceptURI.get}>
             |  rdfs:label "${enumMapping.caDSRValue.getOrElse("")}" ;
             |  dc:description "${enumMapping.description.getOrElse("")}" ;
-            |  example:fromProperty <${getURIForColumn(enumMapping.colName, enumMapping.colObject)}>
+            |  example:fromCDE <${getCDEURI(enumMapping.colObject)}>
             |.
             |""".stripMargin
         }
