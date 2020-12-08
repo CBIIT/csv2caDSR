@@ -88,6 +88,14 @@ object ToJSONLD {
       ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#") ~
       ("example" -> "http://example.org/csv2cadsr#")
 
+    val requiredProps = ((properties \ "required") match {
+      case JArray(list) => list.map({
+        case JString(str) => str
+        case unk => throw new RuntimeException(s"Expected list of required property names, but found $unk in list.")
+      })
+      case unk => throw new RuntimeException(s"Expected list of required property names, but found $unk.")
+    }).toSet
+
     val propertyTypesMap = mutable.Map[String, String]()
     val contextProperties = JObject(headerRow map { colName =>
       val colURI = properties.get(colName) match {
@@ -192,11 +200,16 @@ object ToJSONLD {
                 }
             }
 
+            val minCount = if(requiredProps.contains(colName)) 1
+
             s"""
                |  sh:property [
                |    sh:name "$colName" ;
                |    sh:description "${extractJString(prop, "description").getOrElse("")}" ;
                |    sh:path <${getURIForColumn(colName)}> ;
+               |
+               |    sh:minCount $minCount ;
+               |    sh:maxCount 1 ;
                |$propType
                |  ] ;
                |""".stripMargin
