@@ -135,10 +135,14 @@ object ToJSONLD {
                   case unk => throw new RuntimeException(s"Expected object as enumValue, but found $unk")
                 })
                 allEnumMappings.appendAll(enumMappings)
+
+                val cdeMapping = enumMappings.flatMap(enumMapping => getCDEURI(enumMapping.colObject)).distinct.map(uri => s"example:fromCDE <$uri> ;")
+
                 val conceptsWithIDs = enumMappings.filter(_.conceptURI.nonEmpty)
                 val conceptsWithoutIDs = enumMappings.filter(_.conceptURI.isEmpty)
                 if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.nonEmpty) {
                   s"""
+                     |    ${cdeMapping.mkString("\n    ")}
                      |    sh:nodeKind sh:IRIOrLiteral ;
                      |    sh:in (
                      |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
@@ -147,6 +151,7 @@ object ToJSONLD {
                      |""".stripMargin
                 } else if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.isEmpty) {
                   s"""
+                     |    ${cdeMapping.mkString("\n    ")}
                      |    sh:nodeKind sh:IRI ;
                      |    sh:in (
                      |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
@@ -154,6 +159,7 @@ object ToJSONLD {
                      |""".stripMargin
                 } else if (conceptsWithIDs.isEmpty && conceptsWithoutIDs.nonEmpty) {
                   s"""
+                     |    ${cdeMapping.mkString("\n    ")}
                      |    sh:nodeKind sh:Literal ;
                      |    xsd:dataType xsd:string ;
                      |    sh:in (
@@ -208,11 +214,12 @@ object ToJSONLD {
         .distinct
         .filter (_.conceptURI.nonEmpty)
         .map { enumMapping =>
+          val cdeMapping = getCDEURI(enumMapping.colObject).map(uri => s"dc:source <$uri>")
           s"""
             |<${enumMapping.conceptURI.get}>
             |  rdfs:label "${enumMapping.caDSRValue.getOrElse("")}" ;
             |  dc:description "${enumMapping.description.getOrElse("")}" ;
-            |  example:fromCDE <${getCDEURI(enumMapping.colObject)}>
+            |  ${cdeMapping.mkString("")}
             |.
             |""".stripMargin
         }

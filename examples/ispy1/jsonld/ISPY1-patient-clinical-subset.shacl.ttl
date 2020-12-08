@@ -24,6 +24,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "Date clinical data was downloaded from the CALGB database" ;
     sh:path <example:DataExtractDt> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0> ;
     sh:nodeKind sh:Literal ;
     xsd:dataType xsd:string ;
     sh:in (
@@ -47,6 +48,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member." ;
     sh:path <example:race_id> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C41261>
@@ -64,6 +66,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells." ;
     sh:path <example:ERpos> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C49488>
@@ -78,6 +81,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells." ;
     sh:path <example:PgRpos> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C49487>
@@ -92,6 +96,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor." ;
     sh:path <example:HR_Pos> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C38757>
@@ -106,6 +111,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means." ;
     sh:path <example:Her2MostPos> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0> ;
     sh:nodeKind sh:IRI ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C49487>
@@ -120,6 +126,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "3-level HR/Her2 category pre-treatment" ;
     sh:path <example:HR_HER2_CATEGORY> ;
 
+    
     sh:nodeKind sh:Literal ;
     xsd:dataType xsd:string ;
     sh:in (
@@ -136,6 +143,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "3-level HR/Her2 status pre-treatment" ;
     sh:path <example:HR_HER2_STATUS> ;
 
+    
     sh:nodeKind sh:Literal ;
     xsd:dataType xsd:string ;
     sh:in (
@@ -152,6 +160,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit." ;
     sh:path <example:BilateralCa> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0> ;
     sh:nodeKind sh:IRI ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C49487>
@@ -165,6 +174,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:description "for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed." ;
     sh:path <example:Laterality> ;
 
+    example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0> ;
     sh:nodeKind sh:IRI ;
     sh:in (
       <http://purl.obolibrary.org/obo/NCIT_C25228>
@@ -220,108 +230,108 @@ example:ExportSchema a sh:NodeShape ;
 <http://purl.obolibrary.org/obo/NCIT_C41261>
   rdfs:label "5" ;
   dc:description "White" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C16352>
   rdfs:label "3" ;
   dc:description "Black or African American" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C41260>
   rdfs:label "2" ;
   dc:description "Asian" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C17998>
   rdfs:label "0" ;
   dc:description "Unknown" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C41219>
   rdfs:label "4" ;
   dc:description "Native Hawaiian or Other Pacific Islander" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49488>
   rdfs:label "Yes" ;
   dc:description "Yes" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49487>
   rdfs:label "No" ;
   dc:description "No" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49487>
   rdfs:label "No" ;
   dc:description "No" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49488>
   rdfs:label "Yes" ;
   dc:description "Yes" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C38757>
   rdfs:label "Negative" ;
   dc:description "Negative Finding" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C48658>
   rdfs:label "Indeterminate" ;
   dc:description "Indeterminate" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49487>
   rdfs:label "No" ;
   dc:description "No" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49488>
   rdfs:label "Yes" ;
   dc:description "Yes" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49484>
   rdfs:label "Not Done" ;
   dc:description "Not Done" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49487>
   rdfs:label "No" ;
   dc:description "No" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49488>
   rdfs:label "Yes" ;
   dc:description "Yes" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C25228>
   rdfs:label "Right" ;
   dc:description "Right" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C25229>
   rdfs:label "Left" ;
   dc:description "Left" ;
-  example:fromCDE <Some(https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0)>
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0>
 .
 
