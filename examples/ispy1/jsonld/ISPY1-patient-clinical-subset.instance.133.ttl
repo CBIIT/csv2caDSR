@@ -1,14 +1,15 @@
 @prefix example: <http://example.org/csv2cadsr#> .
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
-@prefix ns1: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
+@prefix ns1: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
+@prefix ns10: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
 @prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
-@prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
-@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
-@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
-@prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
-@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
+@prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
+@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
+@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=> .
+@prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
+@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
 @prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=> .
-@prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
+@prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <file:///Users/gaurav/Development/csv2caDSR/examples/ispy1/ISPY1-patient-clinical-subset.csv#row133> a example:ExportSchema ;
@@ -18,22 +19,30 @@
     example:MRI_LD_Baseline "63"^^<xsd:long> ;
     example:MRI_LD_InterReg "22"^^<xsd:long> ;
     example:MRI_LD_PreSurg "9"^^<xsd:long> ;
-    ncit:C17049 ncit:C41261 ;
-    ns4:2.0 "09 03 2009"^^<xsd:string> ;
-    ns9:2.0 "59.30"^^<xsd:decimal> ;
-    ns1:1.0 ncit:C49487 ;
+    ns9:2.0 "09 03 2009"^^<xsd:string> ;
+    ns7:2.0 "59.30"^^<xsd:decimal> ;
+    ns6:1.0 ncit:C49487 ;
     ns2:1.0 ncit:C49487 ;
     ns8:1.0 ncit:C49487 ;
-    ns3:1.0 ncit:C49487 ;
-    ns5:1.0 "1147"^^<xsd:long> ;
-    ns7:3.0 ncit:C38757 ;
-    ns6:1.0 ncit:C25229 .
+    ns4:1.0 ncit:C49487 ;
+    ns5:1.0 ncit:C41261 ;
+    ns10:1.0 "1147"^^<xsd:long> ;
+    ns1:3.0 ncit:C38757 ;
+    ns3:1.0 ncit:C25229 .
 
-ncit:C25229 rdfs:label "Left" .
+ncit:C25229 rdfs:label "Left" ;
+    <dc:description> "Left" ;
+    example:verbatimValue "1" .
 
-ncit:C38757 rdfs:label "Negative" .
+ncit:C38757 rdfs:label "Negative" ;
+    <dc:description> "Negative Finding" ;
+    example:verbatimValue "0" .
 
-ncit:C41261 rdfs:label "5" .
+ncit:C41261 rdfs:label "5" ;
+    <dc:description> "White" ;
+    example:verbatimValue "1" .
 
-ncit:C49487 rdfs:label "No" .
+ncit:C49487 rdfs:label "No" ;
+    <dc:description> "No" ;
+    example:verbatimValue "0" .
 

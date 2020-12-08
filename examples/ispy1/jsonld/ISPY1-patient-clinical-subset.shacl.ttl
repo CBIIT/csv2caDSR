@@ -25,9 +25,9 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0> ;
 
     sh:nodeKind sh:Literal ;
-    xsd:dataType rdf:string ;
+    xsd:dataType xsd:string ;
     sh:in (
-      "09 03 2009"
+      "09 03 2009"^^<xsd:string>
     )
 
   ] ;
@@ -54,7 +54,7 @@ example:ExportSchema a sh:NodeShape ;
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219>
-      "Mixed"
+      "Mixed"^^<xsd:string>
     )
 
   ] ;
@@ -68,7 +68,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:in (
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
-      ""
+      ""^^<xsd:string>
     )
 
   ] ;
@@ -82,7 +82,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:in (
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488>
-      ""
+      ""^^<xsd:string>
     )
 
   ] ;
@@ -96,7 +96,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:in (
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757>
       <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658>
-      "ER and/or PgR positive"
+      "ER and/or PgR positive"^^<xsd:string>
     )
 
   ] ;
@@ -121,12 +121,12 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <example:HR_HER2_CATEGORY> ;
 
     sh:nodeKind sh:Literal ;
-    xsd:dataType rdf:string ;
+    xsd:dataType xsd:string ;
     sh:in (
-      "1"
-      "2"
-      "3"
-      ""
+      "1"^^<xsd:string>
+      "2"^^<xsd:string>
+      "3"^^<xsd:string>
+      ""^^<xsd:string>
     )
 
   ] ;
@@ -137,12 +137,12 @@ example:ExportSchema a sh:NodeShape ;
     sh:path <example:HR_HER2_STATUS> ;
 
     sh:nodeKind sh:Literal ;
-    xsd:dataType rdf:string ;
+    xsd:dataType xsd:string ;
     sh:in (
-      "HRposHER2neg"
-      "HER2pos"
-      "TripleNeg"
-      ""
+      "HRposHER2neg"^^<xsd:string>
+      "HER2pos"^^<xsd:string>
+      "TripleNeg"^^<xsd:string>
+      ""^^<xsd:string>
     )
 
   ] ;

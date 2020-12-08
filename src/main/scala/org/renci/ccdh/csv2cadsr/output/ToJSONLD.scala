@@ -143,7 +143,7 @@ object ToJSONLD {
                      |    sh:nodeKind sh:IRIOrLiteral ;
                      |    sh:in (
                      |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
-                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"')).mkString("\n      ")}
+                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"') + "^^<xsd:string>").mkString("\n      ")}
                      |    )
                      |""".stripMargin
                 } else if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.isEmpty) {
@@ -156,9 +156,9 @@ object ToJSONLD {
                 } else if (conceptsWithIDs.isEmpty && conceptsWithoutIDs.nonEmpty) {
                   s"""
                      |    sh:nodeKind sh:Literal ;
-                     |    xsd:dataType rdf:string ;
+                     |    xsd:dataType xsd:string ;
                      |    sh:in (
-                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"')).mkString("\n      ")}
+                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"') + "^^<xsd:string>").mkString("\n      ")}
                      |    )
                      |""".stripMargin
                 } else {
@@ -181,7 +181,7 @@ object ToJSONLD {
                   case JString(_) =>
                     s"""
                        |    sh:nodeKind sh:Literal ;
-                       |    xsd:dataType rdf:string ;
+                       |    xsd:dataType xsd:string ;
                        |""".stripMargin
                   case unk => throw new RuntimeException(s"Expected the type described as a string but found $unk.")
                 }
@@ -274,9 +274,12 @@ object ToJSONLD {
                           case JString(v) => v
                           case JNothing   => ""
                         }
-                        if (uri.isEmpty) None
-                        else
-                          Some(
+                        if (uri.isEmpty) Some(
+                          // We get here if one of the values was mapped to a caDSR value which doesn't have a concept URI.
+                          // TODO: we might need to replace this code in ToCEDAR.
+                          ("@value" -> mappingValue) ~
+                          ("@type" -> "xsd:string")
+                        ) else Some(
                             ("@id" -> uri) ~
                               ("rdfs:label" -> caDSRValue) ~
                               ("dc:description" -> extractJString(enumValue.asInstanceOf[JObject], "description").getOrElse("")) ~

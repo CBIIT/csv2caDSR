@@ -1,13 +1,14 @@
 @prefix example: <http://example.org/csv2cadsr#> .
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix ns1: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
-@prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
+@prefix ns10: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
+@prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
 @prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
-@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
-@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
+@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
+@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
 @prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=> .
-@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
-@prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
+@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=> .
+@prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
 @prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
@@ -18,22 +19,30 @@
     example:MRI_LD_Baseline "43"^^<xsd:long> ;
     example:MRI_LD_InterReg "36"^^<xsd:long> ;
     example:MRI_LD_PreSurg "34"^^<xsd:long> ;
-    ncit:C17049 ncit:C41261 ;
-    ns4:2.0 "09 03 2009"^^<xsd:string> ;
-    ns5:2.0 "54.16"^^<xsd:decimal> ;
+    ns2:2.0 "09 03 2009"^^<xsd:string> ;
+    ns10:2.0 "54.16"^^<xsd:decimal> ;
     ns9:1.0 ncit:C49487 ;
-    ns7:1.0 ncit:C49487 ;
+    ns8:1.0 ncit:C49487 ;
     ns6:1.0 ncit:C49488 ;
     ns3:1.0 ncit:C49487 ;
-    ns2:1.0 "1031"^^<xsd:long> ;
+    ns7:1.0 ncit:C41261 ;
+    ns4:1.0 "1031"^^<xsd:long> ;
     ns1:3.0 "1"^^<xsd:string> ;
-    ns8:1.0 ncit:C25228 .
+    ns5:1.0 ncit:C25228 .
 
-ncit:C25228 rdfs:label "Right" .
+ncit:C25228 rdfs:label "Right" ;
+    <dc:description> "Right" ;
+    example:verbatimValue "2" .
 
-ncit:C41261 rdfs:label "5" .
+ncit:C41261 rdfs:label "5" ;
+    <dc:description> "White" ;
+    example:verbatimValue "1" .
 
-ncit:C49488 rdfs:label "Yes" .
+ncit:C49488 rdfs:label "Yes" ;
+    <dc:description> "Yes" ;
+    example:verbatimValue "1" .
 
-ncit:C49487 rdfs:label "No" .
+ncit:C49487 rdfs:label "No" ;
+    <dc:description> "No" ;
+    example:verbatimValue "0" .
 
