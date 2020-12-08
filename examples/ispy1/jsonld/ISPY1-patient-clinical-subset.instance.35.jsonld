@@ -4,7 +4,7 @@
   "@context":{
     "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
     "rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "ncit":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "ncit":"http://purl.obolibrary.org/obo/NCIT_",
     "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
     "example":"http://example.org/csv2cadsr#",
     "SUBJECTID":{
@@ -69,34 +69,19 @@
     "@type":"xsd:decimal"
   },
   "race_id":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
-    "rdfs:label":"5",
-    "dc:description":"White",
-    "example:verbatimValue":"1"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C41261"
   },
   "ERpos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "PgRpos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "HR Pos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757",
-    "rdfs:label":"Negative",
-    "dc:description":"Negative Finding",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C38757"
   },
   "Her2MostPos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "HR_HER2_CATEGORY":{
     "@value":"3",
@@ -107,16 +92,10 @@
     "@type":"xsd:string"
   },
   "BilateralCa":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "Laterality":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228",
-    "rdfs:label":"Right",
-    "dc:description":"Right",
-    "example:verbatimValue":"2"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C25228"
   },
   "MRI LD Baseline":{
     "@value":"69",

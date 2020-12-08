@@ -1,16 +1,14 @@
 @prefix example: <http://example.org/csv2cadsr#> .
-@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
-@prefix ns1: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
-@prefix ns10: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
-@prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
-@prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
-@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=> .
-@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
-@prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=> .
-@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
-@prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
-@prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns1: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=> .
+@prefix ns10: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=> .
+@prefix ns2: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=> .
+@prefix ns3: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=> .
+@prefix ns4: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=> .
+@prefix ns5: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=> .
+@prefix ns6: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=> .
+@prefix ns7: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=> .
+@prefix ns8: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6380049&version=> .
+@prefix ns9: <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2433964&version=> .
 
 <file:///Users/gaurav/Development/csv2caDSR/examples/ispy1/ISPY1-patient-clinical-subset.csv#row142> a example:ExportSchema ;
     example:HR_HER2_CATEGORY "2"^^<xsd:string> ;
@@ -19,34 +17,14 @@
     example:MRI_LD_Baseline "61"^^<xsd:long> ;
     example:MRI_LD_InterReg "33"^^<xsd:long> ;
     example:MRI_LD_PreSurg "33"^^<xsd:long> ;
-    ns7:2.0 "09 03 2009"^^<xsd:string> ;
-    ns1:2.0 "41.39"^^<xsd:decimal> ;
-    ns5:1.0 ncit:C49488 ;
-    ns9:1.0 ncit:C49487 ;
-    ns6:1.0 ncit:C49487 ;
-    ns10:1.0 ncit:C49487 ;
-    ns4:1.0 ncit:C41261 ;
-    ns3:1.0 "1157"^^<xsd:long> ;
-    ns8:3.0 ncit:C38757 ;
-    ns2:1.0 ncit:C25228 .
-
-ncit:C25228 rdfs:label "Right" ;
-    <dc:description> "Right" ;
-    example:verbatimValue "2" .
-
-ncit:C38757 rdfs:label "Negative" ;
-    <dc:description> "Negative Finding" ;
-    example:verbatimValue "0" .
-
-ncit:C41261 rdfs:label "5" ;
-    <dc:description> "White" ;
-    example:verbatimValue "1" .
-
-ncit:C49488 rdfs:label "Yes" ;
-    <dc:description> "Yes" ;
-    example:verbatimValue "1" .
-
-ncit:C49487 rdfs:label "No" ;
-    <dc:description> "No" ;
-    example:verbatimValue "0" .
+    ns1:2.0 "09 03 2009"^^<xsd:string> ;
+    ns9:2.0 "41.39"^^<xsd:decimal> ;
+    ns3:1.0 <http://purl.obolibrary.org/obo/NCIT_C49488> ;
+    ns6:1.0 <http://purl.obolibrary.org/obo/NCIT_C49487> ;
+    ns2:1.0 <http://purl.obolibrary.org/obo/NCIT_C49487> ;
+    ns5:1.0 <http://purl.obolibrary.org/obo/NCIT_C49487> ;
+    ns7:1.0 <http://purl.obolibrary.org/obo/NCIT_C41261> ;
+    ns8:1.0 "1157"^^<xsd:long> ;
+    ns10:3.0 <http://purl.obolibrary.org/obo/NCIT_C38757> ;
+    ns4:1.0 <http://purl.obolibrary.org/obo/NCIT_C25228> .
 

@@ -211,8 +211,7 @@ object ToJSONLD {
         .map { enumMapping =>
           s"""
             |<${enumMapping.conceptURI.get}>
-            |  rdfs:label "${enumMapping.value}" ;
-            |  example:verbatimValue "${enumMapping.value}" ;
+            |  rdfs:label "${enumMapping.caDSRValue.getOrElse("")}" ;
             |  dc:description "${enumMapping.description.getOrElse("")}" ;
             |  example:fromProperty <${getURIForColumn(enumMapping.colName, enumMapping.colObject)}>
             |.
@@ -280,11 +279,7 @@ object ToJSONLD {
                           ("@value" -> mappingValue) ~
                           ("@type" -> "xsd:string")
                         ) else Some(
-                            ("@id" -> uri) ~
-                              ("rdfs:label" -> caDSRValue) ~
-                              ("dc:description" -> extractJString(enumValue.asInstanceOf[JObject], "description").getOrElse("")) ~
-                              ("example:verbatimValue" -> mappingValue)
-                            // TODO: include verbatim values here?
+                            ("@id" -> uri)
                           )
                       } else {
                         None

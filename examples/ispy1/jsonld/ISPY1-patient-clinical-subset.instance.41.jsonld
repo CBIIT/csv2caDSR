@@ -4,7 +4,7 @@
   "@context":{
     "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
     "rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "ncit":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "ncit":"http://purl.obolibrary.org/obo/NCIT_",
     "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
     "example":"http://example.org/csv2cadsr#",
     "SUBJECTID":{
@@ -69,32 +69,20 @@
     "@type":"xsd:decimal"
   },
   "race_id":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
-    "rdfs:label":"5",
-    "dc:description":"White",
-    "example:verbatimValue":"1"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C41261"
   },
   "ERpos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
-    "rdfs:label":"Yes",
-    "dc:description":"Yes",
-    "example:verbatimValue":"1"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49488"
   },
   "PgRpos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488",
-    "rdfs:label":"Yes",
-    "dc:description":"Yes",
-    "example:verbatimValue":"1"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49488"
   },
   "HR Pos":{
     "@value":"1",
     "@type":"xsd:string"
   },
   "Her2MostPos":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "HR_HER2_CATEGORY":{
     "@value":"1",
@@ -105,16 +93,10 @@
     "@type":"xsd:string"
   },
   "BilateralCa":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
-    "rdfs:label":"No",
-    "dc:description":"No",
-    "example:verbatimValue":"0"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
   },
   "Laterality":{
-    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229",
-    "rdfs:label":"Left",
-    "dc:description":"Left",
-    "example:verbatimValue":"1"
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C25229"
   },
   "MRI LD Baseline":{
     "@value":"44",
