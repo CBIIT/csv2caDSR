@@ -85,7 +85,7 @@ object ToJSONLD {
     val basicContext: JObject =
       ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
       ("rdf" -> "http://www.w3.org/1999/02/22-rdf-syntax-ns#") ~
-      ("ncit" -> "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#") ~
+      ("ncit" -> "http://purl.obolibrary.org/obo/NCIT_") ~
       ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#") ~
       ("example" -> "http://example.org/csv2cadsr#")
 
