@@ -193,7 +193,7 @@ object ToJSONLD {
                 }
             }
 
-            val minCount = if(requiredProps.contains(colName)) 1
+            val minCount = if(requiredProps.contains(colName)) 1 else 0
 
             s"""
                |  sh:property [
