@@ -4,56 +4,58 @@
   "@context":{
     "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
     "rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xsd":"http://www.w3.org/2001/XMLSchema#",
+    "obo":"http://purl.obolibrary.org/obo/",
     "ncit":"http://purl.obolibrary.org/obo/NCIT_",
     "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
     "example":"http://example.org/csv2cadsr#",
     "SUBJECTID":{
-      "@id":"example:SUBJECTID"
+      "@id":"http://example.org/csv2cadsr#SUBJECTID"
     },
     "DataExtractDt":{
-      "@id":"example:DataExtractDt"
+      "@id":"http://example.org/csv2cadsr#DataExtractDt"
     },
     "age":{
-      "@id":"example:age"
+      "@id":"http://example.org/csv2cadsr#age"
     },
     "race_id":{
-      "@id":"example:race_id"
+      "@id":"http://example.org/csv2cadsr#race_id"
     },
     "ERpos":{
-      "@id":"example:ERpos"
+      "@id":"http://example.org/csv2cadsr#ERpos"
     },
     "PgRpos":{
-      "@id":"example:PgRpos"
+      "@id":"http://example.org/csv2cadsr#PgRpos"
     },
     "HR Pos":{
-      "@id":"example:HR_Pos"
+      "@id":"http://example.org/csv2cadsr#HR_Pos"
     },
     "Her2MostPos":{
-      "@id":"example:Her2MostPos"
+      "@id":"http://example.org/csv2cadsr#Her2MostPos"
     },
     "HR_HER2_CATEGORY":{
-      "@id":"example:HR_HER2_CATEGORY"
+      "@id":"http://example.org/csv2cadsr#HR_HER2_CATEGORY"
     },
     "HR_HER2_STATUS":{
-      "@id":"example:HR_HER2_STATUS"
+      "@id":"http://example.org/csv2cadsr#HR_HER2_STATUS"
     },
     "BilateralCa":{
-      "@id":"example:BilateralCa"
+      "@id":"http://example.org/csv2cadsr#BilateralCa"
     },
     "Laterality":{
-      "@id":"example:Laterality"
+      "@id":"http://example.org/csv2cadsr#Laterality"
     },
     "MRI LD Baseline":{
-      "@id":"example:MRI_LD_Baseline"
+      "@id":"http://example.org/csv2cadsr#MRI_LD_Baseline"
     },
     "MRI LD 1-3dAC":{
-      "@id":"example:MRI_LD_1-3dAC"
+      "@id":"http://example.org/csv2cadsr#MRI_LD_1-3dAC"
     },
     "MRI LD InterReg":{
-      "@id":"example:MRI_LD_InterReg"
+      "@id":"http://example.org/csv2cadsr#MRI_LD_InterReg"
     },
     "MRI LD PreSurg":{
-      "@id":"example:MRI_LD_PreSurg"
+      "@id":"http://example.org/csv2cadsr#MRI_LD_PreSurg"
     }
   },
   "SUBJECTID":{

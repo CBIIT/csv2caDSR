@@ -62,8 +62,10 @@ object ToJSONLD {
     }
   }
 
+  val EXAMPLE_PREFIX = "http://example.org/csv2cadsr#"
+
   def getURIForColumn(colName: String): String = {
-    "example:" + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
+    EXAMPLE_PREFIX + colName.replaceAll("[^A-Za-z0-9\\-._~()'!*:@,;]", "_")
   }
 
   def writeJSONLD(
@@ -85,9 +87,11 @@ object ToJSONLD {
     val basicContext: JObject =
       ("rdfs" -> "http://www.w3.org/2000/01/rdf-schema#") ~
       ("rdf" -> "http://www.w3.org/1999/02/22-rdf-syntax-ns#") ~
+      ("xsd" -> "http://www.w3.org/2001/XMLSchema#") ~
+      ("obo" -> "http://purl.obolibrary.org/obo/") ~
       ("ncit" -> "http://purl.obolibrary.org/obo/NCIT_") ~
       ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#") ~
-      ("example" -> "http://example.org/csv2cadsr#")
+      ("example" -> EXAMPLE_PREFIX)
 
     val propertyTypesMap = mutable.Map[String, String]()
     val contextProperties = JObject(headerRow map { colName =>
@@ -141,36 +145,20 @@ object ToJSONLD {
 
                 val conceptsWithIDs = enumMappings.filter(_.conceptURI.nonEmpty)
                 val conceptsWithoutIDs = enumMappings.filter(_.conceptURI.isEmpty)
-                if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.nonEmpty) {
-                  s"""
-                     |    ${cdeMapping.mkString("\n    ")}
-                     |    sh:nodeKind sh:IRIOrLiteral ;
-                     |    sh:in (
-                     |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
-                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"') + "^^<xsd:string>").mkString("\n      ")}
-                     |    )
-                     |""".stripMargin
-                } else if (conceptsWithIDs.nonEmpty && conceptsWithoutIDs.isEmpty) {
-                  s"""
-                     |    ${cdeMapping.mkString("\n    ")}
-                     |    sh:nodeKind sh:IRI ;
-                     |    sh:in (
-                     |      ${conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString("\n      ")}
-                     |    )
-                     |""".stripMargin
-                } else if (conceptsWithIDs.isEmpty && conceptsWithoutIDs.nonEmpty) {
-                  s"""
-                     |    ${cdeMapping.mkString("\n    ")}
-                     |    sh:nodeKind sh:Literal ;
-                     |    xsd:dataType xsd:string ;
-                     |    sh:in (
-                     |      ${conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value)).map(_.prepended('"').appended('"') + "^^<xsd:string>").mkString("\n      ")}
-                     |    )
-                     |""".stripMargin
-                } else {
-                  // No idea what this type is.
-                  ""
-                }
+                val sh_in = "[ sh:in (" + conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString(" ") + ") ]"
+                val sh_values = conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value))
+                  .map(_.prepended('"').appended('"'))
+                  .map(value => s"      [ sh:value $value^^<xsd:string> ]")
+                  .mkString("\n")
+
+                s"""
+                   |    ${cdeMapping.mkString("\n    ")}
+                   |    sh:nodeKind sh:IRIOrLiteral ;
+                   |    sh:or (
+                   |      ${ if(conceptsWithIDs.nonEmpty) sh_in else "" }
+                   |      ${sh_values}
+                   |    )
+                   |""".stripMargin
 
               case _ =>
                 (prop \ "type") match {
@@ -239,7 +227,7 @@ object ToJSONLD {
            |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
            |@prefix dc: <http://purl.org/dc/elements/1.1/> .
            |@prefix sh: <http://www.w3.org/ns/shacl#> .
-           |@prefix example: <http://example.org/csv2cadsr#> .
+           |@prefix example: <$EXAMPLE_PREFIX> .
            |
            |example:ExportSchema a sh:NodeShape ;
            |  sh:targetClass example:ExportSchema ;

@@ -12,7 +12,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "SUBJECTID" ;
     sh:description "I-SPY ID de-identifies a patient’s CALGB and ACRIN ID" ;
-    sh:path <example:SUBJECTID> ;
+    sh:path <http://example.org/csv2cadsr#SUBJECTID> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -25,16 +25,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "DataExtractDt" ;
     sh:description "Date clinical data was downloaded from the CALGB database" ;
-    sh:path <example:DataExtractDt> ;
+    sh:path <http://example.org/csv2cadsr#DataExtractDt> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0> ;
-    sh:nodeKind sh:Literal ;
-    xsd:dataType xsd:string ;
-    sh:in (
-      "09 03 2009"^^<xsd:string>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      
+            [ sh:value "09 03 2009"^^<xsd:string> ]
     )
 
   ] ;
@@ -42,7 +42,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "age" ;
     sh:description "Patient Age" ;
-    sh:path <example:age> ;
+    sh:path <http://example.org/csv2cadsr#age> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
@@ -55,20 +55,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "race_id" ;
     sh:description "A single human being.:Pertaining to biology or to life and living things.:An independently existing thing (living or nonliving)._An arbitrary classification of taxonomic group that is a division of a species; usually arise as a consequence of geographical isolation within a species and characterised by shared heredity, physical attributes and behavior, and in case of humans, by com:A system, often of numbered categories, for representation of data._Please use only one race value per member." ;
-    sh:path <example:race_id> ;
+    sh:path <http://example.org/csv2cadsr#race_id> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C41261>
-      <http://purl.obolibrary.org/obo/NCIT_C16352>
-      <http://purl.obolibrary.org/obo/NCIT_C41260>
-      <http://purl.obolibrary.org/obo/NCIT_C17998>
-      <http://purl.obolibrary.org/obo/NCIT_C41219>
-      "Mixed"^^<xsd:string>
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C41261> <http://purl.obolibrary.org/obo/NCIT_C16352> <http://purl.obolibrary.org/obo/NCIT_C41260> <http://purl.obolibrary.org/obo/NCIT_C17998> <http://purl.obolibrary.org/obo/NCIT_C41219>) ]
+            [ sh:value "Mixed"^^<xsd:string> ]
     )
 
   ] ;
@@ -76,17 +72,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "ERpos" ;
     sh:description "The yes/no indicator for information related to the description or status of estrogen receptors, cytoplasmic hormone-activated receptors that act as nuclear transcription factors composed of an N-terminal transcription activation/modulation domain and a C-terminal steroid-binding domain, based on percentage and intensity of stained cells." ;
-    sh:path <example:ERpos> ;
+    sh:path <http://example.org/csv2cadsr#ERpos> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C49488>
-      <http://purl.obolibrary.org/obo/NCIT_C49487>
-      ""^^<xsd:string>
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49488> <http://purl.obolibrary.org/obo/NCIT_C49487>) ]
+            [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -94,17 +89,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "PgRpos" ;
     sh:description "The yes/no indicator for information related to the description or status of progesterone receptors, specific proteins found in or on cells of progesterone target tissues that specifically combine with progesterone, based on percentage and intensity of stained cells." ;
-    sh:path <example:PgRpos> ;
+    sh:path <http://example.org/csv2cadsr#PgRpos> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C49487>
-      <http://purl.obolibrary.org/obo/NCIT_C49488>
-      ""^^<xsd:string>
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488>) ]
+            [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -112,17 +106,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "HR Pos" ;
     sh:description "the last outcome from pathologic tests to determine presence and nature of cancer by evaluating a sample of breast tissue for ligand binding proteins (hormones) present in or produced by tumor." ;
-    sh:path <example:HR_Pos> ;
+    sh:path <http://example.org/csv2cadsr#HR_Pos> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C38757>
-      <http://purl.obolibrary.org/obo/NCIT_C48658>
-      "ER and/or PgR positive"^^<xsd:string>
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C38757> <http://purl.obolibrary.org/obo/NCIT_C48658>) ]
+            [ sh:value "ER and/or PgR positive"^^<xsd:string> ]
     )
 
   ] ;
@@ -130,17 +123,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "Her2MostPos" ;
     sh:description "Text term to signify testing was done for the gene that controls cell growth by making the human epidermal growth factor receptor 2, detected by immunohistochemical means." ;
-    sh:path <example:Her2MostPos> ;
+    sh:path <http://example.org/csv2cadsr#Her2MostPos> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0> ;
-    sh:nodeKind sh:IRI ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C49487>
-      <http://purl.obolibrary.org/obo/NCIT_C49488>
-      <http://purl.obolibrary.org/obo/NCIT_C49484>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488> <http://purl.obolibrary.org/obo/NCIT_C49484>) ]
+      
     )
 
   ] ;
@@ -148,19 +140,19 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "HR_HER2_CATEGORY" ;
     sh:description "3-level HR/Her2 category pre-treatment" ;
-    sh:path <example:HR_HER2_CATEGORY> ;
+    sh:path <http://example.org/csv2cadsr#HR_HER2_CATEGORY> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     
-    sh:nodeKind sh:Literal ;
-    xsd:dataType xsd:string ;
-    sh:in (
-      "1"^^<xsd:string>
-      "2"^^<xsd:string>
-      "3"^^<xsd:string>
-      ""^^<xsd:string>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      
+            [ sh:value "1"^^<xsd:string> ]
+      [ sh:value "2"^^<xsd:string> ]
+      [ sh:value "3"^^<xsd:string> ]
+      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -168,19 +160,19 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "HR_HER2_STATUS" ;
     sh:description "3-level HR/Her2 status pre-treatment" ;
-    sh:path <example:HR_HER2_STATUS> ;
+    sh:path <http://example.org/csv2cadsr#HR_HER2_STATUS> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
 
     
-    sh:nodeKind sh:Literal ;
-    xsd:dataType xsd:string ;
-    sh:in (
-      "HRposHER2neg"^^<xsd:string>
-      "HER2pos"^^<xsd:string>
-      "TripleNeg"^^<xsd:string>
-      ""^^<xsd:string>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      
+            [ sh:value "HRposHER2neg"^^<xsd:string> ]
+      [ sh:value "HER2pos"^^<xsd:string> ]
+      [ sh:value "TripleNeg"^^<xsd:string> ]
+      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -188,16 +180,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "BilateralCa" ;
     sh:description "the yes/no indicator related to enrollment in research study that prospectively assigns human participants or groups of humans to one or more health-related interventions to evaluate the effects on health outcomes for patient that has bilateral carcinoma arising from the breast, most commonly the terminal ductal-lobular unit." ;
-    sh:path <example:BilateralCa> ;
+    sh:path <http://example.org/csv2cadsr#BilateralCa> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3027502&version=1.0> ;
-    sh:nodeKind sh:IRI ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C49487>
-      <http://purl.obolibrary.org/obo/NCIT_C49488>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488>) ]
+      
     )
 
   ] ;
@@ -205,16 +197,16 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "Laterality" ;
     sh:description "for a tumor in a paired organ, a designation for the side of the body on which the tumor or cancer first developed." ;
-    sh:path <example:Laterality> ;
+    sh:path <http://example.org/csv2cadsr#Laterality> ;
 
     sh:minCount 1 ;
     sh:maxCount 1 ;
 
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=827&version=1.0> ;
-    sh:nodeKind sh:IRI ;
-    sh:in (
-      <http://purl.obolibrary.org/obo/NCIT_C25228>
-      <http://purl.obolibrary.org/obo/NCIT_C25229>
+    sh:nodeKind sh:IRIOrLiteral ;
+    sh:or (
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C25228> <http://purl.obolibrary.org/obo/NCIT_C25229>) ]
+      
     )
 
   ] ;
@@ -222,7 +214,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "MRI LD Baseline" ;
     sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at baseline" ;
-    sh:path <example:MRI_LD_Baseline> ;
+    sh:path <http://example.org/csv2cadsr#MRI_LD_Baseline> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
@@ -235,7 +227,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "MRI LD 1-3dAC" ;
     sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at 1-3days after start of AC" ;
-    sh:path <example:MRI_LD_1-3dAC> ;
+    sh:path <http://example.org/csv2cadsr#MRI_LD_1-3dAC> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
@@ -248,7 +240,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "MRI LD InterReg" ;
     sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Inter-regimen" ;
-    sh:path <example:MRI_LD_InterReg> ;
+    sh:path <http://example.org/csv2cadsr#MRI_LD_InterReg> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
@@ -261,7 +253,7 @@ example:ExportSchema a sh:NodeShape ;
   sh:property [
     sh:name "MRI LD PreSurg" ;
     sh:description "LD spans all disease present (inv & DCIS) even if there is intervening normal tissue, in mm, at Pre-surgery" ;
-    sh:path <example:MRI_LD_PreSurg> ;
+    sh:path <http://example.org/csv2cadsr#MRI_LD_PreSurg> ;
 
     sh:minCount 0 ;
     sh:maxCount 1 ;
