@@ -70,6 +70,7 @@ object ToJSONLD {
     inputFile: File,
     reader: CSVReader,
     properties: Map[String, JValue],
+    requiredProps: Set[String],
     outputPrefix: String,
     generateSHACL: Boolean,
     generateJSONSchema: Boolean
@@ -87,14 +88,6 @@ object ToJSONLD {
       ("ncit" -> "http://purl.obolibrary.org/obo/NCIT_") ~
       ("ncicde" -> "https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#") ~
       ("example" -> "http://example.org/csv2cadsr#")
-
-    val requiredProps = ((properties \ "required") match {
-      case JArray(list) => list.map({
-        case JString(str) => str
-        case unk => throw new RuntimeException(s"Expected list of required property names, but found $unk in list.")
-      })
-      case unk => throw new RuntimeException(s"Expected list of required property names, but found $unk.")
-    }).toSet
 
     val propertyTypesMap = mutable.Map[String, String]()
     val contextProperties = JObject(headerRow map { colName =>

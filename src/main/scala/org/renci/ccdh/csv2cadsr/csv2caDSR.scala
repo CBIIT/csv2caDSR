@@ -130,11 +130,6 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     // Look through the command line options to see how we should export our data.
     options match {
-      case opt if opt.toJson.nonEmpty => {
-        // TODO: implement our own JSON-LD export for this data.
-        ???
-      }
-
       case opt if opt.toCsv.nonEmpty => {
         // Generate the CSV!
         val csvOutputFile = opt.toCsv.map(new File(_)).head
@@ -179,6 +174,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           csvFile,
           csvReader,
           properties,
+          requiredProperties,
           jsonldPrefix,
           opt.generateShacl,
           opt.generateJsonSchema
