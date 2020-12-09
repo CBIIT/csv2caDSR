@@ -552,8 +552,8 @@ object ToCEDAR {
             })
 
           val cedarInstance: json4s.JObject = baseCEDARInstance ~
-            ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
-            ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn)") ~
+            ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn) for row $index") ~
+            ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn) for row $index from $inputFile") ~
             ("schema:isBasedOn" -> templateId.getOrElse("")) ~
             ("pav:createdBy" -> pavCreatedBy) ~
             ("pav:createdOn" -> pavCreatedOn) ~
