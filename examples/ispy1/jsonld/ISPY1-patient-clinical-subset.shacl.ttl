@@ -34,7 +34,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       
-            [ sh:value "09 03 2009"^^<xsd:string> ]
+      [ sh:value "09 03 2009"^^<xsd:string> ]
     )
 
   ] ;
@@ -64,7 +64,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C41261> <http://purl.obolibrary.org/obo/NCIT_C16352> <http://purl.obolibrary.org/obo/NCIT_C41260> <http://purl.obolibrary.org/obo/NCIT_C17998> <http://purl.obolibrary.org/obo/NCIT_C41219>) ]
-            [ sh:value "Mixed"^^<xsd:string> ]
+      [ sh:value "Mixed"^^<xsd:string> ]
     )
 
   ] ;
@@ -81,7 +81,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49488> <http://purl.obolibrary.org/obo/NCIT_C49487>) ]
-            [ sh:value ""^^<xsd:string> ]
+      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -98,7 +98,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488>) ]
-            [ sh:value ""^^<xsd:string> ]
+      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -115,7 +115,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C38757> <http://purl.obolibrary.org/obo/NCIT_C48658>) ]
-            [ sh:value "ER and/or PgR positive"^^<xsd:string> ]
+      [ sh:value "ER and/or PgR positive"^^<xsd:string> ]
     )
 
   ] ;
@@ -149,7 +149,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       
-            [ sh:value "1"^^<xsd:string> ]
+      [ sh:value "1"^^<xsd:string> ]
       [ sh:value "2"^^<xsd:string> ]
       [ sh:value "3"^^<xsd:string> ]
       [ sh:value ""^^<xsd:string> ]
@@ -169,7 +169,7 @@ example:ExportSchema a sh:NodeShape ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
       
-            [ sh:value "HRposHER2neg"^^<xsd:string> ]
+      [ sh:value "HRposHER2neg"^^<xsd:string> ]
       [ sh:value "HER2pos"^^<xsd:string> ]
       [ sh:value "TripleNeg"^^<xsd:string> ]
       [ sh:value ""^^<xsd:string> ]

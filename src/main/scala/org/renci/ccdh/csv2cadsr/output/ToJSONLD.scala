@@ -148,8 +148,8 @@ object ToJSONLD {
                 val sh_in = "[ sh:in (" + conceptsWithIDs.flatMap(_.conceptURI).map(uri => s"<$uri>").mkString(" ") + ") ]"
                 val sh_values = conceptsWithoutIDs.map(mapping => mapping.caDSRValue.getOrElse(mapping.value))
                   .map(_.prepended('"').appended('"'))
-                  .map(value => s"      [ sh:value $value^^<xsd:string> ]")
-                  .mkString("\n")
+                  .map(value => s"[ sh:value $value^^<xsd:string> ]")
+                  .mkString("\n      ")
 
                 s"""
                    |    ${cdeMapping.mkString("\n    ")}
