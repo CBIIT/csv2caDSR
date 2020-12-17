@@ -33,8 +33,8 @@ example:ExportSchema a sh:NodeShape ;
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
+      [ sh:in (<>) ]
       
-      [ sh:value "09 03 2009"^^<xsd:string> ]
     )
 
   ] ;
@@ -63,8 +63,8 @@ example:ExportSchema a sh:NodeShape ;
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
-      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C41261> <http://purl.obolibrary.org/obo/NCIT_C16352> <http://purl.obolibrary.org/obo/NCIT_C41260> <http://purl.obolibrary.org/obo/NCIT_C17998> <http://purl.obolibrary.org/obo/NCIT_C41219>) ]
-      [ sh:value "Mixed"^^<xsd:string> ]
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C41261> <http://purl.obolibrary.org/obo/NCIT_C16352> <http://purl.obolibrary.org/obo/NCIT_C41260> <> <http://purl.obolibrary.org/obo/NCIT_C17998> <http://purl.obolibrary.org/obo/NCIT_C41219>) ]
+      
     )
 
   ] ;
@@ -80,8 +80,8 @@ example:ExportSchema a sh:NodeShape ;
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
-      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49488> <http://purl.obolibrary.org/obo/NCIT_C49487>) ]
-      [ sh:value ""^^<xsd:string> ]
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49488> <http://purl.obolibrary.org/obo/NCIT_C49487> <>) ]
+      
     )
 
   ] ;
@@ -97,8 +97,8 @@ example:ExportSchema a sh:NodeShape ;
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
-      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488>) ]
-      [ sh:value ""^^<xsd:string> ]
+      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C49487> <http://purl.obolibrary.org/obo/NCIT_C49488> <>) ]
+      
     )
 
   ] ;
@@ -114,8 +114,8 @@ example:ExportSchema a sh:NodeShape ;
     example:fromCDE <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0> ;
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
-      [ sh:in (<http://purl.obolibrary.org/obo/NCIT_C38757> <http://purl.obolibrary.org/obo/NCIT_C48658>) ]
-      [ sh:value "ER and/or PgR positive"^^<xsd:string> ]
+      [ sh:in (<> <http://purl.obolibrary.org/obo/NCIT_C38757> <http://purl.obolibrary.org/obo/NCIT_C48658>) ]
+      
     )
 
   ] ;
@@ -148,11 +148,8 @@ example:ExportSchema a sh:NodeShape ;
     
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
+      [ sh:in (<> <> <> <>) ]
       
-      [ sh:value "1"^^<xsd:string> ]
-      [ sh:value "2"^^<xsd:string> ]
-      [ sh:value "3"^^<xsd:string> ]
-      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -168,11 +165,8 @@ example:ExportSchema a sh:NodeShape ;
     
     sh:nodeKind sh:IRIOrLiteral ;
     sh:or (
+      [ sh:in (<> <> <> <>) ]
       
-      [ sh:value "HRposHER2neg"^^<xsd:string> ]
-      [ sh:value "HER2pos"^^<xsd:string> ]
-      [ sh:value "TripleNeg"^^<xsd:string> ]
-      [ sh:value ""^^<xsd:string> ]
     )
 
   ] ;
@@ -267,6 +261,12 @@ example:ExportSchema a sh:NodeShape ;
 
 # Descriptions for values in caDSR CDEs.
 
+<>
+  rdfs:label "" ;
+  dc:description "" ;
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2193134&version=2.0>
+.
+
 <http://purl.obolibrary.org/obo/NCIT_C41261>
   rdfs:label "5" ;
   dc:description "White" ;
@@ -282,6 +282,12 @@ example:ExportSchema a sh:NodeShape ;
 <http://purl.obolibrary.org/obo/NCIT_C41260>
   rdfs:label "2" ;
   dc:description "Asian" ;
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
+.
+
+<>
+  rdfs:label "Mixed" ;
+  dc:description "Mixed" ;
   dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=6093480&version=1.0>
 .
 
@@ -309,6 +315,12 @@ example:ExportSchema a sh:NodeShape ;
   dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
 .
 
+<>
+  rdfs:label "" ;
+  dc:description "" ;
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895179&version=1.0>
+.
+
 <http://purl.obolibrary.org/obo/NCIT_C49487>
   rdfs:label "No" ;
   dc:description "No" ;
@@ -319,6 +331,18 @@ example:ExportSchema a sh:NodeShape ;
   rdfs:label "Yes" ;
   dc:description "Yes" ;
   dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "" ;
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=3895181&version=1.0>
+.
+
+<>
+  rdfs:label "ER and/or PgR positive" ;
+  dc:description "ER and/or PgR positive" ;
+  dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=64750&version=3.0>
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C38757>
@@ -349,6 +373,54 @@ example:ExportSchema a sh:NodeShape ;
   rdfs:label "Not Done" ;
   dc:description "Not Done" ;
   dc:source <https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2542108&version=1.0>
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "HR Positive, Her2 Negative" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "Her2 Positive" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "Triple Negative" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "HR Positive, Her2 Negative" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "Her2 Positive" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "Triple Negative" ;
+  
+.
+
+<>
+  rdfs:label "" ;
+  dc:description "" ;
+  
 .
 
 <http://purl.obolibrary.org/obo/NCIT_C49487>
