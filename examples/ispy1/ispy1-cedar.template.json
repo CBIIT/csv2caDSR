@@ -28,13 +28,13 @@
   "additionalProperties":false,
   "$schema":"http://json-schema.org/draft-04/schema#",
   "@type":"https://schema.metadatacenter.org/core/Template",
-  "title":"csv2caDSR CEDAR Template Export (2020-12-08T22:54:42.173Z)",
+  "title":"csv2caDSR CEDAR Template Export (2020-12-17T04:45:04.304Z)",
   "description":"csv2caDSR CEDAR Template Export from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "schema:name":"csv2caDSR CEDAR Template Export (2020-12-08T22:54:42.173Z)",
+  "schema:name":"csv2caDSR CEDAR Template Export (2020-12-17T04:45:04.304Z)",
   "schema:description":"CEDAR Template Export based on harmonized data from examples/ispy1/ISPY1-patient-clinical-subset.csv",
-  "pav:createdOn":"2020-12-08T22:54:42.173Z",
+  "pav:createdOn":"2020-12-17T04:45:04.304Z",
   "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-  "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z",
+  "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z",
   "bibo:status":"bibo:draft",
   "pav:version":"0.0.1",
   "schema:schemaVersion":"1.6.0",
@@ -323,14 +323,14 @@
         "inputType":"numeric"
       },
       "_valueConstraints":{
-        "requiredValue":false,
+        "requiredValue":true,
         "numberType":"xsd:long"
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "DataExtractDt":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -396,7 +396,7 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false,
+        "requiredValue":true,
         "ontologies":[],
         "valueSets":[],
         "classes":[],
@@ -404,9 +404,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "age":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -472,13 +472,13 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false
+        "requiredValue":true
       },
       "required":["@value"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "race_id":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -544,7 +544,7 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false,
+        "requiredValue":true,
         "ontologies":[],
         "valueSets":[],
         "classes":[{
@@ -588,9 +588,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "ERpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -676,9 +676,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "PgRpos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -764,9 +764,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "HR Pos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -852,9 +852,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "Her2MostPos":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -940,9 +940,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "HR_HER2_CATEGORY":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1016,9 +1016,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "HR_HER2_STATUS":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1092,9 +1092,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "BilateralCa":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1160,7 +1160,7 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false,
+        "requiredValue":true,
         "ontologies":[],
         "valueSets":[],
         "classes":[{
@@ -1180,9 +1180,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "Laterality":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1248,7 +1248,7 @@
         "inputType":"textfield"
       },
       "_valueConstraints":{
-        "requiredValue":false,
+        "requiredValue":true,
         "ontologies":[],
         "valueSets":[],
         "classes":[{
@@ -1268,9 +1268,9 @@
         "multipleChoice":false
       },
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "MRI LD Baseline":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1341,9 +1341,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "MRI LD 1-3dAC":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1414,9 +1414,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "MRI LD InterReg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1487,9 +1487,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     },
     "MRI LD PreSurg":{
       "$schema":"http://json-schema.org/draft-04/schema#",
@@ -1560,9 +1560,9 @@
       },
       "required":["@value","@type"],
       "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:createdOn":"2020-12-08T22:54:42.173Z",
+      "pav:createdOn":"2020-12-17T04:45:04.304Z",
       "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
-      "pav:lastUpdatedOn":"2020-12-08T22:54:42.173Z"
+      "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z"
     }
   }
 }

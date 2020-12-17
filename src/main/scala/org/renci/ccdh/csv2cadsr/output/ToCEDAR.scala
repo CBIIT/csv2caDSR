@@ -313,8 +313,9 @@ class ToCEDAR(
                     ("valueSets" -> JArray(List())) ~
                     ("classes" -> JArray(enumValues.map(_.toJSON).toList)) ~
                     ("branches" -> JArray(List())) ~
-                    ("multipleChoice" -> false)) ~
-              ("required" -> JArray(List("rdfs:label"))) // TODO: add '@id' once every concept has an identifier.
+                    ("multipleChoice" -> false))
+              // ~ ("required" -> JArray(List("@id", "rdfs:label")))
+              // TODO: I would expect this to work here, but it causes an error on upload to CEDAR.
             } else if (numberType.nonEmpty)
               ("_ui" ->
                 ("inputType" -> "numeric")) ~
