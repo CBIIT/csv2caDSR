@@ -38,9 +38,13 @@ case class CommandLineOptions(
   cedarUploadFolderUrl: Option[String] = None,
   @HelpMessage("The filename prefix used to write harmonized data as JSON-LD files")
   toJsonld: Option[String],
-  @HelpMessage("When exporting data files as JSON-LD files, should we generate a SHACL shape description as well?")
+  @HelpMessage(
+    "When exporting data files as JSON-LD files, should we generate a SHACL shape description as well?"
+  )
   generateShacl: Boolean = false,
-  @HelpMessage("When exporting data files as JSON-LD files, should we generate a JSON schema as well?")
+  @HelpMessage(
+    "When exporting data files as JSON-LD files, should we generate a JSON schema as well?"
+  )
   generateJsonSchema: Boolean = false
 )
 
