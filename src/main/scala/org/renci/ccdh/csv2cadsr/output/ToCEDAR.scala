@@ -25,7 +25,8 @@ import org.json4s.{DefaultFormats, JArray, JField, JNothing, JObject, JString}
   */
 class ToCEDAR(
   baseURI: String = "http://ggvaidya.com/csv2caDSR/export#",
-  pavCreatedBy: String = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461" // Gaurav's user ID on CEDAR.
+  pavCreatedBy: String =
+    "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461" // Gaurav's user ID on CEDAR.
 ) {
   // We use default formats to read values from JSON objects.
   implicit val formats = DefaultFormats

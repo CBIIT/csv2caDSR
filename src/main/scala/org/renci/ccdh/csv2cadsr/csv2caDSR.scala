@@ -106,10 +106,16 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       case _            => throw new RuntimeException("JSON source is not a JSON object")
     }
     val requiredProperties: Set[String] = (jsonRoot \ "required") match {
-      case JArray(list) => list.map({
-        case JString(str) => str
-        case unk => throw new RuntimeException(s"Expected 'required' to be an array of strings but array contained element: $unk")
-      }).toSet
+      case JArray(list) =>
+        list
+          .map({
+            case JString(str) => str
+            case unk =>
+              throw new RuntimeException(
+                s"Expected 'required' to be an array of strings but array contained element: $unk"
+              )
+          })
+          .toSet
       case unk => throw new RuntimeException(s"Expected 'required' to be an array but found: $unk")
     }
 
