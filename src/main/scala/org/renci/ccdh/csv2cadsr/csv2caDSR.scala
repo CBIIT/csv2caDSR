@@ -10,6 +10,7 @@ import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods.parse
 import caseapp._
 import org.json4s
+import org.json4s.JsonAST.{JArray, JString}
 
 @AppName("csv2caDSR")
 @AppVersion("0.1.0")
@@ -104,6 +105,13 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
       case obj: JObject => obj.obj.toMap
       case _            => throw new RuntimeException("JSON source is not a JSON object")
     }
+    val requiredProperties: Set[String] = (jsonRoot \ "required") match {
+      case JArray(list) => list.map({
+        case JString(str) => str
+        case unk => throw new RuntimeException(s"Expected 'required' to be an array of strings but array contained element: $unk")
+      }).toSet
+      case unk => throw new RuntimeException(s"Expected 'required' to be an array but found: $unk")
+    }
 
     // Load the CSV data file.
     val csvSource: Source = Source.fromFile(csvFile)("UTF-8")
@@ -139,10 +147,11 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         val csvReader = CSVReader.open(csvSource)
         val uploadToCedar = opt.uploadToCedar
         val cedarFolderURL = opt.cedarUploadFolderUrl
-        output.ToCEDAR.writeCEDAR(
+        (new output.ToCEDAR()).writeCEDAR(
           csvFile,
           csvReader,
           properties,
+          requiredProperties,
           cedarPrefix,
           uploadToCedar,
           cedarFolderURL
