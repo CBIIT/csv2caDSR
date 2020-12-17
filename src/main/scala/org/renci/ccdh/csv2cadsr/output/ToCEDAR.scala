@@ -9,7 +9,7 @@ import org.json4s
 import org.json4s.JsonAST.JValue
 import org.json4s.JsonDSL.WithBigDecimal._
 import org.json4s.native.JsonMethods._
-import org.json4s.{JArray, JField, JNothing, JObject, JString}
+import org.json4s.{DefaultFormats, JArray, JField, JNothing, JObject, JString}
 
 /**
   * Converts a harmonized CSV file to CEDAR instance data.
@@ -23,11 +23,14 @@ import org.json4s.{JArray, JField, JNothing, JObject, JString}
   * TODO: To be able to quickly evaluate these formats, we'll start with some hard-coded strings. But eventually,
   *   we'll want to make the base URIs configurable.
   */
-object ToCEDAR {
-  // These constants should be made configurable in the future.
-  val baseURI = "http://ggvaidya.com/csv2caDSR/export#"
-  val pavCreatedBy = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461"
+class ToCEDAR(
+  baseURI: String = "http://ggvaidya.com/csv2caDSR/export#",
+  pavCreatedBy: String = "https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461" // Gaurav's user ID on CEDAR.
+) {
+  // We use default formats to read values from JSON objects.
+  implicit val formats = DefaultFormats
 
+  /** This helper class is used to wrap caDSR mappings. */
   case class CEDARClassConstraint(
     uri: String,
     cadsrLabel: String,
@@ -43,17 +46,36 @@ object ToCEDAR {
         ("source" -> source)
   }
 
+  /**
+    * Write information to CEDAR files (and optionally upload them to the CEDAR Workbench).
+    *
+    * @param inputCSVFile The CSV file used as input.
+    * @param reader A CSVReader used to read this file.
+    * @param properties A Map of properties from the JSON mapping file.
+    * @param requiredPropNames A Set of required properties by name.
+    * @param cedarBasename The basename used for CEDAR files. We store the template in `${cedarBasename}.template.json`
+    *                      and instance data in `${cedarBasename}.instance.${index}.json`, where $index starts from zero.
+    * @param uploadToCedar Whether or not to upload the template and instance data to the CEDAR workbench.
+    * @param cedarUploadFolderURL Optionally, the CEDAR folder URL to upload template and instance data to.
+    *                             (e.g. https://repo.metadatacenter.org/folders/3892a1ba-e253-4918-96ec-040b649164cf)
+    */
   def writeCEDAR(
-    inputFile: File,
+    inputCSVFile: File,
     reader: CSVReader,
     properties: Map[String, JValue],
+    requiredPropNames: Set[String],
     cedarBasename: File,
-    uploadToCedar: Boolean,
+    uploadToCedar: Boolean = false,
     cedarUploadFolderURL: Option[String] = None
   ): Unit = {
     val (headerRow, dataWithHeaders) = reader.allWithOrderedHeaders()
 
-    // Load CEDAR apiKey for POST requests.
+    // Record the created-on time for these records.
+    val pavCreatedOn =
+      DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
+
+    // Load CEDAR apiKey for POST requests. This should be stored in a file in ~/.cedar.properties,
+    // which should contain a string: "apiKey=9999999999999999999999999999999999999999999999999999999999999999"
     val propertiesFile = new File(System.getProperty("user.home"), ".cedar.properties")
     val utilProperties = new java.util.Properties()
     utilProperties.load(new FileReader(propertiesFile))
@@ -61,13 +83,12 @@ object ToCEDAR {
     if (apiKey.isEmpty)
       throw new RuntimeException(s"No apiKey present in config file $propertiesFile.")
 
-    // Create templates.
-    val pavCreatedOn =
-      DateTimeFormatter.ISO_INSTANT.format(Calendar.getInstance().getTime.toInstant)
-
     // Step 1. Create a CEDAR Template for the harmonization information.
-    // TODO none of this quite makes sense, which I suspect is bugs in the way CEDAR generates these files.
+    // TODO none of this quite makes sense as JSON Schema, which I suspect is a bug in the way CEDAR generates these files, but I might be wrong.
     // Once we have a working file, we should simplify this file as much as possible to see what is minimally required.
+
+    // We start by creating the CEDAR template properties.
+    // The following properties appear to be defined identically in all CEDAR templates.
     val cedarTemplateBaseProperties =
       ("schema:isBasedOn" ->
         ("type" -> "string") ~
@@ -234,7 +255,10 @@ object ToCEDAR {
                     ))
                 ))))
 
+    // We accumulate property descriptions in this object.
     var propertyDescriptions = JObject()
+
+    // We generate template properties for each column by looking up its type, enumeration and other information.
     val cedarTemplatePropertiesForCols = headerRow flatMap { colName =>
       {
         properties.get(colName) match {
@@ -247,9 +271,12 @@ object ToCEDAR {
               case _                 => None
             }
 
-            val requiredValue =
-              false // TODO: check to see if this property label is in the 'required' list.
+            // Is a value required for this column name?
+            val requiredValue = requiredPropNames.contains(colName)
 
+            // What value constraints should be applied to this property? We only suppose classes here,
+            // but CEDAR includes many other kinds of constraints
+            // (see https://more.metadatacenter.org/tools-training/outreach/cedar-template-model).
             val valueConstraints = if (prop.values.contains("enumValues")) {
               val enumValues: Seq[CEDARClassConstraint] = (prop \ "enumValues") match {
                 case JArray(arr) =>
@@ -257,10 +284,10 @@ object ToCEDAR {
                     .map({
                       case obj: JObject =>
                         CEDARClassConstraint(
-                          (obj \ "conceptURI") match { case JString(str) => str },
-                          (obj \ "caDSRValue") match { case JString(str) => str },
+                          (obj \ "conceptURI").extract[String],
+                          (obj \ "caDSRValue").extract[String],
                           "OntologyClass",
-                          (obj \ "value") match { case JString(str) => str },
+                          (obj \ "value").extract[String],
                           "NCIT"
                         )
                       case unk =>
@@ -286,8 +313,8 @@ object ToCEDAR {
                     ("valueSets" -> JArray(List())) ~
                     ("classes" -> JArray(enumValues.map(_.toJSON).toList)) ~
                     ("branches" -> JArray(List())) ~
-                    ("multipleChoice" -> false))
-              // ~ ("required" -> JArray(List("@id", "rdfs:label")))
+                    ("multipleChoice" -> false)) ~
+              ("required" -> JArray(List("rdfs:label"))) // TODO: add '@id' once every concept has an identifier.
             } else if (numberType.nonEmpty)
               ("_ui" ->
                 ("inputType" -> "numeric")) ~
@@ -353,6 +380,7 @@ object ToCEDAR {
                 ("pav:lastUpdatedOn" -> pavCreatedOn)
             }
 
+            // Add this property description to the list of property descriptions we've generated previously.
             propertyDescriptions = propertyDescriptions ~ (colName -> (prop \ "description"))
 
             Some(JField(colName, property))
@@ -366,9 +394,12 @@ object ToCEDAR {
       }
     }
 
+    // Assemble CEDAR template properties by combining the base properties (that are the same for all templates) and
+    // the properties we have generated for the columns in this dataset.
     val cedarTemplateProperties = cedarTemplateBaseProperties ~ cedarTemplatePropertiesForCols
 
-    /* Step 1.3. Create the full CEDAR template */
+    // Create a CEDAR template, including the template properties generated above.
+    // The base template appears to be the same for all CEDAR templates.
     val baseCEDARTemplate: JObject =
       ("@context" ->
         // Prefixes.
@@ -388,13 +419,18 @@ object ToCEDAR {
         ("type" -> "object") ~
         ("additionalProperties" -> false)
 
+    // Generate a full CEDAR template by combining:
+    //  1. The base CEDAR template, which is common for all templates,
+    //  2. Template-level metadata, such as title, description and creation time,
+    //  3. _ui information, such as the order of fields and their labels and descriptions, and
+    //  4. The properties that we generated from column descriptions above.
     val cedarTemplate: JObject = baseCEDARTemplate ~
       ("$schema" -> "http://json-schema.org/draft-04/schema#") ~
       ("@type" -> "https://schema.metadatacenter.org/core/Template") ~
       ("title" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~ // This appears to be ignored.
-      ("description" -> s"csv2caDSR CEDAR Template Export from ${inputFile}") ~
+      ("description" -> s"csv2caDSR CEDAR Template Export from ${inputCSVFile}") ~
       ("schema:name" -> s"csv2caDSR CEDAR Template Export ($pavCreatedOn)") ~
-      ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputFile}") ~
+      ("schema:description" -> s"CEDAR Template Export based on harmonized data from ${inputCSVFile}") ~
       ("pav:createdOn" -> pavCreatedOn) ~
       ("pav:createdBy" -> pavCreatedBy) ~
       ("pav:lastUpdatedOn" -> pavCreatedOn) ~
@@ -420,13 +456,13 @@ object ToCEDAR {
       )) ~
       ("properties" -> cedarTemplateProperties)
 
-    // Write out "$cedarBasename.template.json".
+    // Write out this template to "$cedarBasename.template.json".
     val templateFilename = new File(cedarBasename.getAbsolutePath + ".template.json")
     val templateWriter = new FileWriter(templateFilename)
     templateWriter.append(pretty(render(cedarTemplate)))
     templateWriter.close()
 
-    // POST this to CEDAR.
+    // Optionally, POST this template to CEDAR.
     // Uses API as https://resource.metadatacenter.org/api/#!/Templates/post_templates
     val templateId = if (!uploadToCedar) {
       scribe.info("--upload-cedar is false, so not uploading to CEDAR workbench.")
@@ -446,12 +482,13 @@ object ToCEDAR {
         scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
         return
       }
-      val generatedTemplateId = (parse(response.text()) \ "@id") match { case JString(str) => str }
+      val generatedTemplateId = (parse(response.text()) \ "@id").extract[String]
       scribe.info(s"Template successfully uploaded as $generatedTemplateId.")
       Some(generatedTemplateId)
     }
 
     // Step 2. Create a CEDAR Instance for each row in the input data.
+    // We start with the base CEDAR instance -- the information that appears to be identical for each CEDAR instance.
     val baseCEDARInstance =
       ("@context" ->
         // Prefixes
@@ -477,6 +514,7 @@ object ToCEDAR {
           ("id" -> "http://purl.org/dc/terms/identifier") ~
           ("rdfs:label" -> ("@type" -> "xsd:string")))
 
+    // Generate a CEDAR instance for each row in the input data.
     dataWithHeaders.zipWithIndex
       .foreach({
         case (row, index) =>
@@ -484,25 +522,19 @@ object ToCEDAR {
             .map(colName => (colName, row.get(colName)))
             .map({
               case (colName, Some(value)) => {
-                val prop = properties.get(colName).getOrElse(JObject(List()))
+                // Load the property information for this column.
+                val prop = properties.getOrElse(colName, JObject(List()))
 
                 val mappings: Seq[JObject] = (prop \ "enumValues") match {
                   case JArray(enumValues) => {
                     enumValues flatMap { enumValue =>
-                      val mappingValue = (enumValue \ "value") match {
-                        case JString(v) => v
-                      }
+                      val mappingValue = (enumValue \ "value").extract[String]
                       // scribe.info(s"Comparing '$value' with '$mappingValue'")
                       if (value == mappingValue) {
                         // Gotta map!
-                        val uri = (enumValue \ "conceptURI") match {
-                          case JString(v) => v
-                          case JNothing   => ""
-                        }
-                        val caDSRValue = (enumValue \ "caDSRValue") match {
-                          case JString(v) => v
-                          case JNothing   => ""
-                        }
+                        val uri = (enumValue \ "conceptURI").extract[String]
+                        val caDSRValue = (enumValue \ "caDSRValue").extract[String]
+
                         if (uri.isEmpty) None
                         else
                           Some(
@@ -522,6 +554,8 @@ object ToCEDAR {
                     )
                 }
 
+                // Convert this cell in the input data into a JField. The JField includes both the field name (in this
+                // case, the column name) and the value (a representation of the value as a JSON-LD value.
                 JField(
                   colName,
                   if (mappings.nonEmpty) {
@@ -551,9 +585,10 @@ object ToCEDAR {
               case (colName, None) => JField(colName, "")
             })
 
+          // Create a CEDAR instance by adding metadata and data values to the base CEDAR instance.
           val cedarInstance: json4s.JObject = baseCEDARInstance ~
             ("schema:name" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn) for row $index") ~
-            ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn) for row $index from $inputFile") ~
+            ("schema:description" -> s"csv2caDSR CEDAR Instance Export ($pavCreatedOn) for row $index from $inputCSVFile") ~
             ("schema:isBasedOn" -> templateId.getOrElse("")) ~
             ("pav:createdBy" -> pavCreatedBy) ~
             ("pav:createdOn" -> pavCreatedOn) ~
@@ -567,7 +602,7 @@ object ToCEDAR {
           templateWriter.append(pretty(render(cedarInstance)))
           templateWriter.close()
 
-          // Publish instance to CEDAR Workbench.
+          // Optionally, publish instance to CEDAR Workbench.
           if (!uploadToCedar) {
             scribe.info("--upload-cedar is false, so not uploading instances to CEDAR workbench.")
             None
@@ -588,9 +623,7 @@ object ToCEDAR {
               scribe.error(s"Content: ${pretty(render(parse(response.text())))}")
             } else {
 
-              val generatedInstanceId = (parse(response.text()) \ "@id") match {
-                case JString(str) => str
-              }
+              val generatedInstanceId = (parse(response.text()) \ "@id").extract[String]
               scribe.info(s"Template instance successfully uploaded as $generatedInstanceId.")
             }
           }
