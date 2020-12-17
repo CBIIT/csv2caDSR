@@ -170,7 +170,7 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         // Generate JSON-LD files.
         val jsonldPrefix = opt.toJsonld.getOrElse("jsonld-export")
         val csvReader = CSVReader.open(csvSource)
-        output.ToJSONLD.writeJSONLD(
+        (new output.ToJSONLD()).writeJSONLD(
           csvFile,
           csvReader,
           properties,
