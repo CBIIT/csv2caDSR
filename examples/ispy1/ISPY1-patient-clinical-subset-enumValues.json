@@ -3,14 +3,14 @@
     "SUBJECTID":{
       "type":"integer",
       "description":"I-SPY ID de-identifies a patient\u2019s CALGB and ACRIN ID",
-      "caDSR":"",
+      "caDSR":"6380049",
       "caDSRVersion":"1.0"
     },
     "DataExtractDt":{
       "type":"string",
       "description":"Date clinical data was downloaded from the CALGB database",
-      "caDSR":"",
-      "caDSRVersion":"1.0",
+      "caDSR":"2193134",
+      "caDSRVersion":"2.0",
       "permissibleValues":[
 
       ],
@@ -29,8 +29,8 @@
     "age":{
       "type":"number",
       "description":"Patient Age",
-      "caDSR":"",
-      "caDSRVersion":"1.0"
+      "caDSR":"2433964",
+      "caDSRVersion":"2.0"
     },
     "race_id":{
       "type":"string",
@@ -58,19 +58,19 @@
           "value":"1",
           "description":"White",
           "caDSRValue":"5",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C41261"
         },
         {
           "value":"3",
           "description":"Black or African American",
           "caDSRValue":"3",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16352"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C16352"
         },
         {
           "value":"4",
           "description":"Asian",
           "caDSRValue":"2",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41260"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C41260"
         },
         {
           "value":"50",
@@ -82,13 +82,13 @@
           "value":"0",
           "description":"Unknown",
           "caDSRValue":"0",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17998"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C17998"
         },
         {
           "value":"5",
           "description":"Native Hawaiian or Other Pacific Islander",
           "caDSRValue":"4",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41219"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C41219"
         }
       ]
     },
@@ -111,13 +111,13 @@
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49488"
         },
         {
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49487"
         },
         {
           "value":"",
@@ -146,13 +146,13 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49488"
         },
         {
           "value":"",
@@ -193,13 +193,13 @@
           "value":"0",
           "description":"Negative Finding",
           "caDSRValue":"Negative",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C38757"
         },
         {
           "value":"",
           "description":"Indeterminate",
           "caDSRValue":"Indeterminate",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C48658"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C48658"
         }
       ]
     },
@@ -223,19 +223,19 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49488"
         },
         {
           "value":"",
           "description":"Not Done",
           "caDSRValue":"Not Done",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49484"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49484"
         }
       ]
     },
@@ -339,13 +339,13 @@
           "value":"0",
           "description":"No",
           "caDSRValue":"No",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49487"
         },
         {
           "value":"1",
           "description":"Yes",
           "caDSRValue":"Yes",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49488"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C49488"
         }
       ]
     },
@@ -376,13 +376,13 @@
           "value":"2",
           "description":"Right",
           "caDSRValue":"Right",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25228"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C25228"
         },
         {
           "value":"1",
           "description":"Left",
           "caDSRValue":"Left",
-          "conceptURI":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229"
+          "conceptURI":"http://purl.obolibrary.org/obo/NCIT_C25229"
         }
       ]
     },

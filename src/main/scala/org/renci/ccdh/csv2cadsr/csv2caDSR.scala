@@ -22,7 +22,7 @@ case class CommandLineOptions(
   json: Option[String],
   @HelpMessage("The JSON mapping file to write to.")
   toJson: Option[String],
-  @HelpMessage("The CSV file to write harmonized data to.")
+  @HelpMessage("The JSON file to write mapping information to.")
   toCsv: Option[String],
   @HelpMessage("The PFB file to write harmonized data to.")
   toPfb: Option[String],
@@ -35,7 +35,17 @@ case class CommandLineOptions(
   @HelpMessage(
     "If uploaded to the CEDAR workbench, specify the folder that it should be uploaded to"
   )
-  cedarUploadFolderUrl: Option[String] = None
+  cedarUploadFolderUrl: Option[String] = None,
+  @HelpMessage("The filename prefix used to write harmonized data as JSON-LD files")
+  toJsonld: Option[String],
+  @HelpMessage(
+    "When exporting data files as JSON-LD files, should we generate a SHACL shape description as well?"
+  )
+  generateShacl: Boolean = false,
+  @HelpMessage(
+    "When exporting data files as JSON-LD files, should we generate a JSON schema as well?"
+  )
+  generateJsonSchema: Boolean = false
 )
 
 /**
@@ -124,11 +134,6 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     // Look through the command line options to see how we should export our data.
     options match {
-      case opt if opt.toJson.nonEmpty => {
-        // TODO: implement our own JSON-LD export for this data.
-        ???
-      }
-
       case opt if opt.toCsv.nonEmpty => {
         // Generate the CSV!
         val csvOutputFile = opt.toCsv.map(new File(_)).head
@@ -163,6 +168,22 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
           cedarFolderURL
         )
         scribe.info(s"Wrote output as CEDAR file to prefix ${cedarPrefix}.")
+      }
+
+      case opt if opt.toJsonld.nonEmpty => {
+        // Generate JSON-LD files.
+        val jsonldPrefix = opt.toJsonld.getOrElse("jsonld-export")
+        val csvReader = CSVReader.open(csvSource)
+        (new output.ToJSONLD()).writeJSONLD(
+          csvFile,
+          csvReader,
+          properties,
+          requiredProperties,
+          jsonldPrefix,
+          opt.generateShacl,
+          opt.generateJsonSchema
+        )
+        scribe.info(s"Wrote output as JSON-LD files to prefix ${jsonldPrefix}.")
       }
 
       case _ =>

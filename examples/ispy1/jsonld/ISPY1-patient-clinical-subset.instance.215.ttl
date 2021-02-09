@@ -1,0 +1,22 @@
+@prefix example: <http://example.org/csv2cadsr#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///Users/gaurav/Development/csv2caDSR/examples/ispy1/ISPY1-patient-clinical-subset.csv#row215> a example:ExportSchema ;
+    example:BilateralCa obo:NCIT_C49487 ;
+    example:DataExtractDt "09 03 2009"^^xsd:string ;
+    example:ERpos obo:NCIT_C49488 ;
+    example:HR_HER2_CATEGORY "2"^^xsd:string ;
+    example:HR_HER2_STATUS "HER2pos"^^xsd:string ;
+    example:HR_Pos "1"^^xsd:string ;
+    example:Her2MostPos obo:NCIT_C49488 ;
+    example:Laterality obo:NCIT_C25228 ;
+    example:MRI_LD_1-3dAC "16"^^xsd:long ;
+    example:MRI_LD_Baseline "19"^^xsd:long ;
+    example:MRI_LD_InterReg "12"^^xsd:long ;
+    example:MRI_LD_PreSurg "0"^^xsd:long ;
+    example:PgRpos obo:NCIT_C49488 ;
+    example:SUBJECTID "1234"^^xsd:long ;
+    example:age 38.10 ;
+    example:race_id obo:NCIT_C41261 .
+

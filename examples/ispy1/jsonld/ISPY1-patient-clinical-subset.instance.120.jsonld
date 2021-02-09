@@ -1,0 +1,119 @@
+{
+  "@id":"file:/Users/gaurav/Development/csv2caDSR/examples/ispy1/ISPY1-patient-clinical-subset.csv#row120",
+  "@type":"example:ExportSchema",
+  "@context":{
+    "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
+    "rdf":"http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xsd":"http://www.w3.org/2001/XMLSchema#",
+    "obo":"http://purl.obolibrary.org/obo/",
+    "ncit":"http://purl.obolibrary.org/obo/NCIT_",
+    "ncicde":"https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#",
+    "example":"http://example.org/csv2cadsr#",
+    "SUBJECTID":{
+      "@id":"http://example.org/csv2cadsr#SUBJECTID"
+    },
+    "DataExtractDt":{
+      "@id":"http://example.org/csv2cadsr#DataExtractDt"
+    },
+    "age":{
+      "@id":"http://example.org/csv2cadsr#age"
+    },
+    "race_id":{
+      "@id":"http://example.org/csv2cadsr#race_id"
+    },
+    "ERpos":{
+      "@id":"http://example.org/csv2cadsr#ERpos"
+    },
+    "PgRpos":{
+      "@id":"http://example.org/csv2cadsr#PgRpos"
+    },
+    "HR Pos":{
+      "@id":"http://example.org/csv2cadsr#HR_Pos"
+    },
+    "Her2MostPos":{
+      "@id":"http://example.org/csv2cadsr#Her2MostPos"
+    },
+    "HR_HER2_CATEGORY":{
+      "@id":"http://example.org/csv2cadsr#HR_HER2_CATEGORY"
+    },
+    "HR_HER2_STATUS":{
+      "@id":"http://example.org/csv2cadsr#HR_HER2_STATUS"
+    },
+    "BilateralCa":{
+      "@id":"http://example.org/csv2cadsr#BilateralCa"
+    },
+    "Laterality":{
+      "@id":"http://example.org/csv2cadsr#Laterality"
+    },
+    "MRI LD Baseline":{
+      "@id":"http://example.org/csv2cadsr#MRI_LD_Baseline"
+    },
+    "MRI LD 1-3dAC":{
+      "@id":"http://example.org/csv2cadsr#MRI_LD_1-3dAC"
+    },
+    "MRI LD InterReg":{
+      "@id":"http://example.org/csv2cadsr#MRI_LD_InterReg"
+    },
+    "MRI LD PreSurg":{
+      "@id":"http://example.org/csv2cadsr#MRI_LD_PreSurg"
+    }
+  },
+  "SUBJECTID":{
+    "@value":"1134",
+    "@type":"xsd:long"
+  },
+  "DataExtractDt":{
+    "@value":"09 03 2009",
+    "@type":"xsd:string"
+  },
+  "age":{
+    "@value":"43.06",
+    "@type":"xsd:decimal"
+  },
+  "race_id":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C41261"
+  },
+  "ERpos":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49488"
+  },
+  "PgRpos":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49488"
+  },
+  "HR Pos":{
+    "@value":"1",
+    "@type":"xsd:string"
+  },
+  "Her2MostPos":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
+  },
+  "HR_HER2_CATEGORY":{
+    "@value":"1",
+    "@type":"xsd:string"
+  },
+  "HR_HER2_STATUS":{
+    "@value":"HRposHER2neg",
+    "@type":"xsd:string"
+  },
+  "BilateralCa":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C49487"
+  },
+  "Laterality":{
+    "@id":"http://purl.obolibrary.org/obo/NCIT_C25229"
+  },
+  "MRI LD Baseline":{
+    "@value":"38",
+    "@type":"xsd:long"
+  },
+  "MRI LD 1-3dAC":{
+    "@value":"41",
+    "@type":"xsd:long"
+  },
+  "MRI LD InterReg":{
+    "@value":"21",
+    "@type":"xsd:long"
+  },
+  "MRI LD PreSurg":{
+    "@value":"15",
+    "@type":"xsd:long"
+  }
+}
