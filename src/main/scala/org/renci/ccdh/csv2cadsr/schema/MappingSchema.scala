@@ -42,6 +42,7 @@ case class MappingSchema(fields: Seq[MappingField]) {
   * Some static methods for MappingSchema.
   */
 object MappingSchema {
+
   /** An empty mapping schema. */
   val empty = MappingSchema(Seq())
 
@@ -93,6 +94,7 @@ abstract class MappingField(
   * Some static methods for generating mapping fields.
   */
 object MappingField {
+
   /**
     * If the number of unique values are less than this proportion of all values,
     * we consider this field to be an enum.
@@ -128,11 +130,15 @@ object MappingField {
           isRequired
         )
       }
-      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' }}) => {
+      case _ if (uniqueValues forall { str =>
+            str forall { ch: Char => Character.isDigit(ch) || ch == '-' }
+          }) => {
         val intValues = values flatMap (_.toIntOption)
         IntField(name, uniqueValues, isRequired, Range.inclusive(intValues.min, intValues.max))
       }
-      case _ if (uniqueValues forall { str => str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }}) => {
+      case _ if (uniqueValues forall { str =>
+            str forall { ch: Char => Character.isDigit(ch) || ch == '-' || ch == '.' }
+          }) => {
         val numValues = values flatMap (v => Try(BigDecimal(v)).toOption)
         NumberField(name, uniqueValues, isRequired, numValues.min, numValues.max)
       }
@@ -151,9 +157,9 @@ case class StringField(
 ) extends MappingField(name, uniqueValues) {
   override def asJsonObject: JObject =
     ("type" -> "string") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0")
+      ("description" -> "") ~
+      ("caDSR" -> "") ~
+      ("caDSRVersion" -> "1.0")
 }
 
 /**
@@ -172,25 +178,26 @@ case class EnumField(
 
   override def asJsonObject: JObject =
     ("type" -> "string") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0") ~
-    ("permissibleValues" -> JArray(List())) ~
-    ("enum" -> enumValues.map(_.value).map(JString).toList) ~
-    ("enumValues" -> enumValues.map(_.asMapping).toList)
+      ("description" -> "") ~
+      ("caDSR" -> "") ~
+      ("caDSRVersion" -> "1.0") ~
+      ("permissibleValues" -> JArray(List())) ~
+      ("enum" -> enumValues.map(_.value).map(JString).toList) ~
+      ("enumValues" -> enumValues.map(_.asMapping).toList)
 }
 
 /** An EnumValue represents one possible value for an EnumField. */
 case class EnumValue(value: String, conceptURI: Option[URI] = None) {
   def asMapping: JObject =
     ("value" -> value) ~
-    ("description" -> "") ~
-    ("caDSRValue" -> "") ~
-    ("conceptURI" -> (conceptURI map (_.toString) getOrElse ("")))
+      ("description" -> "") ~
+      ("caDSRValue" -> "") ~
+      ("conceptURI" -> (conceptURI map (_.toString) getOrElse ("")))
 }
 
 /** Some static methods for EnumValues. */
 object EnumValue {
+
   /** Convert a string value to an EnumValue. */
   def fromString(value: String): EnumValue = {
     // Does the value contain an HTTP or HTTPS URL?
@@ -215,9 +222,9 @@ case class IntField(
   }
   override def asJsonObject: JObject =
     ("type" -> "integer") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0")
+      ("description" -> "") ~
+      ("caDSR" -> "") ~
+      ("caDSRVersion" -> "1.0")
 }
 
 /** A NumberField models a field that can only contain numeric values. We model those in BigDecimal for
@@ -238,9 +245,9 @@ case class NumberField(
 
   override def asJsonObject: JObject =
     ("type" -> "number") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0")
+      ("description" -> "") ~
+      ("caDSR" -> "") ~
+      ("caDSRVersion" -> "1.0")
 }
 
 /** An empty field is one that consists solely of blanks. */
@@ -248,7 +255,7 @@ case class EmptyField(override val name: String, override val required: Boolean)
     extends MappingField(name, Set()) {
   override def asJsonObject: JObject =
     ("type" -> "string") ~
-    ("description" -> "") ~
-    ("caDSR" -> "") ~
-    ("caDSRVersion" -> "1.0")
+      ("description" -> "") ~
+      ("caDSR" -> "") ~
+      ("caDSRVersion" -> "1.0")
 }

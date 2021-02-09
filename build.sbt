@@ -46,6 +46,9 @@ libraryDependencies ++= {
     // JSON reading/writing
     "org.json4s"                  %% "json4s-native"          % "3.6.9",
 
+    // HTTP requests.
+    "com.lihaoyi"                 %% "requests"               % "0.6.5",
+
     // XML reading/writing
     "org.scala-lang.modules"      %% "scala-xml"              % "1.3.0",
 

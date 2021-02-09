@@ -1,17 +1,16 @@
 package org.renci.ccdh.csv2cadsr
 
-import java.io.{BufferedWriter, File, FileWriter, OutputStreamWriter}
+import java.io.{BufferedWriter, File, FileWriter}
 
 import com.github.tototoshi.csv.CSVReader
-import org.json4s.{DefaultFormats, JObject, JValue, StringInput}
+import org.json4s.{JObject, JValue, StringInput}
 
 import scala.io.Source
 import org.json4s.native.Serialization.writePretty
 import org.json4s.native.JsonMethods.parse
 import caseapp._
 import org.json4s
-
-import scala.collection.immutable.HashMap
+import org.json4s.JsonAST.{JArray, JString}
 
 @AppName("csv2caDSR")
 @AppVersion("0.1.0")
@@ -26,7 +25,17 @@ case class CommandLineOptions(
   @HelpMessage("The CSV file to write harmonized data to.")
   toCsv: Option[String],
   @HelpMessage("The PFB file to write harmonized data to.")
-  toPfb: Option[String]
+  toPfb: Option[String],
+  @HelpMessage("The filename prefix used to write harmonized data as CEDAR instance data")
+  toCedar: Option[String],
+  @HelpMessage(
+    "Should we attempt to upload the harmonized data to CEDAR? (requires a ~/.cedar.properties file with an apiKey property)"
+  )
+  uploadToCedar: Boolean = false,
+  @HelpMessage(
+    "If uploaded to the CEDAR workbench, specify the folder that it should be uploaded to"
+  )
+  cedarUploadFolderUrl: Option[String] = None
 )
 
 /**
@@ -94,7 +103,20 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     val properties: Map[String, json4s.JValue] = (jsonRoot \ "properties") match {
       case obj: JObject => obj.obj.toMap
-      case _ => throw new RuntimeException("JSON source is not a JSON object")
+      case _            => throw new RuntimeException("JSON source is not a JSON object")
+    }
+    val requiredProperties: Set[String] = (jsonRoot \ "required") match {
+      case JArray(list) =>
+        list
+          .map({
+            case JString(str) => str
+            case unk =>
+              throw new RuntimeException(
+                s"Expected 'required' to be an array of strings but array contained element: $unk"
+              )
+          })
+          .toSet
+      case unk => throw new RuntimeException(s"Expected 'required' to be an array but found: $unk")
     }
 
     // Load the CSV data file.
@@ -102,13 +124,14 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
 
     // Look through the command line options to see how we should export our data.
     options match {
-      case CommandLineOptions(_, _, Some(jsonOutputFile), _, _) => {
+      case opt if opt.toJson.nonEmpty => {
         // TODO: implement our own JSON-LD export for this data.
         ???
       }
 
-      case CommandLineOptions(_, _, _, Some(csvOutputFile), _) => {
+      case opt if opt.toCsv.nonEmpty => {
         // Generate the CSV!
+        val csvOutputFile = opt.toCsv.map(new File(_)).head
         val reader = CSVReader.open(csvSource)
         val bufferedWriter = new BufferedWriter(new FileWriter(csvOutputFile))
         output.ToCSV.write(reader, properties, bufferedWriter)
@@ -116,16 +139,30 @@ object csv2caDSR extends CaseApp[CommandLineOptions] {
         scribe.info(s"Wrote out CSV harmonized output file to ${csvOutputFile}")
       }
 
-      case CommandLineOptions(_, _, _, _, Some(pfbOutputFilename)) => {
+      case opt if opt.toPfb.nonEmpty => {
         // Generate the PFB!
-        val pfbOutputFile = new File(pfbOutputFilename)
+        val pfbOutputFile = opt.toPfb.map(new File(_)).head
         val reader = CSVReader.open(csvSource)
-        output.ToPFB.writePFB(
-          reader,
-          properties,
-          pfbOutputFile
-        )
+        output.ToPFB.writePFB(reader, properties, pfbOutputFile)
         scribe.info(s"Wrote output as PFB file to ${pfbOutputFile}.")
+      }
+
+      case opt if opt.toCedar.nonEmpty => {
+        // Generate the CEDAR instance data!
+        val cedarPrefix = opt.toCedar.map(new File(_)).head
+        val csvReader = CSVReader.open(csvSource)
+        val uploadToCedar = opt.uploadToCedar
+        val cedarFolderURL = opt.cedarUploadFolderUrl
+        (new output.ToCEDAR()).writeCEDAR(
+          csvFile,
+          csvReader,
+          properties,
+          requiredProperties,
+          cedarPrefix,
+          uploadToCedar,
+          cedarFolderURL
+        )
+        scribe.info(s"Wrote output as CEDAR file to prefix ${cedarPrefix}.")
       }
 
       case _ =>

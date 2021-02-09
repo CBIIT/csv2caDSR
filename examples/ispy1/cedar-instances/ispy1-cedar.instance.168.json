@@ -1,0 +1,112 @@
+{
+  "@context":{
+    "skos":"http://www.w3.org/2004/02/skos/core#",
+    "pav":"http://purl.org/pav/",
+    "rdfs":"http://www.w3.org/2000/01/rdf-schema#",
+    "schema":"http://schema.org/",
+    "oslc":"http://open-services.net/ns/core#",
+    "xsd":"http://www.w3.org/2001/XMLSchema#",
+    "skos:notation":{
+      "@type":"xsd:string"
+    },
+    "pav:derivedFrom":{
+      "@type":"@id"
+    },
+    "pav:createdOn":{
+      "@type":"xsd:dateTime"
+    },
+    "pav:lastUpdatedOn":{
+      "@type":"xsd:dateTime"
+    },
+    "oslc:modifiedBy":{
+      "@type":"@id"
+    },
+    "schema:isBasedOn":{
+      "@type":"@id"
+    },
+    "schema:description":{
+      "@type":"xsd:string"
+    },
+    "schema:name":{
+      "@type":"xsd:string"
+    },
+    "pav:createdBy":{
+      "@type":"@id"
+    },
+    "id":"http://purl.org/dc/terms/identifier",
+    "rdfs:label":{
+      "@type":"xsd:string"
+    }
+  },
+  "schema:name":"csv2caDSR CEDAR Instance Export (2020-12-17T04:45:04.304Z) for row 168",
+  "schema:description":"csv2caDSR CEDAR Instance Export (2020-12-17T04:45:04.304Z) for row 168 from examples/ispy1/ISPY1-patient-clinical-subset.csv",
+  "schema:isBasedOn":"https://repo.metadatacenter.org/templates/1a4ca1ce-a468-4ae6-84be-dd75151980f0",
+  "pav:createdBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
+  "pav:createdOn":"2020-12-17T04:45:04.304Z",
+  "pav:lastUpdatedOn":"2020-12-17T04:45:04.304Z",
+  "oslc:modifiedBy":"https://metadatacenter.org/users/ebca7bcb-4e1a-495b-919e-31884aa89461",
+  "SUBJECTID":{
+    "@value":"1184",
+    "@type":"xsd:long"
+  },
+  "DataExtractDt":{
+    "@value":"09 03 2009",
+    "@type":"xsd:string"
+  },
+  "age":{
+    "@value":"49.10",
+    "@type":"xsd:string"
+  },
+  "race_id":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C41261",
+    "rdfs:label":"5"
+  },
+  "ERpos":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+    "rdfs:label":"No"
+  },
+  "PgRpos":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+    "rdfs:label":"No"
+  },
+  "HR Pos":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38757",
+    "rdfs:label":"Negative"
+  },
+  "Her2MostPos":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+    "rdfs:label":"No"
+  },
+  "HR_HER2_CATEGORY":{
+    "@value":"3",
+    "@type":"xsd:string"
+  },
+  "HR_HER2_STATUS":{
+    "@value":"TripleNeg",
+    "@type":"xsd:string"
+  },
+  "BilateralCa":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49487",
+    "rdfs:label":"No"
+  },
+  "Laterality":{
+    "@id":"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25229",
+    "rdfs:label":"Left"
+  },
+  "MRI LD Baseline":{
+    "@value":"40",
+    "@type":"xsd:long"
+  },
+  "MRI LD 1-3dAC":{
+    "@value":"28",
+    "@type":"xsd:long"
+  },
+  "MRI LD InterReg":{
+    "@value":"13",
+    "@type":"xsd:long"
+  },
+  "MRI LD PreSurg":{
+    "@value":"5",
+    "@type":"xsd:long"
+  }
+}
